@@ -1,3 +1,16 @@
+<?php
+  $conn = new mysqli("localhost", "root", "", "unilink");
+
+  if ($conn->connect_error) {
+      die("Connection failed: " . $conn->connect_error);
+  }
+
+  $id = $_GET['id'];
+
+  $sql = "SELECT * FROM `activityform` WHERE `id` = '$id'";
+  $result = $conn->query($sql);
+  $activity_form_row = $result->fetch_assoc();
+?>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -143,32 +156,34 @@
                   <div id="step1">
                     <div class="form-group">
                       <label for="activityName">Activity Title</label>
-                      <input type="text" class="form-control outline" id="activityName" name="activityName" />
+                      <input type="text" class="form-control outline" id="activityName" name="activityName" value="<?=$activity_form_row['activity_title']?>" />
                     </div>
                     <div class="form-group college">
                       <label for="campus">Campus</label>
                       <select class="form-control" id="campus" name="campus">
                         <option value="">-- Select Campus --</option>
-                        <option value="ARASOF">ARASOF-Nasugbu</option>
+                        <option value="ARASOF" <?php if($activity_form_row['campus'] == "ARASOF"){echo "selected";}?>>ARASOF-Nasugbu</option>
                       </select>
                     </div>
                     <div class="form-group college">
                       <label for="department">College</label>
                       <select class="form-control" id="department" name="department">
                         <option value="">-- Select College --</option>
-                        <option value="CE">College of Engineering</option>
-                        <option value="CIT">College of Industrial Technology</option>
-                        <option value="CICS">College of Informatics and Computing Sciences</option>
-                        <option value="CAS">College of Arts and Sciences</option>
-                        <option value="CABEIHM">College of Accountancy, Business, Economics and International Hospitality Management</option>
-                        <option value="CTE">College of Teacher Education</option>
-                        <option value="CONAHS">College of Nursing and Allied Health Sciences</option>
-                        <option value="LS">Laboratory School</option>
+                        <option value="CE" <?php if($activity_form_row['college'] == "CE"){echo "selected";}?>>College of Engineering</option>
+                        <option value="CIT" <?php if($activity_form_row['college'] == "CIT"){echo "selected";}?>>College of Industrial Technology</option>
+                        <option value="CICS" <?php if($activity_form_row['college'] == "CICS"){echo "selected";}?>>College of Informatics and Computing Sciences</option>
+                        <option value="CAS" <?php if($activity_form_row['college'] == "CAS"){echo "selected";}?>>College of Arts and Sciences</option>
+                        <option value="CABEIHM" <?php if($activity_form_row['college'] == "CABEIHM"){echo "selected";}?>>College of Accountancy, Business, Economics and International Hospitality Management</option>
+                        <option value="CTE" <?php if($activity_form_row['college'] == "CTE"){echo "selected";}?>>College of Teacher Education</option>
+                        <option value="CONAHS" <?php if($activity_form_row['college'] == "CONAHS"){echo "selected";}?>>College of Nursing and Allied Health Sciences</option>
+                        <option value="LS" <?php if($activity_form_row['college'] == "LS"){echo "selected";}?>>Laboratory School</option>
                       </select>
                     </div>
                     <div class="form-group">
                       <label for="program">Program</label>
-                      <select class="form-control" id="program" name="program"></select>
+                      <select class="form-control" id="program" name="program">
+                        <option value="<?=$activity_form_row['program']?>"><?=$activity_form_row['program']?></option>
+                      </select>
                     </div>
                     <div class="text-right mt-4">
                       <button type="button" class="btn btn-primary" id="nextStep1">Next</button>
@@ -176,26 +191,26 @@
                   </div>
                   <div id="step2" style="display: none;">
                     <label class="radio-inline mr-4" for="local-radio">
-                      <input type="radio" name="partnerType" id="local-radio" value="Local" onchange="localRadio()">Local </label>
+                      <input type="radio" name="partnerType" id="local-radio" value="Local" onchange="localRadio()" <?php if($activity_form_row['partner_type'] == "Local"){echo "checked";}?>>Local </label>
                     <label class="radio-inline" for="international-radio">
-                      <input type="radio" name="partnerType" id="international-radio" value="International" onchange="internationalRadio()">International </label>
+                      <input type="radio" name="partnerType" id="international-radio" value="International" onchange="internationalRadio()" <?php if($activity_form_row['partner_type'] == "International"){echo "checked";}?>>International </label>
                     <div class="form-group">
                       <label for="partner">Partner Name</label>
                       <select id="partner-dropdown" class="form-control" name="partner">
-                        <!-- Options will be added here dynamically -->
+                      <option value="<?=$activity_form_row['partner']?>"><?=$activity_form_row['partner']?></option>
                       </select>
                     </div>
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="startDate">Start Date</label>
-                          <input type="date" id="date" name="start_date" class="form-control" required>
+                          <input type="date" id="date" name="start_date" class="form-control" value="<?=$activity_form_row['start_date']?>" required>
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="endDate">End Date</label>
-                          <input type="date" id="date" name="end_date" class="form-control" required>
+                          <input type="date" id="date" name="end_date" class="form-control" value="<?=$activity_form_row['end_date']?>" required>
                         </div>
                       </div>
                     </div>
@@ -247,160 +262,148 @@
                             </div>
                           </div>
                         </div> 
-                      <div id="role1">
-                        <table class="table header-border table-responsive-sm">
-                          <div class="d-flex justify-content-between align-items-center flex-wrap">
-                            <div class="col-md-11">
-                              <input class="form-control" id="role_description_1" type="text" value="Project Leader/s" name="role_name[]" readonly>
-                            </div>
-                            <div class="md-1" style="padding-right: 30px;">
-                              <button type="button" name="addRole" onclick="removeRole(1)" class="btn btn-danger shadow btn-circle btn-sm">
-                                <i class="fas fa-trash"></i>
-                              </button>
-                            </div>
-                          </div>
-                          <thead>
-                            <tr>
-                              <th class="col-md-5" style="text-align: left;">Name</th>
-                              <th class="col-md-6" style="text-align: left;">Designation</th>
-                              <th class="col-md-2" style="padding-left: 0px;">
-                                <button type="button" name="addRole" class="btn btn-primary shadow btn-circle btn-sm" data-toggle="modal" data-target="#modal1" onclick="setSelectRole(1)">
-                                  <i class="fas fa-user-plus"></i>
-                                </button>
-                                <button style="margin-left:1px;background: white;" type="button" name="addRole" class="btn btn-primary btn-circle btn-sm" onclick="addCustomMember(1)">
-                                  <i class="fas fa-plus" style="color: #1dbf1d"></i>
-                                </button>
-                              </th>
-                            </tr>
-                          </thead>
-                          <tbody id="member1"></tbody>
-                        </table>
-                       
-                        <table class="table">
-                          <thead>
-                            <tr>
-                              <th class="col-md-11" style="text-align: left;">Responsibility</th>
-                              <th class="col-md-1" style="padding-left: 0px;">
-                                <button type="button" name="addRole" class="btn btn-primary shadow btn-circle btn-sm" data-toggle="modal" data-target="#responsibilty_modal1" onclick="openModal(1)">
-                                  <i class="fas fa-plus"></i>
-                                </button>
-                                <div class="modal fade" id="responsibilty_modal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                  <div class="modal-dialog modal-lg" role="document">
-                                    <div class="modal-content">
-                                      <div class="modal-header">
-                                        <h5 class="modal-title" style="font-size:20px">Add Project Leader/s Responsibility</h5>
-                                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                          <span aria-hidden="true">×</span>
+                      
+                      <?php
+                        $sql = "SELECT * FROM `activity_representatives` WHERE `activityform_id` = '$id'";
+                        $activity_representatives_result = $conn->query($sql);
+                        $total_roles = 1;
+                        $memRow = 1;
+                        $responbilityRow = 1;
+                        while($activity_representatives_row = $activity_representatives_result->fetch_assoc()) {
+                      ?>
+                          <div id="role<?=$total_roles?>">
+                            <table class="table header-border table-responsive-sm">
+                              <div class="d-flex justify-content-between align-items-center flex-wrap">
+                                <div class="col-md-11">
+                                  <input class="form-control" id="role_description_<?=$total_roles?>" type="text" value="<?=$activity_representatives_row['role']?>" name="role_name[]">
+                                </div>
+                                <div class="md-1" style="padding-right: 30px;">
+                                  <button type="button" name="addRole" onclick="removeRole(<?=$total_roles?>)" class="btn btn-danger shadow btn-circle btn-sm">
+                                    <i class="fas fa-trash"></i>
+                                  </button>
+                                </div>
+                              </div>
+                              <thead>
+                                <tr>
+                                  <th class="col-md-5" style="text-align: left;">Name</th>
+                                  <th class="col-md-6" style="text-align: left;">Designation</th>
+                                  <th class="col-md-2" style="padding-left: 0px;">
+                                    <button type="button" name="addRole" class="btn btn-primary shadow btn-circle btn-sm" data-toggle="modal" data-target="#modal1" onclick="setSelectRole(<?=$total_roles?>)">
+                                      <i class="fas fa-user-plus"></i>
+                                    </button>
+                                    <button style="margin-left:1px;background: white;" type="button" name="addRole" class="btn btn-primary btn-circle btn-sm" onclick="addCustomMember(<?=$total_roles?>)">
+                                      <i class="fas fa-plus" style="color: #1dbf1d"></i>
+                                    </button>
+                                  </th>
+                                </tr>
+                              </thead>
+                              <tbody id="member<?=$total_roles?>">
+                                <?php
+                                  $activity_representatives_id = $activity_representatives_row['id'];
+                                  $sql = "SELECT * FROM `representatives` WHERE `activity_representatives_id` = '$activity_representatives_id'";
+                                  $representatives_result = $conn->query($sql);
+                                  while($representatives_row = $representatives_result->fetch_assoc()) {
+                                ?>
+                                    <tr id="memRow<?=$memRow?>">
+                                      <td style="display: none;">
+                                        <input name="roles_position[]" value="<?=$total_roles?>" />
+                                      </td>
+                                      <td style="display: none;">
+                                        <input name="representative_roles_id[]" value="<?=$representatives_row['representative_roles_id']?>">
+                                      </td>
+                                      <td>
+                                        <input class="form-control" name="roles_name[]" id="name-<?=$representatives_row['representative_roles_id']?>-<?=$total_roles?>" value="<?=$representatives_row['name']?>">
+                                      </td>
+                                      <td>
+                                        <input class="form-control" name="roles_description[]" value="<?=$representatives_row['designation']?>">
+                                      </td>
+                                      <td>
+                                        <button type="button" name="addRole" onclick="removeMember(`<?=$memRow?>`, `<?=$representatives_row['representative_roles_id']?>`, `<?=$total_roles?>`)" class="btn btn-danger shadow btn-circle btn-sm">
+                                          <i class="fas fa-minus"></i>
                                         </button>
-                                      </div>
-                                      <div class="modal-body">
-                                        <div class="card-body">
-                                          <div class="table-responsive">
-                                            <table id="example6" class="table header-border table-responsive-sm">
-                                              <thead>
-                                                <tr>
-                                                  <th class="col-md-5" style="text-align: left;">Role</th>
-                                                  <th class="col-md-6" style="text-align: left;">Resposibility</th>
-                                                  <th class="col-md-2" style="text-align: right;">Action</th>
-                                                </tr>
-                                              </thead>
-                                              <tbody id="responsibility_list_1">
-                                                <!-- List Responsibility of Leader -->
-                                              </tbody>
-                                            </table>
+                                      </td>
+                                    </tr>
+                                <?php
+                                    $memRow++;
+                                  }
+                                ?>
+                              </tbody>
+                            </table>
+                          
+                            <table class="table">
+                              <thead>
+                                <tr>
+                                  <th class="col-md-11" style="text-align: left;">Responsibility</th>
+                                  <th class="col-md-1" style="padding-left: 0px;">
+                                    <button type="button" name="addRole" class="btn btn-primary shadow btn-circle btn-sm" data-toggle="modal" data-target="#responsibilty_modal<?=$total_roles?>" onclick="openModal(<?=$total_roles?>)">
+                                      <i class="fas fa-plus"></i>
+                                    </button>
+                                    <div class="modal fade" id="responsibilty_modal<?=$total_roles?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                      <div class="modal-dialog modal-lg" role="document">
+                                        <div class="modal-content">
+                                          <div class="modal-header">
+                                            <h5 class="modal-title" style="font-size:20px">Add Project Leader/s Responsibility</h5>
+                                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                              <span aria-hidden="true">×</span>
+                                            </button>
+                                          </div>
+                                          <div class="modal-body">
+                                            <div class="card-body">
+                                              <div class="table-responsive">
+                                                <table id="example6" class="table header-border table-responsive-sm">
+                                                  <thead>
+                                                    <tr>
+                                                      <th class="col-md-5" style="text-align: left;">Role</th>
+                                                      <th class="col-md-6" style="text-align: left;">Resposibility</th>
+                                                      <th class="col-md-2" style="text-align: right;">Action</th>
+                                                    </tr>
+                                                  </thead>
+                                                  <tbody id="responsibility_list_<?=$total_roles?>">
+                                                    <!-- List Responsibility of Leader -->
+                                                  </tbody>
+                                                </table>
+                                              </div>
+                                            </div>
                                           </div>
                                         </div>
                                       </div>
                                     </div>
-                                  </div>
-                                </div>
-                                <button style="margin-left:1px;background: white;" type="button" name="addRole" class="btn btn-primary btn-circle btn-sm" onclick="addCustomResponsibility(1)">
-                                  <i class="fas fa-plus" style="color: #1dbf1d"></i>
-                                </button>
-                              </th>
-                            </tr>
-                          </thead>
-                          <tbody id="added_responsibility_list_1">
-                            <!-- Added Responsibility of Leader -->
-                          </tbody>
-                        </table>
-                      </div>
-                      <div id="role2">
-                        <table class="table header-border table-responsive-sm">
-                          <div class="d-flex justify-content-between align-items-center flex-wrap">
-                            <div class="col-md-11">
-                              <input class="form-control" type="text" id="role_description_2" value="Project Member/s" name="role_name[]" readonly>
-                            </div>
-                            <div class="md-1" style="padding-right: 30px;">
-                              <button type="button" name="addRole" onclick="removeRole(2)" class="btn btn-danger shadow btn-circle btn-sm">
-                                <i class="fas fa-trash"></i>
-                              </button>
-                            </div>
-                          </div>
-                          <thead>
-                            <tr>
-                              <th class="col-md-5" style="text-align: left;">Name</th>
-                              <th class="col-md-6" style="text-align: left;">Designation</th>
-                              <th class="col-md-2" style="padding-left: 0px;">
-                                <button type="button" name="addRole" class="btn btn-primary shadow btn-circle btn-sm" data-toggle="modal" data-target="#modal1" onclick="setSelectRole(2)">                                  <i class="fas fa-user-plus"></i>
-                                </button>
-                                <button style="margin-left:1px;background: white;" type="button" name="addRole" class="btn btn-primary shadow btn-circle btn-sm" onclick="addCustomMember(2)">
-                                  <i class="fas fa-plus" style="color: #1dbf1d"></i>
-                                </button>
-                              </th>
-                            </tr>
-                          </thead>
-                          <tbody id="member2"></tbody>
-                        </table>
-                        <table class="table">
-                          <thead>
-                            <tr>
-                              <th class="col-md-11" style="text-align: left;">Responsibility</th>
-                              <th class="col-md-1" style="padding-left: 0px;">
-                                <button type="button" name="addRole" class="btn btn-primary shadow btn-circle btn-sm" data-toggle="modal" onclick="openModal(2)" data-target="#responsibility_modal_2">
-                                  <i class="fas fa-plus"></i>
-                                </button>
-                                <div class="modal fade" id="responsibility_modal_2" tabindex="-1" role="dialog" aria-hidden="true">
-                                  <div class="modal-dialog modal-lg">
-                                    <div class="modal-content">
-                                      <div class="modal-header">
-                                        <h5 class="modal-title" style="font-size:23px">Add Project Member/s Responsibility</h5>
-                                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                          <span aria-hidden="true">×</span>
+                                    <button style="margin-left:1px;background: white;" type="button" name="addRole" class="btn btn-primary btn-circle btn-sm" onclick="addCustomResponsibility(<?=$total_roles?>)">
+                                      <i class="fas fa-plus" style="color: #1dbf1d"></i>
+                                    </button>
+                                  </th>
+                                </tr>
+                              </thead>
+                              <tbody id="added_responsibility_list_<?=$total_roles?>">
+                                <?php
+                                  $sql = "SELECT * FROM `activity_representatives_responsibilities` WHERE `activty_representatives_id` = '$activity_representatives_id '";
+                                  $activity_representatives_responsibilities_result = $conn->query($sql);
+                                  while($activity_representatives_responsibilities_row = $activity_representatives_responsibilities_result->fetch_assoc()) {
+                                ?>
+                                    <tr id="responsibility_row_<?=$responbilityRow?>">
+                                      <td style="display: none;">
+                                        <input name="responsibilities_position[]" value="<?=$total_roles?>" />
+                                      </td>
+                                      <td>
+                                        <input class="form-control" name="responsibilities[]" readonly value="<?=$activity_representatives_responsibilities_row['responsibility']?>">
+                                      </td>
+                                      <td>
+                                        <button type="button" class="btn btn-danger shadow btn-circle btn-sm" onclick="removeResponsibility(`<?=$responbilityRow?>`, `<?=$activity_representatives_responsibilities_row['responsibility']?>`, `<?=$total_roles?>`)">
+                                          <i class="fas fa-minus"></i>
                                         </button>
-                                      </div>
-                                      <div class="modal-body" style="padding: 0.875rem">
-                                        <div class="card-body">
-                                          <div class="table-responsive">
-                                            <table class="table header-border table-responsive-sm">
-                                              <thead>
-                                                <tr>
-                                                  <th class="col-md-4" style="text-align: left;">Role</th>
-                                                  <th class="col-md-7" style="text-align: left;">Resposibility</th>
-                                                  <th class="col-md-2" style="text-align: right;">Action</th>
-                                                </tr>
-                                              </thead>
-                                              <tbody id="responsibility_list_2">
-                                                <!-- List Responsibility of Leader -->
-                                              </tbody>
-                                            </table>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                                <button style="margin-left:1px;background: white;" type="button" name="addRole" class="btn btn-primary shadow btn-circle btn-sm" onclick="addCustomResponsibility(2)">
-                                  <i class="fas fa-plus" style="color: #1dbf1d"></i>
-                                </button>
-                              </th>
-                            </tr>
-                          </thead>
-                          <tbody id="added_responsibility_list_2">
-                            <!-- Added Responsibility of Leader -->
-                          </tbody>
-                        </table>
-                    </div>
+                                      </td>
+                                    </tr>
+                                <?php
+                                    $responbilityRow++;
+                                  }
+                                ?>
+                              </tbody>
+                            </table>
+                          </div>
+                      <?php
+                          $total_roles++;
+                        }
+                      ?>
                     <hr>
 
                     <div id="table_roles"></div>
@@ -417,7 +420,7 @@
                     <div class="form-group">
                       <label for="rationale">Rationale of the Activity</label>
                       <div>
-                        <textarea class="form-control" id="editor" name="rationale" rows="3"></textarea>
+                        <textarea class="form-control" id="editor" name="rationale" rows="3"><?=$activity_form_row['rationale']?></textarea>
                       </div>
                     </div>
                     <div class="text-right mt-4">
@@ -428,7 +431,7 @@
                   <div id="step5" style="display: none;">
                     <div class="form-group">
                       <label for="objectives">Objectives (General and Specific)</label>
-                      <textarea class="form-control" id="editor1" name="objectives" rows="6"></textarea>
+                      <textarea class="form-control" id="editor1" name="objectives" rows="6"><?=$activity_form_row['objective']?></textarea>
                     </div>
                     <div class="text-right mt-4">
                       <button type="button" class="btn btn-secondary" id="prevStep5">Previous</button>
@@ -440,8 +443,8 @@
                       <label for="budget">Budget Source</label>
                       <select class="form-control" id="budget" name="budget">
                         <option value="">No budget needed</option>
-                        <option value="Fund Partner Agency">Fund Partner Agency</option>
-                        <option value="Fund of University">Fund of University</option>
+                        <option value="Fund Partner Agency" <?php if($activity_form_row['budget'] == "Fund Partner Agency"){echo "selected";}?>>Fund Partner Agency</option>
+                        <option value="Fund of University" <?php if($activity_form_row['budget'] == "Fund of University"){echo "selected";}?>>Fund of University</option>
                       </select>
                     </div>
                     <div>

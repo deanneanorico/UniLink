@@ -1,5 +1,5 @@
 <?php
-	include '../includes/db.php';
+	include 'includes/db.php';
 
 	$count = $_GET['q'];
     $forRole = $_GET['forRole'];

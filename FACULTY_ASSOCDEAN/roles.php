@@ -1,5 +1,5 @@
 <?php
-	require '../includes/db.php';
+	require 'includes/db.php';
 
 	$role = $_GET['q'];
 	$sql = "SELECT * FROM `representative_roles`";

@@ -68,8 +68,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $i = 1;
         $total_roles;
-        while($i < $total_roles) {
-          $sql = "INSERT INTO `activity_representatives`(`id`, `activityform_id`) VALUES ('$id[$i]','$id[0]')";
+        foreach($_POST['role_name'] as $role_name){
+          $sql = "INSERT INTO `activity_representatives`(`id`, `activityform_id`, `role`) VALUES ('$id[$i]','$id[0]','$role_name')";
           $result = $conn->query($sql);
           $i++;
         }
@@ -80,19 +80,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         foreach($_POST['roles_position'] as $value) {
           $name = $_POST['roles_name'][$k];
           $designation = $_POST['roles_description'][$k];
+          $representative_roles_id = $_POST['representative_roles_id'][$k];
           if($same != $value) {
             $same = $value;
             $i++;
           }
-          $sql = "INSERT INTO `representatives`(`activity_representatives_id`, `name`, `designation`) VALUES (?,?,?)";
-          $stmt = mysqli_stmt_init($conn);
-          if (!mysqli_stmt_prepare($stmt, $sql)) {
-            header("location: ../");
-            exit();
+          if($representative_roles_id == "null") {
+            $sql = "INSERT INTO `representatives`(`activity_representatives_id`, `name`, `designation`) VALUES (?,?,?)";
+            $stmt = mysqli_stmt_init($conn);
+            if (!mysqli_stmt_prepare($stmt, $sql)) {
+              header("location: ../");
+              exit();
+            }
+            mysqli_stmt_bind_param($stmt, "sss", $id[$i], $name, $designation);
+            mysqli_stmt_execute($stmt);
+            $k++;
+          } else {
+            $sql = "INSERT INTO `representatives`(`activity_representatives_id`, `representative_roles_id`, `name`, `designation`) VALUES (?,?,?,?)";
+            $stmt = mysqli_stmt_init($conn);
+            if (!mysqli_stmt_prepare($stmt, $sql)) {
+              header("location: ../");
+              exit();
+            }
+            mysqli_stmt_bind_param($stmt, "ssss", $id[$i], $representative_roles_id, $name, $designation);
+            mysqli_stmt_execute($stmt);
+            $k++;
           }
-          mysqli_stmt_bind_param($stmt, "sss", $id[$i], $name, $designation);
-          mysqli_stmt_execute($stmt);
-          $k++;
+          
         }
 
         $same = $_POST['responsibilities_position'][0];
@@ -101,32 +115,46 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         foreach($_POST['responsibilities_position'] as $value) {
           $responsibility = $_POST['responsibilities'][$k];
+          $responsibilities_id = $_POST['responsibilities_id'][$k];
           if($same != $value) {
             $same = $value;
             $i++;
           }
-          $sql = "INSERT INTO `activity_representatives_responsibilities`(`activity_representatives_id`, `responsibility`) VALUES (?,?)";
+          if($responsibilities_id == "null") {
+            $sql = "INSERT INTO `activity_representatives_responsibilities`(`activity_representatives_id`, `responsibility`) VALUES (?,?)";
+            $stmt = mysqli_stmt_init($conn);
+            if (!mysqli_stmt_prepare($stmt, $sql)) {
+              header("location: ../");
+              exit();
+            }
+            mysqli_stmt_bind_param($stmt, "ss", $id[$i], $responsibility);
+            mysqli_stmt_execute($stmt);
+            $k++;
+          } else {
+            $sql = "INSERT INTO `activity_representatives_responsibilities`(`activity_representatives_id`, `responsibilities_id`, `responsibility`) VALUES (?,?,?)";
           $stmt = mysqli_stmt_init($conn);
           if (!mysqli_stmt_prepare($stmt, $sql)) {
             header("location: ../");
             exit();
           }
-          mysqli_stmt_bind_param($stmt, "ss", $id[$i], $responsibility);
+          mysqli_stmt_bind_param($stmt, "sss", $id[$i], $responsibilities_id, $responsibility);
           mysqli_stmt_execute($stmt);
           $k++;
+          }
         }
 
         $i = 0;
         foreach ($_POST['item_name'] as $item_name) {
             $quantity = $_POST['quantity'][$i];
             $cost = $_POST['cost'][$i];
-            $sql = "INSERT INTO `budget`(`activityform_id`, `item_description`, `quantity`, `unit_cost`) VALUES (?,?,?,?)";
+            $sql = "INSERT INTO `budget`(`activityform_id`, `item_description`, `quantity`, `unit_cost`, `total`) VALUES (?,?,?,?,?)";
             $stmt = mysqli_stmt_init($conn);
             if (!mysqli_stmt_prepare($stmt, $sql)) {
                 header("location: ../");
                 exit();
             }
-            mysqli_stmt_bind_param($stmt, "ssss", $id[0], $item_name, $quantity, $cost);
+            $total = $cost * $quanity;
+            mysqli_stmt_bind_param($stmt, "sssss", $id[0], $item_name, $quantity, $cost, $total);
             mysqli_stmt_execute($stmt);
             $i++;
         }

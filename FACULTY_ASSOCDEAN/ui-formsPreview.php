@@ -231,7 +231,7 @@ $result = $conn->query($sql);
             echo "<td>" . $start_date . " - " . $end_date . "</td>";
             echo "<td></td>";
             echo "<td>
-                    <a href='ui-forms.php?edit=" . $row["id"] . "'>
+                    <a href='ui-formsEdit.php?id=" . $row["id"] . "'>
                         <span class='fas fa-edit text-success'></span>
                     </a>
                     <a href='delete.php?id=" . $row["id"] . "'><span class='fas fa-trash text-danger'></span></a>
