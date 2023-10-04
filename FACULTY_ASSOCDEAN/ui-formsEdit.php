@@ -312,10 +312,10 @@
                                         <input name="representative_roles_id[]" value="<?=$representatives_row['representative_roles_id']?>">
                                       </td>
                                       <td>
-                                        <input class="form-control" name="roles_name[]" id="name-<?=$representatives_row['representative_roles_id']?>-<?=$total_roles?>" value="<?=$representatives_row['name']?>">
+                                        <input class="form-control" name="roles_name[]" id="name-<?=$representatives_row['representative_roles_id']?>-<?=$total_roles?>" value="<?=$representatives_row['name']?>" <?php if($representatives_row['representative_roles_id']){echo "readonly";}?>>
                                       </td>
                                       <td>
-                                        <input class="form-control" name="roles_description[]" value="<?=$representatives_row['designation']?>">
+                                        <input class="form-control" name="roles_description[]" value="<?=$representatives_row['designation']?>" <?php if($representatives_row['representative_roles_id']){echo "readonly";}?>>
                                       </td>
                                       <td>
                                         <button type="button" name="addRole" onclick="removeMember(`<?=$memRow?>`, `<?=$representatives_row['representative_roles_id']?>`, `<?=$total_roles?>`)" class="btn btn-danger shadow btn-circle btn-sm">
@@ -376,7 +376,7 @@
                               </thead>
                               <tbody id="added_responsibility_list_<?=$total_roles?>">
                                 <?php
-                                  $sql = "SELECT * FROM `activity_representatives_responsibilities` WHERE `activty_representatives_id` = '$activity_representatives_id '";
+                                  $sql = "SELECT * FROM `activity_representatives_responsibilities` WHERE `activity_representatives_id` = '$activity_representatives_id'";
                                   $activity_representatives_responsibilities_result = $conn->query($sql);
                                   while($activity_representatives_responsibilities_row = $activity_representatives_responsibilities_result->fetch_assoc()) {
                                 ?>
@@ -385,7 +385,7 @@
                                         <input name="responsibilities_position[]" value="<?=$total_roles?>" />
                                       </td>
                                       <td>
-                                        <input class="form-control" name="responsibilities[]" readonly value="<?=$activity_representatives_responsibilities_row['responsibility']?>">
+                                        <input class="form-control" name="responsibilities[]" <?php if($activity_representatives_responsibilities_row['responsibilities_id']){echo "readonly";}?> value="<?=$activity_representatives_responsibilities_row['responsibility']?>">
                                       </td>
                                       <td>
                                         <button type="button" class="btn btn-danger shadow btn-circle btn-sm" onclick="removeResponsibility(`<?=$responbilityRow?>`, `<?=$activity_representatives_responsibilities_row['responsibility']?>`, `<?=$total_roles?>`)">
