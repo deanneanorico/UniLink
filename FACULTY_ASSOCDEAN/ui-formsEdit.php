@@ -311,7 +311,7 @@
                                         <input name="roles_position[]" value="<?=$total_roles?>" />
                                       </td>
                                       <td style="display: none;">
-                                        <input name="representative_roles_id[]" value="<?=$representatives_row['representative_roles_id']?>">
+                                        <input name="representative_roles_id[]" value="<?php if($representatives_row['representative_roles_id']){echo $representatives_row['representative_roles_id'];}else{echo "null";}?>">
                                       </td>
                                       <td>
                                         <input class="form-control" name="roles_name[]" id="name-<?=$representatives_row['representative_roles_id']?>-<?=$total_roles?>" value="<?=$representatives_row['name']?>" <?php if($representatives_row['representative_roles_id']){echo "readonly";}?>>
@@ -488,7 +488,7 @@
                                     <input class="price form-control" type="number" id="cost1" onkeyup="pricefunc(1)" name="cost[]" placeholder="Cost" value="<?=$budget_row['unit_cost']?>">
                                   </td>
                                   <td style="text-align:center">
-                                    <span class="subtotal1" id="subtotal1"><?=$budget_row['quantity']*$budget_row['unit_cost']?></span>
+                                    <span class="subtotal1" id="subtotal1"><?=$budget_row['total']?></span>
                                   </td>
                                   <td style="text-align:right">
                                     <button onclick="delRow(1)" id="delRow1" class="btn btn-danger btn-circle btn-sm" type="button">

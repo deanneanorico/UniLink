@@ -68,7 +68,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           }
 
           $i = 1;
-          $total_roles;
           foreach($_POST['role_name'] as $role_name){
             $sql = "INSERT INTO `activity_representatives`(`id`, `activityform_id`, `role`) VALUES ('$id[$i]','$id[0]','$role_name')";
             $result = $conn->query($sql);
@@ -89,7 +88,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                   $sql = "INSERT INTO `activity_representatives_responsibilities`(`activity_representatives_id`, `responsibility`) VALUES (?,?)";
                   $stmt = mysqli_stmt_init($conn);
                   if (!mysqli_stmt_prepare($stmt, $sql)) {
-                    header("location: ../");
+                    header("location: ./");
                     exit();
                   }
                   mysqli_stmt_bind_param($stmt, "ss", $id[$i], $responsibility);
@@ -99,7 +98,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                   $sql = "INSERT INTO `activity_representatives_responsibilities`(`activity_representatives_id`, `responsibilities_id`, `responsibility`) VALUES (?,?,?)";
                   $stmt = mysqli_stmt_init($conn);
                   if (!mysqli_stmt_prepare($stmt, $sql)) {
-                    header("location: ../");
+                    header("location: ./");
                     exit();
                   }
                   mysqli_stmt_bind_param($stmt, "sss", $id[$i], $responsibilities_id, $responsibility);
@@ -119,7 +118,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                   $sql = "INSERT INTO `representatives`(`activity_representatives_id`, `name`, `designation`) VALUES (?,?,?)";
                   $stmt = mysqli_stmt_init($conn);
                   if (!mysqli_stmt_prepare($stmt, $sql)) {
-                    header("location: ../");
+                    header("location: ./");
                     exit();
                   }
                   mysqli_stmt_bind_param($stmt, "sss", $id[$i], $name, $designation);
@@ -129,7 +128,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                   $sql = "INSERT INTO `representatives`(`activity_representatives_id`, `representative_roles_id`, `name`, `designation`) VALUES (?,?,?,?)";
                   $stmt = mysqli_stmt_init($conn);
                   if (!mysqli_stmt_prepare($stmt, $sql)) {
-                    header("location: ../");
+                    header("location: ./");
                     exit();
                   }
                   mysqli_stmt_bind_param($stmt, "ssss", $id[$i], $representative_roles_id, $name, $designation);
@@ -148,15 +147,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
               $sql = "INSERT INTO `budget`(`activityform_id`, `item_description`, `quantity`, `unit_cost`, `total`) VALUES (?,?,?,?,?)";
               $stmt = mysqli_stmt_init($conn);
               if (!mysqli_stmt_prepare($stmt, $sql)) {
-                  header("location: ../");
+                  header("location: ./");
                   exit();
               }
-              $total = $cost * $quanity;
+              echo $total = $cost * $quantity;
               mysqli_stmt_bind_param($stmt, "sssss", $id[0], $item_name, $quantity, $cost, $total);
               mysqli_stmt_execute($stmt);
               $i++;
           }
-
+          
+          header("location: ./ui-formsPreview.php");
           // Close the prepared statement
           $stmt->close();
       } else {
@@ -218,6 +218,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $conn->query($sql);
 
       // INSERTING
+
+      $i = 1;
+      foreach($_POST['role_name'] as $role_name){
+        $sql = "INSERT INTO `activity_representatives`(`id`, `activityform_id`, `role`) VALUES ('$id[$i]','$id[0]','$role_name')";
+        $result = $conn->query($sql);
+        $i++;
+      }
+
       $i = 1;
       $k = 0;
       $j = 0;
@@ -294,7 +302,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
               header("location: ../");
               exit();
           }
-          $total = $cost * $quanity;
+          $total = $cost * $quantity;
           mysqli_stmt_bind_param($stmt, "sssss", $id[0], $item_name, $quantity, $cost, $total);
           mysqli_stmt_execute($stmt);
           $i++;
@@ -302,12 +310,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
       header("location: ./ui-formsPreview.php?query=success");
     }
-}
-
-// Check if the form was successfully submitted and then redirect to ui-formsPreview.php
-if ($formSubmitted) {
-    header("Location: ui-formsPreview.php");
-    exit(); // Ensure that no more content is sent after the redirection
 }
 
 $conn->close();
