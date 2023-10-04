@@ -212,7 +212,7 @@
                           <i class="fas fa-plus"></i>
                         </button>
                       </div>
-                      <input type="text" name="total_roles" id="total_roles" value="3" style="display: none" readonly>
+                      <input type="text" name="total_roles" id="total_roles" value="2" style="" readonly>
                     </div>
                     <hr>
                     <!-- table Project Leader -->
@@ -251,6 +251,7 @@
                         <table class="table header-border table-responsive-sm">
                           <div class="d-flex justify-content-between align-items-center flex-wrap">
                             <div class="col-md-11">
+                              <input type="text" value="1" name="role_row[]" style="display: none">
                               <input class="form-control" id="role_description_1" type="text" value="Project Leader/s" name="role_name[]" readonly>
                             </div>
                             <div class="md-1" style="padding-right: 30px;">
@@ -329,6 +330,7 @@
                         <table class="table header-border table-responsive-sm">
                           <div class="d-flex justify-content-between align-items-center flex-wrap">
                             <div class="col-md-11">
+                              <input type="text" value="2" name="role_row[]" style="display: none">
                               <input class="form-control" type="text" id="role_description_2" value="Project Member/s" name="role_name[]" readonly>
                             </div>
                             <div class="md-1" style="padding-right: 30px;">

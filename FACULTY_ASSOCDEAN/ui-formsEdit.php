@@ -137,7 +137,8 @@
           </nav>
           <!-- End of Topbar -->
           <!-- Begin Page Content -->
-          <form method="post" action="forms.php" id="inputForm">
+          <form method="post" action="forms.php?" id="inputForm">
+          <input style="display: none;" type="text" name="id" value="<?=$id?>">
           <div class="container-fluid">
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
@@ -275,6 +276,7 @@
                             <table class="table header-border table-responsive-sm">
                               <div class="d-flex justify-content-between align-items-center flex-wrap">
                                 <div class="col-md-11">
+                                  <input type="text" value="<?=$total_roles?>" name="role_row[]" style="display: none">
                                   <input class="form-control" id="role_description_<?=$total_roles?>" type="text" value="<?=$activity_representatives_row['role']?>" name="role_name[]">
                                 </div>
                                 <div class="md-1" style="padding-right: 30px;">
@@ -384,6 +386,9 @@
                                       <td style="display: none;">
                                         <input name="responsibilities_position[]" value="<?=$total_roles?>" />
                                       </td>
+                                      <td style="display: none;">
+                                        <input name="responsibilities_id[]" value="<?php if($activity_representatives_responsibilities_row['responsibilities_id']){echo $activity_representatives_responsibilities_row['responsibilities_id'];}else{echo "null";}?>">
+                                      </td>
                                       <td>
                                         <input class="form-control" name="responsibilities[]" <?php if($activity_representatives_responsibilities_row['responsibilities_id']){echo "readonly";}?> value="<?=$activity_representatives_responsibilities_row['responsibility']?>">
                                       </td>
@@ -409,6 +414,9 @@
                     <div id="table_roles"></div>
                     <div id="role_modal"></div>
                     <div id="responsibility_modal"></div>
+                    <input type="text" id="total_role" value="<?=$total_roles?>" style="display: none;">
+                    <input type="text" id="memRow" value="<?=$memRow?>" style="display: none;">
+                    <input type="text" id="responbilityRow" value="<?=$responbilityRow?>" style="display: none;">
                     
                     <div class="text-right mt-4">
                       <button type="button" class="btn btn-secondary" id="prevStep3">Previous</button>
@@ -464,25 +472,34 @@
                             </tr>
                           </thead>
                           <tbody id="table">
-                            <tr>
-                              <td>
-                                <input type="text" class="form-control outline" id="item" name="item_name[]" placeholder="Item Name">
-                              </td>
-                              <td>
-                                <input class="quantity form-control" type="number" id="quantity1" onkeyup="quantityfunc(1)" name="quantity[]" placeholder="Quantity">
-                              </td>
-                              <td>
-                                <input class="price form-control" type="number" id="cost1" onkeyup="pricefunc(1)" name="cost[]" placeholder="Cost">
-                              </td>
-                              <td style="text-align:center">
-                                <span class="subtotal1" id="subtotal1">0.00</span>
-                              </td>
-                              <td style="text-align:right">
-                                <button onclick="delRow(1)" id="delRow1" class="btn btn-danger btn-circle btn-sm" type="button">
-                                  <span class="material-symbols-outlined">delete</span>
-                                </button>
-                              </td>
-                            </tr>
+                            <?php
+                              $sql = "SELECT * FROM `budget` WHERE `activityform_id` = '$id'";
+                              $budget_result = $conn->query($sql);
+                              while($budget_row = $budget_result->fetch_assoc()) {
+                            ?>
+                                <tr>
+                                  <td>
+                                    <input type="text" class="form-control outline" id="item" name="item_name[]" placeholder="Item Name" value="<?=$budget_row['item_description']?>">
+                                  </td>
+                                  <td>
+                                    <input class="quantity form-control" type="number" id="quantity1" onkeyup="quantityfunc(1)" name="quantity[]" placeholder="Quantity" value="<?=$budget_row['quantity']?>">
+                                  </td>
+                                  <td>
+                                    <input class="price form-control" type="number" id="cost1" onkeyup="pricefunc(1)" name="cost[]" placeholder="Cost" value="<?=$budget_row['unit_cost']?>">
+                                  </td>
+                                  <td style="text-align:center">
+                                    <span class="subtotal1" id="subtotal1"><?=$budget_row['quantity']*$budget_row['unit_cost']?></span>
+                                  </td>
+                                  <td style="text-align:right">
+                                    <button onclick="delRow(1)" id="delRow1" class="btn btn-danger btn-circle btn-sm" type="button">
+                                      <span class="material-symbols-outlined">delete</span>
+                                    </button>
+                                  </td>
+                                </tr>  
+                            <?php    
+                              }  
+                            ?>
+                          
                           </tbody>
                         </table>
                       </div>
@@ -494,7 +511,7 @@
                     <div class="row" style="display: flex; justify-content: center; margin-top: 20px"></div>
                     <div class="text-right mt-4">
                       <button type="button" class="btn btn-secondary" id="prevStep6">Previous</button>
-                      <input type="submit" name="submit" class="submit btn btn-primary" value="Submit">
+                      <input type="submit" name="edit" class="submit btn btn-primary" value="Submit">
                     </div>
                   </div>
               </div>
