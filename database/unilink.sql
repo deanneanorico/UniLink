@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 04, 2023 at 10:59 AM
--- Server version: 10.4.25-MariaDB
--- PHP Version: 8.1.10
+-- Generation Time: Oct 04, 2023 at 01:30 PM
+-- Server version: 10.4.17-MariaDB
+-- PHP Version: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -49,7 +49,7 @@ CREATE TABLE `activityform` (
 --
 
 INSERT INTO `activityform` (`id`, `activity_title`, `campus`, `college`, `program`, `partner_type`, `partner`, `start_date`, `end_date`, `rationale`, `objective`, `budget`) VALUES
-('107dc202-6287-11ee-b33c-c42360aa7462', 'Graduation Disco Party', 'ARASOF', 'CICS', 'Bachelor of Science in Information Technology', 'International', 'Philippine National IT Standards Foundation', '2024-07-20', '2024-09-23', '<p>This is a Ration</p>', '<p>This is Object</p>', '');
+('9cfad68e-62a3-11ee-9903-b42e99640312', 'Graduation Disco Party', 'ARASOF', 'CICS', 'Bachelor of Science in Information Technology', 'International', 'Global University Network for Innovation', '2023-12-24', '2023-12-30', '<p>Alak Ingredients</p>', '<p>Pulutan Ingredients</p>', 'Fund of University');
 
 -- --------------------------------------------------------
 
@@ -63,6 +63,15 @@ CREATE TABLE `activity_representatives` (
   `role` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `activity_representatives`
+--
+
+INSERT INTO `activity_representatives` (`id`, `activityform_id`, `role`) VALUES
+('22197359-62a4-11ee-9903-b42e99640312', '9cfad68e-62a3-11ee-9903-b42e99640312', 'Project Leader/s'),
+('22197900-62a4-11ee-9903-b42e99640312', '9cfad68e-62a3-11ee-9903-b42e99640312', 'Project Member/s'),
+('22197de9-62a4-11ee-9903-b42e99640312', '9cfad68e-62a3-11ee-9903-b42e99640312', 'Project Staff');
+
 -- --------------------------------------------------------
 
 --
@@ -75,6 +84,19 @@ CREATE TABLE `activity_representatives_responsibilities` (
   `responsibilities_id` varchar(255) DEFAULT NULL,
   `responsibility` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `activity_representatives_responsibilities`
+--
+
+INSERT INTO `activity_representatives_responsibilities` (`id`, `activity_representatives_id`, `responsibilities_id`, `responsibility`) VALUES
+('221c1cf2-62a4-11ee-9903-b42e99640312', '22197359-62a4-11ee-9903-b42e99640312', 'cbc44eca-5318-11ee-aea5-0a0027000002', 'Coordinate with the coorperating agency/resource persons'),
+('221c3787-62a4-11ee-9903-b42e99640312', '22197359-62a4-11ee-9903-b42e99640312', 'cbc44ded-5318-11ee-aea5-0a0027000002', 'Monitor the flow of the training'),
+('221c7423-62a4-11ee-9903-b42e99640312', '22197900-62a4-11ee-9903-b42e99640312', 'cbc44f0f-5318-11ee-aea5-0a0027000002', 'Assist the project leader in the planning, implementation, monitoring and evaluation of the project'),
+('221ccd75-62a4-11ee-9903-b42e99640312', '22197de9-62a4-11ee-9903-b42e99640312', NULL, 'Taga collect ng funds para sa alak at pulutan'),
+('221cf242-62a4-11ee-9903-b42e99640312', '22197de9-62a4-11ee-9903-b42e99640312', NULL, 'Taga bili ng alak at pulutan'),
+('221d1011-62a4-11ee-9903-b42e99640312', '22197de9-62a4-11ee-9903-b42e99640312', NULL, 'Taga timpla ng alak'),
+('221d302f-62a4-11ee-9903-b42e99640312', '22197de9-62a4-11ee-9903-b42e99640312', NULL, 'Taga luto ng pulutan');
 
 -- --------------------------------------------------------
 
@@ -102,6 +124,39 @@ CREATE TABLE `budget` (
   `unit_cost` double DEFAULT NULL,
   `total` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `budget`
+--
+
+INSERT INTO `budget` (`id`, `activityform_id`, `item_description`, `quantity`, `unit_cost`, `total`) VALUES
+('221e243a-62a4-11ee-9903-b42e99640312', '9cfad68e-62a3-11ee-9903-b42e99640312', 'GSM Blue Mojito', 25, 125, 3125),
+('221e4137-62a4-11ee-9903-b42e99640312', '9cfad68e-62a3-11ee-9903-b42e99640312', 'Lime Juice', 25, 89, 2225),
+('221e5a08-62a4-11ee-9903-b42e99640312', '9cfad68e-62a3-11ee-9903-b42e99640312', 'Gin Bilog', 25, 75, 1875),
+('221e7477-62a4-11ee-9903-b42e99640312', '9cfad68e-62a3-11ee-9903-b42e99640312', 'Sizzling Sisig', 25, 80, 2000),
+('221e92a4-62a4-11ee-9903-b42e99640312', '9cfad68e-62a3-11ee-9903-b42e99640312', 'Tokwa baboy', 25, 50, 1250);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `campus`
+--
+
+CREATE TABLE `campus` (
+  `id` int(50) NOT NULL,
+  `campus_name` varchar(100) NOT NULL,
+  `address` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `campus`
+--
+
+INSERT INTO `campus` (`id`, `campus_name`, `address`) VALUES
+(14, 'ARASOF-Nasugbu', 'Nasugbu'),
+(15, 'Pablo Borbon', 'Batangas City, Batangas'),
+(16, 'Alangilan', 'Batangas City, Batangas'),
+(17, 'Lipa', 'Lipa, Batangas');
 
 -- --------------------------------------------------------
 
@@ -141,6 +196,20 @@ CREATE TABLE `representatives` (
   `name` varchar(100) DEFAULT NULL,
   `designation` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `representatives`
+--
+
+INSERT INTO `representatives` (`id`, `activity_representatives_id`, `representative_roles_id`, `name`, `designation`) VALUES
+('221c5273-62a4-11ee-9903-b42e99640312', '22197359-62a4-11ee-9903-b42e99640312', '56347f84-5318-11ee-aea5-0a0027000002', 'Dr. Enrico M. Dalangin', 'Chancellor'),
+('221c99aa-62a4-11ee-9903-b42e99640312', '22197900-62a4-11ee-9903-b42e99640312', NULL, 'Dr. Lorissa Joanna Buenas', 'CICS Dean'),
+('221d57e8-62a4-11ee-9903-b42e99640312', '22197de9-62a4-11ee-9903-b42e99640312', NULL, 'Ako', 'Student'),
+('221d769c-62a4-11ee-9903-b42e99640312', '22197de9-62a4-11ee-9903-b42e99640312', NULL, 'Deanne Bulilit', 'Student'),
+('221d9e29-62a4-11ee-9903-b42e99640312', '22197de9-62a4-11ee-9903-b42e99640312', NULL, 'Dudoy', 'Student'),
+('221dc567-62a4-11ee-9903-b42e99640312', '22197de9-62a4-11ee-9903-b42e99640312', NULL, 'Duday', 'Student'),
+('221de858-62a4-11ee-9903-b42e99640312', '22197de9-62a4-11ee-9903-b42e99640312', NULL, 'Joe Honey', 'Student'),
+('221e0714-62a4-11ee-9903-b42e99640312', '22197de9-62a4-11ee-9903-b42e99640312', NULL, 'Joy-lyn', 'Student');
 
 -- --------------------------------------------------------
 
@@ -259,6 +328,12 @@ ALTER TABLE `budget`
   ADD KEY `activityform_id` (`activityform_id`);
 
 --
+-- Indexes for table `campus`
+--
+ALTER TABLE `campus`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `partners`
 --
 ALTER TABLE `partners`
@@ -293,6 +368,12 @@ ALTER TABLE `responsibilities`
 --
 ALTER TABLE `admin_acc`
   MODIFY `id` int(50) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `campus`
+--
+ALTER TABLE `campus`
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `partners`
