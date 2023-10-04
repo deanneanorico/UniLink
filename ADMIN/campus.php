@@ -28,84 +28,86 @@
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
   </head>
-  <body id="page-top"> <?php 
-            session_start();
-            include 'db.php';
+  <body id="page-top"> 
+    <?php 
+      session_start();
+      include 'db.php';
 
-            if(isset($_POST['addcampus']))
-            {    
-                $campus_name = $_POST['campus_name'];
-                $address = $_POST['address'];
+      if(isset($_POST['addcampus']))
+      {    
+          $campus_name = $_POST['campus_name'];
+          $address = $_POST['address'];
 
-                $sql = "INSERT INTO campus (campus_name, address) VALUES (?, ?)";
-                $stmt = mysqli_prepare($conn, $sql);
+          $sql = "INSERT INTO campus (campus_name, address) VALUES (?, ?)";
+          $stmt = mysqli_prepare($conn, $sql);
 
-                if ($stmt) {
-                    mysqli_stmt_bind_param($stmt, "ss", $campus_name, $address);
-                    if (mysqli_stmt_execute($stmt)) {
-                        // Insert successful
-                    } else {
-                        // Insert failed
-                    }
-                    mysqli_stmt_close($stmt);
-                }
-                        
-            }
-
-            else if(isset($_GET['id']))
-            {
-                $id = $_GET['id'];
-            
-                    $query = "DELETE FROM campus WHERE id='$id' ";
-                    $query_run = mysqli_query($conn, $query);
-            
-                    if($query_run)
-                    {
-                        echo '
-                      
-                          <script type="text/javascript">
-                        swal({
-                        title: "Deleted Successfully",
-                        icon: "success",
-                        button: "Close",
-                        });
-                        setTimeout(function(){location.reload(1)},3000000);
-                        </script>';
-            
-                    }
-                    else
-                    {
-                            echo '
-                      
-                          <script type="text/javascript">
-                            swal({
-                            title: "Delete Failed",
-                            icon: "warning",
-                            button: "Close",
-                            });
-                            setTimeout(function(){location.reload(1)},3000000);
-                            </script>';
-                    }
-              } else if(isset($_POST['updateCampus'])) {
-                $id = $_POST['upid'];
-                $campus_name = $_POST['upCampus'];
-                $address = $_POST['upAddress'];
-
-                $sql = "UPDATE `campus` SET `campus_name`= ?,`address`= ? WHERE `id` = ?";
-                $stmt = mysqli_prepare($conn, $sql);
-
-                if ($stmt) {
-                    mysqli_stmt_bind_param($stmt, "sss", $campus_name, $address, $id);
-                    if (mysqli_stmt_execute($stmt)) {
-                        // Insert successful
-                    } else {
-                        // Insert failed
-                    }
-                    mysqli_stmt_close($stmt);
-                }
+          if ($stmt) {
+              mysqli_stmt_bind_param($stmt, "ss", $campus_name, $address);
+              if (mysqli_stmt_execute($stmt)) {
+                  header('location: ./campus.php');
+              } else {
+                  // Insert failed
               }
+              mysqli_stmt_close($stmt);
+          }
+                  
+      }
+
+      else if(isset($_GET['id']))
+      {
+        $id = $_GET['id'];
+      
+        $query = "DELETE FROM campus WHERE id='$id' ";
+        $query_run = mysqli_query($conn, $query);
+
+        if($query_run)
+        {
+          echo '
+        
+            <script type="text/javascript">
+          swal({
+          title: "Deleted Successfully",
+          icon: "success",
+          button: "Close",
+          });
+          setTimeout(function(){location.reload(1)},3000000);
+          </script>';
+          header('location: ./campus.php');
+
+        }
+        else
+        {
+          echo '
+    
+        <script type="text/javascript">
+          swal({
+          title: "Delete Failed",
+          icon: "warning",
+          button: "Close",
+          });
+          setTimeout(function(){location.reload(1)},3000000);
+          </script>';
+        }
+      } else if(isset($_POST['updateCampus'])) {
+        $id = $_POST['upid'];
+        $campus_name = $_POST['upCampus'];
+        $address = $_POST['upAddress'];
+
+        $sql = "UPDATE `campus` SET `campus_name`= ?,`address`= ? WHERE `id` = ?";
+        $stmt = mysqli_prepare($conn, $sql);
+
+        if ($stmt) {
+            mysqli_stmt_bind_param($stmt, "sss", $campus_name, $address, $id);
+            if (mysqli_stmt_execute($stmt)) {
+                // Insert successful
+            } else {
+                // Insert failed
+            }
+            mysqli_stmt_close($stmt);
+        }
+      }
             
-        ?>
+    ?>
     <!-- Success Alert
     <div class="alert alert-success alert-dismissible fade show" role="alert" id="successAlert" style="display: none;"><strong>Success!</strong> Campus added successfully. <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>
     // Error Alert
@@ -245,30 +247,29 @@
                         <th>Action</th>
                       </tr>
                     </thead>
-                    <tbody> <?php
-                    $query = "SELECT * FROM campus";
-                    $sql = mysqli_query($conn, $query);
-                    while ($row = mysqli_fetch_array($sql)) { ?> <tr>
+                    <tbody> 
+                    <?php
+                      $query = "SELECT * FROM campus";
+                      $sql = mysqli_query($conn, $query);
+                      while ($row = mysqli_fetch_array($sql)) { 
+                    ?> 
+                      <tr>
                         <td> <?php echo $row["id"]; ?> </td>
                         <td> <?php echo $row["campus_name"]; ?> </td>
                         <td> <?php echo $row["address"]; ?> </td>
                         <td>
-                          <a class="editCampus" data-toggle="modal" data-target="#editCampusModal" id="editCampus" onclick="setData(`
-                                                              <?=$row['id']?>`, `
-                                                          
-                                                              <?=$row['campus_name']?>`, `
-                                                          
-                                                              <?=$row['address']?>`)">
+                          <a class="editCampus" data-toggle="modal" data-target="#editCampusModal" id="editCampus" onclick="setData(`<?=$row['id']?>`, `<?=$row['campus_name']?>`, `<?=$row['address']?>`)">
                             <i class='fas fa-edit text-success'></i>
                           </a>
-                          <a href="campus.php?id=
-                                                              <?php echo $row['id']; ?>" onClick="return confirm('Are you sure you want to delete?')" name="delcampus">
+                          <a href="campus.php?id=<?php echo $row['id']; ?>" onClick="return confirm('Are you sure you want to delete?')" name="delcampus">
                             <i class="fas fa-trash text-danger"></i>
                           </a>
                         </td>
-                      </tr> <?php 
-                  } 
-                  ?> </tbody>
+                      </tr> 
+                    <?php 
+                      } 
+                    ?> 
+                    </tbody>
                     <!-- <tfoot></tfoot> -->
                   </table>
                 </div>
@@ -317,11 +318,11 @@
                         <input type="hidden" name="upid" id="upid" class="form-control" placeholder="" required>
                         <div class="form-group">
                           <label for="campus_name">Campus</label>
-                          <input type="text" name="upCampus" id="upCampus" class="form" placeholder="" required>
+                          <input type="text" name="upCampus" id="upCampus" class="form-control" placeholder="" required>
                         </div>
                         <div class="form-group">
                           <label for="address">Address</label>
-                          <input type="text" name="upAddress" id="upAddress" class="form" placeholder="" required>
+                          <input type="text" name="upAddress" id="upAddress" class="form-control" placeholder="" required>
                         </div>
                       </div>
                       <div class="modal-footer">
