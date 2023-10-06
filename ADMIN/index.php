@@ -146,7 +146,27 @@
                     <div class="row no-gutters align-items-center">
                       <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"> Partner (All College)</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">60</div>
+                            <?php
+                             require 'db.php'; // Include the database connection
+
+                              // Query to count total items in the partners table
+                              $sql = "SELECT COUNT(*) AS total_items FROM partners";
+
+                              $result = $conn->query($sql);
+
+                              if ($result->num_rows > 0) {
+                                  // Fetch the result
+                                  $row = $result->fetch_assoc();
+
+                                  // Output the total items count in the specified HTML element
+                                  echo '<div class="h5 mb-0 font-weight-bold text-gray-800">' . $row['total_items'] . '</div>';
+                              } else {
+                                  echo "No data found";
+                              }
+
+                              $conn->close();
+                              ?>
+
                       </div>
                       <div class="col-auto">
                         <i class="fas fa-user fa-2x text-gray-300"></i>
@@ -215,7 +235,7 @@
                 <div class="card shadow mb-4">
                   <!-- Card Header - Dropdown -->
                   <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-primary">Activities Overview</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">College Activities</h6>
                     <div class="dropdown no-arrow">
                       <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
@@ -229,12 +249,20 @@
                       </div>
                     </div>
                   </div>
+
+
                   <!-- Card Body -->
                   <div class="card-body">
                     <div class="chart-area">
-                      <canvas id="myAreaChart"></canvas>
+                      <?php
+                        include 'linechart.php';
+                      ?>
+                      <!-- <canvas id="linechart_material"></canvas> -->
                     </div>
                   </div>
+
+
+
                 </div>
               </div>
               <!-- Pie Chart -->

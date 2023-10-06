@@ -184,9 +184,9 @@ $result = $conn->query($sql);
                         <div class="card-body">
                             <div class="table">
                              <table id="activityTable" class="display" data-ordering="true" data-paging="true" data-searching="true">
-                                <thead>
+                                <thead style='text-align: center;'>
                                     <tr>
-                                        <th>No.</th>
+                                        <th >No.</th>
                                         <th style="width: 20%">Activity Title</th>
                                         <!-- <th>Partner</th> -->
                                         <th style="width: 22%;">Partner Name</th>
@@ -196,58 +196,72 @@ $result = $conn->query($sql);
                                     </tr>
                                 </thead>
                                <tbody>
-    <?php
-    // Replace with your database connection details
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "unilink";
+                        <?php
+                        // Replace with your database connection details
+                        $servername = "localhost";
+                        $username = "root";
+                        $password = "";
+                        $dbname = "unilink";
 
-    // Create a connection to the database
-    $conn = new mysqli($servername, $username, $password, $dbname);
+                        // Create a connection to the database
+                        $conn = new mysqli($servername, $username, $password, $dbname);
 
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
+                        // Check connection
+                        if ($conn->connect_error) {
+                            die("Connection failed: " . $conn->connect_error);
+                        }
 
-    // SQL query to retrieve data
-    $sql = "SELECT * FROM activityform";
-    $result = $conn->query($sql);
+                        // SQL query to retrieve data
+                        $sql = "SELECT * FROM activityform";
+                        $result = $conn->query($sql);
 
-    if ($result->num_rows > 0) {
-        // Output data of each row
-        $i = 1;
-        while ($row = $result->fetch_assoc()) {
-            echo "<tr>";
-            echo "<td>" . $i . "</td>";
-            echo "<td>" . $row["activity_title"] . "</td>";
-            // echo "<td>" . $row["partner_type"] . "</td>";
-            echo "<td>" . $row["partner"] . "</td>";
-            $start_date = strtotime($row['start_date']);
-            $start_date = date("M. d, Y", $start_date);
-            $end_date = strtotime($row['end_date']);
-            $end_date = date("M. d, Y", $end_date);
-            echo "<td>" . $start_date . " - " . $end_date . "</td>";
-            echo "<td></td>";
-            echo "<td>
-                    <a href='ui-formsEdit.php?id=" . $row["id"] . "'>
-                        <span class='fas fa-edit text-success'></span>
-                    </a>
-                    <a href='delete.php?id=" . $row["id"] . "'><span class='fas fa-trash text-danger'></span></a>
-                    <a class='fas fa-file text-info'></a>
-                </td>";
-            echo "</tr>";
-            $i++;
-        }
-    } else {
-        echo "0 results";
-    }
+                        if ($result->num_rows > 0) {
+                            // Output data of each row
+                            $i = 1;
+                            while ($row = $result->fetch_assoc()) {
+                                // Calculate the status based on conditions
+                                $status = '';
+                                $start_date = strtotime($row['start_date']);
+                                $end_date = strtotime($row['end_date']);
+                                $today = strtotime(date('Y-m-d'));
 
-    // Close the database connection
-    $conn->close();
-    ?>
-</tbody>
+                                if ($start_date > $today) {
+                                    $status = 'For Implementation';
+                                    $textColor = 'yellow'; // Set text color for 'For Implementation'
+                                } elseif ($start_date <= $today && $end_date > $today) {
+                                    $status = 'Ongoing';
+                                    $textColor = 'orange'; // Set text color for 'Ongoing'
+                                } elseif ($end_date <= $today) {
+                                    $status = 'Implemented';
+                                    $textColor = 'green'; // Set text color for 'Implemented'
+                                }
+
+                                echo "<tr>";
+                                echo "<td style='text-align: center;'>" . $i . "</td>";
+                                echo "<td style='text-align: center;'>" . $row["activity_title"] . "</td>";
+                                echo "<td style='text-align: center;'>" . $row["partner"] . "</td>";
+                                echo "<td style='text-align: center;'>" . date("M. d, Y", $start_date) . " - " . date("M. d, Y", $end_date) . "</td>";
+                                echo '<td style="text-align: center;"><div style="background-color: #999494; color: ' . $textColor . '; padding: 5px; border-radius: 45px;">' . $status . '</div></td>';
+                                echo "<td style='text-align: center;'>
+                                        <a href='ui-formsEdit.php?id=" . $row["id"] . "'>
+                                            <span class='fas fa-edit text-success'></span>
+                                        </a>
+                                        <a href='delete.php?id=" . $row["id"] . "'><span class='fas fa-trash text-danger'></span></a>
+                                        <a class='fas fa-file text-info'></a>
+                                    </td>";
+                                echo "</tr>";
+                                $i++;
+                            }
+                        } else {
+                            echo "No data found";
+                        }
+
+                        $conn->close();
+                        ?>
+
+
+
+                </tbody>
 
                             </table>
                         </div>

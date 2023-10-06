@@ -241,7 +241,6 @@
                   <table id="myTable" class="table display" data-ordering="true" data-paging="true" data-searching="true">
                     <thead>
                       <tr>
-                        <th>#</th>
                         <th>Campus</th>
                         <th>Address</th>
                         <th>Action</th>
@@ -254,11 +253,10 @@
                       while ($row = mysqli_fetch_array($sql)) { 
                     ?> 
                       <tr>
-                        <td> <?php echo $row["id"]; ?> </td>
                         <td> <?php echo $row["campus_name"]; ?> </td>
                         <td> <?php echo $row["address"]; ?> </td>
                         <td>
-                          <a class="editCampus" data-toggle="modal" data-target="#editCampusModal" id="editCampus" onclick="setData(`<?=$row['id']?>`, `<?=$row['campus_name']?>`, `<?=$row['address']?>`)">
+                          <a class="editCampus" data-toggle="modal" data-target="#editCampusModal" id="editCampus" onclick="setData(`<?=$row['campus_name']?>`, `<?=$row['address']?>`)">
                             <i class='fas fa-edit text-success'></i>
                           </a>
                           <a href="campus.php?id=<?php echo $row['id']; ?>" onClick="return confirm('Are you sure you want to delete?')" name="delcampus">

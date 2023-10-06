@@ -56,7 +56,7 @@
             {
                 $id = $_GET['id'];
             
-                    $query = "DELETE FROM campus WHERE id='$id' ";
+                    $query = "DELETE FROM college WHERE id='$collegeID' ";
                     $query_run = mysqli_query($conn, $query);
             
                     if($query_run)
@@ -239,7 +239,6 @@
                   <table id="myTable" class="table display" data-ordering="true" data-paging="true" data-searching="true">
                     <thead>
                       <tr>
-                        <th>#</th>
                         <th>Campus</th>
                         <th>College</th>
                         <th>Abbreviation</th>
@@ -247,25 +246,22 @@
                       </tr>
                     </thead>
                     <tbody> <?php
-                    $query = "SELECT * FROM campus";
+                    $query = "SELECT college.name, college.abbreviation, campus.campus_name
+                              FROM college
+                              JOIN campus ON college.campusID = campus.id";
                     $sql = mysqli_query($conn, $query);
                     while ($row = mysqli_fetch_array($sql)) { ?> <tr>
-                        <td> <?php echo $row["id"]; ?> </td>
                         <td> <?php echo $row["campus_name"]; ?> </td>
-                        <td> <?php echo $row["address"]; ?> </td>
+                        <td> <?php echo $row["name"]; ?> </td>
+                        <td> <?php echo $row["abbreviation"]; ?> </td>
                         <td>
-                          <a class="editCampus" data-toggle="modal" data-target="#editCampusModal" id="editCampus" onclick="setData(`
-                                                              <?=$row['id']?>`, `
-                                                          
-                                                              <?=$row['campus_name']?>`, `
-                                                          
-                                                              <?=$row['address']?>`)">
+                          <a class="editCollege" data-toggle="modal" data-target="#editCollegeModal" id="editCollege" >
                             <i class='fas fa-edit text-success'></i>
                           </a>
-                          <a href="campus.php?id=
-                                                              <?php echo $row['id']; ?>" onClick="return confirm('Are you sure you want to delete?')" name="delcampus">
+                          <!-- <a href="college.php?id=<?php echo $row['id']; ?>" onClick="return confirm('Are you sure you want to delete?')" name="delcollege">
                             <i class="fas fa-trash text-danger"></i>
-                          </a>
+                          </a> -->
+                         
                         </td>
                       </tr> <?php 
                   } 

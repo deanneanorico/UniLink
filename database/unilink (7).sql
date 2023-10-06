@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 04, 2023 at 01:30 PM
--- Server version: 10.4.17-MariaDB
--- PHP Version: 8.2.0
+-- Generation Time: Oct 06, 2023 at 04:42 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `unilink`
 --
-CREATE DATABASE IF NOT EXISTS `unilink` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `unilink`;
 
 -- --------------------------------------------------------
 
@@ -31,6 +29,7 @@ USE `unilink`;
 
 CREATE TABLE `activityform` (
   `id` varchar(255) NOT NULL DEFAULT uuid(),
+  `facultyID` int(100) NOT NULL,
   `activity_title` varchar(255) DEFAULT NULL,
   `campus` varchar(255) DEFAULT NULL,
   `college` varchar(100) DEFAULT NULL,
@@ -42,14 +41,23 @@ CREATE TABLE `activityform` (
   `rationale` mediumtext DEFAULT NULL,
   `objective` mediumtext DEFAULT NULL,
   `budget` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `activityform`
 --
 
-INSERT INTO `activityform` (`id`, `activity_title`, `campus`, `college`, `program`, `partner_type`, `partner`, `start_date`, `end_date`, `rationale`, `objective`, `budget`) VALUES
-('9cfad68e-62a3-11ee-9903-b42e99640312', 'Graduation Disco Party', 'ARASOF', 'CICS', 'Bachelor of Science in Information Technology', 'International', 'Global University Network for Innovation', '2023-12-24', '2023-12-30', '<p>Alak Ingredients</p>', '<p>Pulutan Ingredients</p>', 'Fund of University');
+INSERT INTO `activityform` (`id`, `facultyID`, `activity_title`, `campus`, `college`, `program`, `partner_type`, `partner`, `start_date`, `end_date`, `rationale`, `objective`, `budget`) VALUES
+('10af254d-5e02-11ee-89ef-f80dac465db8', 0, 'hhsahs', '', 'CABEIHM', 'Bachelor of Science in Accountancy', 'International', 'Philippine National IT Standards Foundation', '2023-09-28', '2023-09-30', '<p>eeeee</p>', '<p>eewerw</p>', ''),
+('31459599-633c-11ee-ab68-f80dac465db8', 0, 'Seminar of Waste Disposal', 'ARASOF', 'CAS', 'Bachelor of Science in Criminology', 'International', 'Global University Network for Innovation', '2023-10-07', '2023-10-08', '<p>eew</p>', '<ul><li>eww</li></ul>', 'Fund Partner Agency'),
+('48cf0b07-5e8a-11ee-a83b-f80dac465db8', 0, 'Guest Speaker', '', 'CICS', 'Bachelor of Science in Information Technology', 'International', 'Philippine National IT Standards Foundation', '2023-09-29', '2023-09-30', '<ul><li>helpfjd &nbsp; &nbsp;</li></ul>', '<ul><li><i><u>dvfev</u></i></li></ul>', ''),
+('79fe51de-5dcc-11ee-8ab0-f80dac465db8', 0, 'Graduation Party-Speaker', '', 'CE', 'Bachelor of Science in Computer Engineering', 'International', 'Philippine National IT Standards Foundation', '2023-09-28', '2023-09-30', '', '', ''),
+('7cb08ba0-619b-11ee-a2e7-f80dac465db8', 0, 'Graduation Party-Speaker fdsfsfsdfsdfsdfsgfsgfgggfsgvfgtdhdh', '', 'CABEIHM', 'Bachelor of Science in Accountancy', 'Local', 'Municipal Agriculture Office/Fishery Unit-Nasugbu', '2023-10-03', '2023-10-03', '<ul><li>ssswewe &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; erewrwer</li></ul>', '<p>eqweqwefdswe</p>', ''),
+('9c50be8e-619b-11ee-a2e7-f80dac465db8', 0, 'eqrwerer', '', 'CONAHS', 'Bachelor of Science in Nursing', 'Local', 'Jabez Medical Center', '2023-10-07', '2023-10-22', '<p>ewewe</p>', '<p>eccc</p>', ''),
+('baf96709-619b-11ee-a2e7-f80dac465db8', 0, 'VADD: Vehicle Accident Detection Device', '', 'CONAHS', 'Bachelor of Science in Nursing', 'Local', 'Municipal Disaster Risk Reduction and Management Office(MDRRMO)-Nasugbu', '2023-11-06', '2023-11-11', '', '', ''),
+('bc258286-6046-11ee-958d-f80dac465db8', 0, 'Seminar of Waste Disposal', '', 'CTE', 'Bachelor of Secondary Education major in English', 'Local', 'Municipal Agriculture Office/Fishery Unit-Nasugbu', '2023-10-01', '2023-10-22', '<h4>mhjjjjjolkl</h4>', '', ''),
+('c2b95e19-6338-11ee-ab68-f80dac465db8', 0, 'tree planting', 'ARASOF', 'CTE', 'Bachelor of Secondary Education major in English', 'Local', 'Municipal Disaster Risk Reduction and Management Office(MDRRMO)-Nasugbu', '2023-11-04', '2023-11-08', '<p>ghjghgjghk</p>', '<p>iyihijj</p>', ''),
+('f43acec5-619b-11ee-a2e7-f80dac465db8', 0, 'Seminar of IT', '', 'CONAHS', 'Bachelor of Science in Nursing', 'International', 'Global University Network for Innovation', '2023-10-29', '2023-10-28', '<p>qwqwq</p>', '', '');
 
 -- --------------------------------------------------------
 
@@ -59,18 +67,37 @@ INSERT INTO `activityform` (`id`, `activity_title`, `campus`, `college`, `progra
 
 CREATE TABLE `activity_representatives` (
   `id` varchar(255) NOT NULL DEFAULT uuid(),
-  `activityform_id` varchar(255) NOT NULL,
-  `role` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `activityform_id` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `activity_representatives`
 --
 
-INSERT INTO `activity_representatives` (`id`, `activityform_id`, `role`) VALUES
-('22197359-62a4-11ee-9903-b42e99640312', '9cfad68e-62a3-11ee-9903-b42e99640312', 'Project Leader/s'),
-('22197900-62a4-11ee-9903-b42e99640312', '9cfad68e-62a3-11ee-9903-b42e99640312', 'Project Member/s'),
-('22197de9-62a4-11ee-9903-b42e99640312', '9cfad68e-62a3-11ee-9903-b42e99640312', 'Project Staff');
+INSERT INTO `activity_representatives` (`id`, `activityform_id`) VALUES
+('10af37be-5e02-11ee-89ef-f80dac465db8', '10af254d-5e02-11ee-89ef-f80dac465db8'),
+('10af4751-5e02-11ee-89ef-f80dac465db8', '10af254d-5e02-11ee-89ef-f80dac465db8'),
+('10af5724-5e02-11ee-89ef-f80dac465db8', '10af254d-5e02-11ee-89ef-f80dac465db8'),
+('48cf16fd-5e8a-11ee-a83b-f80dac465db8', '48cf0b07-5e8a-11ee-a83b-f80dac465db8'),
+('48cf1fc2-5e8a-11ee-a83b-f80dac465db8', '48cf0b07-5e8a-11ee-a83b-f80dac465db8'),
+('79fe89d1-5dcc-11ee-8ab0-f80dac465db8', '79fe51de-5dcc-11ee-8ab0-f80dac465db8'),
+('79fe9d37-5dcc-11ee-8ab0-f80dac465db8', '79fe51de-5dcc-11ee-8ab0-f80dac465db8'),
+('79feb04c-5dcc-11ee-8ab0-f80dac465db8', '79fe51de-5dcc-11ee-8ab0-f80dac465db8'),
+('7cb09642-619b-11ee-a2e7-f80dac465db8', '7cb08ba0-619b-11ee-a2e7-f80dac465db8'),
+('7cb0a083-619b-11ee-a2e7-f80dac465db8', '7cb08ba0-619b-11ee-a2e7-f80dac465db8'),
+('7cb0a9c2-619b-11ee-a2e7-f80dac465db8', '7cb08ba0-619b-11ee-a2e7-f80dac465db8'),
+('9c50c76d-619b-11ee-a2e7-f80dac465db8', '9c50be8e-619b-11ee-a2e7-f80dac465db8'),
+('9c50cf92-619b-11ee-a2e7-f80dac465db8', '9c50be8e-619b-11ee-a2e7-f80dac465db8'),
+('9c50d517-619b-11ee-a2e7-f80dac465db8', '9c50be8e-619b-11ee-a2e7-f80dac465db8'),
+('baf987bd-619b-11ee-a2e7-f80dac465db8', 'baf96709-619b-11ee-a2e7-f80dac465db8'),
+('baf99575-619b-11ee-a2e7-f80dac465db8', 'baf96709-619b-11ee-a2e7-f80dac465db8'),
+('baf9aaa4-619b-11ee-a2e7-f80dac465db8', 'baf96709-619b-11ee-a2e7-f80dac465db8'),
+('bc25b61c-6046-11ee-958d-f80dac465db8', 'bc258286-6046-11ee-958d-f80dac465db8'),
+('bc25c6a1-6046-11ee-958d-f80dac465db8', 'bc258286-6046-11ee-958d-f80dac465db8'),
+('bc25d37e-6046-11ee-958d-f80dac465db8', 'bc258286-6046-11ee-958d-f80dac465db8'),
+('f43ad90c-619b-11ee-a2e7-f80dac465db8', 'f43acec5-619b-11ee-a2e7-f80dac465db8'),
+('f43ae287-619b-11ee-a2e7-f80dac465db8', 'f43acec5-619b-11ee-a2e7-f80dac465db8'),
+('f43aeefa-619b-11ee-a2e7-f80dac465db8', 'f43acec5-619b-11ee-a2e7-f80dac465db8');
 
 -- --------------------------------------------------------
 
@@ -81,22 +108,17 @@ INSERT INTO `activity_representatives` (`id`, `activityform_id`, `role`) VALUES
 CREATE TABLE `activity_representatives_responsibilities` (
   `id` varchar(255) NOT NULL DEFAULT uuid(),
   `activity_representatives_id` varchar(255) DEFAULT NULL,
-  `responsibilities_id` varchar(255) DEFAULT NULL,
   `responsibility` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `activity_representatives_responsibilities`
 --
 
-INSERT INTO `activity_representatives_responsibilities` (`id`, `activity_representatives_id`, `responsibilities_id`, `responsibility`) VALUES
-('221c1cf2-62a4-11ee-9903-b42e99640312', '22197359-62a4-11ee-9903-b42e99640312', 'cbc44eca-5318-11ee-aea5-0a0027000002', 'Coordinate with the coorperating agency/resource persons'),
-('221c3787-62a4-11ee-9903-b42e99640312', '22197359-62a4-11ee-9903-b42e99640312', 'cbc44ded-5318-11ee-aea5-0a0027000002', 'Monitor the flow of the training'),
-('221c7423-62a4-11ee-9903-b42e99640312', '22197900-62a4-11ee-9903-b42e99640312', 'cbc44f0f-5318-11ee-aea5-0a0027000002', 'Assist the project leader in the planning, implementation, monitoring and evaluation of the project'),
-('221ccd75-62a4-11ee-9903-b42e99640312', '22197de9-62a4-11ee-9903-b42e99640312', NULL, 'Taga collect ng funds para sa alak at pulutan'),
-('221cf242-62a4-11ee-9903-b42e99640312', '22197de9-62a4-11ee-9903-b42e99640312', NULL, 'Taga bili ng alak at pulutan'),
-('221d1011-62a4-11ee-9903-b42e99640312', '22197de9-62a4-11ee-9903-b42e99640312', NULL, 'Taga timpla ng alak'),
-('221d302f-62a4-11ee-9903-b42e99640312', '22197de9-62a4-11ee-9903-b42e99640312', NULL, 'Taga luto ng pulutan');
+INSERT INTO `activity_representatives_responsibilities` (`id`, `activity_representatives_id`, `responsibility`) VALUES
+('10b7380e-5e02-11ee-89ef-f80dac465db8', '10af37be-5e02-11ee-89ef-f80dac465db8', 'Identify the projects overall goal, outcome and objectives'),
+('10b79766-5e02-11ee-89ef-f80dac465db8', '10af4751-5e02-11ee-89ef-f80dac465db8', 'Act as technical team in the online platforms'),
+('48d59628-5e8a-11ee-a83b-f80dac465db8', '48cf16fd-5e8a-11ee-a83b-f80dac465db8', ' Assist in the preparation and implementing of the extension program');
 
 -- --------------------------------------------------------
 
@@ -108,7 +130,7 @@ CREATE TABLE `admin_acc` (
   `id` int(50) NOT NULL,
   `user_id` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -121,20 +143,24 @@ CREATE TABLE `budget` (
   `activityform_id` varchar(255) DEFAULT NULL,
   `item_description` varchar(255) DEFAULT NULL,
   `quantity` int(11) DEFAULT NULL,
-  `unit_cost` double DEFAULT NULL,
-  `total` double NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `unit_cost` double DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `budget`
 --
 
-INSERT INTO `budget` (`id`, `activityform_id`, `item_description`, `quantity`, `unit_cost`, `total`) VALUES
-('221e243a-62a4-11ee-9903-b42e99640312', '9cfad68e-62a3-11ee-9903-b42e99640312', 'GSM Blue Mojito', 25, 125, 3125),
-('221e4137-62a4-11ee-9903-b42e99640312', '9cfad68e-62a3-11ee-9903-b42e99640312', 'Lime Juice', 25, 89, 2225),
-('221e5a08-62a4-11ee-9903-b42e99640312', '9cfad68e-62a3-11ee-9903-b42e99640312', 'Gin Bilog', 25, 75, 1875),
-('221e7477-62a4-11ee-9903-b42e99640312', '9cfad68e-62a3-11ee-9903-b42e99640312', 'Sizzling Sisig', 25, 80, 2000),
-('221e92a4-62a4-11ee-9903-b42e99640312', '9cfad68e-62a3-11ee-9903-b42e99640312', 'Tokwa baboy', 25, 50, 1250);
+INSERT INTO `budget` (`id`, `activityform_id`, `item_description`, `quantity`, `unit_cost`) VALUES
+('10b7fc9d-5e02-11ee-89ef-f80dac465db8', '10af254d-5e02-11ee-89ef-f80dac465db8', 'juice', 50, 20),
+('10b86826-5e02-11ee-89ef-f80dac465db8', '10af254d-5e02-11ee-89ef-f80dac465db8', 'sandwich', 50, 25),
+('48d6342e-5e8a-11ee-a83b-f80dac465db8', '48cf0b07-5e8a-11ee-a83b-f80dac465db8', 'sandwich ', 50, 25),
+('48d6b838-5e8a-11ee-a83b-f80dac465db8', '48cf0b07-5e8a-11ee-a83b-f80dac465db8', 'juice', 50, 30),
+('7a0be088-5dcc-11ee-8ab0-f80dac465db8', '79fe51de-5dcc-11ee-8ab0-f80dac465db8', 'Item 1', 3, 3000),
+('7cba9dde-619b-11ee-a2e7-f80dac465db8', '7cb08ba0-619b-11ee-a2e7-f80dac465db8', '', 0, 0),
+('9c53ec07-619b-11ee-a2e7-f80dac465db8', '9c50be8e-619b-11ee-a2e7-f80dac465db8', 'Item 1', 23, 46),
+('bafcbd6b-619b-11ee-a2e7-f80dac465db8', 'baf96709-619b-11ee-a2e7-f80dac465db8', '', 0, 0),
+('bc2e2363-6046-11ee-958d-f80dac465db8', 'bc258286-6046-11ee-958d-f80dac465db8', '', 0, 0),
+('f43ea03f-619b-11ee-a2e7-f80dac465db8', 'f43acec5-619b-11ee-a2e7-f80dac465db8', '', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -146,17 +172,62 @@ CREATE TABLE `campus` (
   `id` int(50) NOT NULL,
   `campus_name` varchar(100) NOT NULL,
   `address` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `campus`
 --
 
 INSERT INTO `campus` (`id`, `campus_name`, `address`) VALUES
-(14, 'ARASOF-Nasugbu', 'Nasugbu'),
-(15, 'Pablo Borbon', 'Batangas City, Batangas'),
-(16, 'Alangilan', 'Batangas City, Batangas'),
-(17, 'Lipa', 'Lipa, Batangas');
+(5, 'ARASOF-Nasugbu', 'Nasugbu, Batangas'),
+(8, 'Alangilan Campus', 'Alangilan, Batangas'),
+(9, 'Balayan Campus', 'Balayan, Batangas'),
+(10, 'JPLPC-Malvar Campus', 'Malvar, Batangas'),
+(15, 'Pablo Borbon Campus', 'Rizal Avenue, Batangas '),
+(17, 'Lemery Campus', 'Lemery, Batangas'),
+(20, 'Mabini Campus', 'Mabini, Batangas'),
+(21, 'Lipa Campus', 'Lipa, Batangas'),
+(22, 'Rosario Campus', 'Rosario, Batangas'),
+(23, 'San Juan Campus', 'San Juan, Batangas'),
+(24, 'Lobo Campus', 'Lobo, Batangas');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `college`
+--
+
+CREATE TABLE `college` (
+  `collegeID` int(11) NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `abbreviation` varchar(50) DEFAULT NULL,
+  `campusID` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `college`
+--
+
+INSERT INTO `college` (`collegeID`, `name`, `abbreviation`, `campusID`) VALUES
+(1, 'College of Informatic and Sciences', 'CICS', 5),
+(2, 'College of Arts and Sciences', 'CAS', 8);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `faculty`
+--
+
+CREATE TABLE `faculty` (
+  `facultyID` int(100) NOT NULL,
+  `title` varchar(50) NOT NULL,
+  `first_name` varchar(50) NOT NULL,
+  `mid_name` varchar(50) NOT NULL,
+  `last_name` varchar(50) NOT NULL,
+  `sex` varchar(50) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `pass` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -168,7 +239,7 @@ CREATE TABLE `partners` (
   `id` int(11) NOT NULL,
   `category` varchar(50) NOT NULL,
   `name` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `partners`
@@ -192,24 +263,22 @@ INSERT INTO `partners` (`id`, `category`, `name`) VALUES
 CREATE TABLE `representatives` (
   `id` varchar(255) NOT NULL DEFAULT uuid(),
   `activity_representatives_id` varchar(255) DEFAULT NULL,
-  `representative_roles_id` varchar(255) DEFAULT NULL,
   `name` varchar(100) DEFAULT NULL,
   `designation` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `representatives`
 --
 
-INSERT INTO `representatives` (`id`, `activity_representatives_id`, `representative_roles_id`, `name`, `designation`) VALUES
-('221c5273-62a4-11ee-9903-b42e99640312', '22197359-62a4-11ee-9903-b42e99640312', '56347f84-5318-11ee-aea5-0a0027000002', 'Dr. Enrico M. Dalangin', 'Chancellor'),
-('221c99aa-62a4-11ee-9903-b42e99640312', '22197900-62a4-11ee-9903-b42e99640312', NULL, 'Dr. Lorissa Joanna Buenas', 'CICS Dean'),
-('221d57e8-62a4-11ee-9903-b42e99640312', '22197de9-62a4-11ee-9903-b42e99640312', NULL, 'Ako', 'Student'),
-('221d769c-62a4-11ee-9903-b42e99640312', '22197de9-62a4-11ee-9903-b42e99640312', NULL, 'Deanne Bulilit', 'Student'),
-('221d9e29-62a4-11ee-9903-b42e99640312', '22197de9-62a4-11ee-9903-b42e99640312', NULL, 'Dudoy', 'Student'),
-('221dc567-62a4-11ee-9903-b42e99640312', '22197de9-62a4-11ee-9903-b42e99640312', NULL, 'Duday', 'Student'),
-('221de858-62a4-11ee-9903-b42e99640312', '22197de9-62a4-11ee-9903-b42e99640312', NULL, 'Joe Honey', 'Student'),
-('221e0714-62a4-11ee-9903-b42e99640312', '22197de9-62a4-11ee-9903-b42e99640312', NULL, 'Joy-lyn', 'Student');
+INSERT INTO `representatives` (`id`, `activity_representatives_id`, `name`, `designation`) VALUES
+('10b587c5-5e02-11ee-89ef-f80dac465db8', '10af37be-5e02-11ee-89ef-f80dac465db8', 'Assoc. Prof. Albertson D. Amante', 'Vice for Research Development and Extension Services'),
+('10b63b98-5e02-11ee-89ef-f80dac465db8', '10af37be-5e02-11ee-89ef-f80dac465db8', 'sdsd', 'edd'),
+('10b6821c-5e02-11ee-89ef-f80dac465db8', '10af4751-5e02-11ee-89ef-f80dac465db8', 'Atty. Noel Alberto S. Omandap', 'Vice President for Development and External Affairs'),
+('48d2d694-5e8a-11ee-a83b-f80dac465db8', '48cf16fd-5e8a-11ee-a83b-f80dac465db8', 'Dr. Expedito V. Acorda', 'Chancellor'),
+('48d363b8-5e8a-11ee-a83b-f80dac465db8', '48cf16fd-5e8a-11ee-a83b-f80dac465db8', 'Dr. Rosalinda M. Comia', 'Campus Director'),
+('48d41516-5e8a-11ee-a83b-f80dac465db8', '48cf16fd-5e8a-11ee-a83b-f80dac465db8', 'Assoc. Prof. Sandy M. Gonzales', 'Campus Director'),
+('48d51204-5e8a-11ee-a83b-f80dac465db8', '48cf16fd-5e8a-11ee-a83b-f80dac465db8', '', '');
 
 -- --------------------------------------------------------
 
@@ -221,7 +290,7 @@ CREATE TABLE `representative_roles` (
   `id` varchar(255) NOT NULL DEFAULT uuid(),
   `name` varchar(100) NOT NULL,
   `designation` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `representative_roles`
@@ -264,7 +333,7 @@ CREATE TABLE `responsibilities` (
   `id` varchar(255) NOT NULL DEFAULT uuid(),
   `role` varchar(100) NOT NULL,
   `responsibility` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `responsibilities`
@@ -311,8 +380,7 @@ ALTER TABLE `activity_representatives`
 --
 ALTER TABLE `activity_representatives_responsibilities`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `activity_representatives_id` (`activity_representatives_id`),
-  ADD KEY `responsibilities_id` (`responsibilities_id`);
+  ADD KEY `activity_representatives_id` (`activity_representatives_id`);
 
 --
 -- Indexes for table `admin_acc`
@@ -334,6 +402,19 @@ ALTER TABLE `campus`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `college`
+--
+ALTER TABLE `college`
+  ADD PRIMARY KEY (`collegeID`),
+  ADD KEY `campusID` (`campusID`);
+
+--
+-- Indexes for table `faculty`
+--
+ALTER TABLE `faculty`
+  ADD PRIMARY KEY (`facultyID`);
+
+--
 -- Indexes for table `partners`
 --
 ALTER TABLE `partners`
@@ -344,8 +425,7 @@ ALTER TABLE `partners`
 --
 ALTER TABLE `representatives`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `activity_representatives_id` (`activity_representatives_id`),
-  ADD KEY `representative_roles_id` (`representative_roles_id`);
+  ADD KEY `activity_representatives_id` (`activity_representatives_id`);
 
 --
 -- Indexes for table `representative_roles`
@@ -373,7 +453,19 @@ ALTER TABLE `admin_acc`
 -- AUTO_INCREMENT for table `campus`
 --
 ALTER TABLE `campus`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+
+--
+-- AUTO_INCREMENT for table `college`
+--
+ALTER TABLE `college`
+  MODIFY `collegeID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `faculty`
+--
+ALTER TABLE `faculty`
+  MODIFY `facultyID` int(100) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `partners`
@@ -395,8 +487,7 @@ ALTER TABLE `activity_representatives`
 -- Constraints for table `activity_representatives_responsibilities`
 --
 ALTER TABLE `activity_representatives_responsibilities`
-  ADD CONSTRAINT `activity_representatives_responsibilities_ibfk_1` FOREIGN KEY (`activity_representatives_id`) REFERENCES `activity_representatives` (`id`),
-  ADD CONSTRAINT `activity_representatives_responsibilities_ibfk_2` FOREIGN KEY (`responsibilities_id`) REFERENCES `responsibilities` (`id`);
+  ADD CONSTRAINT `activity_representatives_responsibilities_ibfk_1` FOREIGN KEY (`activity_representatives_id`) REFERENCES `activity_representatives` (`id`);
 
 --
 -- Constraints for table `budget`
@@ -405,11 +496,16 @@ ALTER TABLE `budget`
   ADD CONSTRAINT `budget_ibfk_1` FOREIGN KEY (`activityform_id`) REFERENCES `activityform` (`id`);
 
 --
+-- Constraints for table `college`
+--
+ALTER TABLE `college`
+  ADD CONSTRAINT `college_ibfk_1` FOREIGN KEY (`campusID`) REFERENCES `campus` (`id`);
+
+--
 -- Constraints for table `representatives`
 --
 ALTER TABLE `representatives`
-  ADD CONSTRAINT `representatives_ibfk_1` FOREIGN KEY (`activity_representatives_id`) REFERENCES `activity_representatives` (`id`),
-  ADD CONSTRAINT `representatives_ibfk_2` FOREIGN KEY (`representative_roles_id`) REFERENCES `representative_roles` (`id`);
+  ADD CONSTRAINT `representatives_ibfk_1` FOREIGN KEY (`activity_representatives_id`) REFERENCES `activity_representatives` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

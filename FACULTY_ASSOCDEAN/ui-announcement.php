@@ -32,7 +32,7 @@
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
-                <img src="..\Unilink\BSU.png" width="50" height="45">
+                <img src="..\imgs\BSU.png" width="50" height="45">
                 <div class="sidebar-brand-text mx-3">UNILINK</div>
             </a>
             
