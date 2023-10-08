@@ -1,4 +1,3 @@
-
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -58,9 +57,9 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="user_management.php">
-<i class="bi bi-person-video3"></i>
-            <span>Account Management</span>
+          <a class="nav-link" href="main_user_management.php">
+          <i class="bi bi-person-video3"></i>
+          <span>Account Management</span>
           </a>
         </li>
         <!-- Divider -->
@@ -133,38 +132,14 @@
           <!-- End of Topbar -->
           <!-- Begin Page Content -->
           <div class="container-fluid">
-            <div class="d-flex justify-content-between align-items-center mb-4">
-              <h3 class="h3 mb-0 text-gray-800">Announcement</h3>
-              <div class="d-flex">
-                  <a class="btn btn-primary rounded-fill" href="#" role="button" id="addAnnouncementButton">
-                      <i class="fas fa-plus"></i> Add Announcement
-                  </a>
-              </div>
-          </div>
-
-          <!-- Modal -->
-          <div class="modal fade" id="announcementModal" tabindex="-1" role="dialog" aria-labelledby="announcementModalLabel" aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                      <div class="modal-header">
-                          <h5 class="modal-title" id="announcementModalLabel">Add Announcement</h5>
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                          </button>
-                      </div>
-                      <div class="modal-body">
-                          <!-- Your form content goes here -->
-                          <form>
-                              <!-- Add form fields for your announcement -->
-                          </form>
-                      </div>
-                      <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                          <button type="button" class="btn btn-primary">Save Announcement</button>
-                      </div>
-                  </div>
-              </div>
-          </div>
+             <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <a href="#">Announcement</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">Add Announcement</li>
+              </ol>
+            </nav>
 
             
             <!-- Content Row -->

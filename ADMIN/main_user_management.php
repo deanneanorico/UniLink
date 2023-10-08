@@ -13,6 +13,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <script>
+      $(document).ready(function() {
+        $('#userTable').DataTable();
+      });
+    </script>
   </head>
   <body id="page-top">
     <!-- Page Wrapper -->
@@ -129,42 +134,55 @@
           </nav>
           <!-- End of Topbar -->
           <!-- Begin Page Content -->
-                    <div class="container-fluid">
-            <div class="row justify-content-center">
-            <div class="col-md-5" style="width: auto;">
-              <div class="card" style="width: 20rem;">
-                <img class="card-img-top" src="imgs/BSU.png">
-                <div class="card-body text-center">
-                  <h5 class="card-title">Batangas State University</h5>
-                  <!-- <p class="card-text">
-                    Quality Policy Batangas State University is committed to the continous improvement of its services to all customer to meet the challenges of a world class educational institution.
-                  </p> -->
+          <div class="container-fluid">
+             <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h3 class="h3 mb-0 text-gray-800">Account Management</h3>
+                        <div class="d-flex">
+                            <a class="btn btn-primary rounded-fill" href="user_management.php" role="button">
+                                <i class="fas fa-plus"></i> Add User
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card">
+                      <div class="card-body">
+                                        <div class="table">
+                  <table id="userTable" class="table display" data-ordering="true" data-paging="true" data-searching="true">
+                    <thead>
+                      <tr>
+                        <th>Title</th>
+                        <th>First Name</th>
+                        <th>Sex</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody> 
+                    <tr>
+                        <!-- echo "<td style='text-align: center;'>
+                                        <a href='user.php?id=" . $row["facultyID"] . "'>
+                                            <span class='fas fa-edit text-success'></span>
+                                        </a>
+                                        <a href='delete.php?id=" . $row["id"] . "'><span class='fas fa-trash text-danger'></span></a>
+                                        <a class='fas fa-file text-info'></a>
+                                    </td>"; -->
+                      </tr>
+                    
+                    </tbody>
+                    <!-- <tfoot></tfoot> -->
+                  </table>
                 </div>
-              </div>
-            </div>
-              <div class="col-md-4">
-                <div class="card" style="width: 20rem;">
-                <img class="card-img-top" src="imgs/BSU.png">
-                <div class="card-body text-center">
-                  <h5 class="card-title">External Affairs Office</h5>
-                  <!-- <p class="card-text">
-                    Quality Policy Batangas State University is committed to the continous improvement of its services to all customer to meet the challenges of a world class educational institution.
-                  </p> -->
-                </div>
-              </div>
-              </div>
-            </div>
-          </div>
-            
+                      </div>
+                    </div>
             <!-- Content Row -->
-            <!-- <div class="row"> -->
+            <div class="row">
               <!-- Content Column -->
-             <!--  <div class="col-lg-6 mb-4"></div>
+              <div class="col-lg-6 mb-4"></div>
               <div class="col-lg-6 mb-4"></div>
             </div>
-          </div> -->
+          </div>
           <!-- /.container-fluid -->
         </div>
+      </div>
+    </div>
         <!-- End of Main Content -->
         <!-- Footer -->
         <footer class="sticky-footer bg-white">
@@ -174,10 +192,10 @@
             </div>
           </div>
         </footer>
+      </div>
         <!-- End of Footer -->
       </div>
       <!-- End of Content Wrapper -->
-    </div>
     <!-- End of Page Wrapper -->
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
@@ -200,8 +218,18 @@
           </div>
         </div>
       </div>
-      <?php
-      include 'includes/footer.php';
-      ?>
+    </div>
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.min.js"></script>
+    <!-- Page level plugins -->
+    <script src="vendor/chart.js/Chart.min.js"></script>
+    <!-- Page level custom scripts -->
+    <script src="js/demo/chart-area-demo.js"></script>
+    <script src="js/demo/chart-pie-demo.js"></script>
   </body>
 </html>
