@@ -61,7 +61,7 @@
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
           <img src="../imgs/BSU.png" height="45" width="50">
-          <div class="sidebar-brand-text mx-3">UNILINK</div>
+          <div class="sidebar-brand-text mx-3">UniLink</div>
         </a>
         <!-- Divider -->
         <hr class="sidebar-divider my-0">
@@ -518,14 +518,9 @@
             </div>
           </div>
         </div>
-      </div>
-    </div>
-    </div>
     <!-- /.container-fluid -->
-    </div>
   </form>
    <div id="report" class="mt-4"></div>
-   </div>
     <!-- End of Main Content -->
     <!-- Footer -->
     <footer class="sticky-footer bg-white">
@@ -536,9 +531,7 @@
       </div>
     </footer>
     <!-- End of Footer -->
-    </div>
     <!-- End of Content Wrapper -->
-    </div>
     <!-- End of Page Wrapper -->
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">

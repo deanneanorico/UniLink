@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Unilink - Admin</title>
+    <title>UniLink - Admin</title>
     <link rel="shortcut icon" type="image/png" href="../imgs/BSU.png" alt="Logo" />
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -22,7 +22,7 @@
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
           <img src="../imgs/BSU.png" width="50" height="45">
-          <div class="sidebar-brand-text mx-3">UNILINK</div>
+          <div class="sidebar-brand-text mx-3">UniLink</div>
         </a>
         <!-- Divider -->
         <hr class="sidebar-divider my-0">
@@ -51,10 +51,10 @@
         <li class="nav-item">
           <a class="nav-link" href="announcement.php">
             <i class="bi bi-megaphone"></i>
-            <span>Announcement</span>
+            <span>Announcements</span>
           </a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item active">
           <a class="nav-link" href="user_management.php">
             <i class="bi bi-person-video3"></i>
             <span>Account Management</span>
@@ -129,6 +129,7 @@
           </nav>
           <!-- End of Topbar -->
           <!-- Begin Page Content -->
+          <form action="create_account.php" method="post">
           <div class="container-fluid">
              <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
@@ -146,25 +147,25 @@
                     <div class="col-md-3">
                       <div class="form-group">
                         <label for="input1">Title</label>
-                        <input type="text" class="form-control" id="input1">
-                      </div>
-                    </div>
+                        <input type="text" class="form-control" id="title" name="title">          
+                        </div>
+                       </div>
                     <div class="col-md-3">
                       <div class="form-group">
                         <label for="input2">First Name</label>
-                        <input type="text" class="form-control" id="input2">
+                        <input type="text" class="form-control" id="first" name="first">
                       </div>
                     </div>
                     <div class="col-md-3">
                       <div class="form-group">
                         <label for="input3">Middle Name</label>
-                        <input type="text" class="form-control" id="input3">
+                        <input type="text" class="form-control" id="middle" name="middle">
                       </div>
                     </div>
                     <div class="col-md-3">
                       <div class="form-group">
                         <label for="input4">Last Name</label>
-                        <input type="text" class="form-control" id="input4">
+                        <input type="text" class="form-control" id="last" name="last">
                       </div>
                     </div>
                   </div>
@@ -181,34 +182,48 @@
                     <div class="col-md-8">
                       <div class="form-group">
                         <label for="input6">Email</label>
-                        <input type="text" class="form-control" id="input6">
+                        <input type="text" class="form-control" id="email" name="email">
                       </div>
                     </div>
                   </div>
                   <div class="row">
                     <div class="col-md-12">
                       <div class="form-group">
-                        <label for="input7">Password</label>
-                        <input type="text" class="form-control" id="input7">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="password" name="password" required>
                       </div>
                     </div>
                   </div>
+                  <!-- Admin Checkbox  -->
+                  <div class="row">
+                      <div class="col-md-12">
+                          <div class="form-group">
+                              <label for="is_admin">Admin</label>
+                              <input type="checkbox" id="is_admin" name="is_admin" value="1">
+                          </div>
+                      </div>
+                  </div>
                    <!-- Buttons -->
-                <div class="text-right mt-2">
+                   <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group text-right mt-1">
                       <a href="main_user_management.php" class="btn btn-secondary">Close</a>
                       <input type="submit" name="submit" class="submit btn btn-primary" value="Save">
                     </div>
                 </div>
+            </div>
+                </div>
             <!-- Content Row -->
             <div class="row">
               <!-- Content Column -->
-              <div class="col-lg-6 mb-4"></div>
-              <div class="col-lg-6 mb-4"></div>
+<!--               <div class="col-lg-6 mb-4"></div>
+              <div class="col-lg-6 mb-4"></div> -->
             </div>
           </div>
           <!-- /.container-fluid -->
         </div>
       </div>
+    </form>
     </div>
         <!-- End of Main Content -->
         <!-- Footer -->

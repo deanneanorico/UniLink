@@ -8,8 +8,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Unilink - Faculty/Associate Dean</title>
-    <link rel="shortcut icon" type="image/png" href="../Unilink/BSU.png" alt="Logo" />
+    <title>UniLink - Faculty/Associate Dean</title>
+    <link rel="shortcut icon" type="image/png" href="../imgs/BSU.png" alt="Logo" />
 
     <!-- Include Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -38,7 +38,7 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
                 <img src="..\imgs\BSU.png" width="50" height="45">
-                <div class="sidebar-brand-text mx-3">UNILINK</div>
+                <div class="sidebar-brand-text mx-3">UniLink</div>
             </a>
             
             <!-- Divider -->

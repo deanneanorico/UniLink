@@ -29,8 +29,8 @@ $result = $conn->query($sql);
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Unilink</title>
-    <link rel="shortcut icon" type="image/png" href="../Unilink/BSU.png" alt="Logo" />
+    <title>UniLink - Faculty/Associate Dean</title>
+    <link rel="shortcut icon" type="image/png" href="../imgs/BSU.png" alt="Logo" />
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -72,7 +72,7 @@ $result = $conn->query($sql);
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
                 <img src="..\imgs\BSU.png" height="45" width="50">
-                <div class="sidebar-brand-text mx-3">UNILINK</div>
+                <div class="sidebar-brand-text mx-3">UniLink</div>
             </a>
 
             <!-- Divider -->
@@ -224,27 +224,26 @@ $result = $conn->query($sql);
 
                                 if ($start_date > $today) {
                                     $status = 'For Implementation';
-                                    $textColor = 'yellow'; // Set text color for 'For Implementation'
+                                    $textColor = 'black'; // Set text color for 'For Implementation'
                                 } elseif ($start_date <= $today && $end_date > $today) {
                                     $status = 'Ongoing';
                                     $textColor = 'orange'; // Set text color for 'Ongoing'
                                 } elseif ($end_date <= $today) {
                                     $status = 'Implemented';
-                                    $textColor = 'green'; // Set text color for 'Implemented'
+                                    $textColor = '#228B22'; // Set text color for 'Implemented'
                                 }
-
                                 echo "<tr>";
                                 echo "<td style='text-align: center;'>" . $i . "</td>";
                                 echo "<td style='text-align: center;'>" . $row["activity_title"] . "</td>";
                                 echo "<td style='text-align: center;'>" . $row["partner"] . "</td>";
-                                echo "<td style='text-align: center;'>" . date("M. d, Y", $start_date) . " - " . date("M. d, Y", $end_date) . "</td>";
-                                echo '<td style="text-align: center;"><div style="background-color: #999494; color: ' . $textColor . '; padding: 5px; border-radius: 45px;">' . $status . '</div></td>';
+                                echo "<td style='text-align: center;'>" . date("M. d, Y", $start_date) . " - " . date("M. d, Y", $end_date) . " </td>";
+                                echo '<td style="text-align: center;"><div style="background-color: #d7d0d0; color: ' . $textColor . '; padding: 5px; border-radius: 45px;">' . $status . '</div></td>';
                                 echo "<td style='text-align: center;'>
                                         <a href='ui-formsEdit.php?id=" . $row["id"] . "'>
                                             <span class='fas fa-edit text-success'></span>
                                         </a>
                                         <a href='delete.php?id=" . $row["id"] . "'><span class='fas fa-trash text-danger'></span></a>
-                                        <a class='fas fa-file text-info'></a>
+                                        <a href='pdf.php?id=". $row["id"]."' target='_blank' class='fas fa-file-download text-info'></a>
                                     </td>";
                                 echo "</tr>";
                                 $i++;

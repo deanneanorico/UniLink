@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Unilink - Admin</title>
+    <title>UniLink - Admin</title>
     <link rel="shortcut icon" type="image/png" href="../imgs/BSU.png" alt="Logo" />
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -22,19 +22,19 @@
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
           <img src="../imgs/BSU.png" width="50" height="45">
-          <div class="sidebar-brand-text mx-3">UNILINK</div>
+          <div class="sidebar-brand-text mx-3">UniLink</div>
         </a>
         <!-- Divider -->
         <hr class="sidebar-divider my-0">
         <!-- Nav Item - Dashboard -->
-        <li class="nav-item active">
+        <li class="nav-item">
           <a class="nav-link" href="index.php">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span>
           </a>
         </li>
         <!-- Nav Item - Pages Collapse Menu -->
-        <li class="nav-item">
+        <li class="nav-item active">
           <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
             <i class="fas fa-university"></i>
             <span>University Setup</span>
@@ -51,7 +51,7 @@
         <li class="nav-item">
           <a class="nav-link" href="announcement.php">
             <i class="bi bi-megaphone"></i>
-            <span>Announcement</span>
+            <span>Announcements</span>
           </a>
         </li>
         <li class="nav-item">
