@@ -51,6 +51,7 @@ CREATE TABLE `activityform` (
 INSERT INTO `activityform` (`id`, `activity_title`, `campus`, `college`, `program`, `partner_type`, `partner`, `start_date`, `end_date`, `rationale`, `objective`, `budget`) VALUES
 ('9cfad68e-62a3-11ee-9903-b42e99640312', 'Graduation Disco Party', 'ARASOF', 'CICS', 'Bachelor of Science in Information Technology', 'International', 'Global University Network for Innovation', '2023-12-24', '2023-12-30', '<p>Alak Ingredients</p>', '<p>Pulutan Ingredients</p>', 'Fund of University');
 
+
 -- --------------------------------------------------------
 
 --
@@ -153,10 +154,55 @@ CREATE TABLE `campus` (
 --
 
 INSERT INTO `campus` (`id`, `campus_name`, `address`) VALUES
-(14, 'ARASOF-Nasugbu', 'Nasugbu'),
-(15, 'Pablo Borbon', 'Batangas City, Batangas'),
-(16, 'Alangilan', 'Batangas City, Batangas'),
-(17, 'Lipa', 'Lipa, Batangas');
+(5, 'ARASOF-Nasugbu', 'Nasugbu, Batangas'),
+(8, 'Alangilan Campus', 'Alangilan, Batangas'),
+(9, 'Balayan Campus', 'Balayan, Batangas'),
+(10, 'JPLPC-Malvar Campus', 'Malvar, Batangas'),
+(15, 'Pablo Borbon Campus', 'Rizal Avenue, Batangas '),
+(17, 'Lemery Campus', 'Lemery, Batangas'),
+(20, 'Mabini Campus', 'Mabini, Batangas'),
+(21, 'Lipa Campus', 'Lipa, Batangas'),
+(22, 'Rosario Campus', 'Rosario, Batangas'),
+(23, 'San Juan Campus', 'San Juan, Batangas'),
+(24, 'Lobo Campus', 'Lobo, Batangas');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `college`
+--
+
+CREATE TABLE `college` (
+  `collegeID` int(11) NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `abbreviation` varchar(50) DEFAULT NULL,
+  `campusID` int(11) DEFAULT NULL
+);
+
+--
+-- Dumping data for table `college`
+--
+
+INSERT INTO `college` (`collegeID`, `name`, `abbreviation`, `campusID`) VALUES
+(1, 'College of Informatic and Sciences', 'CICS', 5),
+(2, 'College of Arts and Sciences', 'CAS', 8);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `faculty`
+--
+
+CREATE TABLE `faculty` (
+  `facultyID` int(100) NOT NULL,
+  `title` varchar(50) NOT NULL,
+  `first_name` varchar(50) NOT NULL,
+  `mid_name` varchar(50) NOT NULL,
+  `last_name` varchar(50) NOT NULL,
+  `sex` varchar(50) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `pass` varchar(100) NOT NULL
+);
 
 -- --------------------------------------------------------
 
@@ -333,6 +379,20 @@ ALTER TABLE `budget`
 ALTER TABLE `campus`
   ADD PRIMARY KEY (`id`);
 
+
+--
+-- Indexes for table `college`
+--
+ALTER TABLE `college`
+  ADD PRIMARY KEY (`collegeID`),
+  ADD KEY `campusID` (`campusID`);
+
+--
+-- Indexes for table `faculty`
+--
+ALTER TABLE `faculty`
+  ADD PRIMARY KEY (`facultyID`);
+
 --
 -- Indexes for table `partners`
 --
@@ -376,6 +436,18 @@ ALTER TABLE `campus`
   MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
+-- AUTO_INCREMENT for table `college`
+--
+ALTER TABLE `college`
+  MODIFY `collegeID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `faculty`
+--
+ALTER TABLE `faculty`
+  MODIFY `facultyID` int(100) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `partners`
 --
 ALTER TABLE `partners`
@@ -403,6 +475,12 @@ ALTER TABLE `activity_representatives_responsibilities`
 --
 ALTER TABLE `budget`
   ADD CONSTRAINT `budget_ibfk_1` FOREIGN KEY (`activityform_id`) REFERENCES `activityform` (`id`);
+
+--
+-- Constraints for table `college`
+--
+ALTER TABLE `college`
+  ADD CONSTRAINT `college_ibfk_1` FOREIGN KEY (`campusID`) REFERENCES `campus` (`id`);
 
 --
 -- Constraints for table `representatives`

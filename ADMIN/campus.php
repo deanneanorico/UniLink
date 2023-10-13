@@ -318,11 +318,11 @@
                         <input type="hidden" name="upid" id="upid" class="form-control" placeholder="" required>
                         <div class="form-group">
                           <label for="campus_name">Campus</label>
-                          <input type="text" name="upCampus" id="upCampus" class="form-control" placeholder="" required>
+                          <input type="text" name="upCampus" id="upCampus" class="form" placeholder="" required>
                         </div>
                         <div class="form-group">
                           <label for="address">Address</label>
-                          <input type="text" name="upAddress" id="upAddress" class="form-control" placeholder="" required>
+                          <input type="text" name="upAddress" id="upAddress" class="form" placeholder="" required>
                         </div>
                       </div>
                       <div class="modal-footer">
