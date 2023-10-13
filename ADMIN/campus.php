@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Unilink - Admin</title>
-    <link rel="shortcut icon" type="image/png" href="../Unilink/BSU.png" alt="Logo" />
+    <title>UniLink - Admin</title>
+    <link rel="shortcut icon" type="image/png" href="../imgs/BSU.png" alt="Logo" />
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
@@ -119,7 +119,7 @@
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index2.php">
           <img src="..\imgs\BSU.png" width="50" height="45">
-          <div class="sidebar-brand-text mx-3">UNILINK</div>
+          <div class="sidebar-brand-text mx-3">UniLink</div>
         </a>
         <!-- Divider -->
         <hr class="sidebar-divider my-0">
@@ -138,7 +138,7 @@
           </a>
           <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-              <a class="collapse-item" href="univ.php">Office</a>
+              <a class="collapse-item" href="univ.php">University</a>
               <a class="collapse-item" href="campus.php">Campus</a>
               <a class="collapse-item" href="college.php">College</a>
               <a class="collapse-item" href="program.php">Program</a>
@@ -148,11 +148,11 @@
         <li class="nav-item">
           <a class="nav-link" href="announcement.php">
             <i class="bi bi-megaphone"></i>
-            <span>Announcement</span>
+            <span>Announcements</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="user_management.php">
+          <a class="nav-link" href="main_user_management.php">
             <i class="bi bi-person-video3"></i>
             <span> Account Management</span>
           </a>
@@ -241,7 +241,6 @@
                   <table id="myTable" class="table display" data-ordering="true" data-paging="true" data-searching="true">
                     <thead>
                       <tr>
-                        <th>#</th>
                         <th>Campus</th>
                         <th>Address</th>
                         <th>Action</th>
@@ -254,11 +253,10 @@
                       while ($row = mysqli_fetch_array($sql)) { 
                     ?> 
                       <tr>
-                        <td> <?php echo $row["id"]; ?> </td>
                         <td> <?php echo $row["campus_name"]; ?> </td>
                         <td> <?php echo $row["address"]; ?> </td>
                         <td>
-                          <a class="editCampus" data-toggle="modal" data-target="#editCampusModal" id="editCampus" onclick="setData(`<?=$row['id']?>`, `<?=$row['campus_name']?>`, `<?=$row['address']?>`)">
+                          <a class="editCampus" data-toggle="modal" data-target="#editCampusModal" id="editCampus" onclick="setData(`<?=$row['campus_name']?>`, `<?=$row['address']?>`)">
                             <i class='fas fa-edit text-success'></i>
                           </a>
                           <a href="campus.php?id=<?php echo $row['id']; ?>" onClick="return confirm('Are you sure you want to delete?')" name="delcampus">

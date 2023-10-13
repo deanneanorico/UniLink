@@ -8,8 +8,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Unilink</title>
-    <link rel="shortcut icon" type="image/png" href="../Unilink/BSU.png" alt="Logo" />
+    <title>UniLink - Faculty/Associate Dean</title>
+    <link rel="shortcut icon" type="image/png" href="../imgs/BSU.png" alt="Logo" />
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -32,8 +32,8 @@
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
-                <img src="..\Unilink\BSU.png" width="50" height="45">
-                <div class="sidebar-brand-text mx-3">UNILINK</div>
+                <img src="..\imgs\BSU.png" width="50" height="45">
+                <div class="sidebar-brand-text mx-3">UniLink</div>
             </a>
             
             <!-- Divider -->

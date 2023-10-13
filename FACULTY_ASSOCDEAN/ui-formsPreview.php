@@ -29,8 +29,8 @@ $result = $conn->query($sql);
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Unilink</title>
-    <link rel="shortcut icon" type="image/png" href="../Unilink/BSU.png" alt="Logo" />
+    <title>UniLink - Faculty/Associate Dean</title>
+    <link rel="shortcut icon" type="image/png" href="../imgs/BSU.png" alt="Logo" />
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -72,7 +72,7 @@ $result = $conn->query($sql);
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
                 <img src="..\imgs\BSU.png" height="45" width="50">
-                <div class="sidebar-brand-text mx-3">UNILINK</div>
+                <div class="sidebar-brand-text mx-3">UniLink</div>
             </a>
 
             <!-- Divider -->
@@ -172,9 +172,6 @@ $result = $conn->query($sql);
                     <div class="d-flex justify-content-between align-items-center mb-4">
                         <h3 class="h3 mb-0 text-gray-800">Activity Management</h3>
                         <div class="d-flex">
-                            <a class="btn btn-primary rounded-fill mr-2" href="#" role="button">
-                                <i class="fas fa-filter"></i> Filter
-                            </a>
                             <a class="btn btn-primary rounded-fill" href="ui-forms.php" role="button">
                                 <i class="fas fa-plus"></i> Create Activity
                             </a>
@@ -184,9 +181,9 @@ $result = $conn->query($sql);
                         <div class="card-body">
                             <div class="table">
                              <table id="activityTable" class="display" data-ordering="true" data-paging="true" data-searching="true">
-                                <thead>
+                                <thead style='text-align: center;'>
                                     <tr>
-                                        <th>No.</th>
+                                        <th >No.</th>
                                         <th style="width: 20%">Activity Title</th>
                                         <!-- <th>Partner</th> -->
                                         <th style="width: 22%;">Partner Name</th>
@@ -196,58 +193,71 @@ $result = $conn->query($sql);
                                     </tr>
                                 </thead>
                                <tbody>
-    <?php
-    // Replace with your database connection details
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "unilink";
+                        <?php
+                        // Replace with your database connection details
+                        $servername = "localhost";
+                        $username = "root";
+                        $password = "";
+                        $dbname = "unilink";
 
-    // Create a connection to the database
-    $conn = new mysqli($servername, $username, $password, $dbname);
+                        // Create a connection to the database
+                        $conn = new mysqli($servername, $username, $password, $dbname);
 
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
+                        // Check connection
+                        if ($conn->connect_error) {
+                            die("Connection failed: " . $conn->connect_error);
+                        }
 
-    // SQL query to retrieve data
-    $sql = "SELECT * FROM activityform";
-    $result = $conn->query($sql);
+                        // SQL query to retrieve data
+                        $sql = "SELECT * FROM activityform";
+                        $result = $conn->query($sql);
 
-    if ($result->num_rows > 0) {
-        // Output data of each row
-        $i = 1;
-        while ($row = $result->fetch_assoc()) {
-            echo "<tr>";
-            echo "<td>" . $i . "</td>";
-            echo "<td>" . $row["activity_title"] . "</td>";
-            // echo "<td>" . $row["partner_type"] . "</td>";
-            echo "<td>" . $row["partner"] . "</td>";
-            $start_date = strtotime($row['start_date']);
-            $start_date = date("M. d, Y", $start_date);
-            $end_date = strtotime($row['end_date']);
-            $end_date = date("M. d, Y", $end_date);
-            echo "<td>" . $start_date . " - " . $end_date . "</td>";
-            echo "<td></td>";
-            echo "<td>
-                    <a href='ui-formsEdit.php?id=" . $row["id"] . "'>
-                        <span class='fas fa-edit text-success'></span>
-                    </a>
-                    <a href='delete.php?id=" . $row["id"] . "'><span class='fas fa-trash text-danger'></span></a>
-                    <a class='fas fa-file text-info'></a>
-                </td>";
-            echo "</tr>";
-            $i++;
-        }
-    } else {
-        echo "0 results";
-    }
+                        if ($result->num_rows > 0) {
+                            // Output data of each row
+                            $i = 1;
+                            while ($row = $result->fetch_assoc()) {
+                                // Calculate the status based on conditions
+                                $status = '';
+                                $start_date = strtotime($row['start_date']);
+                                $end_date = strtotime($row['end_date']);
+                                $today = strtotime(date('Y-m-d'));
 
-    // Close the database connection
-    $conn->close();
-    ?>
-</tbody>
+                                if ($start_date > $today) {
+                                    $status = 'For Implementation';
+                                    $textColor = 'black'; // Set text color for 'For Implementation'
+                                } elseif ($start_date <= $today && $end_date > $today) {
+                                    $status = 'Ongoing';
+                                    $textColor = 'orange'; // Set text color for 'Ongoing'
+                                } elseif ($end_date <= $today) {
+                                    $status = 'Implemented';
+                                    $textColor = '#228B22'; // Set text color for 'Implemented'
+                                }
+                                echo "<tr>";
+                                echo "<td style='text-align: center;'>" . $i . "</td>";
+                                echo "<td style='text-align: center;'>" . $row["activity_title"] . "</td>";
+                                echo "<td style='text-align: center;'>" . $row["partner"] . "</td>";
+                                echo "<td style='text-align: center;'>" . date("M. d, Y", $start_date) . " - " . date("M. d, Y", $end_date) . " </td>";
+                                echo '<td style="text-align: center;"><div style="background-color: #d7d0d0; color: ' . $textColor . '; padding: 5px; border-radius: 45px;">' . $status . '</div></td>';
+                                echo "<td style='text-align: center;'>
+                                        <a href='ui-formsEdit.php?id=" . $row["id"] . "'>
+                                            <span class='fas fa-edit text-success'></span>
+                                        </a>
+                                        <a href='delete.php?id=" . $row["id"] . "'><span class='fas fa-trash text-danger'></span></a>
+                                        <a href='pdf.php?id=". $row["id"]."' target='_blank' class='fas fa-file-download text-info'></a>
+                                    </td>";
+                                echo "</tr>";
+                                $i++;
+                            }
+                        } else {
+                            echo "No data found";
+                        }
+
+                        $conn->close();
+                        ?>
+
+
+
+                </tbody>
 
                             </table>
                         </div>

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Unilink - Admin</title>
+    <title>UniLink - Admin</title>
     <link rel="shortcut icon" type="image/png" href="../imgs/BSU.png" alt="Logo" />
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -23,7 +23,7 @@
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
           <img src="../imgs/BSU.png" width="50" height="45">
-          <div class="sidebar-brand-text mx-3">UNILINK</div>
+          <div class="sidebar-brand-text mx-3">UniLink</div>
         </a>
         <!-- Divider -->
         <hr class="sidebar-divider my-0">
@@ -52,11 +52,11 @@
                 <li class="nav-item">
           <a class="nav-link" href="announcement.php">
             <i class="bi bi-megaphone"></i>
-            <span>Announcement</span>
+            <span>Announcements</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="announcement.php">
+          <a class="nav-link" href="main_user_management.php">
 <i class="bi bi-person-video3"></i>
             <span>Account Management</span>
           </a>
@@ -134,8 +134,8 @@
             <!-- Page Heading -->
             <div class="d-sm-flex align-items-center justify-content-between mb-4">
               <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-              <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
-                <i class="fas fa-download fa-sm text-white-50"></i> Generate Report </a>
+              <!-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+                <i class="fas fa-download fa-sm text-white-50"></i> Generate Report </a> -->
             </div>
             <!-- Content Row -->
             <div class="row">
@@ -146,7 +146,27 @@
                     <div class="row no-gutters align-items-center">
                       <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"> Partner (All College)</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">60</div>
+                            <?php
+                             require 'db.php'; // Include the database connection
+
+                              // Query to count total items in the partners table
+                              $sql = "SELECT COUNT(*) AS total_items FROM partners";
+
+                              $result = $conn->query($sql);
+
+                              if ($result->num_rows > 0) {
+                                  // Fetch the result
+                                  $row = $result->fetch_assoc();
+
+                                  // Output the total items count in the specified HTML element
+                                  echo '<div class="h5 mb-0 font-weight-bold text-gray-800">' . $row['total_items'] . '</div>';
+                              } else {
+                                  echo "No data found";
+                              }
+
+                              $conn->close();
+                              ?>
+
                       </div>
                       <div class="col-auto">
                         <i class="fas fa-user fa-2x text-gray-300"></i>
@@ -215,7 +235,7 @@
                 <div class="card shadow mb-4">
                   <!-- Card Header - Dropdown -->
                   <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-primary">Activities Overview</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">College Activities</h6>
                     <div class="dropdown no-arrow">
                       <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
@@ -229,12 +249,20 @@
                       </div>
                     </div>
                   </div>
+
+
                   <!-- Card Body -->
                   <div class="card-body">
                     <div class="chart-area">
-                      <canvas id="myAreaChart"></canvas>
+                      <?php
+                        include 'linechart.php';
+                      ?>
+                      <!-- <canvas id="linechart_material"></canvas> -->
                     </div>
                   </div>
+
+
+
                 </div>
               </div>
               <!-- Pie Chart -->
@@ -242,7 +270,7 @@
                 <div class="card shadow mb-4">
                   <!-- Card Header - Dropdown -->
                   <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-primary">Revenue Sources</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Linkages</h6>
                     <div class="dropdown no-arrow">
                       <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
@@ -266,8 +294,6 @@
                         <i class="fas fa-circle text-primary"></i> Direct </span>
                       <span class="mr-2">
                         <i class="fas fa-circle text-success"></i> Social </span>
-                      <span class="mr-2">
-                        <i class="fas fa-circle text-info"></i> Referral </span>
                     </div>
                   </div>
                 </div>

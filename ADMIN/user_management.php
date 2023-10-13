@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Unilink - Admin</title>
+    <title>UniLink - Admin</title>
     <link rel="shortcut icon" type="image/png" href="../imgs/BSU.png" alt="Logo" />
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -22,7 +22,7 @@
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
           <img src="../imgs/BSU.png" width="50" height="45">
-          <div class="sidebar-brand-text mx-3">UNILINK</div>
+          <div class="sidebar-brand-text mx-3">UniLink</div>
         </a>
         <!-- Divider -->
         <hr class="sidebar-divider my-0">
@@ -51,28 +51,14 @@
         <li class="nav-item">
           <a class="nav-link" href="announcement.php">
             <i class="bi bi-megaphone"></i>
-            <span>Announcement</span>
+            <span>Announcements</span>
           </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="announcement.php">
+        <li class="nav-item active">
+          <a class="nav-link" href="user_management.php">
             <i class="bi bi-person-video3"></i>
             <span>Account Management</span>
           </a>
-        </li>
-        <!-- Nav Item - Pages Collapse Menu -->
-        <li class="nav-item">
-          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSettings" aria-expanded="true" aria-controls="collapseSettings">
-            <i class="fas fa-tools"></i>
-            <span>Other Settings</span>
-          </a>
-          <div id="collapseSettings" class="collapse" aria-labelledby="headingSettings" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-              <a class="collapse-item" href="#">Budget Source</a>
-              <a class="collapse-item" href="#">External Affairs Agenda</a>
-              <a class="collapse-item" href="#">Activity Rank</a>
-            </div>
-          </div>
         </li>
         <!-- Divider -->
         <hr class="sidebar-divider">
@@ -143,17 +129,102 @@
           </nav>
           <!-- End of Topbar -->
           <!-- Begin Page Content -->
+          <form action="create_account.php" method="post">
           <div class="container-fluid">
-            
-            <!-- Content Row -->
-            <!-- <div class="row"> -->
-              <!-- Content Column -->
-             <!--  <div class="col-lg-6 mb-4"></div>
-              <div class="col-lg-6 mb-4"></div>
+             <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <a href="main_user_management.php">Account Management</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">Create User</li>
+              </ol>
+            </nav>
+            <div class="d-flex justify-content-between align-items-center mb-2"></div>
+            <div class="card">
+              <div class="card-body">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label for="input1">Title</label>
+                        <input type="text" class="form-control" id="title" name="title">          
+                        </div>
+                       </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label for="input2">First Name</label>
+                        <input type="text" class="form-control" id="first" name="first">
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label for="input3">Middle Name</label>
+                        <input type="text" class="form-control" id="middle" name="middle">
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label for="input4">Last Name</label>
+                        <input type="text" class="form-control" id="last" name="last">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-4">
+                    <div class="form-group sex">
+                      <label for="sex">Sex</label>
+                      <select class="form-control" id="sex" name="sex">
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                      </select>
+                    </div>
+                  </div>
+                    <div class="col-md-8">
+                      <div class="form-group">
+                        <label for="input6">Email</label>
+                        <input type="text" class="form-control" id="email" name="email">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="password" name="password" required>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Admin Checkbox  -->
+                  <div class="row">
+                      <div class="col-md-12">
+                          <div class="form-group">
+                              <label for="is_admin">Admin</label>
+                              <input type="checkbox" id="is_admin" name="is_admin" value="1">
+                          </div>
+                      </div>
+                  </div>
+                   <!-- Buttons -->
+                   <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group text-right mt-1">
+                      <a href="main_user_management.php" class="btn btn-secondary">Close</a>
+                      <input type="submit" name="submit" class="submit btn btn-primary" value="Save">
+                    </div>
+                </div>
             </div>
-          </div> -->
+                </div>
+            <!-- Content Row -->
+            <div class="row">
+              <!-- Content Column -->
+<!--               <div class="col-lg-6 mb-4"></div>
+              <div class="col-lg-6 mb-4"></div> -->
+            </div>
+          </div>
           <!-- /.container-fluid -->
         </div>
+      </div>
+    </form>
+    </div>
         <!-- End of Main Content -->
         <!-- Footer -->
         <footer class="sticky-footer bg-white">
@@ -163,10 +234,10 @@
             </div>
           </div>
         </footer>
+      </div>
         <!-- End of Footer -->
       </div>
       <!-- End of Content Wrapper -->
-    </div>
     <!-- End of Page Wrapper -->
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
