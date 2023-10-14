@@ -1,3 +1,19 @@
+<?php
+    session_start();
+
+    if(isset($_SESSION['id'])) {
+        if($_SESSION['privelege'] == "Faculty" || $_SESSION['privelege'] == "Associate Dean" || $_SESSION['privelege'] == "Dean") {
+            header("location: ./faculty_assocdean");
+            exit();
+        } else if($_SESSION['privelege'] == "Admin") {
+            header("location: ./admin");
+            exit();
+        } else if($_SESSION['privelege'] == "Head") {
+            header("location: ./head");
+            exit();
+        }
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,7 +34,7 @@
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="admin/css/sb-admin-2.min.css" rel="stylesheet">
 
 </head>
 
@@ -39,27 +55,20 @@
                             <div class="col-lg-6">
                                 <div class="p-5">
                                     <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
-                                    <form class="user">
+                                    <form class="user" method="POST" action="login.php">
                                         <div class="form-group">
-                                            <input type="email" class="form-control form-control-user"
-                                                id="exampleInputEmail" aria-describedby="emailHelp"
-                                                placeholder="Enter User ID">
+                                            <input type="email" class="form-control form-control-user" name="email" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Email">
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control form-control-user"
-                                                id="exampleInputPassword" placeholder="Password">
+                                            <input type="password" class="form-control form-control-user" name="password" id="exampleInputPassword" placeholder="Password">
                                         </div>
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox medium">
                                                 <input type="checkbox" class="custom-control-input" id="customCheck">
-                                                <label class="custom-control-label" for="customCheck">Remember
-                                                    Me</label>
+                                                <label class="custom-control-label" for="customCheck">Remember Me</label>
                                             </div>
                                         </div>
-                                        <a href="index.php" class="btn btn-primary btn-user btn-block" name="submit">
-                                            Login
-                                        </a>
-                                        
+                                        <button href="index.php" class="btn btn-primary btn-user btn-block" name="submit">Login</button>
                                     </form>
                                     <hr>
                                     <div class="text-center">

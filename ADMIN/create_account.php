@@ -10,32 +10,35 @@ if ($mysqli->connect_error) {
 // Process form data
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $title = $_POST["title"];
-    $first_name = $_POST["first_name"];
-    $mid_name = $_POST["mid_name"];
-    $last_name = $_POST["last_name"];
+    $first_name = $_POST["first"];
+    $mid_name = $_POST["middle"];
+    $last_name = $_POST["last"];
     $sex = $_POST["sex"];
     $email = $_POST["email"];
     $password = $_POST["password"];
-    $is_admin = isset($_POST["is_admin"]) ? 1 : 0;
+    $privelege = $_POST['privelege'];
 
     // Hash the password
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
     // Insert data into the users table
-    $sql = "INSERT INTO users (title, first_name, mid_name, last_name, sex, email, pass, is_admin)
+    $sql = "INSERT INTO users (title, first_name, mid_name, last_name, sex, email, pass, privelege)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = $mysqli->prepare($sql);
 
     if ($stmt) {
-        $stmt->bind_param("sssssssi", $title, $first_name, $mid_name, $last_name, $sex, $email, $hashed_password, $is_admin);
+        $stmt->bind_param("ssssssss", $title, $first_name, $mid_name, $last_name, $sex, $email, $hashed_password, $privelege);
         if ($stmt->execute()) {
-            echo "Account created successfully.";
+            header("location: ./main_user_management.php?success");
+            exit();
         } else {
-            echo "Error: " . $stmt->error;
+            header("location: ./user_management.php?invalid=1");
+            exit();
         }
         $stmt->close();
     } else {
-        echo "Error: " . $mysqli->error;
+        header("location: ./user_management.php?invalid=2");
+        exit();
     }
 
     // Close the database connection

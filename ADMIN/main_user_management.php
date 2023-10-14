@@ -1,3 +1,6 @@
+<?php
+  include 'includes/db.php';
+?>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -156,18 +159,21 @@
                       </tr>
                     </thead>
                     <tbody> 
-                    <tr>
-                        <!-- echo "<td style='text-align: center;'>
-                                        <a href='user.php?id=" . $row["facultyID"] . "'>
-                                            <span class='fas fa-edit text-success'></span>
-                                        </a>
-                                        <a href='delete.php?id=" . $row["id"] . "'><span class='fas fa-trash text-danger'></span></a>
-                                        <a class='fas fa-file text-info'></a>
-                                    </td>"; -->
-                      </tr>
-                    
+                      <?php
+                        $sql = "SELECT * FROM `users`";
+                        $result = $conn->query($sql);
+                        while($row = $result->fetch_assoc()) {
+                      ?>
+                        <tr>
+                          <td><?=$row['title']?></td>
+                          <td><?=$row['first_name']?></td>
+                          <td><?=$row['sex']?></td>
+                          <td></td>
+                        </tr>
+                      <?php
+                        }
+                      ?>
                     </tbody>
-                    <!-- <tfoot></tfoot> -->
                   </table>
                 </div>
                       </div>

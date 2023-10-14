@@ -1,3 +1,19 @@
+<?php
+  session_start();
+
+  if(!isset($_SESSION['id'])) {
+    header("location: ../");
+    exit();
+  }
+
+  if($_SESSION['privelege'] == "Faculty" || $_SESSION['privelege'] == "Associate Dean" || $_SESSION['privelege'] == "Dean") {
+    header("location: ../faculty_assocdean");
+    exit();
+  } else if($_SESSION['privelege'] == "Head") {
+    header("location: ../head");
+    exit();
+  }
+?>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -113,7 +129,7 @@
               </li>
               <!-- Nav Item - User Information -->
               <li class="nav-item dropdown no-arrow">
-                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <span class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
                   <img class="img-profile rounded-circle" src="imgs/undraw_profile_3.svg">
                 </a>
@@ -122,8 +138,8 @@
                   <a class="dropdown-item" href="a-profile.php">
                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Profile </a>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> Logout </a>
+                  <button class="dropdown-item" data-toggle="modal" data-target="#logoutModal">
+                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> Logout </buttonj>
                 </div>
               </li>
             </ul>
@@ -339,7 +355,7 @@
           <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
           <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-            <a class="btn btn-primary" href="login.html">Logout</a>
+            <a class="btn btn-primary" href="../logout.php">Logout</a>
           </div>
         </div>
       </div>

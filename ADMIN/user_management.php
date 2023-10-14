@@ -171,14 +171,14 @@
                   </div>
                   <div class="row">
                     <div class="col-md-4">
-                    <div class="form-group sex">
-                      <label for="sex">Sex</label>
-                      <select class="form-control" id="sex" name="sex">
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
-                      </select>
+                      <div class="form-group sex">
+                        <label for="sex">Sex</label>
+                        <select class="form-control" id="sex" name="sex">
+                          <option value="Male">Male</option>
+                          <option value="Female">Female</option>
+                        </select>
+                      </div>
                     </div>
-                  </div>
                     <div class="col-md-8">
                       <div class="form-group">
                         <label for="input6">Email</label>
@@ -196,12 +196,18 @@
                   </div>
                   <!-- Admin Checkbox  -->
                   <div class="row">
-                      <div class="col-md-12">
-                          <div class="form-group">
-                              <label for="is_admin">Admin</label>
-                              <input type="checkbox" id="is_admin" name="is_admin" value="1">
-                          </div>
+                    <div class="col-md-12">
+                      <div class="form-group sex">
+                        <label for="sex">Privelege</label>
+                        <select class="form-control" id="sex" name="privelege">
+                          <option value="Admin">Admin</option>
+                          <option value="Associate Dean">Associate Dean</option>
+                          <option value="Dean">Dean</option>
+                          <option value="Head">Head</option>
+                          <option value="Faculty">Faculty</option>
+                        </select>
                       </div>
+                    </div>
                   </div>
                    <!-- Buttons -->
                    <div class="row">
