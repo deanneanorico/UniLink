@@ -55,20 +55,6 @@
             <span>Announcement</span>
           </a>
         </li>
-        <!-- Nav Item - Pages Collapse Menu -->
-        <li class="nav-item">
-          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSettings" aria-expanded="true" aria-controls="collapseSettings">
-            <i class="fas fa-tools"></i>
-            <span>Other Settings</span>
-          </a>
-          <div id="collapseSettings" class="collapse" aria-labelledby="headingSettings" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-              <a class="collapse-item" href="#">Budget Source</a>
-              <a class="collapse-item" href="#">External Affairs Agenda</a>
-              <a class="collapse-item" href="#">Activity Rank</a>
-            </div>
-          </div>
-        </li>
         <!-- Divider -->
         <hr class="sidebar-divider">
         <!-- Sidebar Toggler (Sidebar) -->
@@ -274,8 +260,6 @@
                         <i class="fas fa-circle text-primary"></i> Direct </span>
                       <span class="mr-2">
                         <i class="fas fa-circle text-success"></i> Social </span>
-                      <span class="mr-2">
-                        <i class="fas fa-circle text-info"></i> Referral </span>
                     </div>
                   </div>
                 </div>
