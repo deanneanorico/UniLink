@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 04, 2023 at 01:30 PM
+-- Generation Time: Oct 15, 2023 at 01:13 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.2.0
 
@@ -51,7 +51,6 @@ CREATE TABLE `activityform` (
 INSERT INTO `activityform` (`id`, `activity_title`, `campus`, `college`, `program`, `partner_type`, `partner`, `start_date`, `end_date`, `rationale`, `objective`, `budget`) VALUES
 ('9cfad68e-62a3-11ee-9903-b42e99640312', 'Graduation Disco Party', 'ARASOF', 'CICS', 'Bachelor of Science in Information Technology', 'International', 'Global University Network for Innovation', '2023-12-24', '2023-12-30', '<p>Alak Ingredients</p>', '<p>Pulutan Ingredients</p>', 'Fund of University');
 
-
 -- --------------------------------------------------------
 
 --
@@ -69,9 +68,9 @@ CREATE TABLE `activity_representatives` (
 --
 
 INSERT INTO `activity_representatives` (`id`, `activityform_id`, `role`) VALUES
-('22197359-62a4-11ee-9903-b42e99640312', '9cfad68e-62a3-11ee-9903-b42e99640312', 'Project Leader/s'),
-('22197900-62a4-11ee-9903-b42e99640312', '9cfad68e-62a3-11ee-9903-b42e99640312', 'Project Member/s'),
-('22197de9-62a4-11ee-9903-b42e99640312', '9cfad68e-62a3-11ee-9903-b42e99640312', 'Project Staff');
+('93f8d767-64b7-11ee-9b05-b42e99640312', '9cfad68e-62a3-11ee-9903-b42e99640312', 'Project Leader/s'),
+('93f8dd36-64b7-11ee-9b05-b42e99640312', '9cfad68e-62a3-11ee-9903-b42e99640312', 'Project Member/s'),
+('93f8e3aa-64b7-11ee-9b05-b42e99640312', '9cfad68e-62a3-11ee-9903-b42e99640312', 'Project Staff');
 
 -- --------------------------------------------------------
 
@@ -91,13 +90,13 @@ CREATE TABLE `activity_representatives_responsibilities` (
 --
 
 INSERT INTO `activity_representatives_responsibilities` (`id`, `activity_representatives_id`, `responsibilities_id`, `responsibility`) VALUES
-('221c1cf2-62a4-11ee-9903-b42e99640312', '22197359-62a4-11ee-9903-b42e99640312', 'cbc44eca-5318-11ee-aea5-0a0027000002', 'Coordinate with the coorperating agency/resource persons'),
-('221c3787-62a4-11ee-9903-b42e99640312', '22197359-62a4-11ee-9903-b42e99640312', 'cbc44ded-5318-11ee-aea5-0a0027000002', 'Monitor the flow of the training'),
-('221c7423-62a4-11ee-9903-b42e99640312', '22197900-62a4-11ee-9903-b42e99640312', 'cbc44f0f-5318-11ee-aea5-0a0027000002', 'Assist the project leader in the planning, implementation, monitoring and evaluation of the project'),
-('221ccd75-62a4-11ee-9903-b42e99640312', '22197de9-62a4-11ee-9903-b42e99640312', NULL, 'Taga collect ng funds para sa alak at pulutan'),
-('221cf242-62a4-11ee-9903-b42e99640312', '22197de9-62a4-11ee-9903-b42e99640312', NULL, 'Taga bili ng alak at pulutan'),
-('221d1011-62a4-11ee-9903-b42e99640312', '22197de9-62a4-11ee-9903-b42e99640312', NULL, 'Taga timpla ng alak'),
-('221d302f-62a4-11ee-9903-b42e99640312', '22197de9-62a4-11ee-9903-b42e99640312', NULL, 'Taga luto ng pulutan');
+('93fc8757-64b7-11ee-9b05-b42e99640312', '93f8d767-64b7-11ee-9b05-b42e99640312', 'cbc44eca-5318-11ee-aea5-0a0027000002', 'Coordinate with the coorperating agency/resource persons'),
+('93fcc61a-64b7-11ee-9b05-b42e99640312', '93f8d767-64b7-11ee-9b05-b42e99640312', 'cbc44ded-5318-11ee-aea5-0a0027000002', 'Monitor the flow of the training'),
+('93fd4623-64b7-11ee-9b05-b42e99640312', '93f8dd36-64b7-11ee-9b05-b42e99640312', 'cbc44f0f-5318-11ee-aea5-0a0027000002', 'Assist the project leader in the planning, implementation, monitoring and evaluation of the project'),
+('93fdcfa6-64b7-11ee-9b05-b42e99640312', '93f8e3aa-64b7-11ee-9b05-b42e99640312', NULL, 'Taga collect ng funds para sa alak at pulutan'),
+('93fe137c-64b7-11ee-9b05-b42e99640312', '93f8e3aa-64b7-11ee-9b05-b42e99640312', NULL, 'Taga bili ng alak at pulutan'),
+('93fe54ac-64b7-11ee-9b05-b42e99640312', '93f8e3aa-64b7-11ee-9b05-b42e99640312', NULL, 'Taga timpla ng alak'),
+('93fe8be9-64b7-11ee-9b05-b42e99640312', '93f8e3aa-64b7-11ee-9b05-b42e99640312', NULL, 'Taga luto ng pulutan');
 
 -- --------------------------------------------------------
 
@@ -131,11 +130,11 @@ CREATE TABLE `budget` (
 --
 
 INSERT INTO `budget` (`id`, `activityform_id`, `item_description`, `quantity`, `unit_cost`, `total`) VALUES
-('221e243a-62a4-11ee-9903-b42e99640312', '9cfad68e-62a3-11ee-9903-b42e99640312', 'GSM Blue Mojito', 25, 125, 3125),
-('221e4137-62a4-11ee-9903-b42e99640312', '9cfad68e-62a3-11ee-9903-b42e99640312', 'Lime Juice', 25, 89, 2225),
-('221e5a08-62a4-11ee-9903-b42e99640312', '9cfad68e-62a3-11ee-9903-b42e99640312', 'Gin Bilog', 25, 75, 1875),
-('221e7477-62a4-11ee-9903-b42e99640312', '9cfad68e-62a3-11ee-9903-b42e99640312', 'Sizzling Sisig', 25, 80, 2000),
-('221e92a4-62a4-11ee-9903-b42e99640312', '9cfad68e-62a3-11ee-9903-b42e99640312', 'Tokwa baboy', 25, 50, 1250);
+('94000346-64b7-11ee-9b05-b42e99640312', '9cfad68e-62a3-11ee-9903-b42e99640312', 'GSM Blue Mojito', 25, 125, 3125),
+('94002d89-64b7-11ee-9b05-b42e99640312', '9cfad68e-62a3-11ee-9903-b42e99640312', 'Lime Juice', 25, 89, 2225),
+('940057b5-64b7-11ee-9b05-b42e99640312', '9cfad68e-62a3-11ee-9903-b42e99640312', 'Gin Bilog', 25, 75, 1875),
+('94007f03-64b7-11ee-9b05-b42e99640312', '9cfad68e-62a3-11ee-9903-b42e99640312', 'Sizzling Sisig', 25, 80, 2000),
+('9400b8a3-64b7-11ee-9b05-b42e99640312', '9cfad68e-62a3-11ee-9903-b42e99640312', 'Tokwa baboy', 25, 50, 1250);
 
 -- --------------------------------------------------------
 
@@ -177,7 +176,7 @@ CREATE TABLE `college` (
   `name` varchar(255) DEFAULT NULL,
   `abbreviation` varchar(50) DEFAULT NULL,
   `campusID` int(11) DEFAULT NULL
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `college`
@@ -202,7 +201,7 @@ CREATE TABLE `faculty` (
   `sex` varchar(50) NOT NULL,
   `email` varchar(100) NOT NULL,
   `pass` varchar(100) NOT NULL
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -248,14 +247,14 @@ CREATE TABLE `representatives` (
 --
 
 INSERT INTO `representatives` (`id`, `activity_representatives_id`, `representative_roles_id`, `name`, `designation`) VALUES
-('221c5273-62a4-11ee-9903-b42e99640312', '22197359-62a4-11ee-9903-b42e99640312', '56347f84-5318-11ee-aea5-0a0027000002', 'Dr. Enrico M. Dalangin', 'Chancellor'),
-('221c99aa-62a4-11ee-9903-b42e99640312', '22197900-62a4-11ee-9903-b42e99640312', NULL, 'Dr. Lorissa Joanna Buenas', 'CICS Dean'),
-('221d57e8-62a4-11ee-9903-b42e99640312', '22197de9-62a4-11ee-9903-b42e99640312', NULL, 'Ako', 'Student'),
-('221d769c-62a4-11ee-9903-b42e99640312', '22197de9-62a4-11ee-9903-b42e99640312', NULL, 'Deanne Bulilit', 'Student'),
-('221d9e29-62a4-11ee-9903-b42e99640312', '22197de9-62a4-11ee-9903-b42e99640312', NULL, 'Dudoy', 'Student'),
-('221dc567-62a4-11ee-9903-b42e99640312', '22197de9-62a4-11ee-9903-b42e99640312', NULL, 'Duday', 'Student'),
-('221de858-62a4-11ee-9903-b42e99640312', '22197de9-62a4-11ee-9903-b42e99640312', NULL, 'Joe Honey', 'Student'),
-('221e0714-62a4-11ee-9903-b42e99640312', '22197de9-62a4-11ee-9903-b42e99640312', NULL, 'Joy-lyn', 'Student');
+('93fd0d08-64b7-11ee-9b05-b42e99640312', '93f8d767-64b7-11ee-9b05-b42e99640312', '56347f84-5318-11ee-aea5-0a0027000002', 'Dr. Enrico M. Dalangin', 'Chancellor'),
+('93fd8a4b-64b7-11ee-9b05-b42e99640312', '93f8dd36-64b7-11ee-9b05-b42e99640312', NULL, 'Dr. Lorissa Joanna Buenas', 'CICS Dean'),
+('93fed44b-64b7-11ee-9b05-b42e99640312', '93f8e3aa-64b7-11ee-9b05-b42e99640312', NULL, 'Ako', 'Student'),
+('93ff1fc9-64b7-11ee-9b05-b42e99640312', '93f8e3aa-64b7-11ee-9b05-b42e99640312', NULL, 'Deanne Bulilit', 'Student'),
+('93ff5142-64b7-11ee-9b05-b42e99640312', '93f8e3aa-64b7-11ee-9b05-b42e99640312', NULL, 'Dudoy', 'Student'),
+('93ff7fd9-64b7-11ee-9b05-b42e99640312', '93f8e3aa-64b7-11ee-9b05-b42e99640312', NULL, 'Duday', 'Student'),
+('93ffb634-64b7-11ee-9b05-b42e99640312', '93f8e3aa-64b7-11ee-9b05-b42e99640312', NULL, 'Joe Honey', 'Student'),
+('93ffd6fe-64b7-11ee-9b05-b42e99640312', '93f8e3aa-64b7-11ee-9b05-b42e99640312', NULL, 'Joy-lyn', 'Student');
 
 -- --------------------------------------------------------
 
@@ -335,6 +334,32 @@ INSERT INTO `responsibilities` (`id`, `role`, `responsibility`) VALUES
 ('cbc45151-5318-11ee-aea5-0a0027000002', 'Project Coordinator/s or Staff', 'Prepare required reports/documentation'),
 ('cbc452c7-5318-11ee-aea5-0a0027000002', 'Project Coordinator/s or Staff', 'Assist in the morning and evaluation of the extension program');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `title` varchar(100) NOT NULL,
+  `first_name` varchar(100) NOT NULL,
+  `mid_name` varchar(100) NOT NULL,
+  `last_name` varchar(100) NOT NULL,
+  `sex` varchar(25) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `pass` varchar(255) NOT NULL,
+  `privelege` varchar(25) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `title`, `first_name`, `mid_name`, `last_name`, `sex`, `email`, `pass`, `privelege`) VALUES
+(3, 'Asst. Prof.', 'Renz Mervin', 'A.', 'Salac', 'Male', 'renz.mervin@g.batstate-u.edu.ph', '$2y$10$owmi.rVuyCCuvhj5ZGQjtOFMgHaeirledv.YUfeUjdI6wfj3xSZpy', 'Faculty'),
+(4, 'Mr.', 'Carl Joriz Mickeal', 'Sale', ' Marasigan', 'Male', 'carl.marasigan@g.batstate-u.edu.ph', '$2y$10$eODH06bH0BUNmkauACNxY.E6AWwmnyJqX005kZVjOVbyi3AhE9sxS', 'Admin');
+
 --
 -- Indexes for dumped tables
 --
@@ -379,7 +404,6 @@ ALTER TABLE `budget`
 ALTER TABLE `campus`
   ADD PRIMARY KEY (`id`);
 
-
 --
 -- Indexes for table `college`
 --
@@ -420,6 +444,12 @@ ALTER TABLE `responsibilities`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -433,7 +463,7 @@ ALTER TABLE `admin_acc`
 -- AUTO_INCREMENT for table `campus`
 --
 ALTER TABLE `campus`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `college`
@@ -452,6 +482,12 @@ ALTER TABLE `faculty`
 --
 ALTER TABLE `partners`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
