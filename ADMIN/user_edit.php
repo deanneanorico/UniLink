@@ -168,7 +168,7 @@
                     </div>
                     <div class="col-md-3">
                       <div class="form-group">
-                        <label for="input3">Middle Name</label>
+                        <label for="input3">Middle Initial</label>
                         <input type="text" class="form-control" id="middle" name="middle" value="<?=$user_data['mid_name']?>">
                       </div>
                     </div>

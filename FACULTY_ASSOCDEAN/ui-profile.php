@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <title>Unilink</title>
-    <link rel="shortcut icon" type="image/png" href="../Unilink/BSU.png" alt="Logo" />
+    <link rel="shortcut icon" type="image/png" href="../imgs/BSU.png" alt="Logo" />
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">

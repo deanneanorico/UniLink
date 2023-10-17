@@ -2,19 +2,26 @@
 Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 Chart.defaults.global.defaultFontColor = '#858796';
 
-// Pie Chart Example
-var ctx = document.getElementById("myPieChart");
-var myPieChart = new Chart(ctx, {
-  type: 'doughnut',
-  data: {
-    labels: ["Direct", "Referral", "Social"],
-    datasets: [{
-      data: [55, 30, 15],
-      backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc'],
-      hoverBackgroundColor: ['#2e59d9', '#17a673', '#2c9faf'],
-      hoverBorderColor: "rgba(234, 236, 244, 1)",
-    }],
-  },
+var total;
+
+getTotal = new XMLHttpRequest();
+getTotal.open("GET", "js/demo/getlocaltotal.php");
+getTotal.send();
+getTotal.onload = function() {
+  total = JSON.parse(this.responseText);
+  // Pie Chart Example
+  var ctx = document.getElementById("myPieChart");
+  var myPieChart = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      labels: ["Local", "International"],
+      datasets: [{
+        data: [total[1], total[0]],
+        backgroundColor: ['#4e73df', '#1cc88a'],
+        hoverBackgroundColor: ['#2e59d9', '#17a673', '#2c9faf'],
+        hoverBorderColor: "rgba(234, 236, 244, 1)",
+      }],
+    },
   options: {
     maintainAspectRatio: false,
     tooltips: {

@@ -61,6 +61,12 @@
             <span>Activity Monitoring</span>
           </a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="docu_repo.php">
+            <i class="bi bi-file-earmark-pdf"></i>
+            <span>Document Repository</span>
+          </a>
+        </li>
         <!-- Divider -->
         <hr class="sidebar-divider">
         <!-- Sidebar Toggler (Sidebar) -->

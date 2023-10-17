@@ -173,6 +173,7 @@
                       <th>Title</th>
                       <th>First Name</th>
                       <th>Sex</th>
+                      <th>College</th>
                       <th>Action</th>
                       </tr>
                     </thead>
@@ -186,6 +187,7 @@
                                 <td><?=$row['title']?></td>
                                 <td><?=$row['first_name']?></td>
                                 <td><?=$row['sex']?></td>
+                                <td><?= $row['college'] ?></td>
                                 <td>
                                 <a href="user_edit.php?id=<?=$row['id']?>"class="editUser">
                                   <i class='fas fa-edit text-success'></i>
