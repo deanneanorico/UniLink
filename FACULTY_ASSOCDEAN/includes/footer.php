@@ -1,4 +1,3 @@
-
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -9,7 +8,6 @@
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap4.min.js"></script>
     
-
     <script>
     $(document).ready(function() {
         var programOptions = {
@@ -451,7 +449,7 @@
         // } else {
         //     row.querySelector(".subtotal").innerHTML = "0.00"; // Set a default value or display an error message.
         // }
-    }
+    // }
 
     </script>
 
@@ -506,7 +504,7 @@
     </script>
 
     <script>
-document.addEventListener("DOMContentLoaded", function () {
+    document.addEventListener("DOMContentLoaded", function () {
     // Get references to the radio buttons and dropdown
     const localRadio = document.getElementById("localRadio");
     const internationalRadio = document.getElementById("internationalRadio");
@@ -548,26 +546,24 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 </script>
-<script>
-ClassicEditor
-    .create(document.querySelector('#editor'))
-    .catch(error =>{
-        console.error(error);
-    });
-
+    <script>
     ClassicEditor
-    .create(document.querySelector('#editor1'))
-    .catch(error =>{
-        console.error(error);
+        .create(document.querySelector('#editor'))
+        .catch(error =>{
+            console.error(error);
+        });
+
+        ClassicEditor
+        .create(document.querySelector('#editor1'))
+        .catch(error =>{
+            console.error(error);
+        });
+    </script>
+    <script>	
+        $(document).ready(function(){
+            $('#example').DataTable()
     });
-</script>
-<script>	
-    $(document).ready(function(){
-        $('#example').DataTable()
-});
-</script>
-
-
+    </script>
 
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
@@ -588,8 +584,5 @@ ClassicEditor
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap4.min.js"></script>
-    
-
-
 </body>
 </html>

@@ -1,4 +1,4 @@
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -451,7 +451,7 @@
         // } else {
         //     row.querySelector(".subtotal").innerHTML = "0.00"; // Set a default value or display an error message.
         // }
-    }
+    // }
 
     </script>
 
@@ -562,6 +562,18 @@ ClassicEditor
     .catch(error =>{
         console.error(error);
     });
+
+    ClassicEditor
+    .create(document.querySelector('#editor2'))
+    .catch(error =>{
+        console.error(error);
+    });
+    
+    ClassicEditor
+    .create(document.querySelector('#editor3'))
+    .catch(error =>{
+        console.error(error);
+    });
 </script>
 <script>
     $(document).ready(function() {
@@ -600,46 +612,54 @@ function formatDate($dateString) {
         document.getElementById("total").innerHTML = total;
     }
     
-    function quantityfunc(q) {
-        console.log(q);
-        var quantityValue = document.getElementById("quantity"+q).value;
-        var unitValue = document.getElementById("cost"+q).value;
-        if(quantityValue == null && unitValue == null){
-            return;
-        }
-        document.getElementById("subtotal"+q).innerHTML = quantityValue * unitValue;
-        var k = 0;
-        total = 0;
-        while (k < i) {
-            if(document.getElementById("subtotal"+k)==null){
-                k++;
-                continue;
-            }
-            total += parseInt(document.getElementById("subtotal"+k).innerHTML);
-            k++;
-        }
-        document.getElementById("total").innerHTML = total;
-    }
+    function formatMoney(amount) {
+    // Format the amount with a peso sign (₱) and comma for thousands
+    return "₱" + amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
 
-    function pricefunc(q) {
-        var quantityValue = document.getElementById("quantity"+q).value;
-        var unitValue = document.getElementById("cost"+q).value;
-        if(quantityValue == null && unitValue == null){
-            return;
-        }
-        document.getElementById("subtotal"+q).innerHTML = quantityValue * unitValue;
-        var k = 0;
-        total = 0;
-        while (k < i) {
-            if(document.getElementById("subtotal"+k)==null){
-                k++;
-                continue;
-            }
-            total += parseInt(document.getElementById("subtotal"+k).innerHTML);
-            k++;
-        }
-        document.getElementById("total").innerHTML = total;
+function quantityfunc(q) {
+    console.log(q);
+    var quantityValue = parseFloat(document.getElementById("quantity" + q).value);
+    var unitValue = parseFloat(document.getElementById("cost" + q).value);
+    if (isNaN(quantityValue) || isNaN(unitValue)) {
+        return;
     }
+    var subtotal = quantityValue * unitValue;
+    document.getElementById("subtotal" + q).innerHTML = formatMoney(subtotal);
+    var k = 0;
+    var total = 0;
+    while (k < i) {
+        if (document.getElementById("subtotal" + k) == null) {
+            k++;
+            continue;
+        }
+        total += parseFloat(document.getElementById("subtotal" + k).innerHTML.replace(/[^\d.]/g, ''));
+        k++;
+    }
+    document.getElementById("total").innerHTML = formatMoney(total);
+}
+
+function pricefunc(q) {
+    var quantityValue = parseFloat(document.getElementById("quantity" + q).value);
+    var unitValue = parseFloat(document.getElementById("cost" + q).value);
+    if (isNaN(quantityValue) || isNaN(unitValue)) {
+        return;
+    }
+    var subtotal = quantityValue * unitValue;
+    document.getElementById("subtotal" + q).innerHTML = formatMoney(subtotal);
+    var k = 0;
+    var total = 0;
+    while (k < i) {
+        if (document.getElementById("subtotal" + k) == null) {
+            k++;
+            continue;
+        }
+        total += parseFloat(document.getElementById("subtotal" + k).innerHTML.replace(/[^\d.]/g, ''));
+        k++;
+    }
+    document.getElementById("total").innerHTML = formatMoney(total);
+}
+
 </script>
 
 <script>

@@ -5,9 +5,9 @@
       die("Connection failed: " . $conn->connect_error);
   }
 
-  $id = $_GET['id'];
+  $activityformid = $_GET['id'];
 
-  $sql = "SELECT * FROM `activityform` WHERE `id` = '$id'";
+  $sql = "SELECT * FROM `activityform` WHERE `id` = '$activityformid'";
   $result = $conn->query($sql);
   $activity_form_row = $result->fetch_assoc();
 ?>
@@ -137,7 +137,15 @@
               <!-- Nav Item - User Information -->
               <li class="nav-item dropdown no-arrow">
                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                  <?php
+                    $id = $_SESSION['id'];
+
+                    $sql = "SELECT * FROM `users`";
+                    $result = $conn->query($sql);
+                    $row = $result->fetch_assoc();
+                    ?>
+                  <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?=$row['first_name']." ".$row['last_name']?></span>
+                  <span class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
                   <img class="img-profile rounded-circle" src="imgs/undraw_profile.svg">
                 </a>
                 <!-- Dropdown - User Information -->
@@ -154,7 +162,7 @@
           <!-- End of Topbar -->
           <!-- Begin Page Content -->
           <form method="post" action="forms.php?" id="inputForm">
-          <input style="display: none;" type="text" name="id" value="<?=$id?>">
+          <input style="display: none;" type="text" name="id" value="<?=$activityformid?>">
           <div class="container-fluid">
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
@@ -177,24 +185,11 @@
                     </div>
                     <div class="form-group college">
                       <label for="campus">Campus</label>
-                      <select class="form-control" id="campus" name="campus">
-                        <option value="">-- Select Campus --</option>
-                        <option value="ARASOF" <?php if($activity_form_row['campus'] == "ARASOF"){echo "selected";}?>>ARASOF-Nasugbu</option>
-                      </select>
+                      <input readonly class="form-control" type="text" id="campus" name="campus" value="<?=$_SESSION['campus']?>">
                     </div>
                     <div class="form-group college">
                       <label for="department">College</label>
-                      <select class="form-control" id="department" name="department">
-                        <option value="">-- Select College --</option>
-                        <option value="CE" <?php if($activity_form_row['college'] == "CE"){echo "selected";}?>>College of Engineering</option>
-                        <option value="CIT" <?php if($activity_form_row['college'] == "CIT"){echo "selected";}?>>College of Industrial Technology</option>
-                        <option value="CICS" <?php if($activity_form_row['college'] == "CICS"){echo "selected";}?>>College of Informatics and Computing Sciences</option>
-                        <option value="CAS" <?php if($activity_form_row['college'] == "CAS"){echo "selected";}?>>College of Arts and Sciences</option>
-                        <option value="CABEIHM" <?php if($activity_form_row['college'] == "CABEIHM"){echo "selected";}?>>College of Accountancy, Business, Economics and International Hospitality Management</option>
-                        <option value="CTE" <?php if($activity_form_row['college'] == "CTE"){echo "selected";}?>>College of Teacher Education</option>
-                        <option value="CONAHS" <?php if($activity_form_row['college'] == "CONAHS"){echo "selected";}?>>College of Nursing and Allied Health Sciences</option>
-                        <option value="LS" <?php if($activity_form_row['college'] == "LS"){echo "selected";}?>>Laboratory School</option>
-                      </select>
+                      <input readonly class="form-control" type="text" id="department" name="department" value="<?=$_SESSION['college']?>">
                     </div>
                     <div class="form-group">
                       <label for="program">Program</label>
@@ -281,7 +276,7 @@
                         </div> 
                       
                       <?php
-                        $sql = "SELECT * FROM `activity_representatives` WHERE `activityform_id` = '$id'";
+                        $sql = "SELECT * FROM `activity_representatives` WHERE `activityform_id` = '$activityformid'";
                         $activity_representatives_result = $conn->query($sql);
                         $total_roles = 1;
                         $memRow = 1;
@@ -489,7 +484,7 @@
                           </thead>
                           <tbody id="table">
                             <?php
-                              $sql = "SELECT * FROM `budget` WHERE `activityform_id` = '$id'";
+                              $sql = "SELECT * FROM `budget` WHERE `activityform_id` = '$activityformid'";
                               $budget_result = $conn->query($sql);
                               while($budget_row = $budget_result->fetch_assoc()) {
                             ?>
@@ -578,3 +573,28 @@
 ?>
 <script src="footer.js"></script>
 <script src="generate_report.js"></script>
+<script>
+  setProgram();
+
+  function setProgram() {
+    var campus = document.getElementById("campus").value;
+    var college = document.getElementById("department").value;
+    console.log(campus);
+    console.log(college);
+
+    var getProgram = new XMLHttpRequest();
+    getProgram.open("GET", "getprogram.php?campus=" + campus + "&college=" + college);
+    getProgram.send();
+    getProgram.onload = function() {
+      var college = document.getElementById("program");
+      college.innerHTML = "";
+      var college_array = JSON.parse(this.responseText);
+      college_array.forEach(function(element) {
+        var option = document.createElement("option");
+        option.value = element;
+        option.innerHTML = element;
+        college.appendChild(option);
+      });
+    }
+  }
+</script>

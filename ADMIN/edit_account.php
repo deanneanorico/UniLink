@@ -9,6 +9,7 @@ if ($mysqli->connect_error) {
 
 // Process form data
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $id = $_POST['id'];
     $title = $_POST["title"];
     $first_name = $_POST["first"];
     $mid_name = $_POST["middle"];
@@ -24,12 +25,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
     // Insert data into the users table
-    $sql = "INSERT INTO users (title, first_name, mid_name, last_name, sex, email, campus, college, pass, privelege)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $sql = "UPDATE `users` SET `title`=?,`first_name`=?,`mid_name`=?,`last_name`=?,`sex`=?,`email`=?,`campus`=?,`college`=?,`pass`=?,`privelege`=? WHERE `id` = ?";
     $stmt = $mysqli->prepare($sql);
 
     if ($stmt) {
-        $stmt->bind_param("ssssssssss", $title, $first_name, $mid_name, $last_name, $sex, $email, $campus, $college, $hashed_password, $privelege);
+        $stmt->bind_param("sssssssssss", $title, $first_name, $mid_name, $last_name, $sex, $email, $campus, $college, $hashed_password, $privelege, $id);
         if ($stmt->execute()) {
             header("location: ./main_user_management.php?success");
             exit();

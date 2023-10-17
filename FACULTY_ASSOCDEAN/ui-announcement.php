@@ -132,6 +132,15 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <?php
+                      $id = $_SESSION['id'];
+                      include '../db.php';
+
+                      $sql = "SELECT * FROM `users` WHERE `id` = '$id'";
+                      $result = $conn->query($sql);
+                      $row = $result->fetch_assoc();
+                  ?>
+                  <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?=$row['first_name']." ".$row['last_name']?></span>
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
                                 <img class="img-profile rounded-circle"
                                     src="imgs/undraw_profile.svg">

@@ -16,6 +16,16 @@
     header("location: ../head");
     exit();
   }
+
+  if(isset($_GET['delete'])) {
+    $id = $_GET['delete'];
+
+    $sql = "DELETE FROM `users` WHERE `id` = '$id'";
+    $conn->query($sql);
+
+    header("Location: ./main_user_management.php");
+    exit();
+  }
 ?>
 <html lang="en">
   <head>
@@ -32,12 +42,16 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <!-- JQUERY -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <!-- DATATABLES -->
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
     <script>
       $(document).ready(function() {
-        $('#userTable').DataTable();
+        $('#managementTable').DataTable();
       });
-    </script>
-  </head>
+    </script>  </head>
   <body id="page-top">
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -50,11 +64,12 @@
         </a>
         <!-- Divider -->
         <hr class="sidebar-divider my-0">
-        <!-- Nav Item - Dashboard -->
-        <li class="nav-item">
-          <a class="nav-link" href="index.php">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Dashboard</span>
+        <!-- Divider -->
+        <hr class="sidebar-divider my-0">
+        <li class="nav-item active">
+          <a class="nav-link" href="main_user_management.php">
+            <i class="bi bi-person-video3"></i>
+            <span>Account Management</span>
           </a>
         </li>
         <!-- Nav Item - Pages Collapse Menu -->
@@ -65,24 +80,11 @@
           </a>
           <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-              <a class="collapse-item" href="univ.php">University</a>
               <a class="collapse-item" href="campus.php">Campus</a>
               <a class="collapse-item" href="college.php">College</a>
               <a class="collapse-item" href="program.php">Program</a>
             </div>
           </div>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="announcement.php">
-            <i class="bi bi-megaphone"></i>
-            <span>Announcements</span>
-          </a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="main_user_management.php">
-            <i class="bi bi-person-video3"></i>
-            <span>Account Management</span>
-          </a>
         </li>
         <!-- Divider -->
         <hr class="sidebar-divider">
@@ -137,7 +139,7 @@
               <!-- Nav Item - User Information -->
               <li class="nav-item dropdown no-arrow">
                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <span class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
+                  <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin</span>
                   <img class="img-profile rounded-circle" src="imgs/undraw_profile_3.svg">
                 </a>
                 <!-- Dropdown - User Information -->
@@ -162,36 +164,43 @@
                             </a>
                         </div>
                     </div>
-                    <div class="card">
-                      <div class="card-body">
-                                        <div class="table">
-                  <table id="userTable" class="table display" data-ordering="true" data-paging="true" data-searching="true">
+              <div class="card">
+                <div class="card-body">
+                  <div class="table">
+                  <table id="managementTable" class="table display" data-ordering="true" data-paging="true" data-searching="true">
                     <thead>
                       <tr>
-                        <th>Title</th>
-                        <th>First Name</th>
-                        <th>Sex</th>
-                        <th>Action</th>
+                      <th>Title</th>
+                      <th>First Name</th>
+                      <th>Sex</th>
+                      <th>Action</th>
                       </tr>
                     </thead>
-                    <tbody> 
-                      <?php
-                        $sql = "SELECT * FROM `users`";
-                        $result = $conn->query($sql);
-                        while($row = $result->fetch_assoc()) {
-                      ?>
-                        <tr>
-                          <td><?=$row['title']?></td>
-                          <td><?=$row['first_name']?></td>
-                          <td><?=$row['sex']?></td>
-                          <td></td>
-                        </tr>
-                      <?php
-                        }
-                      ?>
-                    </tbody>
-                  </table>
-                </div>
+                      <tbody> 
+                            <?php
+                              $sql = "SELECT * FROM `users`";
+                              $result = $conn->query($sql);
+                              while($row = $result->fetch_assoc()) {
+                            ?>
+                              <tr>
+                                <td><?=$row['title']?></td>
+                                <td><?=$row['first_name']?></td>
+                                <td><?=$row['sex']?></td>
+                                <td>
+                                <a href="user_edit.php?id=<?=$row['id']?>"class="editUser">
+                                  <i class='fas fa-edit text-success'></i>
+                                </a>
+                                <a href="main_user_management.php?delete=<?= $row['id'] ?>" onClick="return confirm('Are you sure you want to delete?')" name="deluser">
+                                  <i class="fas fa-trash text-danger"></i>
+                                </a>
+                              </td>
+                              </tr>
+                            <?php
+                              }
+                            ?>
+                          </tbody>
+                        </table>
+                      </div>
                       </div>
                     </div>
             <!-- Content Row -->
@@ -203,8 +212,7 @@
           </div>
           <!-- /.container-fluid -->
         </div>
-      </div>
-    </div>
+    
         <!-- End of Main Content -->
         <!-- Footer -->
         <footer class="sticky-footer bg-white">
@@ -214,9 +222,7 @@
             </div>
           </div>
         </footer>
-      </div>
         <!-- End of Footer -->
-      </div>
       <!-- End of Content Wrapper -->
     <!-- End of Page Wrapper -->
     <!-- Scroll to Top Button-->
@@ -253,5 +259,9 @@
     <!-- Page level custom scripts -->
     <script src="js/demo/chart-area-demo.js"></script>
     <script src="js/demo/chart-pie-demo.js"></script>
+    <script src="{{ mix('js/app.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap4.min.js"></script>
   </body>
 </html>

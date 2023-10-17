@@ -1,5 +1,6 @@
 <?php
   session_start();
+  include "../db.php";
 
   if(!isset($_SESSION['id'])) {
     header("location: ../");
@@ -93,7 +94,6 @@
           <button class="rounded-circle border-0" id="sidebarToggle"></button>
         </div>
       </ul>
-
       <!-- End of Sidebar -->
       <!-- Content Wrapper -->
       <div id="content-wrapper" class="d-flex flex-column">
@@ -124,7 +124,14 @@
               <!-- Nav Item - User Information -->
               <li class="nav-item dropdown no-arrow">
                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                  <?php
+                      $id = $_SESSION['id'];
+
+                      $sql = "SELECT * FROM `users`";
+                      $result = $conn->query($sql);
+                      $row = $result->fetch_assoc();
+                  ?>
+                  <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?=$row['first_name']." ".$row['last_name']?></span>
                   <img class="img-profile rounded-circle" src="imgs/undraw_profile.svg">
                 </a>
                 <!-- Dropdown - User Information -->
@@ -163,24 +170,11 @@
                     </div>
                     <div class="form-group college">
                       <label for="campus">Campus</label>
-                      <select class="form-control" id="campus" name="campus">
-                        <option value="">-- Select Campus --</option>
-                        <option value="ARASOF">ARASOF-Nasugbu</option>
-                      </select>
+                      <input readonly class="form-control" type="text" id="campus" name="campus" value="<?=$_SESSION['campus']?>">
                     </div>
                     <div class="form-group college">
                       <label for="department">College</label>
-                      <select class="form-control" id="department" name="department">
-                        <option value="">-- Select College --</option>
-                        <option value="CE">College of Engineering</option>
-                        <option value="CIT">College of Industrial Technology</option>
-                        <option value="CICS">College of Informatics and Computing Sciences</option>
-                        <option value="CAS">College of Arts and Sciences</option>
-                        <option value="CABEIHM">College of Accountancy, Business, Economics and International Hospitality Management</option>
-                        <option value="CTE">College of Teacher Education</option>
-                        <option value="CONAHS">College of Nursing and Allied Health Sciences</option>
-                        <option value="LS">Laboratory School</option>
-                      </select>
+                      <input readonly class="form-control" type="text" id="department" name="department" value="<?=$_SESSION['college']?>">
                     </div>
                     <div class="form-group">
                       <label for="program">Program</label>
@@ -228,7 +222,7 @@
                           <i class="fas fa-plus"></i>
                         </button>
                       </div>
-                      <input type="text" name="total_roles" id="total_roles" value="2" style="" readonly>
+                      <input type="hidden" name="total_roles" id="total_roles" value="2" style="" readonly>
                     </div>
                     <hr>
                     <!-- table Project Leader -->
@@ -557,9 +551,33 @@
                 </div>
             </div>
         </div>
-
 <?php
     include 'footer.php';
 ?>
 <script src="footer.js"></script>
 <script src="generate_report.js"></script>
+<script>
+  setProgram();
+
+  function setProgram() {
+    var campus = document.getElementById("campus").value;
+    var college = document.getElementById("department").value;
+    console.log(campus);
+    console.log(college);
+
+    var getProgram = new XMLHttpRequest();
+    getProgram.open("GET", "getprogram.php?campus=" + campus + "&college=" + college);
+    getProgram.send();
+    getProgram.onload = function() {
+      var college = document.getElementById("program");
+      college.innerHTML = "";
+      var college_array = JSON.parse(this.responseText);
+      college_array.forEach(function(element) {
+        var option = document.createElement("option");
+        option.value = element;
+        option.innerHTML = element;
+        college.appendChild(option);
+      });
+    }
+  }
+</script>

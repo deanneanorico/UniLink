@@ -21,8 +21,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Unilink</title>
-    <link rel="shortcut icon" type="image/png" href="../Unilink/BSU.png" alt="Logo" />
+    <title>Unilink - Head/VCDEA</title>
+    <link rel="shortcut icon" type="image/png" href="../imgs/BSU.png" alt="Logo" />
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
@@ -37,9 +37,9 @@
       <!-- Sidebar -->
       <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index2.php">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
           <img src="..\imgs\BSU.png" width="50" height="45">
-          <div class="sidebar-brand-text mx-3">UNILINK</div>
+          <div class="sidebar-brand-text mx-3">UniLink</div>
         </a>
         <!-- Divider -->
         <hr class="sidebar-divider my-0">
@@ -50,34 +50,17 @@
             <span>Dashboard</span>
           </a>
         </li>
-        <!-- Nav Item - Pages Collapse Menu -->
-        <li class="nav-item active">
-          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-            <i class="fas fa-university"></i>
-            <span>University Setup</span>
+                <li class="nav-item">
+          <a class="nav-link" href="announcement.php">
+            <i class="bi bi-megaphone"></i>
+            <span>Announcements</span>
           </a>
-          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-              <a class="collapse-item" href="office.php">Office</a>
-              <a class="collapse-item" href="campus.php">Campus</a>
-              <a class="collapse-item" href="college.php">College</a>
-              <a class="collapse-item" href="program.php">Program</a>
-            </div>
-          </div>
         </li>
-        <!-- Nav Item - Pages Collapse Menu -->
-        <li class="nav-item">
-          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSettings" aria-expanded="true" aria-controls="collapseSettings">
-            <i class="fas fa-tools"></i>
-            <span>Other Settings</span>
+        <li class="nav-item active">
+          <a class="nav-link" href="act_proposal.php">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Activity Monitoring</span>
           </a>
-          <div id="collapseSettings" class="collapse" aria-labelledby="headingSettings" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-              <a class="collapse-item" href="#">Budget Source</a>
-              <a class="collapse-item" href="#">External Affairs Agenda</a>
-              <a class="collapse-item" href="#">Activity Rank</a>
-            </div>
-          </div>
         </li>
         <!-- Divider -->
         <hr class="sidebar-divider">
@@ -132,12 +115,21 @@
               <!-- Nav Item - User Information -->
               <li class="nav-item dropdown no-arrow">
                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <?php
+                      $id = $_SESSION['id'];
+                      include '../db.php';
+
+                      $sql = "SELECT * FROM `users` WHERE `id` = '$id'";
+                      $result = $conn->query($sql);
+                      $row = $result->fetch_assoc();
+                  ?>
+                  <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?=$row['first_name']." ".$row['last_name']?></span>
                   <span class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
-                  <img class="img-profile rounded-circle" src="imgs/undraw_profile_3.svg">
+                  <img class="img-profile rounded-circle" src="imgs/BSU.png">
                 </a>
                 <!-- Dropdown - User Information -->
                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                  <a class="dropdown-item" href="a-profile.php">
+                  <a class="dropdown-item" href="ea_profile.php">
                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Profile </a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
@@ -148,81 +140,7 @@
           </nav>
           <!-- End of Topbar -->
           <!-- Begin Page Content -->
-          <!-- table modal -->
-          <div class="container">
-            <!--button for create college-->
-            <div class="d-flex justify-content-between align-items-center">
-                        <h3 class="h3 mb-0 text-gray-800"></h3>
-                        <div class="d-flex">
-                        <button type="button" class="btn btn btn-primary" data-toggle="modal" data-target="#addmodal">
-              <i class="fas fa-plus"></i> Create Campus </button>
-            </div>
-            </div>
-            
-            <table class="table table hover table-bordered">
-              <br>
-              <tr>
-                <th>#</th>
-                <th>Campus</th>
-                <th>Address</th>
-                <th>Action</th>
-              </tr>
-              <tr>
-                <td>
-                <td>
-                <td>
-                  <!--button for create campus-->
-<!--                   </button>
-                  <button class="btn btn-primary fas fa-edit"></button>
-                  <button class="btn btn-danger fas fa-trash-alt"></button>
- -->                </td>
-              </tr>
-            </table>
-          </div>
-          <div class="modal fade" id="addmodal" tabindex="-1" role="dialog" aria-labelledby="addmodallabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="addmodallabel">Add Campus</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <!-- Form Fields-->
-                  <form action="" method="post">
-                    <div class="form-group">
-                      <label>Campus</label>
-                      <input type="text" class="form-control">
-                    </div>
-                    <div class="form-group">
-                      <label>Address</label>
-                      <input type="text" class="form-control">
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                      <button type="submit" class="btn btn-primary">Add</button>
-                    </div>
-                  </form>
-                  <!--form ends-->
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Begin Page Content -->
-          <div class="container-fluid">
-            <!-- Page Heading -->
-            <!-- Content Row -->
-            <div class="row">
-              <!-- Content Column -->
-              <div class="col-lg-6 mb-4"></div>
-              <div class="col-lg-6 mb-4"></div>
-            </div>
-          </div>
-          <!-- /.container-fluid -->
-        </div>
-        </div>
-          </div>
+          
           <!-- /.container-fluid -->
         </div>
         <!-- End of Main Content -->

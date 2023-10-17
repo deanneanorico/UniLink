@@ -50,7 +50,7 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
                 <img src="..\imgs\BSU.png" height="45" width="50"> 
-                <div class="sidebar-brand-text mx-3">UNILINK</div>
+                <div class="sidebar-brand-text mx-3">UniLink</div>
             </a>
             
             <!-- Divider -->
@@ -151,7 +151,8 @@
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="ui-profile.php">
-                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                                    
+                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>
@@ -178,23 +179,21 @@
                                     <li class="nav-item">
                                         <a class="nav-link active" id="tab1" data-toggle="tab" href="#content1">Profile</a>
                                     </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" id="tab2" data-toggle="tab" href="#content2">Activities</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" id="tab3" data-toggle="tab" href="#content3">Requirements</a>
-                                    </li>
                                 </ul>
                                 
                                 <div class="tab-content mt-3">
                                     <div class="tab-pane fade show active" id="content1">
                                         <p></p>
-                                    </div>
-                                    <div class="tab-pane fade" id="content2">
-                                        <p></p>
-                                    </div>
-                                    <div class="tab-pane fade" id="content3">
-                                        <p></p>
+                                        <?php
+                                      $id = $_SESSION['id'];
+                                      include '../db.php';
+
+                                      $sql = "SELECT * FROM `users` WHERE `id` = '$id'";
+                                      $result = $conn->query($sql);
+                                      $row = $result->fetch_assoc();
+                                  ?>
+                          <span class="text-black-600 large"><?=$row['title']." ".$row['first_name']." ".$row['last_name']?></span>
+                                    
                                     </div>
                                 </div>
                             </div>

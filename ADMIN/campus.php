@@ -46,7 +46,6 @@
   </head>
   <body id="page-top"> 
     <?php 
-      session_start();
       include 'db.php';
 
       if(isset($_POST['addcampus']))
@@ -124,26 +123,21 @@
       }
             
     ?>
-    <!-- Success Alert
-    <div class="alert alert-success alert-dismissible fade show" role="alert" id="successAlert" style="display: none;"><strong>Success!</strong> Campus added successfully. <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>
-    // Error Alert
-    <div class="alert alert-danger alert-dismissible fade show" role="alert" id="errorAlert" style="display: none;"><strong>Error!</strong> Failed to add campus. <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div> -->
-    <!-- Page Wrapper -->
     <div id="wrapper">
       <!-- Sidebar -->
       <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index2.php">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
           <img src="..\imgs\BSU.png" width="50" height="45">
           <div class="sidebar-brand-text mx-3">UniLink</div>
         </a>
         <!-- Divider -->
+        <!-- Divider -->
         <hr class="sidebar-divider my-0">
-        <!-- Nav Item - Dashboard -->
         <li class="nav-item">
-          <a class="nav-link" href="index.php">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Dashboard</span>
+          <a class="nav-link" href="main_user_management.php">
+            <i class="bi bi-person-video3"></i>
+            <span>Account Management</span>
           </a>
         </li>
         <!-- Nav Item - Pages Collapse Menu -->
@@ -154,24 +148,11 @@
           </a>
           <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-              <a class="collapse-item" href="univ.php">University</a>
               <a class="collapse-item" href="campus.php">Campus</a>
               <a class="collapse-item" href="college.php">College</a>
               <a class="collapse-item" href="program.php">Program</a>
             </div>
           </div>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="announcement.php">
-            <i class="bi bi-megaphone"></i>
-            <span>Announcements</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="main_user_management.php">
-            <i class="bi bi-person-video3"></i>
-            <span> Account Management</span>
-          </a>
         </li>
         <!-- Divider -->
         <hr class="sidebar-divider">
@@ -226,7 +207,7 @@
               <!-- Nav Item - User Information -->
               <li class="nav-item dropdown no-arrow">
                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <span class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
+                  <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin</span>
                   <img class="img-profile rounded-circle" src="imgs/undraw_profile_3.svg">
                 </a>
                 <!-- Dropdown - User Information -->
@@ -257,6 +238,7 @@
                   <table id="myTable" class="table display" data-ordering="true" data-paging="true" data-searching="true">
                     <thead>
                       <tr>
+                        <th>No.</th>
                         <th>Campus</th>
                         <th>Address</th>
                         <th>Action</th>
@@ -266,13 +248,15 @@
                     <?php
                       $query = "SELECT * FROM campus";
                       $sql = mysqli_query($conn, $query);
+                      $count = 1;
                       while ($row = mysqli_fetch_array($sql)) { 
                     ?> 
                       <tr>
+                        <td><?=$count?></td>
                         <td> <?php echo $row["campus_name"]; ?> </td>
                         <td> <?php echo $row["address"]; ?> </td>
                         <td>
-                          <a class="editCampus" data-toggle="modal" data-target="#editCampusModal" id="editCampus" onclick="setData(`<?=$row['campus_name']?>`, `<?=$row['address']?>`)">
+                          <a class="editCampus" data-toggle="modal" data-target="#editCampusModal" id="editCampus" onclick="setData(`<?=$row['id']?>`, `<?=$row['campus_name']?>`, `<?=$row['address']?>`)">
                             <i class='fas fa-edit text-success'></i>
                           </a>
                           <a href="campus.php?id=<?php echo $row['id']; ?>" onClick="return confirm('Are you sure you want to delete?')" name="delcampus">
@@ -281,8 +265,10 @@
                         </td>
                       </tr> 
                     <?php 
+                        $count++;
                       } 
                     ?> 
+
                     </tbody>
                     <!-- <tfoot></tfoot> -->
                   </table>
@@ -332,11 +318,11 @@
                         <input type="hidden" name="upid" id="upid" class="form-control" placeholder="" required>
                         <div class="form-group">
                           <label for="campus_name">Campus</label>
-                          <input type="text" name="upCampus" id="upCampus" class="form" placeholder="" required>
+                          <input type="text" name="upCampus" id="upCampus" class="form-control" placeholder="" required>
                         </div>
                         <div class="form-group">
                           <label for="address">Address</label>
-                          <input type="text" name="upAddress" id="upAddress" class="form" placeholder="" required>
+                          <input type="text" name="upAddress" id="upAddress" class="form-control" placeholder="" required>
                         </div>
                       </div>
                       <div class="modal-footer">
@@ -411,7 +397,7 @@
         //Take the data from the TR during the event button
         $('table').on('click', 'a.editCampus', function(ele) {
           //the 
-          < tr > variable is use to set the parentNode from "ele
+          < tr > variable is use to set the parentNode from "ele"
           var tr = ele.target.parentNode.parentNode;
           //I get the value from the cells (td) using the parentNode (var tr)
           var id = tr.cells[0].textContent;

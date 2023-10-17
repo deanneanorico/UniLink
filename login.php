@@ -26,6 +26,8 @@
           session_start();
           $_SESSION['id'] = $row['id'];
           $_SESSION['privelege'] = $row['privelege'];
+          $_SESSION['campus'] = $row['campus'];
+          $_SESSION['college'] = $row['college'];
 
           if($row['privelege'] == "Faculty" || $row['privelege'] == "Associate Dean" || $row['privelege'] == "Dean") {
             header("location: ./faculty_assocdean");

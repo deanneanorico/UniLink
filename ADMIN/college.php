@@ -38,26 +38,36 @@
     <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
     <script>
       $(document).ready(function() {
-        $('#myTable').DataTable();
+        $('#collegeTable').DataTable();
       });
     </script>
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
   </head>
   <body id="page-top"> <?php 
-            session_start();
             include 'db.php';
 
-            if(isset($_POST['addcampus']))
+            if(isset($_GET['deletecollege'])) {
+              $id = $_GET['deletecollege'];
+
+              $sql = "DELETE FROM `college` WHERE `collegeID` = '$id'";
+              $result = $conn->query($sql);
+
+              header("location: ./college.php");
+              exit();
+            }
+
+            if(isset($_POST['addcollege']))
             {    
                 $campus_name = $_POST['campus_name'];
-                $address = $_POST['address'];
+                $college = $_POST['college'];
+                $abbreviation = $_POST['abbreviation'];
 
-                $sql = "INSERT INTO campus (campus_name, address) VALUES (?, ?)";
+                $sql = "INSERT INTO college (name, abbreviation, campusID) VALUES (?, ?, ?)";
                 $stmt = mysqli_prepare($conn, $sql);
 
                 if ($stmt) {
-                    mysqli_stmt_bind_param($stmt, "ss", $campus_name, $address);
+                    mysqli_stmt_bind_param($stmt, "sss", $college, $abbreviation, $campus_name);
                     if (mysqli_stmt_execute($stmt)) {
                         // Insert successful
                     } else {
@@ -66,7 +76,25 @@
                     mysqli_stmt_close($stmt);
                 }
                         
-            }
+            } else if(isset($_POST['updateCollege'])) {
+                $id = $_POST['upid'];
+                $campus_name = $_POST['upCampus'];
+                $college = $_POST['upCollege'];
+                $abbv = $_POST['upAbbv'];
+
+                $sql = "UPDATE `college` SET `name`= ?,`abbreviation`= ? WHERE `collegeID` = ?";
+                $stmt = mysqli_prepare($conn, $sql);
+
+                if ($stmt) {
+                    mysqli_stmt_bind_param($stmt, "sss", $college, $abbv, $id);
+                    if (mysqli_stmt_execute($stmt)) {
+                        // Insert successful
+                    } else {
+                        // Insert failed
+                    }
+                    mysqli_stmt_close($stmt);
+                }
+              }
 
             else if(isset($_GET['id']))
             {
@@ -122,26 +150,21 @@
               }
             
         ?>
-    <!-- Success Alert
-    <div class="alert alert-success alert-dismissible fade show" role="alert" id="successAlert" style="display: none;"><strong>Success!</strong> Campus added successfully. <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>
-    // Error Alert
-    <div class="alert alert-danger alert-dismissible fade show" role="alert" id="errorAlert" style="display: none;"><strong>Error!</strong> Failed to add campus. <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div> -->
-    <!-- Page Wrapper -->
     <div id="wrapper">
       <!-- Sidebar -->
       <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index2.php">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
           <img src="..\imgs\BSU.png" width="50" height="45">
           <div class="sidebar-brand-text mx-3">UniLink</div>
         </a>
         <!-- Divider -->
+        <!-- Divider -->
         <hr class="sidebar-divider my-0">
-        <!-- Nav Item - Dashboard -->
         <li class="nav-item">
-          <a class="nav-link" href="index.php">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Dashboard</span>
+          <a class="nav-link" href="main_user_management.php">
+            <i class="bi bi-person-video3"></i>
+            <span>Account Management</span>
           </a>
         </li>
         <!-- Nav Item - Pages Collapse Menu -->
@@ -152,24 +175,11 @@
           </a>
           <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-              <a class="collapse-item" href="office.php">University</a>
               <a class="collapse-item" href="campus.php">Campus</a>
               <a class="collapse-item" href="college.php">College</a>
               <a class="collapse-item" href="program.php">Program</a>
             </div>
           </div>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="main_user_management.php">
-            <i class="bi bi-megaphone"></i>
-            <span>Announcements</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="main_user_management.php">
-            <i class="bi bi-person-video3"></i>
-            <span> Account Management</span>
-          </a>
         </li>
         <!-- Divider -->
         <hr class="sidebar-divider">
@@ -224,7 +234,7 @@
               <!-- Nav Item - User Information -->
               <li class="nav-item dropdown no-arrow">
                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <span class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
+                  <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin</span>
                   <img class="img-profile rounded-circle" src="imgs/undraw_profile_3.svg">
                 </a>
                 <!-- Dropdown - User Information -->
@@ -245,16 +255,17 @@
             <div class="d-flex justify-content-between align-items-center mb-4">
               <h3 class="h3 mb-0 text-gray-800">College</h3>
               <div class="d-flex">
-                <a class="btn btn-primary rounded-fill" data-toggle="modal" data-target="#addcampus">
+                <a class="btn btn-primary rounded-fill" data-toggle="modal" data-target="#addcollege">
                   <i class="fas fa-plus"></i> Add College </a>
               </div>
             </div>
             <div class="card">
               <div class="card-body">
                 <div class="table">
-                  <table id="myTable" class="table display" data-ordering="true" data-paging="true" data-searching="true">
+                  <table id="collegeTable" class="table display" data-ordering="true" data-paging="true" data-searching="true">
                     <thead>
                       <tr>
+                        <th>No.</th>
                         <th>Campus</th>
                         <th>College</th>
                         <th>Abbreviation</th>
@@ -262,31 +273,40 @@
                       </tr>
                     </thead>
                     <tbody> <?php
-                    $query = "SELECT college.name, college.abbreviation, campus.campus_name
+                    $query = "SELECT college.collegeID, college.name, college.college_abbrev, campus.campus_name
                               FROM college
                               JOIN campus ON college.campusID = campus.id";
                     $sql = mysqli_query($conn, $query);
+                    $count = 1;
                     while ($row = mysqli_fetch_array($sql)) { ?> <tr>
+                        <td><?=$count?></td>
                         <td> <?php echo $row["campus_name"]; ?> </td>
                         <td> <?php echo $row["name"]; ?> </td>
-                        <td> <?php echo $row["abbreviation"]; ?> </td>
+                        <td> <?php echo $row["college_abbrev"]; ?> </td>
                         <td>
-                          <a class="editCollege" data-toggle="modal" data-target="#editCollegeModal" id="editCollege" >
+                          <a class="editCollege" data-toggle="modal" data-target="#editCollegeModal" id="editCollege" onclick="setData(`<?=$row['collegeID']?>`, `<?=$row['campus_name']?>`, `<?=$row['name']?>`, `<?=$row['college_abbrev']?>`)">
                             <i class='fas fa-edit text-success'></i>
+                          </a>
+                          <a href="college.php?deletecollege=<?=$row['collegeID']?>" onClick="return confirm('Are you sure you want to delete?')" name="delcampus">
+                            <i class="fas fa-trash text-danger"></i>
                           </a>
                           <!-- <a href="college.php?id=<?php echo $row['id']; ?>" onClick="return confirm('Are you sure you want to delete?')" name="delcollege">
                             <i class="fas fa-trash text-danger"></i>
                           </a> -->
                          
                         </td>
-                      </tr> <?php 
-                  } 
-                  ?> </tbody>
+                      </tr> 
+                      <?php 
+                        $count++;
+                      } 
+                      ?>
+                      </tbody>
                     <!-- <tfoot></tfoot> -->
                   </table>
                 </div>
               </div>
-              <div class="modal fade" id="addcampus" tabindex="-1" role="dialog" aria-labelledby="addmodallabel" aria-hidden="true">
+            </div>
+              <div class="modal fade" id="addcollege" tabindex="-1" role="dialog" aria-labelledby="addmodallabel" aria-hidden="true">
                 <!-- Modal content goes here -->
                 <div class="modal-dialog">
                   <div class="modal-content">
@@ -302,62 +322,75 @@
                       <div class="modal-body">
                         <div class="form-group">
                           <label for="campus_name">Campus</label>
-                          <select class="form-control">
+                          <select class="form-control" name="campus_name">
                             <?php
                               $sql = "SELECT * FROM `campus`";
                               $result = $conn->query($sql);
                               while($row = $result->fetch_assoc()){
                             ?>
-                                <option value="<?=$row['campus_name']?>"><?=$row['campus_name']?></option>
+                                <option value="<?=$row['id']?>"><?=$row['campus_name']?></option>
                             <?php    
                               }
                             ?>
                           </select>
                         </div>
                         <div class="form-group">
-                          <label for="campus_name">Abbreviation</label>
-                          <input type="text" name="campus_name" class="form-control" placeholder="" required>
+                          <label for="abbreviation">Abbreviation</label>
+                          <input type="text" name="abbreviation" class="form-control" placeholder="" required>
                         </div>
                         <div class="form-group">
-                          <label for="address">College</label>
-                          <input type="text" name="address" class="form-control" placeholder="" required>
+                          <label for="college">College</label>
+                          <input type="text" name="college" class="form-control" placeholder="" required>
                         </div>
                       </div>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary" name="addcampus">Add</button>
+                        <button type="submit" class="btn btn-primary" name="addcollege">Add</button>
                       </div>
                     </form>
                     <!-- Form ends -->
                   </div>
                 </div>
               </div>
-<!--               <div class="modal fade" id="editCampusModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal fade" id="editCollegeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">Edit Campus</h5>
+                      <h5 class="modal-title" id="exampleModalLabel">Edit College</h5>
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">&times;</button>
                     </div>
-                    <form action="#" method="POST" id="updateCampusModal">
+                    <form action="#" method="POST" id="updateCollegeModal">
                       <div class="modal-body">
-                        <input type="hidden" name="upid" id="upid" class="form-control" placeholder="" required>
                         <div class="form-group">
                           <label for="campus_name">Campus</label>
-                          <input type="text" name="upCampus" id="upCampus" class="form-control" placeholder="" required>
+                          <select class="form-control" name="upCampus" id="upCampus">
+                            <?php
+                              $sql = "SELECT * FROM `campus`";
+                              $result = $conn->query($sql);
+                              while($row = $result->fetch_assoc()){
+                            ?>
+                                <option value="<?=$row['id']?>"><?=$row['campus_name']?></option>
+                            <?php    
+                              }
+                            ?>
+                          </select>
+                        </div>  
+                         <div class="form-group">
+                          <label for="abbreviation">Abbreviation</label>
+                          <input type="text" name="upAbbv" id="upAbbv" class="form-control" placeholder="" required>
                         </div>
                         <div class="form-group">
-                          <label for="address">Address</label>
-                          <input type="text" name="upAddress" id="upAddress" class="form-control" placeholder="" required>
+                          <label for="college">College</label>
+                          <input type="text" name="upCollege" id="upCollege" class="form-control" placeholder="" required>
                         </div>
                       </div>
                       <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary" name="updateCampus">Save</button>
+                        <button type="submit" class="btn btn-primary" name="updateCollege">Save</button>
                       </div>
                     </form>
                   </div>
                 </div>
-              </div> -->
+              </div>           
             </div>
           </div>
           <!-- Begin Page Content -->
@@ -443,10 +476,11 @@
     <?php
     // include 'footer.php';
     ?> <script>
-      function setData(q, w, r) {
+      function setData(q, w, r, t) {
         document.getElementById('upid').value = q;
         document.getElementById('upCampus').value = w;
-        document.getElementById('upAddress').value = r;
+        document.getElementById('upCollege').value = r;
+        document.getElementById('upAbbv').value = t;
       }
     </script>
   </body>

@@ -1,5 +1,6 @@
 <?php
   session_start();
+  include 'db.php';
 
   if(!isset($_SESSION['id'])) {
     header("location: ../");
@@ -42,11 +43,10 @@
         </a>
         <!-- Divider -->
         <hr class="sidebar-divider my-0">
-        <!-- Nav Item - Dashboard -->
         <li class="nav-item active">
-          <a class="nav-link" href="index.php">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Dashboard</span>
+          <a class="nav-link" href="main_user_management.php">
+            <i class="bi bi-person-video3"></i>
+            <span>Account Management</span>
           </a>
         </li>
         <!-- Nav Item - Pages Collapse Menu -->
@@ -57,24 +57,11 @@
           </a>
           <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-              <a class="collapse-item" href="univ.php">University</a>
               <a class="collapse-item" href="campus.php">Campus</a>
               <a class="collapse-item" href="college.php">College</a>
               <a class="collapse-item" href="program.php">Program</a>
             </div>
           </div>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="announcement.php">
-            <i class="bi bi-megaphone"></i>
-            <span>Announcements</span>
-          </a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="user_management.php">
-            <i class="bi bi-person-video3"></i>
-            <span>Account Management</span>
-          </a>
         </li>
         <!-- Divider -->
         <hr class="sidebar-divider">
@@ -129,7 +116,7 @@
               <!-- Nav Item - User Information -->
               <li class="nav-item dropdown no-arrow">
                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <span class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
+                  <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin</span>
                   <img class="img-profile rounded-circle" src="imgs/undraw_profile_3.svg">
                 </a>
                 <!-- Dropdown - User Information -->
@@ -199,6 +186,33 @@
                       <div class="form-group">
                         <label for="input6">Email</label>
                         <input type="text" class="form-control" id="email" name="email">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="form-group sex">
+                        <label for="campus">Campus</label>
+                        <select class="form-control" id="campus" name="campus" onchange="setDepartment()">
+                            <option selected>-- Select Campus --</option>
+                            <?php
+                              $sql = "SELECT * FROM `campus`";
+                              $result = $conn->query($sql);
+                              while($row = $result->fetch_assoc()){
+                            ?>
+                              <option value="<?=$row['campus_name']?>"><?=$row['campus_name']?></option>
+                            <?php
+                              }
+                            ?>
+                          </select>
+                      </div>
+                    </div>
+                    <div class="col-md-8">
+                      <div class="form-group">
+                          <label for="college">College</label>
+                          <select class="form-control" name="department" id="department" onchange="setProgram()" required>
+                            <!-- LIST OF DEPARTMENTS/COLLEGES -->
+                          </select>
                       </div>
                     </div>
                   </div>
@@ -297,3 +311,23 @@
     <script src="js/demo/chart-pie-demo.js"></script>
   </body>
 </html>
+<script>
+  function setDepartment() {
+    var campus = document.getElementById("campus").value;
+
+    var getCollege = new XMLHttpRequest();
+    getCollege.open("GET", "getcampus.php?college=" + campus);
+    getCollege.send();
+    getCollege.onload = function() {
+      var college = document.getElementById("department");
+      college.innerHTML = "";
+      var college_array = JSON.parse(this.responseText);
+      college_array.forEach(function(element) {
+        var option = document.createElement("option");
+        option.value = element;
+        option.innerHTML = element;
+        college.appendChild(option);
+      });
+    }
+  }
+</script>
