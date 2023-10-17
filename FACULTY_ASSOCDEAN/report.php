@@ -35,6 +35,7 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <!-- Latest compiled JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
@@ -389,21 +390,19 @@
                   <div id="step3" style="display: none;">
                     <div class="form-group">
                       <label for="rationale">Participants</label>
-                      <div>
                         <textarea class="form-control" id="editor1" name="rationale" rows="3"></textarea>
-                      </div>
                     </div>
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="startDate">Start Date</label>
-                          <input type="date" id="date" name="start_date" class="form-control" required>
+                          <input type="date" id="date" name="start_date" class="form-control">
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="endDate">End Date</label>
-                          <input type="date" id="date" name="end_date" class="form-control" required>
+                          <input type="date" id="date" name="end_date" class="form-control">
                         </div>
                       </div>
                     </div>
@@ -412,13 +411,10 @@
                       <button type="button" class="btn btn-primary" id="nextStep3">Next</button>
                     </div>
                   </div>
-                  </div>
                   <div id="step4" style="display: none;">
                   <div class="form-group">
-                      <label for="rationale">Objectives</label>
-                      <div>
-                        <textarea class="form-control" id="editor2" name="objectives" rows="3"></textarea>
-                      </div>
+                      <label for="objectives">Objectives</label>
+                        <textarea class="form-control" id="editor2" name="objectives" rows="1"></textarea>
                     </div>
                     <div class="text-right mt-4">
                       <button type="button" class="btn btn-secondary" id="prevStep4">Previous</button>
@@ -427,7 +423,7 @@
                   </div>
                   <div id="step5" style="display: none;">
                     <div class="form-group">
-                      <label for="objectives">Overview of the Activity</label>
+                      <label for="overview">Overview of the Activity</label>
                       <textarea class="form-control" id="editor3" name="overview" rows="6"></textarea>
                     </div>
                     <div class="text-right mt-4">
@@ -436,13 +432,11 @@
                     </div>
                   </div>
                   <div id="step6" style="display: none;">
-                    <div class="form-group">
-                      <label for="objectives">Documentation</label>
-                      <textarea class="form-control" id="editor2" name="objectives" rows="6"></textarea>
-                    </div>
+                   <div class="form-group">
+                  
                     <div class="text-right mt-4">
                       <button type="button" class="btn btn-secondary" id="prevStep6">Previous</button>
-                      <input type="submit" name="submit" class="submit btn btn-primary" value="Submit">
+                      <input type="submit" name="submit" class="submit btn btn-primary" value="Download PDF">
                     </div>
                   </div>
 

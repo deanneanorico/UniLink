@@ -845,9 +845,22 @@ function populateDropdown(data) {
 }
 
 </script>
+    <script>
+        document.getElementById("uploadButton").addEventListener("click", function () {
+            let fileInput = document.getElementById("fileInput");
+            let fileList = document.getElementById("fileList");
+            
+            for (let i = 0; i < fileInput.files.length; i++) {
+                let file = fileInput.files[i];
+                let fileName = file.name;
+                let fileSize = (file.size / 1024).toFixed(2) + " KB";
 
-
-
+                let fileItem = document.createElement("div");
+                fileItem.innerHTML = `<strong>${fileName}</strong> (${fileSize})`;
+                fileList.appendChild(fileItem);
+            }
+        });
+    </script>
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -867,8 +880,5 @@ function populateDropdown(data) {
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap4.min.js"></script>
-    
-
-
 </body>
 </html>
