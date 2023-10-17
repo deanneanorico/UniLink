@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 15, 2023 at 01:13 PM
+-- Generation Time: Oct 17, 2023 at 04:16 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.2.0
 
@@ -49,7 +49,9 @@ CREATE TABLE `activityform` (
 --
 
 INSERT INTO `activityform` (`id`, `activity_title`, `campus`, `college`, `program`, `partner_type`, `partner`, `start_date`, `end_date`, `rationale`, `objective`, `budget`) VALUES
-('9cfad68e-62a3-11ee-9903-b42e99640312', 'Graduation Disco Party', 'ARASOF', 'CICS', 'Bachelor of Science in Information Technology', 'International', 'Global University Network for Innovation', '2023-12-24', '2023-12-30', '<p>Alak Ingredients</p>', '<p>Pulutan Ingredients</p>', 'Fund of University');
+('1b6f8d0f-6be9-11ee-b322-f80dac465db8', 'Seminar of Waste Disposal', 'ARASOF-Nasugbu', 'College of Accountancy, Business, Economics, International Hospitality Management', 'Bachelor of Science in Accountancy', 'Local', 'Municipal Agriculture Office/Fishery Unit-Nasugbu', '2023-10-01', '2023-10-07', '<p>Lorem ipsum dolor sit amet. Ab dignissimos fuga eos asperiores doloribus qui impedit nihil aut deleniti natus ad soluta autem ea incidunt quod eum officia amet. Vel ratione totam ut velit voluptas hic aliquid dolores in quasi omnis cum similique maxime rem minima iste aut blanditiis expedita?</p><p>Non architecto quas aut provident odio qui quia modi. Quo accusantium error et repellendus aliquam est praesentium voluptas aut totam obcaecati ab galisum perferendis ea incidunt eligendi est nemo quibusdam? Non assumenda quam At galisum sapiente sed nostrum numquam. Et labore accusamus et fugit maiores aut delectus accusamus ea esse quis in minus omnis est quam dolor.</p><p>Et quisquam totam a eligendi assumenda ut aliquam quibusdam sed enim similique. Quo earum nemo quo quae omnis aut facere atque ut consectetur ullam et architecto rerum eum perferendis voluptas. Sit porro magnam non rerum nihil id voluptas atque.</p>', '<p>Lorem ipsum dolor sit amet. Ab dignissimos fuga eos asperiores doloribus qui impedit nihil aut deleniti natus ad soluta autem ea incidunt quod eum officia amet. Vel ratione totam ut velit voluptas hic aliquid dolores in quasi omnis cum similique maxime rem minima iste aut blanditiis expedita?</p><p>Non architecto quas aut provident odio qui quia modi. Quo accusantium error et repellendus aliquam est praesentium voluptas aut totam obcaecati ab galisum perferendis ea incidunt eligendi est nemo quibusdam? Non assumenda quam At galisum sapiente sed nostrum numquam. Et labore accusamus et fugit maiores aut delectus accusamus ea esse quis in minus omnis est quam dolor.</p><p>Et quisquam totam a eligendi assumenda ut aliquam quibusdam sed enim similique. Quo earum nemo quo quae omnis aut facere atque ut consectetur ullam et architecto rerum eum perferendis voluptas. Sit porro magnam non rerum nihil id voluptas atque.</p>', 'Fund Partner Agency'),
+('27c05737-6cf2-11ee-9abb-b42e99640312', 'test', 'ARASOF-Nasugbu', 'College of Informatics and Computing Sciences', 'Bachelor of Science in Information Technology', 'International', 'Philippine National IT Standards Foundation', '2023-10-17', '2023-10-17', '<p>asdf</p>', '<p>asdf</p>', ''),
+('9cfad68e-62a3-11ee-9903-b42e99640312', 'Graduation Disco Party', 'ARASOF-Nasugbu', 'College of Informatics and Computing Sciences', 'Bachelor of Science in Information Technology', 'International', 'Philippine National IT Standards Foundation', '2023-07-30', '2023-07-31', '<p>Alak Ingredients</p>', '<p>Pulutan Ingredients</p>', 'Fund of University');
 
 -- --------------------------------------------------------
 
@@ -68,9 +70,12 @@ CREATE TABLE `activity_representatives` (
 --
 
 INSERT INTO `activity_representatives` (`id`, `activityform_id`, `role`) VALUES
-('93f8d767-64b7-11ee-9b05-b42e99640312', '9cfad68e-62a3-11ee-9903-b42e99640312', 'Project Leader/s'),
-('93f8dd36-64b7-11ee-9b05-b42e99640312', '9cfad68e-62a3-11ee-9903-b42e99640312', 'Project Member/s'),
-('93f8e3aa-64b7-11ee-9b05-b42e99640312', '9cfad68e-62a3-11ee-9903-b42e99640312', 'Project Staff');
+('1b6f9dec-6be9-11ee-b322-f80dac465db8', '1b6f8d0f-6be9-11ee-b322-f80dac465db8', 'Project Leader/s'),
+('1b6fa8bd-6be9-11ee-b322-f80dac465db8', '1b6f8d0f-6be9-11ee-b322-f80dac465db8', 'Project Member/s'),
+('27c05beb-6cf2-11ee-9abb-b42e99640312', '27c05737-6cf2-11ee-9abb-b42e99640312', 'Project Leader/s'),
+('27c05e58-6cf2-11ee-9abb-b42e99640312', '27c05737-6cf2-11ee-9abb-b42e99640312', 'Project Member/s'),
+('5072df9a-6cbb-11ee-b322-f80dac465db8', '9cfad68e-62a3-11ee-9903-b42e99640312', 'Project Member/s'),
+('5072ecc3-6cbb-11ee-b322-f80dac465db8', '9cfad68e-62a3-11ee-9903-b42e99640312', 'Project Staff');
 
 -- --------------------------------------------------------
 
@@ -90,25 +95,13 @@ CREATE TABLE `activity_representatives_responsibilities` (
 --
 
 INSERT INTO `activity_representatives_responsibilities` (`id`, `activity_representatives_id`, `responsibilities_id`, `responsibility`) VALUES
-('93fc8757-64b7-11ee-9b05-b42e99640312', '93f8d767-64b7-11ee-9b05-b42e99640312', 'cbc44eca-5318-11ee-aea5-0a0027000002', 'Coordinate with the coorperating agency/resource persons'),
-('93fcc61a-64b7-11ee-9b05-b42e99640312', '93f8d767-64b7-11ee-9b05-b42e99640312', 'cbc44ded-5318-11ee-aea5-0a0027000002', 'Monitor the flow of the training'),
-('93fd4623-64b7-11ee-9b05-b42e99640312', '93f8dd36-64b7-11ee-9b05-b42e99640312', 'cbc44f0f-5318-11ee-aea5-0a0027000002', 'Assist the project leader in the planning, implementation, monitoring and evaluation of the project'),
-('93fdcfa6-64b7-11ee-9b05-b42e99640312', '93f8e3aa-64b7-11ee-9b05-b42e99640312', NULL, 'Taga collect ng funds para sa alak at pulutan'),
-('93fe137c-64b7-11ee-9b05-b42e99640312', '93f8e3aa-64b7-11ee-9b05-b42e99640312', NULL, 'Taga bili ng alak at pulutan'),
-('93fe54ac-64b7-11ee-9b05-b42e99640312', '93f8e3aa-64b7-11ee-9b05-b42e99640312', NULL, 'Taga timpla ng alak'),
-('93fe8be9-64b7-11ee-9b05-b42e99640312', '93f8e3aa-64b7-11ee-9b05-b42e99640312', NULL, 'Taga luto ng pulutan');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `admin_acc`
---
-
-CREATE TABLE `admin_acc` (
-  `id` int(50) NOT NULL,
-  `user_id` varchar(50) NOT NULL,
-  `password` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+('1b78b545-6be9-11ee-b322-f80dac465db8', '1b6f9dec-6be9-11ee-b322-f80dac465db8', 'cbc44ded-5318-11ee-aea5-0a0027000002', 'Monitor the flow of the training'),
+('1b79eefd-6be9-11ee-b322-f80dac465db8', '1b6f9dec-6be9-11ee-b322-f80dac465db8', 'cbc44e89-5318-11ee-aea5-0a0027000002', 'Prepare project/activity proposal'),
+('507c027c-6cbb-11ee-b322-f80dac465db8', '5072df9a-6cbb-11ee-b322-f80dac465db8', 'cbc44f0f-5318-11ee-aea5-0a0027000002', 'Assist the project leader in the planning, implementation, monitoring and evaluation of the project'),
+('507de0e7-6cbb-11ee-b322-f80dac465db8', '5072ecc3-6cbb-11ee-b322-f80dac465db8', NULL, 'Taga collect ng funds para sa alak at pulutan'),
+('507e93f9-6cbb-11ee-b322-f80dac465db8', '5072ecc3-6cbb-11ee-b322-f80dac465db8', NULL, 'Taga bili ng alak at pulutan'),
+('507f134b-6cbb-11ee-b322-f80dac465db8', '5072ecc3-6cbb-11ee-b322-f80dac465db8', NULL, 'Taga timpla ng alak'),
+('50800d7e-6cbb-11ee-b322-f80dac465db8', '5072ecc3-6cbb-11ee-b322-f80dac465db8', NULL, 'Taga luto ng pulutan');
 
 -- --------------------------------------------------------
 
@@ -130,11 +123,13 @@ CREATE TABLE `budget` (
 --
 
 INSERT INTO `budget` (`id`, `activityform_id`, `item_description`, `quantity`, `unit_cost`, `total`) VALUES
-('94000346-64b7-11ee-9b05-b42e99640312', '9cfad68e-62a3-11ee-9903-b42e99640312', 'GSM Blue Mojito', 25, 125, 3125),
-('94002d89-64b7-11ee-9b05-b42e99640312', '9cfad68e-62a3-11ee-9903-b42e99640312', 'Lime Juice', 25, 89, 2225),
-('940057b5-64b7-11ee-9b05-b42e99640312', '9cfad68e-62a3-11ee-9903-b42e99640312', 'Gin Bilog', 25, 75, 1875),
-('94007f03-64b7-11ee-9b05-b42e99640312', '9cfad68e-62a3-11ee-9903-b42e99640312', 'Sizzling Sisig', 25, 80, 2000),
-('9400b8a3-64b7-11ee-9b05-b42e99640312', '9cfad68e-62a3-11ee-9903-b42e99640312', 'Tokwa baboy', 25, 50, 1250);
+('1b7dd049-6be9-11ee-b322-f80dac465db8', '1b6f8d0f-6be9-11ee-b322-f80dac465db8', 'water', 100, 20, 2000),
+('1b7e8d9a-6be9-11ee-b322-f80dac465db8', '1b6f8d0f-6be9-11ee-b322-f80dac465db8', 'sandwich ', 100, 15, 1500),
+('50823656-6cbb-11ee-b322-f80dac465db8', '9cfad68e-62a3-11ee-9903-b42e99640312', 'Gin Bilog', 25, 75, 1875),
+('5082707a-6cbb-11ee-b322-f80dac465db8', '9cfad68e-62a3-11ee-9903-b42e99640312', 'Sizzling Sisig', 25, 80, 2000),
+('5082a5a3-6cbb-11ee-b322-f80dac465db8', '9cfad68e-62a3-11ee-9903-b42e99640312', 'Tokwa baboy', 25, 50, 1250),
+('5082f054-6cbb-11ee-b322-f80dac465db8', '9cfad68e-62a3-11ee-9903-b42e99640312', 'water', 56, 78, 4368),
+('50833aed-6cbb-11ee-b322-f80dac465db8', '9cfad68e-62a3-11ee-9903-b42e99640312', 'water', 45, 67, 3015);
 
 -- --------------------------------------------------------
 
@@ -174,7 +169,7 @@ INSERT INTO `campus` (`id`, `campus_name`, `address`) VALUES
 CREATE TABLE `college` (
   `collegeID` int(11) NOT NULL,
   `name` varchar(255) DEFAULT NULL,
-  `abbreviation` varchar(50) DEFAULT NULL,
+  `college_abbrev` varchar(50) DEFAULT NULL,
   `campusID` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -182,26 +177,125 @@ CREATE TABLE `college` (
 -- Dumping data for table `college`
 --
 
-INSERT INTO `college` (`collegeID`, `name`, `abbreviation`, `campusID`) VALUES
-(1, 'College of Informatic and Sciences', 'CICS', 5),
-(2, 'College of Arts and Sciences', 'CAS', 8);
+INSERT INTO `college` (`collegeID`, `name`, `college_abbrev`, `campusID`) VALUES
+(1, 'College of Informatics and Computing Sciences', 'CICS', 5),
+(12, 'College of Accountancy, Business, Economics, International Hospitality Management', 'CABEIHM', 5),
+(13, 'College of Arts and Sciences', 'CAS', 5),
+(14, 'College of Nursing and Allied Health Sciences', 'CONAHS', 5),
+(15, 'College of Teacher Education', 'CTE', 5);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `faculty`
+-- Table structure for table `narrative_report`
 --
 
-CREATE TABLE `faculty` (
-  `facultyID` int(100) NOT NULL,
-  `title` varchar(50) NOT NULL,
-  `first_name` varchar(50) NOT NULL,
-  `mid_name` varchar(50) NOT NULL,
-  `last_name` varchar(50) NOT NULL,
-  `sex` varchar(50) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `pass` varchar(100) NOT NULL
+CREATE TABLE `narrative_report` (
+  `id` varchar(255) NOT NULL,
+  `activityform_id` varchar(255) NOT NULL,
+  `activity_name` varchar(255) NOT NULL,
+  `sponsor` longtext NOT NULL,
+  `participants` longtext NOT NULL,
+  `start_date` date NOT NULL,
+  `end_date` date NOT NULL,
+  `objectives` longtext NOT NULL,
+  `overview` longtext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `narrative_report`
+--
+
+INSERT INTO `narrative_report` (`id`, `activityform_id`, `activity_name`, `sponsor`, `participants`, `start_date`, `end_date`, `objectives`, `overview`) VALUES
+('32a41bdf-6ce7-11ee-9abb-b42e99640312', '9cfad68e-62a3-11ee-9903-b42e99640312', 'Test Activity Title', '<p>Test Sponsor</p>', '<p>Test Participants</p>', '2002-09-23', '2002-09-23', '<p>Test Objectives</p>', '<p>Test Overview</p>'),
+('8799184e-6ce7-11ee-9abb-b42e99640312', '9cfad68e-62a3-11ee-9903-b42e99640312', 'Test Activity Title', '<p>Test Sponsor</p>', '<p>Test Participants</p>', '2002-09-23', '2002-09-23', '<p>Test Objectives</p>', '<p>Test Overview</p>');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `narrative_report_representative`
+--
+
+CREATE TABLE `narrative_report_representative` (
+  `id` varchar(255) NOT NULL,
+  `narrative_report_id` varchar(255) NOT NULL,
+  `role` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `narrative_report_representative`
+--
+
+INSERT INTO `narrative_report_representative` (`id`, `narrative_report_id`, `role`) VALUES
+('32a4217d-6ce7-11ee-9abb-b42e99640312', '32a41bdf-6ce7-11ee-9abb-b42e99640312', 'Project Leader/s'),
+('32a42b5c-6ce7-11ee-9abb-b42e99640312', '32a41bdf-6ce7-11ee-9abb-b42e99640312', 'Project Member/s'),
+('87991dc1-6ce7-11ee-9abb-b42e99640312', '8799184e-6ce7-11ee-9abb-b42e99640312', 'Project Leader/s'),
+('87992006-6ce7-11ee-9abb-b42e99640312', '8799184e-6ce7-11ee-9abb-b42e99640312', 'Project Member/s');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `narrative_report_representative_list`
+--
+
+CREATE TABLE `narrative_report_representative_list` (
+  `id` varchar(255) NOT NULL,
+  `narrative_report_representative_id` varchar(255) NOT NULL,
+  `representative_roles_id` varchar(255) DEFAULT NULL,
+  `name` varchar(100) NOT NULL,
+  `designation` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `narrative_report_representative_list`
+--
+
+INSERT INTO `narrative_report_representative_list` (`id`, `narrative_report_representative_id`, `representative_roles_id`, `name`, `designation`) VALUES
+('32a5b836-6ce7-11ee-9abb-b42e99640312', '32a4217d-6ce7-11ee-9abb-b42e99640312', NULL, 'Dr. Lorissa Joanna Buenas', 'CICS Dean'),
+('32a5f4b8-6ce7-11ee-9abb-b42e99640312', '32a4217d-6ce7-11ee-9abb-b42e99640312', NULL, 'Asst. Prof. Renz Mervin A. Salac', 'Chief Proponent and Faculty Member CICS'),
+('32a7b809-6ce7-11ee-9abb-b42e99640312', '32a42b5c-6ce7-11ee-9abb-b42e99640312', NULL, 'Ako', 'Student'),
+('32a7ec89-6ce7-11ee-9abb-b42e99640312', '32a42b5c-6ce7-11ee-9abb-b42e99640312', NULL, 'Deanne Bulilit', 'Student'),
+('32a83032-6ce7-11ee-9abb-b42e99640312', '32a42b5c-6ce7-11ee-9abb-b42e99640312', NULL, 'Dudoy', 'Student'),
+('32a86670-6ce7-11ee-9abb-b42e99640312', '32a42b5c-6ce7-11ee-9abb-b42e99640312', NULL, 'Duday', 'Student'),
+('32a89a29-6ce7-11ee-9abb-b42e99640312', '32a42b5c-6ce7-11ee-9abb-b42e99640312', NULL, 'Joe Honey', 'Student'),
+('32a8d073-6ce7-11ee-9abb-b42e99640312', '32a42b5c-6ce7-11ee-9abb-b42e99640312', NULL, 'Joy-lyn', 'Student'),
+('879aca53-6ce7-11ee-9abb-b42e99640312', '87991dc1-6ce7-11ee-9abb-b42e99640312', NULL, 'Dr. Lorissa Joanna Buenas', 'CICS Dean'),
+('879b0ad0-6ce7-11ee-9abb-b42e99640312', '87991dc1-6ce7-11ee-9abb-b42e99640312', NULL, 'Asst. Prof. Renz Mervin A. Salac', 'Chief Proponent and Faculty Member CICS'),
+('879c5fd1-6ce7-11ee-9abb-b42e99640312', '87992006-6ce7-11ee-9abb-b42e99640312', NULL, 'Ako', 'Student'),
+('879c8f08-6ce7-11ee-9abb-b42e99640312', '87992006-6ce7-11ee-9abb-b42e99640312', NULL, 'Deanne Bulilit', 'Student'),
+('879cce80-6ce7-11ee-9abb-b42e99640312', '87992006-6ce7-11ee-9abb-b42e99640312', NULL, 'Dudoy', 'Student'),
+('879d03af-6ce7-11ee-9abb-b42e99640312', '87992006-6ce7-11ee-9abb-b42e99640312', NULL, 'Duday', 'Student'),
+('879d49c0-6ce7-11ee-9abb-b42e99640312', '87992006-6ce7-11ee-9abb-b42e99640312', NULL, 'Joe Honey', 'Student'),
+('879d9457-6ce7-11ee-9abb-b42e99640312', '87992006-6ce7-11ee-9abb-b42e99640312', NULL, 'Joy-lyn', 'Student');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `narrative_report_responsibilities_list`
+--
+
+CREATE TABLE `narrative_report_responsibilities_list` (
+  `id` varchar(255) NOT NULL,
+  `narrative_report_representative_id` varchar(255) NOT NULL,
+  `responsibilities_id` varchar(255) DEFAULT NULL,
+  `responsibility` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `narrative_report_responsibilities_list`
+--
+
+INSERT INTO `narrative_report_responsibilities_list` (`id`, `narrative_report_representative_id`, `responsibilities_id`, `responsibility`) VALUES
+('32a50d6d-6ce7-11ee-9abb-b42e99640312', '32a4217d-6ce7-11ee-9abb-b42e99640312', 'cbc44eca-5318-11ee-aea5-0a0027000002', 'Coordinate with the coorperating agency/resource persons'),
+('32a64208-6ce7-11ee-9abb-b42e99640312', '32a42b5c-6ce7-11ee-9abb-b42e99640312', NULL, 'Taga collect ng funds para sa alak at pulutan'),
+('32a6c036-6ce7-11ee-9abb-b42e99640312', '32a42b5c-6ce7-11ee-9abb-b42e99640312', NULL, 'Taga bili ng alak at pulutan'),
+('32a742cc-6ce7-11ee-9abb-b42e99640312', '32a42b5c-6ce7-11ee-9abb-b42e99640312', NULL, 'Taga timpla ng alak'),
+('32a78122-6ce7-11ee-9abb-b42e99640312', '32a42b5c-6ce7-11ee-9abb-b42e99640312', NULL, 'Taga luto ng pulutan'),
+('879a4889-6ce7-11ee-9abb-b42e99640312', '87991dc1-6ce7-11ee-9abb-b42e99640312', 'cbc44eca-5318-11ee-aea5-0a0027000002', 'Coordinate with the coorperating agency/resource persons'),
+('879b47b6-6ce7-11ee-9abb-b42e99640312', '87992006-6ce7-11ee-9abb-b42e99640312', NULL, 'Taga collect ng funds para sa alak at pulutan'),
+('879b832b-6ce7-11ee-9abb-b42e99640312', '87992006-6ce7-11ee-9abb-b42e99640312', NULL, 'Taga bili ng alak at pulutan'),
+('879bf8f2-6ce7-11ee-9abb-b42e99640312', '87992006-6ce7-11ee-9abb-b42e99640312', NULL, 'Taga timpla ng alak'),
+('879c302e-6ce7-11ee-9abb-b42e99640312', '87992006-6ce7-11ee-9abb-b42e99640312', NULL, 'Taga luto ng pulutan');
 
 -- --------------------------------------------------------
 
@@ -220,13 +314,47 @@ CREATE TABLE `partners` (
 --
 
 INSERT INTO `partners` (`id`, `category`, `name`) VALUES
-(1, 'Local', 'Jabez Medical Center'),
-(2, 'International', 'Philippine National IT Standards Foundation'),
-(3, 'International', 'Global University Network for Innovation'),
-(4, 'International', 'Hospitality Institute of America-Philippines Inc.'),
-(5, 'Local', 'Department of Information and Communications Technology'),
-(6, 'Local', 'Municipal Disaster Risk Reduction and Management Office(MDRRMO)-Nasugbu'),
-(7, 'Local', 'Municipal Agriculture Office/Fishery Unit-Nasugbu');
+(1, 'International', 'Philippine National IT Standards Foundation'),
+(2, 'Local', 'Canyon Cove'),
+(3, 'Local', 'Municipality of Lian'),
+(4, 'International', 'Global University Network for Innovation'),
+(5, 'International', 'Hospitality Institute of America-Philippines Inc.');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `program`
+--
+
+CREATE TABLE `program` (
+  `id` int(11) NOT NULL,
+  `campus_id` int(11) NOT NULL,
+  `college_id` int(11) NOT NULL,
+  `abbreviation` varchar(50) NOT NULL,
+  `program` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `program`
+--
+
+INSERT INTO `program` (`id`, `campus_id`, `college_id`, `abbreviation`, `program`) VALUES
+(3, 5, 1, 'BSIT', 'Bachelor of Science in Information Technology'),
+(7, 5, 12, 'BSA', 'Bachelor of Science in Accountancy'),
+(8, 5, 12, 'BSMA', 'Bachelor of Science in Management Accounting'),
+(9, 5, 12, 'BSBA', 'Bachelor of Science in Business Administration'),
+(10, 5, 12, 'BSHM', 'Bachelor of Science in Hospitality Management'),
+(11, 5, 12, 'BSTM', 'Bachelor of Science in Tourism Management'),
+(12, 5, 13, 'BAC', 'Bachelor of Arts in Communication'),
+(13, 5, 13, 'BSP', 'Bachelor of Science in Psychology'),
+(14, 5, 13, 'BSFT', 'Bachelor of Science in Food Technology'),
+(15, 5, 13, 'BSC', 'Bachelor of Science in Criminology'),
+(16, 5, 13, 'BSFAS', 'Bachelor of Science in Fisheries and Aquatic Sciences'),
+(17, 5, 14, 'BSN', 'Bachelor of Science in Nursing'),
+(18, 5, 14, 'BSND', 'Bachelor of Science in Nutrition and Dietetics'),
+(19, 5, 15, 'BEED', 'Bachelor of Elementary Education'),
+(20, 5, 15, 'BPED', 'Bachelor of Physical Education'),
+(21, 5, 15, 'BSED', 'Bachelor of Secondary Education');
 
 -- --------------------------------------------------------
 
@@ -247,14 +375,16 @@ CREATE TABLE `representatives` (
 --
 
 INSERT INTO `representatives` (`id`, `activity_representatives_id`, `representative_roles_id`, `name`, `designation`) VALUES
-('93fd0d08-64b7-11ee-9b05-b42e99640312', '93f8d767-64b7-11ee-9b05-b42e99640312', '56347f84-5318-11ee-aea5-0a0027000002', 'Dr. Enrico M. Dalangin', 'Chancellor'),
-('93fd8a4b-64b7-11ee-9b05-b42e99640312', '93f8dd36-64b7-11ee-9b05-b42e99640312', NULL, 'Dr. Lorissa Joanna Buenas', 'CICS Dean'),
-('93fed44b-64b7-11ee-9b05-b42e99640312', '93f8e3aa-64b7-11ee-9b05-b42e99640312', NULL, 'Ako', 'Student'),
-('93ff1fc9-64b7-11ee-9b05-b42e99640312', '93f8e3aa-64b7-11ee-9b05-b42e99640312', NULL, 'Deanne Bulilit', 'Student'),
-('93ff5142-64b7-11ee-9b05-b42e99640312', '93f8e3aa-64b7-11ee-9b05-b42e99640312', NULL, 'Dudoy', 'Student'),
-('93ff7fd9-64b7-11ee-9b05-b42e99640312', '93f8e3aa-64b7-11ee-9b05-b42e99640312', NULL, 'Duday', 'Student'),
-('93ffb634-64b7-11ee-9b05-b42e99640312', '93f8e3aa-64b7-11ee-9b05-b42e99640312', NULL, 'Joe Honey', 'Student'),
-('93ffd6fe-64b7-11ee-9b05-b42e99640312', '93f8e3aa-64b7-11ee-9b05-b42e99640312', NULL, 'Joy-lyn', 'Student');
+('1b7be79b-6be9-11ee-b322-f80dac465db8', '1b6f9dec-6be9-11ee-b322-f80dac465db8', '56347d5f-5318-11ee-aea5-0a0027000002', 'Dr. Expedito V. Acorda', 'Chancellor'),
+('1b7d108c-6be9-11ee-b322-f80dac465db8', '1b6f9dec-6be9-11ee-b322-f80dac465db8', '56347d89-5318-11ee-aea5-0a0027000002', 'Dr. Rosalinda M. Comia', 'Campus Director'),
+('507cc403-6cbb-11ee-b322-f80dac465db8', '5072df9a-6cbb-11ee-b322-f80dac465db8', NULL, 'Dr. Lorissa Joanna Buenas', 'CICS Dean'),
+('507d7e9b-6cbb-11ee-b322-f80dac465db8', '5072df9a-6cbb-11ee-b322-f80dac465db8', NULL, 'Asst. Prof. Renz Mervin A. Salac', 'Chief Proponent and Faculty Member CICS'),
+('50806107-6cbb-11ee-b322-f80dac465db8', '5072ecc3-6cbb-11ee-b322-f80dac465db8', NULL, 'Ako', 'Student'),
+('5080c3f3-6cbb-11ee-b322-f80dac465db8', '5072ecc3-6cbb-11ee-b322-f80dac465db8', NULL, 'Deanne Bulilit', 'Student'),
+('508118b6-6cbb-11ee-b322-f80dac465db8', '5072ecc3-6cbb-11ee-b322-f80dac465db8', NULL, 'Dudoy', 'Student'),
+('508153fb-6cbb-11ee-b322-f80dac465db8', '5072ecc3-6cbb-11ee-b322-f80dac465db8', NULL, 'Duday', 'Student'),
+('5081a709-6cbb-11ee-b322-f80dac465db8', '5072ecc3-6cbb-11ee-b322-f80dac465db8', NULL, 'Joe Honey', 'Student'),
+('5081e4ee-6cbb-11ee-b322-f80dac465db8', '5072ecc3-6cbb-11ee-b322-f80dac465db8', NULL, 'Joy-lyn', 'Student');
 
 -- --------------------------------------------------------
 
@@ -348,6 +478,8 @@ CREATE TABLE `users` (
   `last_name` varchar(100) NOT NULL,
   `sex` varchar(25) NOT NULL,
   `email` varchar(100) NOT NULL,
+  `campus` varchar(255) NOT NULL,
+  `college` varchar(255) NOT NULL,
   `pass` varchar(255) NOT NULL,
   `privelege` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -356,9 +488,11 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `title`, `first_name`, `mid_name`, `last_name`, `sex`, `email`, `pass`, `privelege`) VALUES
-(3, 'Asst. Prof.', 'Renz Mervin', 'A.', 'Salac', 'Male', 'renz.mervin@g.batstate-u.edu.ph', '$2y$10$owmi.rVuyCCuvhj5ZGQjtOFMgHaeirledv.YUfeUjdI6wfj3xSZpy', 'Faculty'),
-(4, 'Mr.', 'Carl Joriz Mickeal', 'Sale', ' Marasigan', 'Male', 'carl.marasigan@g.batstate-u.edu.ph', '$2y$10$eODH06bH0BUNmkauACNxY.E6AWwmnyJqX005kZVjOVbyi3AhE9sxS', 'Admin');
+INSERT INTO `users` (`id`, `title`, `first_name`, `mid_name`, `last_name`, `sex`, `email`, `campus`, `college`, `pass`, `privelege`) VALUES
+(7, 'Asst. Prof.', 'Renz Mervin', 'A.', 'Salac', 'Male', 'renz.mervin@g.batstate-u.edu.ph', 'ARASOF-Nasugbu', 'College of Informatics and Computing Sciences', '$2y$10$rbFxMWen7a7QZJcTztgQRuf4/AmxWQAmIXIYFIP4TMSe5R16k41Pu', 'Faculty'),
+(8, 'Ms.', 'Ma. Deanne Grace', 'Galima', 'Anorico', 'Female', 'deanne.anorico@g.batstate-u.edu.ph', 'ARASOF-Nasugbu', 'College of Informatics and Computing Sciences', '$2y$10$n4FDvQri0mnqedbLljmGhe7YSQ.NSLDpLCNXBrOCgenXOs0VWupM6', 'Admin'),
+(10, 'Dr.', 'Lorissa Joana ', 'E.', 'Buenas', 'Female', 'lorissa.joana@g.batstate-u.edu.ph', 'ARASOF-Nasugbu', 'College of Informatics and Computing Sciences', '$2y$10$SS1Dg5ptcWcoKdD1UwGcru8bRR7GSUirGB/RPikQyQQ18Ba7z9CA6', 'Dean'),
+(11, 'Ms.', 'Meg', '', 'Perea', 'Female', 'meg.perea@g.batstate-u.edu.ph', 'ARASOF-Nasugbu', 'College of Informatics and Computing Sciences', '$2y$10$annAKGwAxDJavv9f1Jaxb.6OTWYgAg8sJgvBLaTXqV7Jrgut9PoJm', 'Head');
 
 --
 -- Indexes for dumped tables
@@ -386,12 +520,6 @@ ALTER TABLE `activity_representatives_responsibilities`
   ADD KEY `responsibilities_id` (`responsibilities_id`);
 
 --
--- Indexes for table `admin_acc`
---
-ALTER TABLE `admin_acc`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `budget`
 --
 ALTER TABLE `budget`
@@ -412,16 +540,48 @@ ALTER TABLE `college`
   ADD KEY `campusID` (`campusID`);
 
 --
--- Indexes for table `faculty`
+-- Indexes for table `narrative_report`
 --
-ALTER TABLE `faculty`
-  ADD PRIMARY KEY (`facultyID`);
+ALTER TABLE `narrative_report`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `activityform_id` (`activityform_id`);
+
+--
+-- Indexes for table `narrative_report_representative`
+--
+ALTER TABLE `narrative_report_representative`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `narrative_report_id` (`narrative_report_id`);
+
+--
+-- Indexes for table `narrative_report_representative_list`
+--
+ALTER TABLE `narrative_report_representative_list`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `narrative_report_representative_id` (`narrative_report_representative_id`),
+  ADD KEY `representative_roles_id` (`representative_roles_id`);
+
+--
+-- Indexes for table `narrative_report_responsibilities_list`
+--
+ALTER TABLE `narrative_report_responsibilities_list`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `narrative_report_representative_id` (`narrative_report_representative_id`),
+  ADD KEY `responsibilities_id` (`responsibilities_id`);
 
 --
 -- Indexes for table `partners`
 --
 ALTER TABLE `partners`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `program`
+--
+ALTER TABLE `program`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `campus_id` (`campus_id`),
+  ADD KEY `college_id` (`college_id`);
 
 --
 -- Indexes for table `representatives`
@@ -454,28 +614,16 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT for table `admin_acc`
---
-ALTER TABLE `admin_acc`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `campus`
 --
 ALTER TABLE `campus`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `college`
 --
 ALTER TABLE `college`
-  MODIFY `collegeID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `faculty`
---
-ALTER TABLE `faculty`
-  MODIFY `facultyID` int(100) NOT NULL AUTO_INCREMENT;
+  MODIFY `collegeID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `partners`
@@ -484,10 +632,16 @@ ALTER TABLE `partners`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
+-- AUTO_INCREMENT for table `program`
+--
+ALTER TABLE `program`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Constraints for dumped tables
@@ -517,6 +671,39 @@ ALTER TABLE `budget`
 --
 ALTER TABLE `college`
   ADD CONSTRAINT `college_ibfk_1` FOREIGN KEY (`campusID`) REFERENCES `campus` (`id`);
+
+--
+-- Constraints for table `narrative_report`
+--
+ALTER TABLE `narrative_report`
+  ADD CONSTRAINT `narrative_report_ibfk_1` FOREIGN KEY (`activityform_id`) REFERENCES `activityform` (`id`);
+
+--
+-- Constraints for table `narrative_report_representative`
+--
+ALTER TABLE `narrative_report_representative`
+  ADD CONSTRAINT `narrative_report_representative_ibfk_1` FOREIGN KEY (`narrative_report_id`) REFERENCES `narrative_report` (`id`);
+
+--
+-- Constraints for table `narrative_report_representative_list`
+--
+ALTER TABLE `narrative_report_representative_list`
+  ADD CONSTRAINT `narrative_report_representative_list_ibfk_1` FOREIGN KEY (`narrative_report_representative_id`) REFERENCES `narrative_report_representative` (`id`),
+  ADD CONSTRAINT `narrative_report_representative_list_ibfk_2` FOREIGN KEY (`representative_roles_id`) REFERENCES `representative_roles` (`id`);
+
+--
+-- Constraints for table `narrative_report_responsibilities_list`
+--
+ALTER TABLE `narrative_report_responsibilities_list`
+  ADD CONSTRAINT `narrative_report_responsibilities_list_ibfk_1` FOREIGN KEY (`narrative_report_representative_id`) REFERENCES `narrative_report_representative` (`id`),
+  ADD CONSTRAINT `narrative_report_responsibilities_list_ibfk_2` FOREIGN KEY (`responsibilities_id`) REFERENCES `responsibilities` (`id`);
+
+--
+-- Constraints for table `program`
+--
+ALTER TABLE `program`
+  ADD CONSTRAINT `program_ibfk_1` FOREIGN KEY (`campus_id`) REFERENCES `campus` (`id`),
+  ADD CONSTRAINT `program_ibfk_2` FOREIGN KEY (`college_id`) REFERENCES `college` (`collegeID`);
 
 --
 -- Constraints for table `representatives`

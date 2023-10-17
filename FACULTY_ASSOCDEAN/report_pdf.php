@@ -40,6 +40,7 @@ class PDF extends FPDF
         $this->Ln(5);
         $this->SetFont('times', 'B', 12);
         $this->Cell(150, 0, '               College of Informatics and Computing Sciences', 0, 0, 'L');
+        $this->Ln(5);
     }
     function Footer()
     {
@@ -60,7 +61,7 @@ $pdf = new PDF('P', 'mm', 'Legal');
 
 $id = $_GET['id'];
 
-  $sql = "SELECT * FROM `activityform` WHERE `id` = '$id'";
+  $sql = "SELECT * FROM `narrative_report` WHERE `id` = '$id'";
   $result = $conn->query($sql);
  if ($row = mysqli_fetch_assoc($result)){
 
@@ -69,95 +70,96 @@ $id = $_GET['id'];
 $pdf->AliasNbPages();
 $pdf->AddPage();
 
-$pdf->Ln(10);
+$pdf->Ln(5);
 $pdf->SetFont('times','B',14);
-$pdf->Cell(200,10,"PROJECT PROPOSAL\n", 0,0, 'C');
+$pdf->Cell(200,10,"NARRATIVE REPORT", 0,0, 'C');
 
 $pdf->Ln(18);
 $pdf->SetFont('times','B',12);
-$pdf->Cell(100,7,"                 A. Title of the Project\n", 0,0, 'L');
-$pdf->Ln();
-$pdf->SetFont('times','',12);
-$pdf->SetX($pdf->GetX() - -18);
-$pdf->MultiCell(175,7, '         ' .$row['activity_title'], "0");
+$pdf->SetX($pdf->GetX() - -20);
+$pdf->Cell(100,7,"A.  Title of the Project", 0,0, 'L');
 
-$pdf->Ln(5);
+$pdf->Ln(10);
+$pdf->SetX($pdf->GetX() - -25);
+$pdf->SetFont('times','',12);
+$pdf->Cell(100,7,$row['activity_name'], 0,0, 'L');
+
+$pdf->Ln(10);
 $pdf->SetFont('times','B',12);
-$pdf->Cell(100,7,"                 B. Rationale\n", 0,0, 'L');
-$pdf->Ln();
-$pdf->SetFont('times','',12);
-$pdf->SetX($pdf->GetX() - -18);
-$pdf->MultiCell(175,7, '         '. str_replace('&nbsp;', '', strip_tags($row['rationale'])), "0");
+$pdf->SetX($pdf->GetX() - -20);
+$pdf->Cell(100,7,"B.  Sponsor or Host", 0,0, 'L');
 
-$pdf->Ln(5);
+$pdf->Ln(10);
+$pdf->SetX($pdf->GetX() - -25);
+$pdf->SetFont('times','',12);
+$pdf->Cell(100,7,str_replace('&nbsp;', '', strip_tags($row['sponsor'])), 0,0, 'L');
+
+$pdf->Ln(10);
 $pdf->SetFont('times','B',12);
-$pdf->Cell(100,7,"                 C. Objectives\n", 0,0, 'L');
-$pdf->Ln();
+$pdf->SetX($pdf->GetX() - -20);
+$pdf->Cell(100,7,"C.  Program / Project Implementers", 0,0, 'L');
+
+$pdf->Ln(10);
 $pdf->SetFont('times','',12);
-$pdf->SetX($pdf->GetX() - -18);
-$pdf->MultiCell(175,7, '         '. str_replace('&nbsp;', '', strip_tags($row['objective'])), "0");
-
-$pdf->Ln(5);
-$pdf->SetFont('times','B',12);
-$pdf->Cell(100,7,"                 D. Project Proponets\n", 0,0, 'L');
-$pdf->Ln();
-$pdf->SetFont('times','',12);
-$pdf->SetX($pdf->GetX() - -18);
-$pdf->MultiCell(175,7, '         '. str_replace('&nbsp;', '', strip_tags($row['objective'])), "0");
-
-$pdf->Ln(5);
-$pdf->SetFont('times','B',12);
-$pdf->Cell(100,7,"                 II. Project Duration\n", 0,0, 'L');
-$pdf->Ln();
-$pdf->SetFont('times','',12);
-$pdf->SetX($pdf->GetX() - -18);
-// Define and assign values to $start_date and $end_date
-$start_date = strtotime($row['start_date']);
-$end_date = strtotime($row['end_date']);
-
-// Modify the code to display the Preparation Period
-$pdf->MultiCell(175, 7, "         Preparation Period: " . date("F d, Y", $start_date) . " to " . date("F d, Y", $end_date), 0);
-
-
-$pdf->Ln(5);
-$pdf->SetFont('times','B',12);
-$pdf->Cell(100,7,"                 III. Funding Requirements\n", 0,0, 'L');
-$pdf->Ln();
-$pdf->SetFont('times','',12);
-$total;
-$sql = "SELECT COUNT(*) AS `total` FROM `budget` WHERE `activityform_id` = '$id'";
-$result = $conn->query($sql);
-if($row1 = $result->fetch_assoc()){
-  $total = $row1['total'];
-}
-$sql = "SELECT * FROM `budget` WHERE `activityform_id` = '$id'";
-$result = $conn->query($sql);
-$i = 1;
-while($row2 = $result->fetch_assoc()) {
-  if($i == $total) {
-    $pdf->SetX($pdf->GetX() - -27);
-    $pdf->Cell(100,7,$row2['item_description']."\n", 0,0, 'L');
-    $pdf->SetFont('times','U',12);
-    $pdf->Cell(100,7,$row2['total']."\n", 0,0, 'L');
-    $pdf->Ln();
-  } else {
-    $pdf->SetX($pdf->GetX() - -18);
-    $pdf->Cell(100,7,"         ".$row2['item_description']."\n", 0,0, 'L');
-    $pdf->Cell(100,7,"         ".$row2['total']."\n", 0,0, 'L');
-    $pdf->Ln();
+$sql = "SELECT * FROM `narrative_report_representative` WHERE `narrative_report_id` = '$id'";
+$result2 = $conn->query($sql);
+$first = true;
+$count = 1;
+while($row2 = $result2->fetch_assoc()) {
+  $id2 = $row2['id'];
+  $sql = "SELECT * FROM `narrative_report_representative_list` WHERE `narrative_report_representative_id` = '$id2'";
+  $result3 = $conn->query($sql);
+  while($row3 = $result3->fetch_assoc()) {
+    if($first) {
+      $first = !$first;
+    } else {
+      $pdf->Ln(7);
+    }
+    $pdf->SetX($pdf->GetX() - -25);
+    $pdf->Cell(100,7,$count . ". " . $row3['name'] . " - " . $row2['role'], 0,0, 'L');
+    $count++;
   }
-  $i++;
 }
+
+$pdf->Ln(10);
 $pdf->SetFont('times','B',12);
-$pdf->SetX($pdf->GetX() - -75);
-$pdf->Cell(100,7,"TOTAL: ", 0,0, 'L');
+$pdf->SetX($pdf->GetX() - -20);
+$pdf->Cell(100,7,"D.  Participants", 0,0, 'L');
+
+$pdf->Ln(10);
+$pdf->SetX($pdf->GetX() - -25);
+$pdf->SetFont('times','',12);
+$pdf->Cell(100,7,str_replace('&nbsp;', '', strip_tags($row['participants'])), 0,0, 'L');
+
+$pdf->Ln(10);
 $pdf->SetFont('times','B',12);
-$pdf->SetX($pdf->GetX() - 48);
-$sql = "SELECT SUM(`total`) AS `grand_total` FROM `budget` WHERE `activityform_id` = '$id'";
-$result = $conn->query($sql);
-if($row3 = $result->fetch_assoc()) {
-  $pdf->Cell(100,7,$row3['grand_total'], 0,0, 'L');
-}
+$pdf->SetX($pdf->GetX() - -20);
+$pdf->Cell(100,7,"E.  Duration / Date", 0,0, 'L');
+
+$pdf->Ln(10);
+$pdf->SetX($pdf->GetX() - -25);
+$pdf->SetFont('times','',12);
+$pdf->Cell(100,7,"Period: " . $row['start_date'] . " to " . $row['end_date'], 0,0, 'L');
+
+$pdf->Ln(10);
+$pdf->SetFont('times','B',12);
+$pdf->SetX($pdf->GetX() - -20);
+$pdf->Cell(100,7,"F.  Objectives", 0,0, 'L');
+
+$pdf->Ln(10);
+$pdf->SetX($pdf->GetX() - -25);
+$pdf->SetFont('times','',12);
+$pdf->Cell(100,7,str_replace('&nbsp;', '', strip_tags($row['objectives'])), 0,0, 'L');
+
+$pdf->Ln(10);
+$pdf->SetFont('times','B',12);
+$pdf->SetX($pdf->GetX() - -20);
+$pdf->Cell(100,7,"G.  Overview", 0,0, 'L');
+
+$pdf->Ln(10);
+$pdf->SetX($pdf->GetX() - -25);
+$pdf->SetFont('times','',12);
+$pdf->Cell(100,7,str_replace('&nbsp;', '', strip_tags($row['overview'])), 0,0, 'L');
 
 $pdf->Ln(15);
 $pdf->SetFont('times','',12);

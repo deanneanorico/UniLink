@@ -79,12 +79,12 @@ getProgram.onload = function() {
               drawBorder: false
             },
             ticks: {
-              maxTicksLimit: 7
+              maxTicksLimit: program.length
             }
           }],
           yAxes: [{
             ticks: {
-              maxTicksLimit: 3,
+              maxTicksLimit: Math.max(...programTotal),
               padding: 10,
               // Include a dollar sign in the ticks
               callback: function(value, index, values) {

@@ -102,8 +102,33 @@ $pdf->SetFont('times','B',12);
 $pdf->Cell(100,7,"                 D. Project Proponets\n", 0,0, 'L');
 $pdf->Ln();
 $pdf->SetFont('times','',12);
-$pdf->SetX($pdf->GetX() - -18);
-$pdf->MultiCell(175,7, '         '. str_replace('&nbsp;', '', strip_tags($row['objective'])), "0");
+$sql = "SELECT * FROM `activity_representatives` WHERE `activityform_id` = '$id'";
+$result2 = $conn->query($sql);
+while($row2 = $result2->fetch_assoc()) {
+  $pdf->SetX($pdf->GetX() - -27);
+  $pdf->MultiCell(175,7, $row2['role'], "0");
+
+  $id2 = $row2['id'];
+  $sql = "SELECT * FROM `representatives` WHERE `activity_representatives_id` = '$id2'";
+  $result3 = $conn->query($sql);
+  while($row3 = $result3->fetch_assoc()) {
+    $pdf->SetX($pdf->GetX() - -32);
+    $pdf->MultiCell(175,7, $row3['name'], "0");
+  }
+
+  $pdf->SetX($pdf->GetX() - -27);
+  $pdf->MultiCell(150,7, "Responsibilities:", "0");
+  
+  $sql = "SELECT * FROM `activity_representatives_responsibilities` WHERE `activity_representatives_id` = '$id2'";
+  $result3 = $conn->query($sql);
+  while($row3 = $result3->fetch_assoc()) {
+    $pdf->SetX($pdf->GetX() - -32);
+    $pdf->MultiCell(150,7, $row3['responsibility'], "0");
+  }
+
+  $pdf->SetX($pdf->GetX() - -27);
+  $pdf->MultiCell(150,7, "", "0");
+}
 
 $pdf->Ln(5);
 $pdf->SetFont('times','B',12);

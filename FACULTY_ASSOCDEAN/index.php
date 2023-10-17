@@ -110,7 +110,7 @@
                                 <?php
                                     $id = $_SESSION['id'];
 
-                                    $sql = "SELECT * FROM `users`";
+                                    $sql = "SELECT * FROM `users` WHERE `id` = '$id'";
                                     $result = $conn->query($sql);
                                     $row = $result->fetch_assoc();
                                 ?>
