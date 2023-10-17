@@ -189,7 +189,7 @@
                       </div>
                     </div>
                   </div>
-                  <div class="row">
+                  <div class="row" id="campus_n_college">
                     <div class="col-md-4">
                       <div class="form-group sex">
                         <label for="campus">Campus</label>
@@ -229,11 +229,12 @@
                     <div class="col-md-12">
                       <div class="form-group sex">
                         <label for="sex">Privelege</label>
-                        <select class="form-control" id="sex" name="privelege">
+                        <select class="form-control" id="privelege" name="privelege" onchange="setCampusCollageDrop()">
                           <option value="Admin">Admin</option>
                           <option value="Associate Dean">Associate Dean</option>
                           <option value="Dean">Dean</option>
                           <option value="Head">Head</option>
+                          <option value="VCDEA">VCDEA</option>
                           <option value="Faculty">Faculty</option>
                         </select>
                       </div>
@@ -312,6 +313,8 @@
   </body>
 </html>
 <script>
+  setCampusCollageDrop();
+  
   function setDepartment() {
     var campus = document.getElementById("campus").value;
 
@@ -328,6 +331,49 @@
         option.innerHTML = element;
         college.appendChild(option);
       });
+    }
+  }
+
+  function setCampusCollageDrop() {
+    var privelege = document.getElementById("privelege").value;
+
+    if(privelege == "Head" || privelege == "VCDEA" || privelege == "Admin") {
+      var campus = document.getElementById("campus");
+      campus.innerHTML = "";
+      var option = document.createElement("option");
+      option.value = "none";
+      option.innerHTML = "none";
+      campus.appendChild(option);
+
+      var college = document.getElementById("department");
+      college.innerHTML = "";
+      option = document.createElement("option");
+      option.value = "none";
+      option.innerHTML = "none";
+      college.appendChild(option);
+
+      document.getElementById("campus_n_college").style.display = "none";
+    } else {
+      var getCampus = new XMLHttpRequest();
+      getCampus.open("GET", "getcampuslist.php");
+      getCampus.send();
+      getCampus.onload = function() {
+        var campus = document.getElementById("campus");
+        campus.innerHTML = "";
+        var campus_array = JSON.parse(this.responseText);
+        var option = document.createElement("option");
+        option.value = "";
+        option.innerHTML = "-- Select Campus --";
+        campus.appendChild(option);
+        campus_array.forEach(function(element) {
+          option = document.createElement("option");
+          option.value = element;
+          option.innerHTML = element;
+          campus.appendChild(option);
+        });
+        setDepartment();
+      }
+      document.getElementById("campus_n_college").style.display = "flex";
     }
   }
 </script>

@@ -79,7 +79,7 @@ getProgram.onload = function() {
               drawBorder: false
             },
             ticks: {
-              maxTicksLimit: program.length
+              maxTicksLimit: 12
             }
           }],
           yAxes: [{
