@@ -148,22 +148,23 @@
           </nav>
           <!-- End of Topbar -->
           <!-- Begin Page Content -->
-          <form method="post" action="forms.php" id="inputForm">
-          <div class="container-fluid">
-            <nav aria-label="breadcrumb">
-              <ol class="breadcrumb">
-                <li class="breadcrumb-item">
-                  <a href="#">Narrative Report</a>
-                </li>
-                <li class="breadcrumb-item active" aria-current="page">Narrative Form</li>
-              </ol>
-            </nav>
-            <div class="progress">
-              <div class="progress-bar progress-bar active" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-            <div class="d-flex justify-content-between align-items-center mb-2"></div>
-            <div class="card">
-              <div class="card-body">
+          <form method="post" action="add.narrative.report.php" id="inputForm">
+            <input type="hidden" name="activityform_id" value="<?=$_GET['id']?>">
+            <div class="container-fluid">
+              <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item">
+                    <a href="#">Narrative Report</a>
+                  </li>
+                  <li class="breadcrumb-item active" aria-current="page">Narrative Form</li>
+                </ol>
+              </nav>
+              <div class="progress">
+                <div class="progress-bar progress-bar active" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <div class="d-flex justify-content-between align-items-center mb-2"></div>
+              <div class="card">
+                <div class="card-body">
                   <div id="step1">
                     <div class="form-group">
                       <label for="activityName">Activity Title</label>
@@ -178,7 +179,7 @@
                     </div>
                   </div>
                   <div id="step2" style="display: none;">
-                  <div class="justify-content-between">
+                    <div class="justify-content-between">
                       <div class="input-group contacts-search mb-4" style="display: flex; justify-content: space-between;">
                         <label>Roles</label>
                         <button style="margin-right: 30px;" type="button" onclick="addRoles()" class="btn btn-primary shadow btn-circle btn-sm">
@@ -190,36 +191,36 @@
                     <hr>
                     <!-- table Project Leader -->
                     <div class="table table-responsive">
-                        <div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                          <div class="modal-dialog modal-lg" role="document">
-                            <div class="modal-content">
-                              <div class="modal-header">
-                                <h5 class="modal-title">Add </h5>
-                                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                  <span aria-hidden="true">×</span>
-                                </button>
-                              </div>
-                              <div class="modal-body">
-                                <div class="card-body">
-                                  <div class="table-responsive">
-                                    <table id="example6" class="table header-border table-responsive-sm">
-                                      <thead>
-                                        <tr>
-                                          <th class="col-md-5" style="text-align: left;">Name</th>
-                                          <th class="col-md-6" style="text-align: left;">Designation</th>
-                                          <th class="col-md-2" style="text-align: right;">Action</th>
-                                        </tr>
-                                      </thead>
-                                      <tbody id="tbody_roles1"></tbody>
-                                        <!-- List Responsibility of Leader -->
-                                     </tbody>
-                                    </table>
-                                  </div>
+                      <div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title">Add </h5>
+                              <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <div class="card-body">
+                                <div class="table-responsive">
+                                  <table id="example6" class="table header-border table-responsive-sm">
+                                    <thead>
+                                      <tr>
+                                        <th class="col-md-5" style="text-align: left;">Name</th>
+                                        <th class="col-md-6" style="text-align: left;">Designation</th>
+                                        <th class="col-md-2" style="text-align: right;">Action</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody id="tbody_roles1"></tbody>
+                                    <!-- List Responsibility of Leader -->
+                                    </tbody>
+                                  </table>
                                 </div>
                               </div>
                             </div>
                           </div>
-                        </div> 
+                        </div>
+                      </div>
                       <div id="role1">
                         <table class="table header-border table-responsive-sm">
                           <div class="d-flex justify-content-between align-items-center flex-wrap">
@@ -249,7 +250,6 @@
                           </thead>
                           <tbody id="member1"></tbody>
                         </table>
-                       
                         <table class="table">
                           <thead>
                             <tr>
@@ -317,7 +317,8 @@
                               <th class="col-md-5" style="text-align: left;">Name</th>
                               <th class="col-md-6" style="text-align: left;">Designation</th>
                               <th class="col-md-2" style="padding-left: 0px;">
-                                <button type="button" name="addRole" class="btn btn-primary shadow btn-circle btn-sm" data-toggle="modal" data-target="#modal1" onclick="setSelectRole(2)">                                  <i class="fas fa-user-plus"></i>
+                                <button type="button" name="addRole" class="btn btn-primary shadow btn-circle btn-sm" data-toggle="modal" data-target="#modal1" onclick="setSelectRole(2)">
+                                  <i class="fas fa-user-plus"></i>
                                 </button>
                                 <button style="margin-left:1px;background: white;" type="button" name="addRole" class="btn btn-primary shadow btn-circle btn-sm" onclick="addCustomMember(2)">
                                   <i class="fas fa-plus" style="color: #1dbf1d"></i>
@@ -375,22 +376,21 @@
                             <!-- Added Responsibility of Leader -->
                           </tbody>
                         </table>
-                    </div>
-                    <hr>
-
-                    <div id="table_roles"></div>
-                    <div id="role_modal"></div>
-                    <div id="responsibility_modal"></div>
-                    <div class="text-right mt-4">
-                      <button type="button" class="btn btn-secondary" id="prevStep2">Previous</button>
-                      <button type="button" class="btn btn-primary" id="nextStep2">Next</button>
+                      </div>
+                      <hr>
+                      <div id="table_roles"></div>
+                      <div id="role_modal"></div>
+                      <div id="responsibility_modal"></div>
+                      <div class="text-right mt-4">
+                        <button type="button" class="btn btn-secondary" id="prevStep2">Previous</button>
+                        <button type="button" class="btn btn-primary" id="nextStep2">Next</button>
+                      </div>
                     </div>
                   </div>
-                </div>
                   <div id="step3" style="display: none;">
                     <div class="form-group">
                       <label for="rationale">Participants</label>
-                        <textarea class="form-control" id="editor1" name="rationale" rows="3"></textarea>
+                      <textarea class="form-control" id="editor1" name="participants" rows="3"></textarea>
                     </div>
                     <div class="row">
                       <div class="col-md-6">
@@ -412,9 +412,9 @@
                     </div>
                   </div>
                   <div id="step4" style="display: none;">
-                  <div class="form-group">
+                    <div class="form-group">
                       <label for="objectives">Objectives</label>
-                        <textarea class="form-control" id="editor2" name="objectives" rows="1"></textarea>
+                      <textarea class="form-control" id="editor2" name="objectives" rows="1"></textarea>
                     </div>
                     <div class="text-right mt-4">
                       <button type="button" class="btn btn-secondary" id="prevStep4">Previous</button>
@@ -432,29 +432,28 @@
                     </div>
                   </div>
                   <div id="step6" style="display: none;">
-                   <div class="form-group">
-                  
-                    <div class="text-right mt-4">
-                      <button type="button" class="btn btn-secondary" id="prevStep6">Previous</button>
-                      <input type="submit" name="submit" class="submit btn btn-primary" value="Download PDF">
+                    <div class="form-group">
+                      <div class="text-right mt-4">
+                        <button type="button" class="btn btn-secondary" id="prevStep6">Previous</button>
+                        <input type="submit" name="submit" class="submit btn btn-primary" value="Download PDF">
+                      </div>
                     </div>
                   </div>
-
+                </div>
+              </div>
+            
+              <!-- End of Main Content -->
+              <!-- Footer -->
+              <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                  <div class="copyright text-center my-auto">
+                    <span>Developed by Unilink 2023</span>
                   </div>
-                  </div>
-                  </div>
-                <!-- End of Main Content -->
-                <!-- Footer -->
-                <footer class="sticky-footer bg-white">
-                    <div class="container my-auto">
-                        <div class="copyright text-center my-auto">
-                            <span>Developed by Unilink 2023</span>
-                        </div>
-                    </div>
-                </footer>
-                <!-- End of Footer -->
-
+                </div>
+              </footer>
+              <!-- End of Footer -->
             </div>
+          </form>
             <!-- End of Content Wrapper -->
 
         <!-- End of Page Wrapper -->

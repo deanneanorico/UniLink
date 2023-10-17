@@ -111,6 +111,7 @@
                                       $id = $_SESSION['id'];
                                       include '../db.php';
 
+
                                       $sql = "SELECT * FROM `users` WHERE `id` = '$id'";
                                       $result = $conn->query($sql);
                                       $row = $result->fetch_assoc();

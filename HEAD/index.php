@@ -279,9 +279,9 @@
                     </div>
                     <div class="mt-4 text-center small">
                       <span class="mr-2">
-                        <i class="fas fa-circle text-primary"></i> Direct </span>
+                        <i class="fas fa-circle text-primary"></i> Local </span>
                       <span class="mr-2">
-                        <i class="fas fa-circle text-success"></i> Social </span>
+                        <i class="fas fa-circle text-success"></i> International </span>
                     </div>
                   </div>
                 </div>

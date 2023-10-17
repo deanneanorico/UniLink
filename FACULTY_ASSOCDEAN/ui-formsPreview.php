@@ -210,7 +210,7 @@
                                                 <span class='fas fa-edit text-secondary' title='Edit'></span>
                                             </a>
                                             <a href='pdf.php?id=". $row["id"]."' target='_blank' class='fas fa-file-download text-info' title='Request Form'></a>
-                                            <a href='report.php?id=" . $row['id'] . "' target='_blank' class='fas fa-clipboard text-success' title='Narrative Report'></a>
+                                            <a href='report.php?id=" . $row['id'] . "' class='fas fa-clipboard text-success' title='Narrative Report'></a>
                                         </td>
                                     ";
                                 } else {
