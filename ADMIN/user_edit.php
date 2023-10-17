@@ -49,14 +49,14 @@
         </a>
         <!-- Divider -->
         <hr class="sidebar-divider my-0">
-        <li class="nav-item">
+        <li class="nav-item active">
           <a class="nav-link" href="main_user_management.php">
             <i class="bi bi-person-video3"></i>
             <span>Account Management</span>
           </a>
         </li>
         <!-- Nav Item - Pages Collapse Menu -->
-        <li class="nav-item active">
+        <li class="nav-item">
           <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
             <i class="fas fa-university"></i>
             <span>University Setup</span>
@@ -198,7 +198,7 @@
                   </div>
                   <div class="row">
                     <div class="col-md-4">
-                      <div class="form-group sex">
+                      <div class="form-group campus">
                         <label for="campus">Campus</label>
                         <select class="form-control" id="campus" name="campus" onchange="setDepartment()">
                             <option selected><-- Select Campus --></option>
@@ -234,9 +234,9 @@
                   <!-- Admin Checkbox  -->
                   <div class="row">
                     <div class="col-md-12">
-                      <div class="form-group sex">
-                        <label for="sex">Privelege</label>
-                        <select class="form-control" id="sex" name="privelege">
+                      <div class="form-group privelege">
+                        <label for="privelege">Privelege</label>
+                        <select class="form-control" id="privelege" name="privelege">
                           <option value="Admin" <?php if($user_data['privelege'] == "Admin"){echo "selected";}?>>Admin</option>
                           <option value="Associate Dean" <?php if($user_data['privelege'] == "Associate Dean"){echo "selected";}?>>Associate Dean</option>
                           <option value="Dean" <?php if($user_data['privelege'] == "Dean"){echo "selected";}?>>Dean</option>
@@ -340,3 +340,4 @@
     }
   }
 </script>
+

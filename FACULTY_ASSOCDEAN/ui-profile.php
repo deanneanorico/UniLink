@@ -15,7 +15,6 @@
   }
 ?>
 <html lang="en">
-
 <head>
 
     <meta charset="utf-8">
@@ -23,9 +22,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <title>Unilink</title>
+
+    <title>UniLink - Faculty/Associate Dean</title>
     <link rel="shortcut icon" type="image/png" href="../imgs/BSU.png" alt="Logo" />
 
     <!-- Custom fonts for this template-->
@@ -33,6 +31,7 @@
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
@@ -49,14 +48,13 @@
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
-                <img src="..\imgs\BSU.png" height="45" width="50"> 
+                <img src="..\imgs\BSU.png" width="50" height="45">
                 <div class="sidebar-brand-text mx-3">UniLink</div>
             </a>
             
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
-            <!-- Nav Item - Dashboard -->
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
                 <a class="nav-link" href="index.php">
@@ -72,24 +70,17 @@
             <li class="nav-item">
                 <a class="nav-link" href="ui-announcement.php">
                     <i class="fas fa-fw fa-bullhorn"></i>
-                    <span>Announcements</span>
-                </a>
+                    <span>Announcements</span></a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="documents.php">
+                    <i class="bi bi-file-earmark-pdf"></i>
+                    <span>Supporting Documents</span></a>
+            </li> 
+            
+            <!-- Heading -->
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <!-- <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-calendar"></i>
-                    <span>Activity</span>
-                </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="ui-forms.php">Activity Form</a>
-                        <a class="collapse-item" href="ui-downloads.php">Downloads</a>
-                    </div>
-                </div>
-            </li> -->
 
             <!-- Divider -->
             <hr class="sidebar-divider">
@@ -119,6 +110,12 @@
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
 
+                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+                        <li class="nav-item dropdown no-arrow d-sm-none">
+                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-search fa-fw"></i>
+                            </a>
                             <!-- Dropdown - Messages -->
                             <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
                                 aria-labelledby="searchDropdown">
@@ -135,9 +132,7 @@
                                     </div>
                                 </form>
                             </div>
-                        </li>
-
-                        <!-- Nav Item - Alerts -->
+                        </li>                    
 
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
@@ -151,8 +146,6 @@
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="ui-profile.php">
-                                    
-                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>
@@ -263,10 +256,5 @@
     <!-- Page level custom scripts -->
     <script src="js/demo/chart-area-demo.js"></script>
     <script src="js/demo/chart-pie-demo.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
-</body>
-
 </html>
