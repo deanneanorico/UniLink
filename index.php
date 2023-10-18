@@ -26,7 +26,7 @@
     <meta name="author" content="">
 
     <title>Unilink - Login</title>
-    <link rel="shortcut icon" type="image/png" href="../Unilink/BSU.png" alt="Logo" />
+    <link rel="shortcut icon" type="image/png" href="../imgs/BSU.png" alt="Logo" />
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link

@@ -1,7 +1,7 @@
 <?php
 	include '../../../db.php';
 
-	$program = array("");
+	$program = array();
 
 	$sql = "SELECT DISTINCT cl.college_abbrev FROM `activityform` AS af INNER JOIN `college` AS CL on af.college = cl.name WHERE `college` = 'College of Informatics and Computing Sciences'";
 	$result = $conn->query($sql);

@@ -1,9 +1,15 @@
 <?php 
+  session_start();
   $conn = new mysqli("localhost", "root", "", "unilink");
 
   if ($conn->connect_error) {
       die("Connection failed: " . $conn->connect_error);
   }
+
+  $session_id = $_SESSION['id'];
+  $sql = "SELECT * FROM `users` WHERE `id` = '$session_id'";
+  $result = $conn->query($sql);
+  $session_row = $result->fetch_assoc();
 require ('fpdf/fpdf/fpdf.php');
 
 
@@ -192,11 +198,11 @@ $pdf->Cell(100,7,"         Prepared by: ", 0,0, 'L');
 $pdf->Ln(15);
 $pdf->SetFont('times','B',12);
 $pdf->SetX($pdf->GetX() - -10);
-$pdf->Cell(100,7,"         Asst. Prof. RENZ MERVIN A. SALAC", 0,0, 'L');
+$pdf->Cell(100,7,"         " . $session_row['title'] . " " . $session_row['first_name'] . " " . $session_row['mid_name'] . " " . $session_row['last_name'], 0,0, 'L');
 $pdf->Ln(6);
 $pdf->SetFont('times','',12);
 $pdf->SetX($pdf->GetX() - -10);
-$pdf->Cell(100,7,"        Chief Project Proponent and Faculty Member, CICS\n", 0,0, 'L');
+$pdf->Cell(100,7,"         " . $session_row['privelege'], 0,0, 'L');
 $pdf->Ln(6);
 // $pdf->SetFont('times','',12);
 // $pdf->Cell(100,7,"                  Program Chairperson, BSCS Program\n", 0,0, 'L');

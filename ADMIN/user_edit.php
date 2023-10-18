@@ -196,7 +196,7 @@
                       </div>
                     </div>
                   </div>
-                  <div class="row">
+                  <div class="row" id="campus_n_college">
                     <div class="col-md-4">
                       <div class="form-group campus">
                         <label for="campus">Campus</label>
@@ -236,11 +236,12 @@
                     <div class="col-md-12">
                       <div class="form-group privelege">
                         <label for="privelege">Privelege</label>
-                        <select class="form-control" id="privelege" name="privelege">
+                        <select class="form-control" id="privelege" name="privelege" onchange="setCampusCollageDrop()">
                           <option value="Admin" <?php if($user_data['privelege'] == "Admin"){echo "selected";}?>>Admin</option>
                           <option value="Associate Dean" <?php if($user_data['privelege'] == "Associate Dean"){echo "selected";}?>>Associate Dean</option>
                           <option value="Dean" <?php if($user_data['privelege'] == "Dean"){echo "selected";}?>>Dean</option>
                           <option value="Head" <?php if($user_data['privelege'] == "Head"){echo "selected";}?>>Head</option>
+                          <option value="VCDEA" <?php if($user_data['privelege'] == "VCDEA"){echo "selected";}?>>VCDEA</option>
                           <option value="Faculty" <?php if($user_data['privelege'] == "Faculty"){echo "selected";}?>>Faculty</option>
                         </select>
                       </div>
@@ -337,6 +338,49 @@
         option.innerHTML = element;
         college.appendChild(option);
       });
+    }
+  }
+
+  function setCampusCollageDrop() {
+    var privelege = document.getElementById("privelege").value;
+
+    if(privelege == "Head" || privelege == "VCDEA" || privelege == "Admin") {
+      var campus = document.getElementById("campus");
+      campus.innerHTML = "";
+      var option = document.createElement("option");
+      option.value = "none";
+      option.innerHTML = "none";
+      campus.appendChild(option);
+
+      var college = document.getElementById("department");
+      college.innerHTML = "";
+      option = document.createElement("option");
+      option.value = "none";
+      option.innerHTML = "none";
+      college.appendChild(option);
+
+      document.getElementById("campus_n_college").style.display = "none";
+    } else {
+      var getCampus = new XMLHttpRequest();
+      getCampus.open("GET", "getcampuslist.php");
+      getCampus.send();
+      getCampus.onload = function() {
+        var campus = document.getElementById("campus");
+        campus.innerHTML = "";
+        var campus_array = JSON.parse(this.responseText);
+        var option = document.createElement("option");
+        option.value = "";
+        option.innerHTML = "-- Select Campus --";
+        campus.appendChild(option);
+        campus_array.forEach(function(element) {
+          option = document.createElement("option");
+          option.value = element;
+          option.innerHTML = element;
+          campus.appendChild(option);
+        });
+        setDepartment();
+      }
+      document.getElementById("campus_n_college").style.display = "flex";
     }
   }
 </script>

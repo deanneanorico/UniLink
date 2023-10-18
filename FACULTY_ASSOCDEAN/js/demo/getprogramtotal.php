@@ -1,9 +1,10 @@
 <?php
 	include '../../../db.php';
 
-	$program = array("0");
+	$college = $_GET['college'];
+	$program = array();
 
-	$sql = "SELECT MONTH(`start_date`) AS `month`, COUNT(`start_date`) AS `total` FROM `activityform` WHERE `college` = 'College of Informatics and Computing Sciences' GROUP BY `month`";
+	$sql = "SELECT MONTH(`start_date`) AS `month`, COUNT(`start_date`) AS `total` FROM `activityform` WHERE `college` = '$college' GROUP BY `month`";
 	$result = $conn->query($sql);
 	$month = 1;
 	$row = $result->fetch_assoc();

@@ -32,10 +32,12 @@ getProgram.open("GET", "js/demo/getprogram.php");
 getProgram.send();
 getProgram.onload = function() {
   var program = JSON.parse(this.responseText);
+  var college = document.getElementById("session_college").value;
   var getProgramTotal = new XMLHttpRequest();
-  getProgramTotal.open("GET", "js/demo/getprogramtotal.php");
+  getProgramTotal.open("GET", "js/demo/getprogramtotal.php?college=" + college);
   getProgramTotal.send();
   getProgramTotal.onload = function() {
+    console.log(this.responseText);
     var programTotal = JSON.parse(this.responseText);
     // Area Chart Example
     var ctx = document.getElementById("myAreaChart");

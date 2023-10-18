@@ -34,6 +34,7 @@
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
 </head>
 <body id="page-top">
+    <input id="session_college" type="hidden" value="<?=$_SESSION['college']?>">
     <!-- Page Wrapper -->
     <div id="wrapper">
         <!-- Sidebar -->
