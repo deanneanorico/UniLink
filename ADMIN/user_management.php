@@ -235,7 +235,6 @@
                           <option value="Dean">Dean</option>
                           <option value="Head">Head</option>
                           <option value="VCDEA">VCDEA</option>
-                          <option value="Faculty">Faculty</option>
                         </select>
                       </div>
                     </div>

@@ -21,7 +21,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>UniLink - Head/VCDEA</title>
+    <title>UniLink - Head</title>
     <link rel="shortcut icon" type="image/png" href="../imgs/BSU.png" alt="Logo" />
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -65,6 +65,12 @@
           <a class="nav-link" href="act_proposal.php">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Activity Monitoring</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="docu_repo.php">
+            <i class="bi bi-file-earmark-pdf"></i>
+            <span>Document Repository</span>
           </a>
         </li>
             <!-- Divider -->

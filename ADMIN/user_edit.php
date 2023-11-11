@@ -242,7 +242,6 @@
                           <option value="Dean" <?php if($user_data['privelege'] == "Dean"){echo "selected";}?>>Dean</option>
                           <option value="Head" <?php if($user_data['privelege'] == "Head"){echo "selected";}?>>Head</option>
                           <option value="VCDEA" <?php if($user_data['privelege'] == "VCDEA"){echo "selected";}?>>VCDEA</option>
-                          <option value="Faculty" <?php if($user_data['privelege'] == "Faculty"){echo "selected";}?>>Faculty</option>
                         </select>
                       </div>
                     </div>
