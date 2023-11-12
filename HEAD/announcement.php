@@ -40,32 +40,52 @@
           <img src="../imgs/BSU.png" width="50" height="45">
           <div class="sidebar-brand-text mx-3">UniLink</div>
         </a>
-        <!-- Divider -->
+                <!-- Divider -->
         <hr class="sidebar-divider my-0">
         <!-- Nav Item - Dashboard -->
-        <li class="nav-item">
+        <li class="nav-item active">
           <a class="nav-link" href="index.php">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span>
           </a>
         </li>
-        <li class="nav-item active">
+        <li class="nav-item">
+          <a class="nav-link" href="linkages.php">
+            <i class="bi bi-bullseye"></i>
+            <span>Linkages Proposal</span>
+          </a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="announcement.php">
             <i class="bi bi-megaphone"></i>
             <span>Announcements</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="act_proposal.php">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Activity Monitoring</span>
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+            <i class="bi bi-speedometer"></i>
+            <span>Status</span>
           </a>
+          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+              <a class="collapse-item" href="stat_exploratory.php">For Exploratory</a>
+              <a class="collapse-item" href="stat_mou_partner.php">Review MOU by Partner</a>
+              <a class="collapse-item" href="stat_mou_legal.php">Review MOU Legal</a>
+              <a class="collapse-item" href="stat_signing.php">For Signing</a>
+            </div>
+          </div>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="docu_repo.php">
-            <i class="bi bi-file-earmark-pdf"></i>
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+            <i class="bi bi-folder"></i>
             <span>Document Repository</span>
           </a>
+          <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+              <a class="collapse-item" href="docu_local.php">Local</a>
+              <a class="collapse-item" href="docu_national.php">International</a>
+            </div>
+          </div>
         </li>
         <!-- Divider -->
         <hr class="sidebar-divider">
