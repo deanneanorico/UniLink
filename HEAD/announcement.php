@@ -43,7 +43,7 @@
                 <!-- Divider -->
         <hr class="sidebar-divider my-0">
         <!-- Nav Item - Dashboard -->
-        <li class="nav-item active">
+        <li class="nav-item">
           <a class="nav-link" href="index.php">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span>
@@ -55,7 +55,7 @@
             <span>Linkages Proposal</span>
           </a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item active">
           <a class="nav-link" href="announcement.php">
             <i class="bi bi-megaphone"></i>
             <span>Announcements</span>
@@ -165,8 +165,41 @@
           </nav>
           <!-- End of Topbar -->
           <!-- Begin Page Content -->
+         <div class="container-fluid">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+            <h3 class="h3 mb-0 text-gray-800">Announcements</h3>
+            </div>
+          <!-- Announcement Cards -->
+          <div class="container mt-3">
+            <div class="row">
+          <!-- Announcement Cards -->
+          <div class="col-md-6">
+            <div class="card">
+              <div class="card-header">
+                Announcement
+              </div>
+              <div class="card-body">
+                <textarea class="form-control mb-2" rows="8" placeholder="Enter your announcement"></textarea>
+                <button class="btn btn-primary float-right">Announce</button>
+              </div>
+            </div>
+          </div>
+          <!-- Recipient Cards -->
+          <div class="col-md-6">
+            <div class="card">
+              <div class="card-header">
+              Recipient
+              </div>
+          <div class="card-body">
+          <p class="card-text">Your recipient content goes here.</p>
+          </div>
+          </div>
+          </div>
+          </div>
+          </div>
         </div>
         <!-- End of Main Content -->
+      </div>
         <!-- Footer -->
         <footer class="sticky-footer bg-white">
           <div class="container my-auto">
@@ -175,10 +208,11 @@
             </div>
           </div>
         </footer>
-      </div>
+      
         <!-- End of Footer -->
-      </div>
+    
       <!-- End of Content Wrapper -->
+
     <!-- End of Page Wrapper -->
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
