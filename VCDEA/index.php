@@ -51,26 +51,34 @@
           </a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" href="linkages.php">
+            <i class="bi bi-bullseye"></i>
+            <span>Linkages Proposal</span>
+          </a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="announcement.php">
             <i class="bi bi-megaphone"></i>
             <span>Announcements</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="announcement.php">
-            <i class="bi bi-megaphone"></i>
-            <span>Linkages Proposal</span>
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+            <i class="bi bi-speedometer"></i>
+            <span>Status</span>
           </a>
+          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+              <a class="collapse-item" href="stat_exploratory.php">For Exploratory</a>
+              <a class="collapse-item" href="stat_mou_partner.php">Review MOU by Partner</a>
+              <a class="collapse-item" href="stat_mou_legal.php">Review MOU Legal</a>
+              <a class="collapse-item" href="stat_signing.php">For Signing</a>
+            </div>
+          </div>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="act_proposal.php">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Activity Monitoring</span>
-          </a>
-        </li>
-        <li class="nav-item">
+<li class="nav-item">
           <a class="nav-link" href="docu_repo.php">
-            <i class="bi bi-file-earmark-pdf"></i>
+            <i class="bi bi-megaphone"></i>
             <span>Document Repository</span>
           </a>
         </li>
@@ -168,7 +176,7 @@
                   <div class="card-body">
                     <div class="row no-gutters align-items-center">
                       <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"> Partner</div>
+                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">For Exploratory</div>
                         <div class="h5 mb-0 font-weight-bold text-gray-800">10</div>
                       </div>
                       <div class="col-auto">
@@ -184,7 +192,7 @@
                   <div class="card-body">
                     <div class="row no-gutters align-items-center">
                       <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1"> Active</div>
+                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1"> Under Review</div>
                         <div class="h5 mb-0 font-weight-bold text-gray-800">5</div>
                       </div>
                       <div class="col-auto">
@@ -200,7 +208,7 @@
                   <div class="card-body">
                     <div class="row no-gutters align-items-center">
                       <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Inactive</div>
+                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Successful Partner</div>
                         <div class="row no-gutters align-items-center">
                           <div class="col-auto">
                             <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">5</div>
@@ -220,7 +228,7 @@
                   <div class="card-body">
                     <div class="row no-gutters align-items-center">
                       <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1"> Target</div>
+                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1"> Inactive</div>
                         <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
                       </div>
                       <div class="col-auto">

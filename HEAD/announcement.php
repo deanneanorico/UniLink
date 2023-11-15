@@ -40,7 +40,7 @@
           <img src="../imgs/BSU.png" width="50" height="45">
           <div class="sidebar-brand-text mx-3">UniLink</div>
         </a>
-                <!-- Divider -->
+        <!-- Divider -->
         <hr class="sidebar-divider my-0">
         <!-- Nav Item - Dashboard -->
         <li class="nav-item">
@@ -75,17 +75,11 @@
             </div>
           </div>
         </li>
-        <li class="nav-item">
-          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
-            <i class="bi bi-folder"></i>
+         <li class="nav-item">
+          <a class="nav-link" href="docu_repo.php">
+            <i class="bi bi-megaphone"></i>
             <span>Document Repository</span>
           </a>
-          <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-              <a class="collapse-item" href="docu_local.php">Local</a>
-              <a class="collapse-item" href="docu_national.php">International</a>
-            </div>
-          </div>
         </li>
         <!-- Divider -->
         <hr class="sidebar-divider">
@@ -180,7 +174,6 @@
               </div>
               <div class="card-body">
                 <textarea class="form-control mb-2" rows="8" placeholder="Enter your announcement"></textarea>
-                <button class="btn btn-primary float-right">Announce</button>
               </div>
             </div>
           </div>
@@ -191,7 +184,29 @@
               Recipient
               </div>
           <div class="card-body">
-          <p class="card-text">Your recipient content goes here.</p>
+           <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="cicsCheckbox" value="CICS">
+          <label class="form-check-label" for="cicsCheckbox">College of Informatics and Computing Sciences</label>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="cabeiCheckbox" value="CABEIHM">
+            <label class="form-check-label" for="cabeiCheckbox">College of Accountancy, Business, Economics, International Hospitality Management</label>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="casCheckbox" value="CAS">
+            <label class="form-check-label" for="casCheckbox">College of Arts and Sciences</label>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="cteCheckbox" value="CTE">
+            <label class="form-check-label" for="cteCheckbox">College of Teacher Education</label>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="conahsCheckbox" value="CONAHS">
+            <label class="form-check-label" for="conahsCheckbox">College of Nursing and Allied Health Sciences</label>
+          </div>
+            <button class="btn btn-primary float-right bi bi-megaphone ml-2">
+          Announce
+          </button>
           </div>
           </div>
           </div>
@@ -248,6 +263,7 @@
     <!-- Page level custom scripts -->
     <script src="js/demo/chart-area-demo.js"></script>
     <script src="js/demo/chart-pie-demo.js"></script>
+
   </body>
 </html>
 <script>

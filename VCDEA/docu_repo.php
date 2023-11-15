@@ -29,6 +29,18 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
+      <style>
+    .folder {
+      width: 110px;
+      height: 80px;
+      background-color: #f8f9fa;
+      border: 1px solid #d1d1d1;
+      text-align: center;
+      padding: 10px;
+      margin: 10px;
+      border-radius: 5px;
+    }
+  </style>
   </head>
   <body id="page-top">
     <!-- Page Wrapper -->
@@ -40,7 +52,7 @@
           <img src="../imgs/BSU.png" width="50" height="45">
           <div class="sidebar-brand-text mx-3">UniLink</div>
         </a>
-        <!-- Divider -->
+                <!-- Divider -->
         <hr class="sidebar-divider my-0">
         <!-- Nav Item - Dashboard -->
         <li class="nav-item">
@@ -50,20 +62,34 @@
           </a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" href="linkages.php">
+            <i class="bi bi-bullseye"></i>
+            <span>Linkages Proposal</span>
+          </a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="announcement.php">
             <i class="bi bi-megaphone"></i>
             <span>Announcements</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="act_proposal.php">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Activity Monitoring</span>
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+            <i class="bi bi-speedometer"></i>
+            <span>Status</span>
           </a>
+          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+              <a class="collapse-item" href="stat_exploratory.php">For Exploratory</a>
+              <a class="collapse-item" href="stat_mou_partner.php">Review MOU by Partner</a>
+              <a class="collapse-item" href="stat_mou_legal.php">Review MOU Legal</a>
+              <a class="collapse-item" href="stat_signing.php">For Signing</a>
+            </div>
+          </div>
         </li>
         <li class="nav-item active">
           <a class="nav-link" href="docu_repo.php">
-            <i class="bi bi-file-earmark-pdf"></i>
+            <i class="bi bi-megaphone"></i>
             <span>Document Repository</span>
           </a>
         </li>
@@ -145,6 +171,23 @@
           </nav>
           <!-- End of Topbar -->
           <!-- Begin Page Content -->
+          <div class="container mt-4">
+          <div class="row">
+            <div class="col-md-2">
+              <div class="folder">
+                <i class="fas fa-folder fa-3x"></i>
+                <p>Local</p>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="folder">
+                <i class="fas fa-folder fa-3x"></i>
+                <p>International</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
         </div>
         <!-- End of Main Content -->
         <!-- Footer -->
@@ -182,6 +225,12 @@
         </div>
       </div>
     </div>
+    <!-- Font Awesome Icons (you can include this library if not already included) -->
+    <script src="https://kit.fontawesome.com/your-font-awesome-kit-code.js" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

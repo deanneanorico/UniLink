@@ -75,17 +75,11 @@
             </div>
           </div>
         </li>
-        <li class="nav-item">
-          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
-            <i class="bi bi-folder"></i>
+         <li class="nav-item">
+          <a class="nav-link" href="docu_repo.php">
+            <i class="bi bi-megaphone"></i>
             <span>Document Repository</span>
           </a>
-          <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-              <a class="collapse-item" href="docu_local.php">Local</a>
-              <a class="collapse-item" href="docu_national.php">International</a>
-            </div>
-          </div>
         </li>
         <!-- Divider -->
         <hr class="sidebar-divider">

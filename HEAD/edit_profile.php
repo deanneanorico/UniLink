@@ -29,19 +29,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
-      <style>
-    .folder {
-      width: 115px;
-      height: 110px;
-      background-color: #f8f9fa;
-      border: 1px solid #d1d1d1;
-      text-align: center;
-      padding: 10px;
-      margin: 10px;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-  </style>
   </head>
   <body id="page-top">
     <!-- Page Wrapper -->
@@ -88,7 +75,7 @@
             </div>
           </div>
         </li>
-         <li class="nav-item active">
+         <li class="nav-item">
           <a class="nav-link" href="docu_repo.php">
             <i class="bi bi-megaphone"></i>
             <span>Document Repository</span>
@@ -172,30 +159,118 @@
           </nav>
           <!-- End of Topbar -->
           <!-- Begin Page Content -->
-        <div class="container mt-4">
-        <div class="container mt-4">
-          <div class="row">
-            <div class="col-md-1.5">
-              <div class="folder">
-                <a href="docu_local.php">
-                  <img src="../imgs/bsu_folder.png" style="width:90px">  
-                <p>Local</p>
-              </a>
+          <div class="container-fluid">
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <a href="ea_profile.php">Profile</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">Edit Profile</li>
+              </ol>
+            </nav>
+          <!-- Announcement Cards -->
+          <div class="container mt-3">
+            <div class="row">
+          <!-- Announcement Cards -->
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-header">
+                Profile Picture
+              </div>
+              <div class="card-body text-center">
+                <img src="imgs/BSU.png" class="card-img-top mx-auto" style="max-width: 200px;" alt="Profile Image">
+              <button class="btn btn-primary float-right bi bi-image ml-2">
+          Change
+          </button>
               </div>
             </div>
-            <div class="col-md-1.5">
-              <div class="folder">
-                <a href="docu_national.php">
-                  <img src="../imgs/bsu_folder.png" style="width:90px">  
-                <p>International</p>
-              </a>
+          </div>
+          <!-- Recipient Cards -->
+          <div class="col-md-8">
+            <div class="card">
+              <div class="card-header">
+              Profile Details
               </div>
-            </div>
+          <div class="card-body">
+                  <div class="row">
+                    <input type="hidden" class="form-control" id="first" name="id" value="<?=$id?>">
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label for="input1">Title</label>
+                        <input type="text" class="form-control" id="title" name="title" value="">          
+                        </div>
+                       </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label for="input2">First Name</label>
+                        <input type="text" class="form-control" id="first" name="first" value="">
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label for="input3">Middle Initial</label>
+                        <input type="text" class="form-control" id="middle" name="middle" value="">
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label for="input4">Last Name</label>
+                        <input type="text" class="form-control" id="last" name="last" value="">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="form-group sex">
+                        <label for="sex">Sex</label>
+                        <select class="form-control" id="sex" name="sex">
+                          <option value="Male"> </option>
+                          <option value="Female"></option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-8">
+                      <div class="form-group">
+                        <label for="input6">Email</label>
+                        <input type="text" class="form-control" id="email" name="email" value="">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="password" name="password" required>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Admin Checkbox  -->
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group privelege">
+                        <label for="privelege">Privelege</label>
+                        <select class="form-control" id="privelege" name="privelege" onchange="setCampusCollageDrop()">
+                          <!-- <option value="Admin" <?php if($user_data['privelege'] == "Admin"){echo "selected";}?>>Admin</option>
+                          <option value="Associate Dean" <?php if($user_data['privelege'] == "Associate Dean"){echo "selected";}?>>Associate Dean</option>
+                          <option value="Dean" <?php if($user_data['privelege'] == "Dean"){echo "selected";}?>>Dean</option>
+                          <option value="Head" <?php if($user_data['privelege'] == "Head"){echo "selected";}?>>Head</option>
+                          <option value="VCDEA" <?php if($user_data['privelege'] == "VCDEA"){echo "selected";}?>>VCDEA</option> -->
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+            <button class="btn btn-primary float-right bi bi-floppy ml-2">
+          Update
+          </button>
+          </div>
+          </div>
+          </div>
+          </div>
           </div>
         </div>
         </div>
         <!-- End of Main Content -->
-      </div>
         <!-- Footer -->
         <footer class="sticky-footer bg-white">
           <div class="container my-auto">
@@ -204,11 +279,10 @@
             </div>
           </div>
         </footer>
-      
+      </div>
         <!-- End of Footer -->
-    
+      </div>
       <!-- End of Content Wrapper -->
-
     <!-- End of Page Wrapper -->
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
@@ -232,13 +306,7 @@
         </div>
       </div>
     </div>
-    <!-- Font Awesome Icons (you can include this library if not already included) -->
-    <!-- <script src="https://kit.fontawesome.com/your-font-awesome-kit-code.js" crossorigin="anonymous"></script>
-    Bootstrap JS and Popper.js -->
-<!--     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
-    <!-- Bootstrap core JavaScript--> -->
+    <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- Core plugin JavaScript-->
