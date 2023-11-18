@@ -168,23 +168,24 @@
                 <li class="breadcrumb-item active" aria-current="page">Edit Profile</li>
               </ol>
             </nav>
-          <!-- Announcement Cards -->
+          <!-- Profile Pic -->
           <div class="container mt-3">
             <div class="row">
-          <!-- Announcement Cards -->
+          <!-- Profile Pic -->
           <div class="col-md-4">
-            <div class="card">
-              <div class="card-header">
-                Profile Picture
-              </div>
-              <div class="card-body text-center">
-                <img src="imgs/BSU.png" class="card-img-top mx-auto" style="max-width: 200px;" alt="Profile Image">
-              <button class="btn btn-primary float-right bi bi-image ml-2">
-          Change
-          </button>
-              </div>
+          <div class="card">
+            <div class="card-header">
+              Profile Picture
+            </div>
+            <div class="card-body text-center">
+              <img id="profileImage" src="imgs/BSU.png" class="card-img-top mx-auto" style="max-width: 200px;" alt="Profile Image">
+              <input type="file" id="fileInput" style="display: none;" accept="image/*">
+              <label for="fileInput" class="btn btn-primary float-right bi bi-image ml-2">
+                Change
+              </label>
             </div>
           </div>
+        </div>
           <!-- Recipient Cards -->
           <div class="col-md-8">
             <div class="card">
@@ -320,6 +321,18 @@
     <script src="js/demo/chart-pie-demo.js"></script>
   </body>
 </html>
+<script>
+  document.getElementById('fileInput').addEventListener('change', function (event) {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        document.getElementById('profileImage').src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+  });
+</script>
 <script>
   function setDepartment() {
     var campus = document.getElementById("campus").value;

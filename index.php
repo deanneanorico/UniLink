@@ -35,7 +35,19 @@
 
     <!-- Custom styles for this template-->
     <link href="admin/css/sb-admin-2.min.css" rel="stylesheet">
+<style>
+        .form-group {
+            position: relative;
+        }
 
+        #togglePassword {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
+    </style>
 </head>
 
 <body class="bg-gradient-primary" style="background-image: url('imgs/BSU-Campus.jpg'); background-size: 100% 115%;">
@@ -60,8 +72,9 @@
                                             <input type="email" class="form-control form-control-user" name="email" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Email">
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control form-control-user" name="password" id="exampleInputPassword" placeholder="Password">
-                                        </div>
+    <input type="password" class="form-control form-control-user" name="password" id="exampleInputPassword" placeholder="Password">
+    <span id="togglePassword" onclick="togglePassword()">👁️</span>
+</div>
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox medium">
                                                 <input type="checkbox" class="custom-control-input" id="customCheck">
@@ -72,7 +85,7 @@
                                     </form>
                                     <hr>
                                     <div class="text-center">
-                                        <a class="medium" href="forgot-password.html">Forgot Password?</a>
+                                        <a class="medium" href="forgot-password.php">Forgot Password?</a>
                                     </div>
                                     <!-- <div class="text-center">
                                         <a class="small" href="register.html">Create an Account!</a>
@@ -89,6 +102,19 @@
         </div>
 
     </div>
+    <script>
+    function togglePassword() {
+        var passwordInput = document.getElementById("exampleInputPassword");
+
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            document.getElementById("togglePassword").innerHTML = "👁️"; // Change to open eye icon
+        } else {
+            passwordInput.type = "password";
+            document.getElementById("togglePassword").innerHTML = "👁️"; // Change to closed eye icon
+        }
+    }
+</script>
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
