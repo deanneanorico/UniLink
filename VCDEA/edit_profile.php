@@ -21,7 +21,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>UniLink - Head</title>
+    <title>UniLink - VCDEA</title>
     <link rel="shortcut icon" type="image/png" href="../imgs/BSU.png" alt="Logo" />
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -40,19 +40,13 @@
           <img src="../imgs/BSU.png" width="50" height="45">
           <div class="sidebar-brand-text mx-3">UniLink</div>
         </a>
-        <!-- Divider -->
+                <!-- Divider -->
         <hr class="sidebar-divider my-0">
         <!-- Nav Item - Dashboard -->
         <li class="nav-item">
           <a class="nav-link" href="index.php">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span>
-          </a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="linkages.php">
-            <i class="bi bi-bullseye"></i>
-            <span>Linkages Proposal</span>
           </a>
         </li>
         <li class="nav-item">
@@ -75,17 +69,11 @@
             </div>
           </div>
         </li>
-        <li class="nav-item">
-          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
-            <i class="bi bi-folder"></i>
+         <li class="nav-item">
+          <a class="nav-link" href="docu_repo.php">
+            <i class="bi bi-megaphone"></i>
             <span>Document Repository</span>
           </a>
-          <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-              <a class="collapse-item" href="docu_local.php">Local</a>
-              <a class="collapse-item" href="docu_national.php">International</a>
-            </div>
-          </div>
         </li>
         <!-- Divider -->
         <hr class="sidebar-divider">
@@ -154,7 +142,7 @@
                 </a>
                 <!-- Dropdown - User Information -->
                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                  <a class="dropdown-item" href="ea_profile.php">
+                  <a class="dropdown-item" href="dea_profile.php">
                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Profile </a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
@@ -165,6 +153,117 @@
           </nav>
           <!-- End of Topbar -->
           <!-- Begin Page Content -->
+          <div class="container-fluid">
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <a href="ea_profile.php">Profile</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">Edit Profile</li>
+              </ol>
+            </nav>
+          <!-- Profile Pic -->
+          <div class="container mt-3">
+            <div class="row">
+          <!-- Profile Pic -->
+          <div class="col-md-4">
+          <div class="card">
+            <div class="card-header">
+              Profile Picture
+            </div>
+            <div class="card-body text-center">
+              <img id="profileImage" src="imgs/BSU.png" class="card-img-top mx-auto" style="max-width: 200px;" alt="Profile Image">
+              <input type="file" id="fileInput" style="display: none;" accept="image/*">
+              <label for="fileInput" class="btn btn-primary float-right bi bi-image ml-2">
+                Change
+              </label>
+            </div>
+          </div>
+        </div>
+          <!-- Recipient Cards -->
+          <div class="col-md-8">
+            <div class="card">
+              <div class="card-header">
+              Profile Details
+              </div>
+          <div class="card-body">
+                  <div class="row">
+                    <input type="hidden" class="form-control" id="first" name="id" value="<?=$id?>">
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label for="input1">Title</label>
+                        <input type="text" class="form-control" id="title" name="title" value="">          
+                        </div>
+                       </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label for="input2">First Name</label>
+                        <input type="text" class="form-control" id="first" name="first" value="">
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label for="input3">Middle Initial</label>
+                        <input type="text" class="form-control" id="middle" name="middle" value="">
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label for="input4">Last Name</label>
+                        <input type="text" class="form-control" id="last" name="last" value="">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="form-group sex">
+                        <label for="sex">Sex</label>
+                        <select class="form-control" id="sex" name="sex">
+                          <option value="Male"> </option>
+                          <option value="Female"></option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-8">
+                      <div class="form-group">
+                        <label for="input6">Email</label>
+                        <input type="text" class="form-control" id="email" name="email" value="">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="password" name="password" required>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Admin Checkbox  -->
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group privelege">
+                        <label for="privelege">Privelege</label>
+                        <select class="form-control" id="privelege" name="privelege" onchange="setCampusCollageDrop()">
+                          <!-- <option value="Admin" <?php if($user_data['privelege'] == "Admin"){echo "selected";}?>>Admin</option>
+                          <option value="Associate Dean" <?php if($user_data['privelege'] == "Associate Dean"){echo "selected";}?>>Associate Dean</option>
+                          <option value="Dean" <?php if($user_data['privelege'] == "Dean"){echo "selected";}?>>Dean</option>
+                          <option value="Head" <?php if($user_data['privelege'] == "Head"){echo "selected";}?>>Head</option>
+                          <option value="VCDEA" <?php if($user_data['privelege'] == "VCDEA"){echo "selected";}?>>VCDEA</option> -->
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+            <button class="btn btn-primary float-right bi bi-floppy ml-2">
+          Update
+          </button>
+          </div>
+          </div>
+          </div>
+          </div>
+          </div>
+        </div>
         </div>
         <!-- End of Main Content -->
         <!-- Footer -->
@@ -216,6 +315,18 @@
     <script src="js/demo/chart-pie-demo.js"></script>
   </body>
 </html>
+<script>
+  document.getElementById('fileInput').addEventListener('change', function (event) {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        document.getElementById('profileImage').src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+  });
+</script>
 <script>
   function setDepartment() {
     var campus = document.getElementById("campus").value;

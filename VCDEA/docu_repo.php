@@ -21,7 +21,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>UniLink - Head</title>
+    <title>UniLink - VCDEA</title>
     <link rel="shortcut icon" type="image/png" href="../imgs/BSU.png" alt="Logo" />
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -31,14 +31,15 @@
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
       <style>
     .folder {
-      width: 110px;
-      height: 80px;
+      width: 115px;
+      height: 110px;
       background-color: #f8f9fa;
       border: 1px solid #d1d1d1;
       text-align: center;
       padding: 10px;
       margin: 10px;
       border-radius: 5px;
+      cursor: pointer;
     }
   </style>
   </head>
@@ -62,12 +63,6 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="linkages.php">
-            <i class="bi bi-bullseye"></i>
-            <span>Linkages Proposal</span>
-          </a>
-        </li>
-        <li class="nav-item">
           <a class="nav-link" href="announcement.php">
             <i class="bi bi-megaphone"></i>
             <span>Announcements</span>
@@ -87,7 +82,7 @@
             </div>
           </div>
         </li>
-        <li class="nav-item active">
+         <li class="nav-item active">
           <a class="nav-link" href="docu_repo.php">
             <i class="bi bi-megaphone"></i>
             <span>Document Repository</span>
@@ -160,7 +155,7 @@
                 </a>
                 <!-- Dropdown - User Information -->
                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                  <a class="dropdown-item" href="ea_profile.php">
+                  <a class="dropdown-item" href="dea_profile.php">
                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Profile </a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
@@ -171,25 +166,30 @@
           </nav>
           <!-- End of Topbar -->
           <!-- Begin Page Content -->
-          <div class="container mt-4">
+        <div class="container mt-4">
+        <div class="container mt-4">
           <div class="row">
-            <div class="col-md-2">
+            <div class="col-md-1.5">
               <div class="folder">
-                <i class="fas fa-folder fa-3x"></i>
+                <a href="docu_local.php">
+                  <img src="../imgs/bsu_folder.png" style="width:90px">  
                 <p>Local</p>
+              </a>
               </div>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-1.5">
               <div class="folder">
-                <i class="fas fa-folder fa-3x"></i>
+                <a href="docu_national.php">
+                  <img src="../imgs/bsu_folder.png" style="width:90px">  
                 <p>International</p>
+              </a>
               </div>
             </div>
           </div>
         </div>
-
         </div>
         <!-- End of Main Content -->
+      </div>
         <!-- Footer -->
         <footer class="sticky-footer bg-white">
           <div class="container my-auto">
@@ -198,10 +198,11 @@
             </div>
           </div>
         </footer>
-      </div>
+      
         <!-- End of Footer -->
-      </div>
+    
       <!-- End of Content Wrapper -->
+
     <!-- End of Page Wrapper -->
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
@@ -226,12 +227,12 @@
       </div>
     </div>
     <!-- Font Awesome Icons (you can include this library if not already included) -->
-    <script src="https://kit.fontawesome.com/your-font-awesome-kit-code.js" crossorigin="anonymous"></script>
-    <!-- Bootstrap JS and Popper.js -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <!-- <script src="https://kit.fontawesome.com/your-font-awesome-kit-code.js" crossorigin="anonymous"></script>
+    Bootstrap JS and Popper.js -->
+<!--     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <!-- Bootstrap core JavaScript-->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
+    <!-- Bootstrap core JavaScript--> -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- Core plugin JavaScript-->

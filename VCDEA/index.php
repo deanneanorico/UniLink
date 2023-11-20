@@ -21,7 +21,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Unilink - Head</title>
+    <title>Unilink - VCDEA</title>
     <link rel="shortcut icon" type="image/png" href="../imgs/BSU.png" alt="Logo" />
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -51,12 +51,6 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="linkages.php">
-            <i class="bi bi-bullseye"></i>
-            <span>Linkages Proposal</span>
-          </a>
-        </li>
-        <li class="nav-item">
           <a class="nav-link" href="announcement.php">
             <i class="bi bi-megaphone"></i>
             <span>Announcements</span>
@@ -76,7 +70,7 @@
             </div>
           </div>
         </li>
-<li class="nav-item">
+        <li class="nav-item">
           <a class="nav-link" href="docu_repo.php">
             <i class="bi bi-megaphone"></i>
             <span>Document Repository</span>
@@ -149,7 +143,7 @@
                 </a>
                 <!-- Dropdown - User Information -->
                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                  <a class="dropdown-item" href="ea_profile.php">
+                  <a class="dropdown-item" href="dea_profile.php">
                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Profile </a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">

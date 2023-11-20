@@ -21,7 +21,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>UniLink - Head</title>
+    <title>UniLink - VCDEA</title>
     <link rel="shortcut icon" type="image/png" href="../imgs/BSU.png" alt="Logo" />
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -40,19 +40,13 @@
           <img src="../imgs/BSU.png" width="50" height="45">
           <div class="sidebar-brand-text mx-3">UniLink</div>
         </a>
-                <!-- Divider -->
+        <!-- Divider -->
         <hr class="sidebar-divider my-0">
         <!-- Nav Item - Dashboard -->
         <li class="nav-item">
           <a class="nav-link" href="index.php">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="linkages.php">
-            <i class="bi bi-bullseye"></i>
-            <span>Linkages Proposal</span>
           </a>
         </li>
         <li class="nav-item active">
@@ -75,17 +69,11 @@
             </div>
           </div>
         </li>
-        <li class="nav-item">
-          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
-            <i class="bi bi-folder"></i>
+         <li class="nav-item">
+          <a class="nav-link" href="docu_repo.php">
+            <i class="bi bi-megaphone"></i>
             <span>Document Repository</span>
           </a>
-          <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-              <a class="collapse-item" href="docu_local.php">Local</a>
-              <a class="collapse-item" href="docu_national.php">International</a>
-            </div>
-          </div>
         </li>
         <!-- Divider -->
         <hr class="sidebar-divider">
@@ -154,7 +142,7 @@
                 </a>
                 <!-- Dropdown - User Information -->
                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                  <a class="dropdown-item" href="ea_profile.php">
+                  <a class="dropdown-item" href="dea_profile.php">
                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Profile </a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
@@ -179,21 +167,48 @@
                 Announcement
               </div>
               <div class="card-body">
-                <textarea class="form-control mb-2" rows="8" placeholder="Enter your announcement"></textarea>
-                <button class="btn btn-primary float-right">Announce</button>
+                <textarea class="form-control mb-2" rows="9" placeholder="Enter your announcement"></textarea>
               </div>
             </div>
           </div>
           <!-- Recipient Cards -->
           <div class="col-md-6">
-            <div class="card">
-              <div class="card-header">
-              Recipient
+          <div class="card">
+          <div class="card-header">
+          Recipient
+          </div>
+    <div class="card-body">
+      <!-- "Select All" Checkbox -->
+      <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="selectAllCheckbox">
+        <label class="form-check-label" for="selectAllCheckbox">Select All</label>
+      </div>
+        <div class="form-check">
+        <input type="checkbox" class="form-check-input college-checkbox" id="cicsCheckbox" value="CICS">
+        <label class="form-check-label" for="cicsCheckbox">College of Informatics and Computing Sciences</label>
+      </div>
+      <div class="form-check">
+        <input type="checkbox" class="form-check-input college-checkbox" id="cabeiCheckbox" value="CABEIHM">
+            <label class="form-check-label" for="cabeiCheckbox">College of Accountancy, Business, Economics, International Hospitality Management</label>
+          </div>
+          <div class="form-check">
+        <input type="checkbox" class="form-check-input college-checkbox" id="casCheckbox" value="CAS">
+            <label class="form-check-label" for="casCheckbox">College of Arts and Sciences</label>
+          </div>
+          <div class="form-check">
+        <input type="checkbox" class="form-check-input college-checkbox" id="cteCheckbox" value="CTE">
+            <label class="form-check-label" for="cteCheckbox">College of Teacher Education</label>
+          </div>
+          <div class="form-check">
+        <input type="checkbox" class="form-check-input college-checkbox" id="conahsCheckbox" value="CONAHS">
+            <label class="form-check-label" for="conahsCheckbox">College of Nursing and Allied Health Sciences</label>
+          </div>
+                <!-- Announce Button -->
+                <button class="btn btn-primary float-right bi bi-megaphone ml-2" onclick="announce()">
+                  Announce
+                </button>
               </div>
-          <div class="card-body">
-          <p class="card-text">Your recipient content goes here.</p>
-          </div>
-          </div>
+            </div>
           </div>
           </div>
           </div>
@@ -248,6 +263,7 @@
     <!-- Page level custom scripts -->
     <script src="js/demo/chart-area-demo.js"></script>
     <script src="js/demo/chart-pie-demo.js"></script>
+
   </body>
 </html>
 <script>
@@ -268,5 +284,32 @@
         college.appendChild(option);
       });
     }
+  }
+</script>
+<script>
+  // JavaScript to handle "Select All" functionality
+  document.getElementById("selectAllCheckbox").addEventListener("change", function () {
+    var checkboxes = document.getElementsByClassName("college-checkbox");
+
+    for (var i = 0; i < checkboxes.length; i++) {
+      checkboxes[i].checked = this.checked;
+    }
+  });
+
+  // Function to handle the Announce button click
+  function announce() {
+    // Get selected colleges and perform the announcement logic
+    var selectedColleges = [];
+
+    var checkboxes = document.getElementsByClassName("college-checkbox");
+    for (var i = 0; i < checkboxes.length; i++) {
+      if (checkboxes[i].checked) {
+        selectedColleges.push(checkboxes[i].value);
+      }
+    }
+
+    // Perform the announcement logic with the selectedColleges array
+    // You can add your announcement code here
+    console.log("Selected Colleges: ", selectedColleges);
   }
 </script>

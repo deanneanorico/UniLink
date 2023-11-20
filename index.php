@@ -11,7 +11,10 @@
         } else if($_SESSION['privelege'] == "Head") {
             header("location: ./head");
             exit();
-        }
+        } else if($_SESSION['privelege'] == "VCDEA") {
+            header("location: ./vcdea");
+            exit();
+}
     }
 ?>
 <!DOCTYPE html>
@@ -66,15 +69,17 @@
                                 style="background-image: url('imgs/UNIversity LINkage.png'); background-repeat: no-repeat;"></div>
                             <div class="col-lg-6">
                                 <div class="p-5">
+                                    <div class="text-center">
                                     <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                                    </div>
                                     <form class="user" method="POST" action="login.php">
                                         <div class="form-group">
                                             <input type="email" class="form-control form-control-user" name="email" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Email">
                                         </div>
                                         <div class="form-group">
-    <input type="password" class="form-control form-control-user" name="password" id="exampleInputPassword" placeholder="Password">
-    <span id="togglePassword" onclick="togglePassword()">👁️</span>
-</div>
+                                            <input type="password" class="form-control form-control-user" name="password" id="exampleInputPassword" placeholder="Password">
+                                            <span id="togglePassword" onclick="togglePassword()">👁️</span>
+                                        </div>
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox medium">
                                                 <input type="checkbox" class="custom-control-input" id="customCheck">

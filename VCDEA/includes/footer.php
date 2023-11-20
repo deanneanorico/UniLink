@@ -567,6 +567,23 @@ ClassicEditor
 });
 </script>
 
+<script>
+    $(document).ready(function() {
+      // Checkbox click event handler
+      $('.form-check-input').on('change', function() {
+        // Check if the checkbox is checked or unchecked
+        if ($(this).is(':checked')) {
+          console.log('Checked:', $(this).val());
+          // Add your custom logic or function here if needed
+        } else {
+          console.log('Unchecked:', $(this).val());
+          // Add your custom logic or function here if needed
+        }
+      });
+    });
+  </script>
+
+
 
 
     <!-- Bootstrap core JavaScript-->

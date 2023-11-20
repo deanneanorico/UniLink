@@ -38,6 +38,9 @@
           } else if($row['privelege'] == "Head") {
             header("location: ./head");
             exit();
+          } else if($row['privelege'] == "VCDEA") {
+            header("location: ./vcdea");
+            exit();
           }
         } else {
           header("location: ./index.php?invalid=3");

@@ -47,6 +47,7 @@
     <!-- DATATABLES -->
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
       $(document).ready(function() {
         $('#managementTable').DataTable();
@@ -265,5 +266,33 @@
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap4.min.js"></script>
+    
+    <button onclick="confirmDelete()">Delete</button>
+
+<script>
+  function confirmDelete() {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You will not be able to recover this data!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Handle the delete action here
+        // You may want to make an AJAX request to delete the data on the server
+
+        Swal.fire(
+          'Deleted!',
+          'Your data has been deleted.',
+          'success'
+        );
+      }
+    });
+  }
+</script>
+
   </body>
 </html>
