@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
     // Insert data into the users table
-    $sql = "UPDATE `users` SET `title`=?,`first_name`=?,`mid_name`=?,`last_name`=?,`sex`=?,`email`=?,`campus`=?,`college`=?,`pass`=?,`privelege`=? WHERE `id` = ?";
+    $sql = "UPDATE `users` SET `title`=?,`first_name`=?,`mid_name`=?,`last_name`=?,`sex`=?,`email`=?,`campus`=?,`college_abbrev`=?,`pass`=?,`privelege`=? WHERE `id` = ?";
     $stmt = $mysqli->prepare($sql);
 
     if ($stmt) {

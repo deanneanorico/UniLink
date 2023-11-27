@@ -36,6 +36,7 @@
     <!-- DATATABLES -->
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
       $(document).ready(function() {
         $('#programTable').DataTable();
@@ -189,7 +190,7 @@
               <li class="nav-item dropdown no-arrow">
                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin</span>
-                  <img class="img-profile rounded-circle" src="imgs/undraw_profile_3.svg">
+                  <img class="img-profile rounded-circle" src="imgs/undraw_profile.svg">
                 </a>
                 <!-- Dropdown - User Information -->
                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -251,7 +252,7 @@
                 <a class="editProgram" data-toggle="modal" data-target="#editProgramModal" id="editProgram" onclick="setData(<?= $row['id'] ?>, '<?= $row['cp_id'] ?>', '<?= $row['cl_id'] ?>', '<?= $row['program'] ?>', '<?= $row['abbreviation'] ?>')">
                   <i class='fas fa-edit text-success'></i>
                 </a>
-                <a href="program.php?deleteprogram=<?= $row['id'] ?>" onClick="return confirm('Are you sure you want to delete?')" name="delprogram">
+                <a onclick="confirmDelete(<?=$row['id']?>)" name="delprogram">
                   <i class="fas fa-trash text-danger"></i>
                 </a>
               </td>
@@ -474,6 +475,36 @@
         document.getElementById('upCollege').value = r;
         document.getElementById('upAbbv').value = y;
         document.getElementById('upProgram').value = t;
+      }
+
+      function confirmDelete(e) {
+        Swal.fire({
+          title: 'Are you sure?',
+          text: 'You will not be able to recover this data!',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#d33',
+          cancelButtonColor: '#3085d6',
+          confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            // Handle the delete action here
+            // You may want to make an AJAX request to delete the data on the server
+            deleteUser = new XMLHttpRequest();
+            deleteUser.open("GET", "delete.program.php?id=" + e);
+            deleteUser.send();
+            deleteUser.onload = function () {
+              // console.log(this.responseText);
+              Swal.fire(
+                'Deleted!',
+                'Your data has been deleted.',
+                'success'
+              ).then((l) => {
+                location.reload(true);
+              });
+            }
+          }
+        });
       }
     </script>
   </body>

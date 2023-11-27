@@ -327,6 +327,7 @@
 </html>
 <script>
   setDepartment();
+  setCampusCollageDrop();
 
   function setDepartment() {
     var campus = document.getElementById("campus").value;
@@ -340,8 +341,8 @@
       var college_array = JSON.parse(this.responseText);
       college_array.forEach(function(element) {
         var option = document.createElement("option");
-        option.value = element;
-        option.innerHTML = element;
+        option.value = element['abbr'];
+        option.innerHTML = element['name'];
         college.appendChild(option);
       });
     }

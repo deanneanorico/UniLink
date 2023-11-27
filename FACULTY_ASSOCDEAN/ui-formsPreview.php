@@ -40,6 +40,7 @@
     <!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css"> -->
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         $(document).ready(function() {
             $('#activityTable').DataTable();
@@ -163,7 +164,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="table">
-                             <table id="activityTable" class="display" data-ordering="true" data-paging="true" data-searching="true">
+                             <table id="activityTable" style="width: 100%;" class="display" data-ordering="true" data-paging="true" data-searching="true">
                                 <thead style='text-align: center;'>
                                     <tr>
                                         <th >No.</th>
@@ -175,68 +176,7 @@
                                         <th>Action</th>
                                     </tr>
                                 </thead>
-                               <tbody>
-                        <?php
-                        // SQL query to retrieve data
-                        $college = $_SESSION['college'];
-
-                        $sql = "SELECT * FROM `activityform` WHERE `college` = '$college'";
-                        $result = $conn->query($sql);
-
-                        if ($result->num_rows > 0) {
-                            // Output data of each row
-                            $i = 1;
-                            while ($row = $result->fetch_assoc()) {
-                                // Calculate the status based on conditions
-                                $status = '';
-                                $start_date = strtotime($row['start_date']);
-                                $end_date = strtotime($row['end_date']);
-                                $today = strtotime(date('Y-m-d'));
-
-                                if ($start_date > $today) {
-                                    $status = 'For Implementation';
-                                    $textColor = '#d7d0d0'; // Set text color for 'For Implementation'
-                                } elseif ($start_date <= $today && $end_date > $today) {
-                                    $status = 'Ongoing';
-                                    $textColor = 'orange'; // Set text color for 'Ongoing'
-                                } elseif ($end_date <= $today) {
-                                    $status = 'Implemented';
-                                    $textColor = '#228B22'; // Set text color for 'Implemented'
-                                }
-                                echo "<tr>";
-                                echo "<td style='text-align: center;'>" . $i . "</td>";
-                                echo "<td style='text-align: center;'>" . $row["activity_title"] . "</td>";
-                                echo "<td style='text-align: center;'>" . $row["partner"] . "</td>";
-                                echo "<td style='text-align: center;'>" . date("M. d, Y", $start_date) . " - " . date("M. d, Y", $end_date) . " </td>";
-                                echo '<td style="text-align: center;"><div style="background-color: '.$textColor.'; color: #000000; padding: 5px; border-radius: 45px;">' . $status . '</div></td>';
-                                if($status == "Implemented") {
-                                    echo "
-                                        <td style='text-align: center;'>
-                                            <a href='ui-formsEdit.php?id=" . $row["id"] . "'>
-                                                <span class='fas fa-edit text-secondary' title='Edit'></span>
-                                            </a>
-                                            <a href='pdf.php?id=". $row["id"]."' target='_blank' class='fas fa-file-download text-info' title='Request Form'></a>
-                                            <a href='report.php?id=" . $row['id'] . "' class='fas fa-clipboard text-success' title='Narrative Report'></a>
-                                        </td>
-                                    ";
-                                } else {
-                                    echo "<td style='text-align: center;'>
-                                        <a href='ui-formsEdit.php?id=" . $row["id"] . "'>
-                                            <span class='fas fa-edit text-secondary'></span>
-                                        </a>
-                                        <a href='delete.php?id=" . $row["id"] . "'><span class='fas fa-trash text-danger'></span></a>
-                                        <a href='pdf.php?id=". $row["id"]."' target='_blank' class='fas fa-file-download text-info'></a>
-                                    </td>";
-                                }
-                                echo "</tr>";
-                                $i++;
-                            }
-                        } else {
-                            echo "No data found";
-                        }
-
-                        $conn->close();
-                        ?>
+                               <tbody id="load-table">
                         </tbody>
                             </table>
                         </div>
@@ -296,4 +236,50 @@
     include 'footer.php';
 ?>
     </body>
+    <script type="text/javascript">
+            </script>
+
+<script>
+    loadTable = new XMLHttpRequest();
+    loadTable.open("GET", "load.activity.php");
+    loadTable.send();
+    loadTable.onload = function () {
+        document.getElementById('load-table').innerHTML = this.responseText;
+    }
+
+  function confirmDelete(e) {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You will not be able to recover this data!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Handle the delete action here
+        // You may want to make an AJAX request to delete the data on the server
+        deleteActivity = new XMLHttpRequest();
+        deleteActivity.open("GET", "delete.activity.php?id=" + e);
+        deleteActivity.send();
+        deleteActivity.onload = function () {
+            loadTable = new XMLHttpRequest();
+            console.log("delete.activity.php?id=" + e);
+            loadTable.open("GET", "load.activity.php");
+            loadTable.send();
+            loadTable.onload = function () {
+                document.getElementById('load-table').innerHTML = this.responseText;
+            }
+        }
+
+        Swal.fire(
+          'Deleted!',
+          'Your data has been deleted.',
+          'success'
+        );
+      }
+    });
+  }
+</script>
 </html>

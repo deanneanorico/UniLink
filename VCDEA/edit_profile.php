@@ -157,7 +157,7 @@
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
                 <li class="breadcrumb-item">
-                  <a href="ea_profile.php">Profile</a>
+                  <a href="dea_profile.php">Profile</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">Edit Profile</li>
               </ol>

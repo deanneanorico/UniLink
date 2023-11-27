@@ -36,6 +36,7 @@
     <!-- DATATABLES -->
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
       $(document).ready(function() {
         $('#collegeTable').DataTable();
@@ -63,16 +64,17 @@
                 $college = $_POST['college'];
                 $abbreviation = $_POST['abbreviation'];
 
-                $sql = "INSERT INTO college (name, abbreviation, campusID) VALUES (?, ?, ?)";
+                $sql = "INSERT INTO college (name, college_abbrev, campusID) VALUES (?, ?, ?)";
                 $stmt = mysqli_prepare($conn, $sql);
 
                 if ($stmt) {
                     mysqli_stmt_bind_param($stmt, "sss", $college, $abbreviation, $campus_name);
                     if (mysqli_stmt_execute($stmt)) {
-                        // Insert successful
+                        
                     } else {
                         // Insert failed
                     }
+                    header('location: ./college.php');
                     mysqli_stmt_close($stmt);
                 }
                         
@@ -82,11 +84,11 @@
                 $college = $_POST['upCollege'];
                 $abbv = $_POST['upAbbv'];
 
-                $sql = "UPDATE `college` SET `name`= ?,`abbreviation`= ? WHERE `collegeID` = ?";
+                $sql = "UPDATE `college` SET `name`= ?,`college_abbrev`= ?, `campusID`=? WHERE `collegeID` = ?";
                 $stmt = mysqli_prepare($conn, $sql);
 
                 if ($stmt) {
-                    mysqli_stmt_bind_param($stmt, "sss", $college, $abbv, $id);
+                    mysqli_stmt_bind_param($stmt, "ssss", $college, $abbv, $campus_name, $id);
                     if (mysqli_stmt_execute($stmt)) {
                         // Insert successful
                     } else {
@@ -235,7 +237,7 @@
               <li class="nav-item dropdown no-arrow">
                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin</span>
-                  <img class="img-profile rounded-circle" src="imgs/undraw_profile_3.svg">
+                  <img class="img-profile rounded-circle" src="imgs/undraw_profile.svg">
                 </a>
                 <!-- Dropdown - User Information -->
                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -273,7 +275,7 @@
                       </tr>
                     </thead>
                     <tbody> <?php
-                    $query = "SELECT college.collegeID, college.name, college.college_abbrev, campus.campus_name
+                    $query = "SELECT college.collegeID, college.name, college.college_abbrev, campus.campus_name, college.campusID
                               FROM college
                               JOIN campus ON college.campusID = campus.id";
                     $sql = mysqli_query($conn, $query);
@@ -284,10 +286,10 @@
                         <td> <?php echo $row["name"]; ?> </td>
                         <td> <?php echo $row["college_abbrev"]; ?> </td>
                         <td>
-                          <a class="editCollege" data-toggle="modal" data-target="#editCollegeModal" id="editCollege" onclick="setData(`<?=$row['collegeID']?>`, `<?=$row['campus_name']?>`, `<?=$row['name']?>`, `<?=$row['college_abbrev']?>`)">
+                          <a class="editCollege" data-toggle="modal" data-target="#editCollegeModal" id="editCollege" onclick="setData(`<?=$row['collegeID']?>`, `<?=$row['campusID']?>`, `<?=$row['name']?>`, `<?=$row['college_abbrev']?>`)">
                             <i class='fas fa-edit text-success'></i>
                           </a>
-                          <a href="college.php?deletecollege=<?=$row['collegeID']?>" onClick="return confirm('Are you sure you want to delete?')" name="delcampus">
+                          <a onclick="confirmDelete(<?=$row['collegeID']?>)" name="delcampus">
                             <i class="fas fa-trash text-danger"></i>
                           </a>
                           <!-- <a href="college.php?id=<?php echo $row['id']; ?>" onClick="return confirm('Are you sure you want to delete?')" name="delcollege">
@@ -352,6 +354,7 @@
                   </div>
                 </div>
               </div>
+              <!-- EDIT -->
               <div class="modal fade" id="editCollegeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                   <div class="modal-content">
@@ -363,6 +366,7 @@
                       <div class="modal-body">
                         <div class="form-group">
                           <label for="campus_name">Campus</label>
+                          <input type="hidden " name="upid" id="upid" class="form-control" placeholder="" required>
                           <select class="form-control" name="upCampus" id="upCampus">
                             <?php
                               $sql = "SELECT * FROM `campus`";
@@ -481,6 +485,37 @@
         document.getElementById('upCampus').value = w;
         document.getElementById('upCollege').value = r;
         document.getElementById('upAbbv').value = t;
+      }
+
+      function confirmDelete(e) {
+        Swal.fire({
+          title: 'Are you sure?',
+          text: 'You will not be able to recover this data!',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#d33',
+          cancelButtonColor: '#3085d6',
+          confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            // Handle the delete action here
+            // You may want to make an AJAX request to delete the data on the server
+            deleteUser = new XMLHttpRequest();
+            console.log(e);
+            deleteUser.open("GET", "delete.college.php?id=" + e);
+            deleteUser.send();
+            deleteUser.onload = function () {
+              // console.log(this.responseText);
+              Swal.fire(
+                'Deleted!',
+                'Your data has been deleted.',
+                'success'
+              ).then((l) => {
+                location.reload(true);
+              });
+            }
+          }
+        });
       }
     </script>
   </body>

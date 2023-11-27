@@ -178,37 +178,44 @@
             </div>
           </div>
           <!-- Recipient Cards -->
+                    <!-- Recipient Cards -->
           <div class="col-md-6">
-            <div class="card">
-              <div class="card-header">
-              Recipient
-              </div>
-          <div class="card-body">
-           <div class="form-check">
-          <input type="checkbox" class="form-check-input" id="cicsCheckbox" value="CICS">
-          <label class="form-check-label" for="cicsCheckbox">College of Informatics and Computing Sciences</label>
+          <div class="card">
+          <div class="card-header">
+          Recipient
           </div>
-          <div class="form-check">
-            <input type="checkbox" class="form-check-input" id="cabeiCheckbox" value="CABEIHM">
+    <div class="card-body">
+      <!-- "Select All" Checkbox -->
+      <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="selectAllCheckbox">
+        <label class="form-check-label" for="selectAllCheckbox">Select All</label>
+      </div>
+        <div class="form-check">
+        <input type="checkbox" class="form-check-input college-checkbox" id="cicsCheckbox" value="CICS">
+        <label class="form-check-label" for="cicsCheckbox">College of Informatics and Computing Sciences</label>
+      </div>
+      <div class="form-check">
+        <input type="checkbox" class="form-check-input college-checkbox" id="cabeiCheckbox" value="CABEIHM">
             <label class="form-check-label" for="cabeiCheckbox">College of Accountancy, Business, Economics, International Hospitality Management</label>
           </div>
           <div class="form-check">
-            <input type="checkbox" class="form-check-input" id="casCheckbox" value="CAS">
+        <input type="checkbox" class="form-check-input college-checkbox" id="casCheckbox" value="CAS">
             <label class="form-check-label" for="casCheckbox">College of Arts and Sciences</label>
           </div>
           <div class="form-check">
-            <input type="checkbox" class="form-check-input" id="cteCheckbox" value="CTE">
+        <input type="checkbox" class="form-check-input college-checkbox" id="cteCheckbox" value="CTE">
             <label class="form-check-label" for="cteCheckbox">College of Teacher Education</label>
           </div>
           <div class="form-check">
-            <input type="checkbox" class="form-check-input" id="conahsCheckbox" value="CONAHS">
+        <input type="checkbox" class="form-check-input college-checkbox" id="conahsCheckbox" value="CONAHS">
             <label class="form-check-label" for="conahsCheckbox">College of Nursing and Allied Health Sciences</label>
           </div>
-            <button class="btn btn-primary float-right bi bi-megaphone ml-2">
-          Announce
-          </button>
-          </div>
-          </div>
+                <!-- Announce Button -->
+                <button class="btn btn-primary float-right bi bi-megaphone ml-2" onclick="announce()">
+                  Announce
+                </button>
+              </div>
+            </div>
           </div>
           </div>
           </div>
@@ -284,5 +291,32 @@
         college.appendChild(option);
       });
     }
+  }
+</script>
+<script>
+  // JavaScript to handle "Select All" functionality
+  document.getElementById("selectAllCheckbox").addEventListener("change", function () {
+    var checkboxes = document.getElementsByClassName("college-checkbox");
+
+    for (var i = 0; i < checkboxes.length; i++) {
+      checkboxes[i].checked = this.checked;
+    }
+  });
+
+  // Function to handle the Announce button click
+  function announce() {
+    // Get selected colleges and perform the announcement logic
+    var selectedColleges = [];
+
+    var checkboxes = document.getElementsByClassName("college-checkbox");
+    for (var i = 0; i < checkboxes.length; i++) {
+      if (checkboxes[i].checked) {
+        selectedColleges.push(checkboxes[i].value);
+      }
+    }
+
+    // Perform the announcement logic with the selectedColleges array
+    // You can add your announcement code here
+    console.log("Selected Colleges: ", selectedColleges);
   }
 </script>

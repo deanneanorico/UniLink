@@ -156,9 +156,7 @@
                                 </a>
                             </div>
                         </li>
-
                     </ul>
-
                 </nav>
                 <!-- End of Topbar -->
 
@@ -167,15 +165,7 @@
                     <div class="container-fluid">
                         <div class="card text-center">
                             <img src="imgs/undraw_profile.svg" class="card-img-top mx-auto" style="max-width: 200px;" alt="Profile Image">
-                            <div class="container mt-5">
-                                <ul class="nav nav-tabs" id="myTabs">
-                                    <li class="nav-item">
-                                        <a class="nav-link active" id="tab1" data-toggle="tab" href="#content1">Profile</a>
-                                    </li>
-                                </ul>
-                                
-                                <div class="tab-content mt-3">
-                                    <div class="tab-pane fade show active" id="content1">
+                            <div class="tab-pane fade show active" id="content1">
                                         <p></p>
                                         <?php
                                       $id = $_SESSION['id'];
@@ -188,6 +178,17 @@
                           <span class="text-black-600 large"><?=$row['title']." ".$row['first_name']." ".$row['last_name']?></span>
                                     
                                     </div>
+                            <div class="container mt-5">
+                                <ul class="nav nav-tabs" id="myTabs">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="tab1" data-toggle="tab" href="#content1">Profile</a>
+                                    </li>
+                                </ul>
+                                
+                                <div class="tab-content mt-3">
+                                    <a class="btn btn-primary rounded-fill bi bi-pencil-square" href="ui_edit_profile.php" role="button">
+                                Edit Profile
+                            </a>
                                 </div>
                             </div>
 

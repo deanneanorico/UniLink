@@ -141,7 +141,7 @@
               <li class="nav-item dropdown no-arrow">
                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin</span>
-                  <img class="img-profile rounded-circle" src="imgs/undraw_profile_3.svg">
+                  <img class="img-profile rounded-circle" src="imgs/undraw_profile.svg">
                 </a>
                 <!-- Dropdown - User Information -->
                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -171,41 +171,47 @@
                   <table id="managementTable" class="table display" data-ordering="true" data-paging="true" data-searching="true">
                     <thead>
                       <tr>
+                      <th>No.</th>
                       <th>Title</th>
-                      <th>First Name</th>
+                      <th>Name</th>
                       <th>Sex</th>
+                      <th>Privelege</th>
                       <th>College</th>
                       <th>Action</th>
                       </tr>
                     </thead>
-                      <tbody> 
-                            <?php
-                              $sql = "SELECT * FROM `users`";
-                              $result = $conn->query($sql);
-                              while($row = $result->fetch_assoc()) {
-                            ?>
-                              <tr>
-                                <td><?=$row['title']?></td>
-                                <td><?=$row['first_name']?></td>
-                                <td><?=$row['sex']?></td>
-                                <td><?= $row['college'] ?></td>
-                                <td>
-                                <a href="user_edit.php?id=<?=$row['id']?>"class="editUser">
-                                  <i class='fas fa-edit text-success'></i>
-                                </a>
-                                <a href="main_user_management.php?delete=<?= $row['id'] ?>" onClick="return confirm('Are you sure you want to delete?')" name="deluser">
-                                  <i class="fas fa-trash text-danger"></i>
-                                </a>
-                              </td>
-                              </tr>
-                            <?php
-                              }
-                            ?>
-                          </tbody>
-                        </table>
-                      </div>
-                      </div>
-                    </div>
+                      <tbody id="user_table">
+                      <?php
+                      $count = 1;
+                      $sql = "SELECT * FROM `users`";
+                      $result = $conn->query($sql);
+                      while($row = $result->fetch_assoc()) {
+                      ?>
+                      <tr>
+                          <td><?=$count?></td>
+                          <td><?=$row['title']?></td>
+                          <td><?= $row['first_name'] . ' ' . $row['last_name'] ?></td>
+                          <td><?=$row['sex']?></td>
+                          <td><?=$row['privelege']?></td>
+                          <td><?= $row['college_abbrev'] ?></td>
+                          <td>
+                          <a href="user_edit.php?id=<?=$row['id']?>"class="editUser">
+                            <i class='fas fa-edit text-success'></i>
+                          </a>
+                          <a name="deluser" onclick="confirmDelete(`<?=$row['id']?>`)">
+                            <i class="fas fa-trash text-danger"></i>
+                          </a>
+                        </td>
+                      </tr>
+                      <?php
+                      $count++;
+                      }
+                      ?> 
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
             <!-- Content Row -->
             <div class="row">
               <!-- Content Column -->
@@ -266,11 +272,8 @@
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap4.min.js"></script>
-    
-    <button onclick="confirmDelete()">Delete</button>
-
 <script>
-  function confirmDelete() {
+  function confirmDelete(e) {
     Swal.fire({
       title: 'Are you sure?',
       text: 'You will not be able to recover this data!',
@@ -283,16 +286,22 @@
       if (result.isConfirmed) {
         // Handle the delete action here
         // You may want to make an AJAX request to delete the data on the server
-
-        Swal.fire(
-          'Deleted!',
-          'Your data has been deleted.',
-          'success'
-        );
+        deleteUser = new XMLHttpRequest();
+        console.log("delete.user.php?id=" + e);
+        deleteUser.open("GET", "delete.user.php?id=" + e);
+        deleteUser.send();
+        deleteUser.onload = function () {
+          Swal.fire(
+            'Deleted!',
+            'Your data has been deleted.',
+            'success'
+          ).then((f) => {
+            location.reload(true);
+          });
+        }
       }
     });
   }
 </script>
-
-  </body>
+</body>
 </html>

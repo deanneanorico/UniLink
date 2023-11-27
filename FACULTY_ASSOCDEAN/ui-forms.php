@@ -172,7 +172,7 @@
                   <div id="step1">
                     <div class="form-group">
                       <label for="activityName">Activity Title</label>
-                      <input type="text" class="form-control outline" id="activityName" name="activityName" />
+                      <input type="text" class="form-control outline" id="activityName" name="activityName" required />
                     </div>
                     <div class="form-group college">
                       <label for="campus">Campus</label>
@@ -281,9 +281,6 @@
                               <th class="col-md-5" style="text-align: left;">Name</th>
                               <th class="col-md-6" style="text-align: left;">Designation</th>
                               <th class="col-md-2" style="padding-left: 0px;">
-                                <button type="button" name="addRole" class="btn btn-primary shadow btn-circle btn-sm" data-toggle="modal" data-target="#modal1" onclick="setSelectRole(1)">
-                                  <i class="fas fa-user-plus"></i>
-                                </button>
                                 <button style="margin-left:1px;background: white;" type="button" name="addRole" class="btn btn-primary btn-circle btn-sm" onclick="addCustomMember(1)">
                                   <i class="fas fa-plus" style="color: #1dbf1d"></i>
                                 </button>
@@ -298,39 +295,6 @@
                             <tr>
                               <th class="col-md-11" style="text-align: left;">Responsibility</th>
                               <th class="col-md-1" style="padding-left: 0px;">
-                                <button type="button" name="addRole" class="btn btn-primary shadow btn-circle btn-sm" data-toggle="modal" data-target="#responsibilty_modal1" onclick="openModal(1)">
-                                  <i class="fas fa-plus"></i>
-                                </button>
-                                <div class="modal fade" id="responsibilty_modal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                  <div class="modal-dialog modal-lg" role="document">
-                                    <div class="modal-content">
-                                      <div class="modal-header">
-                                        <h5 class="modal-title" style="font-size:20px">Add Project Leader/s Responsibility</h5>
-                                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                          <span aria-hidden="true">×</span>
-                                        </button>
-                                      </div>
-                                      <div class="modal-body">
-                                        <div class="card-body">
-                                          <div class="table-responsive">
-                                            <table id="example6" class="table header-border table-responsive-sm">
-                                              <thead>
-                                                <tr>
-                                                  <th class="col-md-5" style="text-align: left;">Role</th>
-                                                  <th class="col-md-6" style="text-align: left;">Resposibility</th>
-                                                  <th class="col-md-2" style="text-align: right;">Action</th>
-                                                </tr>
-                                              </thead>
-                                              <tbody id="responsibility_list_1">
-                                                <!-- List Responsibility of Leader -->
-                                              </tbody>
-                                            </table>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
                                 <button style="margin-left:1px;background: white;" type="button" name="addRole" class="btn btn-primary btn-circle btn-sm" onclick="addCustomResponsibility(1)">
                                   <i class="fas fa-plus" style="color: #1dbf1d"></i>
                                 </button>
@@ -360,8 +324,6 @@
                               <th class="col-md-5" style="text-align: left;">Name</th>
                               <th class="col-md-6" style="text-align: left;">Designation</th>
                               <th class="col-md-2" style="padding-left: 0px;">
-                                <button type="button" name="addRole" class="btn btn-primary shadow btn-circle btn-sm" data-toggle="modal" data-target="#modal1" onclick="setSelectRole(2)">                                  <i class="fas fa-user-plus"></i>
-                                </button>
                                 <button style="margin-left:1px;background: white;" type="button" name="addRole" class="btn btn-primary shadow btn-circle btn-sm" onclick="addCustomMember(2)">
                                   <i class="fas fa-plus" style="color: #1dbf1d"></i>
                                 </button>
@@ -375,39 +337,6 @@
                             <tr>
                               <th class="col-md-11" style="text-align: left;">Responsibility</th>
                               <th class="col-md-1" style="padding-left: 0px;">
-                                <button type="button" name="addRole" class="btn btn-primary shadow btn-circle btn-sm" data-toggle="modal" onclick="openModal(2)" data-target="#responsibility_modal_2">
-                                  <i class="fas fa-plus"></i>
-                                </button>
-                                <div class="modal fade" id="responsibility_modal_2" tabindex="-1" role="dialog" aria-hidden="true">
-                                  <div class="modal-dialog modal-lg">
-                                    <div class="modal-content">
-                                      <div class="modal-header">
-                                        <h5 class="modal-title" style="font-size:23px">Add Project Member/s Responsibility</h5>
-                                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                          <span aria-hidden="true">×</span>
-                                        </button>
-                                      </div>
-                                      <div class="modal-body" style="padding: 0.875rem">
-                                        <div class="card-body">
-                                          <div class="table-responsive">
-                                            <table class="table header-border table-responsive-sm">
-                                              <thead>
-                                                <tr>
-                                                  <th class="col-md-4" style="text-align: left;">Role</th>
-                                                  <th class="col-md-7" style="text-align: left;">Resposibility</th>
-                                                  <th class="col-md-2" style="text-align: right;">Action</th>
-                                                </tr>
-                                              </thead>
-                                              <tbody id="responsibility_list_2">
-                                                <!-- List Responsibility of Leader -->
-                                              </tbody>
-                                            </table>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
                                 <button style="margin-left:1px;background: white;" type="button" name="addRole" class="btn btn-primary shadow btn-circle btn-sm" onclick="addCustomResponsibility(2)">
                                   <i class="fas fa-plus" style="color: #1dbf1d"></i>
                                 </button>
@@ -481,13 +410,13 @@
                           <tbody id="table">
                             <tr>
                               <td>
-                                <input type="text" class="form-control outline" id="item" name="item_name[]" placeholder="Item Name">
+                                <input type="text" class="form-control outline" id="item" name="item_name[]" placeholder="Item Name" required>
                               </td>
                               <td>
-                                <input class="quantity form-control" type="number" id="quantity1" onkeyup="quantityfunc(1)" name="quantity[]" placeholder="Quantity">
+                                <input class="quantity form-control" type="number" id="quantity1" onkeyup="quantityfunc(1)" name="quantity[]" placeholder="Quantity" required>
                               </td>
                               <td>
-                                <input class="price form-control" type="number" id="cost1" onkeyup="pricefunc(1)" name="cost[]" placeholder="Cost">
+                                <input class="price form-control" type="number" id="cost1" onkeyup="pricefunc(1)" name="cost[]" placeholder="Cost" required>
                               </td>
                               <td style="text-align:center">
                                 <span class="subtotal1" id="subtotal1">0.00</span>

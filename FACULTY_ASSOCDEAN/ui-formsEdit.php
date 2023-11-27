@@ -307,9 +307,6 @@
                                   <th class="col-md-5" style="text-align: left;">Name</th>
                                   <th class="col-md-6" style="text-align: left;">Designation</th>
                                   <th class="col-md-2" style="padding-left: 0px;">
-                                    <button type="button" name="addRole" class="btn btn-primary shadow btn-circle btn-sm" data-toggle="modal" data-target="#modal1" onclick="setSelectRole(<?=$total_roles?>)">
-                                      <i class="fas fa-user-plus"></i>
-                                    </button>
                                     <button style="margin-left:1px;background: white;" type="button" name="addRole" class="btn btn-primary btn-circle btn-sm" onclick="addCustomMember(<?=$total_roles?>)">
                                       <i class="fas fa-plus" style="color: #1dbf1d"></i>
                                     </button>
@@ -354,39 +351,6 @@
                                 <tr>
                                   <th class="col-md-11" style="text-align: left;">Responsibility</th>
                                   <th class="col-md-1" style="padding-left: 0px;">
-                                    <button type="button" name="addRole" class="btn btn-primary shadow btn-circle btn-sm" data-toggle="modal" data-target="#responsibilty_modal<?=$total_roles?>" onclick="openModal(<?=$total_roles?>)">
-                                      <i class="fas fa-plus"></i>
-                                    </button>
-                                    <div class="modal fade" id="responsibilty_modal<?=$total_roles?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                      <div class="modal-dialog modal-lg" role="document">
-                                        <div class="modal-content">
-                                          <div class="modal-header">
-                                            <h5 class="modal-title" style="font-size:20px">Add Project Leader/s Responsibility</h5>
-                                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                              <span aria-hidden="true">×</span>
-                                            </button>
-                                          </div>
-                                          <div class="modal-body">
-                                            <div class="card-body">
-                                              <div class="table-responsive">
-                                                <table id="example6" class="table header-border table-responsive-sm">
-                                                  <thead>
-                                                    <tr>
-                                                      <th class="col-md-5" style="text-align: left;">Role</th>
-                                                      <th class="col-md-6" style="text-align: left;">Resposibility</th>
-                                                      <th class="col-md-2" style="text-align: right;">Action</th>
-                                                    </tr>
-                                                  </thead>
-                                                  <tbody id="responsibility_list_<?=$total_roles?>">
-                                                    <!-- List Responsibility of Leader -->
-                                                  </tbody>
-                                                </table>
-                                              </div>
-                                            </div>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
                                     <button style="margin-left:1px;background: white;" type="button" name="addRole" class="btn btn-primary btn-circle btn-sm" onclick="addCustomResponsibility(<?=$total_roles?>)">
                                       <i class="fas fa-plus" style="color: #1dbf1d"></i>
                                     </button>

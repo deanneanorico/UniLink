@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
     // Insert data into the users table
-    $sql = "INSERT INTO users (title, first_name, mid_name, last_name, sex, email, campus, college, pass, privelege)
+    $sql = "INSERT INTO users (title, first_name, mid_name, last_name, sex, email, campus, college_abbrev, pass, privelege)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = $mysqli->prepare($sql);
 

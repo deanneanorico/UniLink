@@ -1,12 +1,9 @@
 <?php
   session_start();
-  include 'db.php';
-
   if(!isset($_SESSION['id'])) {
     header("location: ../");
     exit();
   }
-
   if($_SESSION['privelege'] == "Faculty" || $_SESSION['privelege'] == "Associate Dean" || $_SESSION['privelege'] == "Dean") {
     header("location: ../faculty_assocdean");
     exit();
@@ -43,7 +40,7 @@
         </a>
         <!-- Divider -->
         <hr class="sidebar-divider my-0">
-        <li class="nav-item active">
+        <li class="nav-item">
           <a class="nav-link" href="main_user_management.php">
             <i class="bi bi-person-video3"></i>
             <span>Account Management</span>
@@ -63,6 +60,13 @@
             </div>
           </div>
         </li>
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+        <!-- Sidebar Toggler (Sidebar) -->
+        <div class="text-center d-none d-md-inline">
+          <button class="rounded-circle border-0" id="sidebarToggle"></button>
+        </div>
+      </ul>
         <!-- Divider -->
         <hr class="sidebar-divider">
         <!-- Sidebar Toggler (Sidebar) -->
@@ -115,9 +119,9 @@
               </li>
               <!-- Nav Item - User Information -->
               <li class="nav-item dropdown no-arrow">
-                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin</span>
-                  <img class="img-profile rounded-circle" src="imgs/undraw_profile_3.svg">
+                  <img class="img-profile rounded-circle" src="imgs/undraw_profile.svg">
                 </a>
                 <!-- Dropdown - User Information -->
                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -132,43 +136,64 @@
           </nav>
           <!-- End of Topbar -->
           <!-- Begin Page Content -->
-          <form action="create_account.php" method="post">
           <div class="container-fluid">
-             <nav aria-label="breadcrumb">
+            <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
                 <li class="breadcrumb-item">
-                  <a href="main_user_management.php">Account Management</a>
+                  <a href="a-profile.php">Profile</a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">Create User</li>
+                <li class="breadcrumb-item active" aria-current="page">Edit Profile</li>
               </ol>
             </nav>
-            <div class="d-flex justify-content-between align-items-center mb-2"></div>
+          <!-- Profile Pic -->
+          <div class="container mt-3">
+            <div class="row">
+          <!-- Profile Pic -->
+          <div class="col-md-4">
+          <div class="card">
+            <div class="card-header">
+              Profile Picture
+            </div>
+            <div class="card-body text-center">
+              <img id="profileImage" src="#" class="card-img-top mx-auto" style="max-width: 200px;" alt="Profile Image">
+              <input type="file" id="fileInput" style="display: none;" accept="image/*">
+              <label for="fileInput" class="btn btn-primary float-right bi bi-image ml-2">
+                Change
+              </label>
+            </div>
+          </div>
+        </div>
+          <!-- Recipient Cards -->
+          <div class="col-md-8">
             <div class="card">
-              <div class="card-body">
-                <div class="container">
+              <div class="card-header">
+              Profile Details
+              </div>
+          <div class="card-body">
                   <div class="row">
+                    <input type="hidden" class="form-control" id="first" name="id" value="<?=$id?>">
                     <div class="col-md-3">
                       <div class="form-group">
                         <label for="input1">Title</label>
-                        <input type="text" class="form-control" id="title" name="title">          
+                        <input type="text" class="form-control" id="title" name="title" value="">          
                         </div>
                        </div>
                     <div class="col-md-3">
                       <div class="form-group">
                         <label for="input2">First Name</label>
-                        <input type="text" class="form-control" id="first" name="first">
+                        <input type="text" class="form-control" id="first" name="first" value="">
                       </div>
                     </div>
                     <div class="col-md-3">
                       <div class="form-group">
                         <label for="input3">Middle Initial</label>
-                        <input type="text" class="form-control" id="middle" name="middle">
+                        <input type="text" class="form-control" id="middle" name="middle" value="">
                       </div>
                     </div>
                     <div class="col-md-3">
                       <div class="form-group">
                         <label for="input4">Last Name</label>
-                        <input type="text" class="form-control" id="last" name="last">
+                        <input type="text" class="form-control" id="last" name="last" value="">
                       </div>
                     </div>
                   </div>
@@ -177,97 +202,52 @@
                       <div class="form-group sex">
                         <label for="sex">Sex</label>
                         <select class="form-control" id="sex" name="sex">
-                          <option value="Male">Male</option>
-                          <option value="Female">Female</option>
+                          <option value="Male"> </option>
+                          <option value="Female"></option>
                         </select>
                       </div>
                     </div>
                     <div class="col-md-8">
                       <div class="form-group">
                         <label for="input6">Email</label>
-                        <input type="text" class="form-control" id="email" name="email">
+                        <input type="text" class="form-control" id="email" name="email" value="">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="password" name="password" required>
                       </div>
                     </div>
                   </div>
                   <!-- Admin Checkbox  -->
                   <div class="row">
                     <div class="col-md-12">
-                      <div class="form-group sex">
-                        <label for="sex">Privelege</label>
+                      <div class="form-group privelege">
+                        <label for="privelege">Privelege</label>
                         <select class="form-control" id="privelege" name="privelege" onchange="setCampusCollageDrop()">
-                          <option value="Admin">Admin</option>
-                          <option value="Associate Dean">Associate Dean</option>
-                          <option value="Dean">Dean</option>
-                          <option value="Head">Head</option>
-                          <option value="VCDEA">VCDEA</option>
+                          <!-- <option value="Admin" <?php if($user_data['privelege'] == "Admin"){echo "selected";}?>>Admin</option>
+                          <option value="Associate Dean" <?php if($user_data['privelege'] == "Associate Dean"){echo "selected";}?>>Associate Dean</option>
+                          <option value="Dean" <?php if($user_data['privelege'] == "Dean"){echo "selected";}?>>Dean</option>
+                          <option value="Head" <?php if($user_data['privelege'] == "Head"){echo "selected";}?>>Head</option>
+                          <option value="VCDEA" <?php if($user_data['privelege'] == "VCDEA"){echo "selected";}?>>VCDEA</option> -->
                         </select>
                       </div>
                     </div>
                   </div>
-                  <div class="row" id="campus_n_college">
-                    <div class="col-md-4">
-                      <div class="form-group">
-                        <label for="campus">Campus</label>
-                        <select class="form-control" id="campus" name="campus" onchange="setDepartment()">
-                            <option selected>-- Select Campus --</option>
-                            <?php
-                              $sql = "SELECT * FROM `campus`";
-                              $result = $conn->query($sql);
-                              while($row = $result->fetch_assoc()){
-                            ?>
-                              <option value="<?=$row['campus_name']?>"><?=$row['campus_name']?></option>
-                            <?php
-                              }
-                            ?>
-                          </select>
-                      </div>
-                    </div>
-                    <div class="col-md-8">
-                      <div class="form-group">
-                          <label for="college">College</label>
-                          <select class="form-control" name="department" id="department" onchange="setProgram()" required>
-                            <!-- LIST OF DEPARTMENTS/COLLEGES -->
-                          </select>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label for="password">Password</label>
-                        <div class="input-group">
-                          <input type="password" class="form-control" id="password" name="password" required>
-                          <div class="input-group-append">
-                            <span class="input-group-text" id="toggle-password">
-                              <i class="fa fa-eye" aria-hidden="true"></i>
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                   <!-- Buttons -->
-                   <div class="row">
-                <div class="col-md-12">
-                    <div class="form-group text-right mt-1">
-                      <a href="main_user_management.php" class="btn btn-secondary">Close</a>
-                      <input type="submit" name="submit" class="submit btn btn-primary" value="Save">
-                    </div>
-                </div>
-            </div>
-                </div>
-            <!-- Content Row -->
-            <div class="row">
-              <!-- Content Column -->
-<!--               <div class="col-lg-6 mb-4"></div>
-              <div class="col-lg-6 mb-4"></div> -->
-            </div>
+            <button class="btn btn-primary float-right bi bi-floppy ml-2">
+          Update
+          </button>
           </div>
-          <!-- /.container-fluid -->
+          </div>
+          </div>
+          </div>
+          </div>
         </div>
-      </div>
-    </form>
-    </div>
+        </div>
         <!-- End of Main Content -->
         <!-- Footer -->
         <footer class="sticky-footer bg-white">
@@ -319,8 +299,18 @@
   </body>
 </html>
 <script>
-  setCampusCollageDrop();
-  
+  document.getElementById('fileInput').addEventListener('change', function (event) {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        document.getElementById('profileImage').src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+  });
+</script>
+<script>
   function setDepartment() {
     var campus = document.getElementById("campus").value;
 
@@ -333,69 +323,10 @@
       var college_array = JSON.parse(this.responseText);
       college_array.forEach(function(element) {
         var option = document.createElement("option");
-        option.value = element['abbr'];
-        option.innerHTML = element['name'];
+        option.value = element;
+        option.innerHTML = element;
         college.appendChild(option);
       });
     }
   }
-
-  function setCampusCollageDrop() {
-    var privelege = document.getElementById("privelege").value;
-
-    if(privelege == "Head" || privelege == "VCDEA" || privelege == "Admin") {
-      var campus = document.getElementById("campus");
-      campus.innerHTML = "";
-      var option = document.createElement("option");
-      option.value = "none";
-      option.innerHTML = "none";
-      campus.appendChild(option);
-
-      var college = document.getElementById("department");
-      college.innerHTML = "";
-      option = document.createElement("option");
-      option.value = "none";
-      option.innerHTML = "none";
-      college.appendChild(option);
-
-      document.getElementById("campus_n_college").style.display = "none";
-    } else {
-      var getCampus = new XMLHttpRequest();
-      getCampus.open("GET", "getcampuslist.php");
-      getCampus.send();
-      getCampus.onload = function() {
-        var campus = document.getElementById("campus");
-        campus.innerHTML = "";
-        var campus_array = JSON.parse(this.responseText);
-        var option = document.createElement("option");
-        option.value = "";
-        option.innerHTML = "-- Select Campus --";
-        campus.appendChild(option);
-        campus_array.forEach(function(element) {
-          option = document.createElement("option");
-          option.value = element;
-          option.innerHTML = element;
-          campus.appendChild(option);
-        });
-        setDepartment();
-      }
-      document.getElementById("campus_n_college").style.display = "flex";
-    }
-  }
-</script>
-<script>
-  document.getElementById("toggle-password").addEventListener("click", function () {
-    var passwordInput = document.getElementById("password");
-    var icon = this.querySelector("i");
-
-    if (passwordInput.type === "password") {
-      passwordInput.type = "text";
-      icon.classList.remove("fa-eye");
-      icon.classList.add("fa-eye-slash");
-    } else {
-      passwordInput.type = "password";
-      icon.classList.remove("fa-eye-slash");
-      icon.classList.add("fa-eye");
-    }
-  });
 </script>
