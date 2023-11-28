@@ -36,7 +36,6 @@
             .form-group {
                 position: relative;
             }
-
             #togglePassword {
                 position: absolute;
                 right: 10px;

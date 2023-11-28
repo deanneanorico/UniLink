@@ -1,8 +1,9 @@
 <?php
 	include "../db.php";
+	session_start();
 
 	$campus = $_GET['campus'];
-	$college = $_GET['college'];
+	$college = $_SESSION['collegeName'];
 	$department = array();
 
 	$sql = "SELECT pg.program, cp.campus_name, cl.name FROM `program` AS pg INNER JOIN `campus` AS cp ON pg.campus_id = cp.id INNER JOIN `college` AS cl ON pg.college_id = cl.collegeID WHERE `campus_name` = '$campus' AND `name` = '$college'";

@@ -117,7 +117,7 @@
               <li class="nav-item dropdown no-arrow">
                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin</span>
-                  <img class="img-profile rounded-circle" src="imgs/undraw_profile_3.svg">
+                  <img class="img-profile rounded-circle" src="imgs/undraw_profile.svg">
                 </a>
                 <!-- Dropdown - User Information -->
                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -190,8 +190,21 @@
                     </div>
                   </div>
                   <!-- Admin Checkbox  -->
-                  <div class="row">
-                    <div class="col-md-12">
+                  <div class="row" id="privelege_n_pass">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="password">Password</label>
+                        <div class="input-group">
+                          <input type="password" class="form-control" id="password" name="password" required>
+                          <div class="input-group-append">
+                            <span class="input-group-text" id="toggle-password">
+                              <i class="fa fa-eye" aria-hidden="true"></i>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
                       <div class="form-group sex">
                         <label for="sex">Privelege</label>
                         <select class="form-control" id="privelege" name="privelege" onchange="setCampusCollageDrop()">
@@ -228,21 +241,6 @@
                           <select class="form-control" name="department" id="department" onchange="setProgram()" required>
                             <!-- LIST OF DEPARTMENTS/COLLEGES -->
                           </select>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label for="password">Password</label>
-                        <div class="input-group">
-                          <input type="password" class="form-control" id="password" name="password" required>
-                          <div class="input-group-append">
-                            <span class="input-group-text" id="toggle-password">
-                              <i class="fa fa-eye" aria-hidden="true"></i>
-                            </span>
-                          </div>
-                        </div>
                       </div>
                     </div>
                   </div>

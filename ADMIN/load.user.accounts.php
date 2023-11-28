@@ -8,7 +8,7 @@ while($row = $result->fetch_assoc()) {
 <tr>
     <td><?=$count?></td>
     <td><?=$row['title']?></td>
-    <td><?= $row['first_name'] . ' ' . $row['last_name'] ?></td>
+    <td><?= $row['first_name'] . ' ' . $row['last_name'] . ' ' . $row['last_name'] ?></td>
     <td><?=$row['sex']?></td>
     <td><?=$row['privelege']?></td>
     <td><?= $row['college_abbrev'] ?></td>

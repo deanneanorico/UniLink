@@ -2,7 +2,7 @@
 include 'db.php';
 session_start();
 
-$college = $_SESSION['college'];
+$college = $_SESSION['collegeName'];
 
 $sql = "SELECT * FROM `activityform` WHERE `college` = '$college'";
 $result = $conn->query($sql);

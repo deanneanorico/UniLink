@@ -78,7 +78,7 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" href="docu_repo.php">
-            <i class="bi bi-megaphone"></i>
+            <i class="bi bi-folder"></i>
             <span>Document Repository</span>
           </a>
         </li>

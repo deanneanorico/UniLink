@@ -196,7 +196,36 @@
                       </div>
                     </div>
                   </div>
-                  <div class="row" id="campus_n_college">
+                  <!-- Admin Checkbox  -->
+                  <div class="row" id="privelege_n_pass">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="password">Password</label>
+                        <div class="input-group">
+                          <input type="password" class="form-control" id="password" name="password" required>
+                          <div class="input-group-append">
+                            <span class="input-group-text" id="toggle-password">
+                              <i class="fa fa-eye" aria-hidden="true"></i>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group privelege">
+                        <label for="privelege">Privelege</label>
+                        <select class="form-control" id="privelege" name="privelege" onchange="setCampusCollageDrop()">
+                          <option value="Admin" <?php if($user_data['privelege'] == "Admin"){echo "selected";}?>>Admin</option>
+                          <option value="Associate Dean" <?php if($user_data['privelege'] == "Associate Dean"){echo "selected";}?>>Associate Dean</option>
+                          <option value="Dean" <?php if($user_data['privelege'] == "Dean"){echo "selected";}?>>Dean</option>
+                          <option value="Head" <?php if($user_data['privelege'] == "Head"){echo "selected";}?>>Head</option>
+                          <option value="VCDEA" <?php if($user_data['privelege'] == "VCDEA"){echo "selected";}?>>VCDEA</option>
+                        </select>
+                      </div>
+                    </div>
+                    </div>
+                    <!-- Campus and college -->
+                    <div class="row" id="campus_n_college">
                     <div class="col-md-4">
                       <div class="form-group campus">
                         <label for="campus">Campus</label>
@@ -220,36 +249,6 @@
                           <select class="form-control" name="department" id="department" onchange="setProgram()" required>
                             <!-- LIST OF DEPARTMENTS/COLLEGES -->
                           </select>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label for="password">Password</label>
-                        <div class="input-group">
-                          <input type="password" class="form-control" id="password" name="password" required>
-                          <div class="input-group-append">
-                            <span class="input-group-text" id="toggle-password">
-                              <i class="fa fa-eye" aria-hidden="true"></i>
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- Admin Checkbox  -->
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div class="form-group privelege">
-                        <label for="privelege">Privelege</label>
-                        <select class="form-control" id="privelege" name="privelege" onchange="setCampusCollageDrop()">
-                          <option value="Admin" <?php if($user_data['privelege'] == "Admin"){echo "selected";}?>>Admin</option>
-                          <option value="Associate Dean" <?php if($user_data['privelege'] == "Associate Dean"){echo "selected";}?>>Associate Dean</option>
-                          <option value="Dean" <?php if($user_data['privelege'] == "Dean"){echo "selected";}?>>Dean</option>
-                          <option value="Head" <?php if($user_data['privelege'] == "Head"){echo "selected";}?>>Head</option>
-                          <option value="VCDEA" <?php if($user_data['privelege'] == "VCDEA"){echo "selected";}?>>VCDEA</option>
-                        </select>
                       </div>
                     </div>
                   </div>
