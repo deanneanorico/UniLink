@@ -45,7 +45,7 @@ class PDF extends FPDF
         $this->Cell(193, 0, '', 1, 0, 'C');
         $this->Ln(5);
         $this->SetFont('times', 'B', 12);
-        $this->Cell(150, 0, '               College of Informatics and Computing Sciences', 0, 0, 'L');
+        $this->Cell(150, 0, '              '.$_SESSION['collegeName'], 0, 0, 'L');
     }
     function Footer()
     {
