@@ -21,7 +21,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>UniLink - VCDEA</title>
+    <title>UniLink - Head</title>
     <link rel="shortcut icon" type="image/png" href="../imgs/BSU.png" alt="Logo" />
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -40,7 +40,7 @@
           <img src="../imgs/BSU.png" width="50" height="45">
           <div class="sidebar-brand-text mx-3">UniLink</div>
         </a>
-        <!-- Divider -->
+                <!-- Divider -->
         <hr class="sidebar-divider my-0">
         <!-- Nav Item - Dashboard -->
         <li class="nav-item">
@@ -50,29 +50,27 @@
           </a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" href="linkages.php">
+            <i class="bi bi-bullseye"></i>
+            <span>Linkages Proposal</span>
+          </a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="announcement.php">
             <i class="bi bi-megaphone"></i>
             <span>Announcements</span>
           </a>
         </li>
         <li class="nav-item active">
-          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+          <a class="nav-link" href="status.php">
             <i class="bi bi-speedometer"></i>
             <span>Status</span>
           </a>
-          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-              <a class="collapse-item" href="stat_exploratory.php">For Exploratory</a>
-              <a class="collapse-item" href="stat_mou_partner.php">Review MOU by Partner</a>
-              <a class="collapse-item" href="stat_mou_legal.php">Review MOU Legal</a>
-              <a class="collapse-item" href="stat_signing.php">For Signing</a>
-            </div>
-          </div>
         </li>
-         <li class="nav-item">
+        <li class="nav-item">
           <a class="nav-link" href="docu_repo.php">
-            <i class="bi bi-megaphone"></i>
-            <span>Document Repository</span>
+            <i class="bi bi-archive"></i>
+            <span>Archive</span>
           </a>
         </li>
         <!-- Divider -->
@@ -137,12 +135,11 @@
                       $row = $result->fetch_assoc();
                   ?>
                   <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?=$row['first_name']." ".$row['last_name']?></span>
-                  <span class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
                   <img class="img-profile rounded-circle" src="imgs/BSU.png">
                 </a>
                 <!-- Dropdown - User Information -->
                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                  <a class="dropdown-item" href="dea_profile.php">
+                  <a class="dropdown-item" href="ea_profile.php">
                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Profile </a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">

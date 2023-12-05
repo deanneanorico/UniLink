@@ -62,11 +62,12 @@
                     <i class="fas fa-fw fa-bullhorn"></i>
                     <span>Announcements</span></a>
             </li>   
-            <li class="nav-item">
-                <a class="nav-link" href="documents.php">
-                    <i class="bi bi-file-earmark-pdf"></i>
-                    <span>Supporting Documents</span></a>
-            </li>   
+        <li class="nav-item">
+          <a class="nav-link" href="docu_repo.php">
+            <i class="bi bi-archive"></i>
+            <span>Archive</span>
+          </a>
+        </li>  
             <!-- Divider -->
             <hr class="sidebar-divider">
             <!-- Sidebar Toggler (Sidebar) -->

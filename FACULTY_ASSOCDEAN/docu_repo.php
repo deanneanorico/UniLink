@@ -55,12 +55,12 @@
                     <i class="fas fa-fw fa-calendar"></i>
                     <span>Activity Management</span></a>
             </li>
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="ui-announcement.php">
                     <i class="fas fa-fw fa-bullhorn"></i>
                     <span>Announcements</span></a>
                 </li>
-            <li class="nav-item">
+            <li class="nav-item active">
               <a class="nav-link" href="docu_repo.php">
                 <i class="bi bi-archive"></i>
                 <span>Archive</span>

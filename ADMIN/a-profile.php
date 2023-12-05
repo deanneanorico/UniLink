@@ -159,10 +159,12 @@
                       $row = $result->fetch_assoc();
                     ?>
                     <!-- Display user information here -->
-                    <!-- <span class="text-black-600 large"><?=$row['title']." ".$row['first_name']." ".$row['last_name']?></span> -->
-                    <a class="btn btn-primary rounded-fill bi bi-pencil-square" href="#" role="button" id="editProfileBtn" data-bs-toggle="modal" data-bs-target="#editProfileModal">
-                            Edit Profile
-                        </a>
+                    <span class="text-black-600 large"><?=$row['title']." ".$row['first_name']." ".$row['last_name']?></span>
+                    <div></div>
+                    <span class="text-black-600 large"><?=$row['privelege']?></span>          
+                    <div></div>
+                    <a class="btn btn-primary rounded-fill" data-toggle="modal" data-target="#editprofile">
+                  Edit Profile </a>
                   </div>
                 </div>
                </div>
@@ -171,17 +173,55 @@
           </div>
         </div>
         <!-- Modal -->
-        <div class="modal fade" id="editProfileModal" tabindex="-1" role="dialog" aria-labelledby="editProfileModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <!-- Add your modal content here -->
+        <div class="modal fade" id="editprofile" tabindex="-1" role="dialog" aria-labelledby="addmodallabel" aria-hidden="true">
+                <!-- Modal content goes here -->
+                <div class="modal-dialog">
+                  <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="editProfileModalLabel">Edit Profile</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      <h5 class="modal-title" id="addmodallabel">Edit Profile</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
                     </div>
+                    <form action="#" method="post" enctype="multipart/form-data">
+                    <!-- Replace "insert_campus.php" with the actual path to your server-side script -->
                     <div class="modal-body">
-                        <!-- Your form or content for editing the profile goes here -->
+                        <div class="form-group">
+                            <label for="image">Upload Picture</label>
+                            <input type="file" name="image" class="form-control-file" accept="image/*">
+                        </div>
+                        <!-- Display the uploaded image -->
+                        <div class="form-group">
+                            <img src="#" id="previewImage" alt="Preview" style="max-width: 100%; max-height: 200px; display: none;">
+                        </div>
                     </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary" name="editprofile">Add</button>
+                    </div>
+                </form>
+
+<script>
+    // JavaScript to preview the selected image
+    document.querySelector('input[name="image"]').addEventListener('change', function (e) {
+        const preview = document.getElementById('previewImage');
+        const file = e.target.files[0];
+        const reader = new FileReader();
+
+        reader.onloadend = function () {
+            preview.src = reader.result;
+            preview.style.display = 'block';
+        };
+
+        if (file) {
+            reader.readAsDataURL(file);
+        } else {
+            preview.src = '';
+            preview.style.display = 'none';
+        }
+    });
+</script>
+
                 </div>
             </div>
         </div>

@@ -39,6 +39,7 @@
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
     <style>
       /* Custom styles for the progress bar */
       .progress {
@@ -89,6 +90,12 @@
             <span>Announcements</span>
           </a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="docu_repo.php">
+            <i class="bi bi-archive"></i>
+            <span>Archive</span>
+          </a>
+        </li> 
         <hr class="sidebar-divider">
         <!-- Sidebar Toggler (Sidebar) -->
         <div class="text-center d-none d-md-inline">
@@ -125,10 +132,11 @@
               <!-- Nav Item - User Information -->
               <li class="nav-item dropdown no-arrow">
                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <?php
+                <?php
                       $id = $_SESSION['id'];
+                      include '../db.php';
 
-                      $sql = "SELECT * FROM `users`";
+                      $sql = "SELECT * FROM `users` WHERE `id` = '$id'";
                       $result = $conn->query($sql);
                       $row = $result->fetch_assoc();
                   ?>
@@ -154,7 +162,7 @@
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                   <li class="breadcrumb-item">
-                    <a href="#">Narrative Report</a>
+                    <a href="ui-formsPreview.php">Narrative Report</a>
                   </li>
                   <li class="breadcrumb-item active" aria-current="page">Narrative Form</li>
                 </ol>
@@ -388,10 +396,6 @@
                     </div>
                   </div>
                   <div id="step3" style="display: none;">
-                    <div class="form-group">
-                      <label for="rationale">Participants</label>
-                      <textarea class="form-control" id="editor1" name="participants" rows="3"></textarea>
-                    </div>
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group">

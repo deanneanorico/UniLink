@@ -29,6 +29,19 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <style>
+    .card {
+        padding: 20px; /* Adjust the value as needed */
+    }
+
+    .tab-content {
+        padding: 10px; /* Adjust the value as needed */
+    }
+
+    .btn {
+        margin-top: 10px; /* Adjust the value as needed */
+    }
+    </style>
     </head>
     <body id="page-top">
     <!-- Page Wrapper -->
@@ -61,23 +74,15 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+          <a class="nav-link" href="status.php">
             <i class="bi bi-speedometer"></i>
             <span>Status</span>
           </a>
-          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-              <a class="collapse-item" href="stat_exploratory.php">For Exploratory</a>
-              <a class="collapse-item" href="stat_mou_partner.php">Review MOU by Partner</a>
-              <a class="collapse-item" href="stat_mou_legal.php">Review MOU Legal</a>
-              <a class="collapse-item" href="stat_signing.php">For Signing</a>
-            </div>
-          </div>
         </li>
-         <li class="nav-item">
+        <li class="nav-item">
           <a class="nav-link" href="docu_repo.php">
-            <i class="bi bi-megaphone"></i>
-            <span>Document Repository</span>
+            <i class="bi bi-archive"></i>
+            <span>Archive</span>
           </a>
         </li>
             <!-- Divider -->
@@ -121,15 +126,6 @@
               <!-- Nav Item - User Information -->
               <li class="nav-item dropdown no-arrow">
                 <a class="nav-link dropdown-toggle" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <?php
-                      $id = $_SESSION['id'];
-                      include '../db.php';
-
-                      $sql = "SELECT * FROM `users` WHERE `id` = '$id'";
-                      $result = $conn->query($sql);
-                      $row = $result->fetch_assoc();
-                  ?>
-                  <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?=$row['first_name']." ".$row['last_name']?></span>
                   <span class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
                   <img class="img-profile rounded-circle" src="imgs/BSU.png">
                 </a>
@@ -146,7 +142,7 @@
           </nav>
                 <!-- End of Topbar -->
                 <!-- Begin Page Content -->
-                    <div class="container-fluid">
+                                    <div class="container-fluid">
                         <div class="card text-center">
                             <img src="imgs/BSU.png" class="card-img-top mx-auto" style="max-width: 200px;" alt="Profile Image">
                             <div class="tab-content mt-3">
@@ -160,19 +156,15 @@
                                       $row = $result->fetch_assoc();
                                   ?>
                           <span class="text-black-600 large"><?=$row['title']." ".$row['first_name']." ".$row['last_name']?></span>
-                                    </div>
-                                    </div>
-                            <div class="container mt-5">
-                                <ul class="nav nav-tabs" id="myTabs">
-                                    <li class="nav-item">
-                                        <a class="nav-link active" id="tab1" data-toggle="tab" href="#content1">Profile</a>
-                                    </li>
-                                </ul>
+                          <div></div>
+                          <span class="text-black-600 large"><?=$row['privelege']?></span>
+                            </div>
+                            <div></div>
                                 <a class="btn btn-primary rounded-fill bi bi-pencil-square" href="edit_profile.php" role="button">
                                 Edit Profile
                             </a>
-                                </div>
                             </div>
+                        </div>
                         </div>
                     </div>
             <!-- /.container-fluid -->

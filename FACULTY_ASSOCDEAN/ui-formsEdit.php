@@ -101,11 +101,12 @@
             <span>Announcements</span>
           </a>
         </li>
-            <li class="nav-item">
-                <a class="nav-link" href="documents.php">
-                    <i class="bi bi-file-earmark-pdf"></i>
-                    <span>Supporting Documents</span></a>
-            </li> 
+        <li class="nav-item">
+          <a class="nav-link" href="docu_repo.php">
+            <i class="bi bi-archive"></i>
+            <span>Archive</span>
+          </a>
+        </li> 
         <hr class="sidebar-divider">
         <!-- Sidebar Toggler (Sidebar) -->
         <div class="text-center d-none d-md-inline">
@@ -144,12 +145,14 @@
               <li class="nav-item dropdown no-arrow">
                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <?php
-                    $id = $_SESSION['id'];
+                                      $id = $_SESSION['id'];
+                                      include '../db.php';
 
-                    $sql = "SELECT * FROM `users`";
-                    $result = $conn->query($sql);
-                    $row = $result->fetch_assoc();
-                    ?>
+
+                                      $sql = "SELECT * FROM `users` WHERE `id` = '$id'";
+                                      $result = $conn->query($sql);
+                                      $row = $result->fetch_assoc();
+                                  ?>
                   <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?=$row['first_name']." ".$row['last_name']?></span>
                   <span class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
                   <img class="img-profile rounded-circle" src="imgs/undraw_profile.svg">

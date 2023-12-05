@@ -61,11 +61,12 @@
                     <i class="fas fa-fw fa-bullhorn"></i>
                     <span>Announcements</span></a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="documents.php">
-                    <i class="bi bi-file-earmark-pdf"></i>
-                    <span>Supporting Documents</span></a>
-            </li> 
+          <li class="nav-item">
+            <a class="nav-link" href="docu_repo.php">
+              <i class="bi bi-archive"></i>
+              <span>Archive</span>
+            </a>
+          </li>
             <!-- Heading -->
             <!-- Nav Item - Pages Collapse Menu -->
             <!-- Divider -->
@@ -158,7 +159,7 @@
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
                 <li class="breadcrumb-item">
-                  <a href="a-profile.php">Profile</a>
+                  <a href="ui-profile.php">Profile</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">Edit Profile</li>
               </ol>
@@ -216,7 +217,7 @@
                     </div>
                   </div>
                   <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                       <div class="form-group sex">
                         <label for="sex">Sex</label>
                         <select class="form-control" id="sex" name="sex">
@@ -225,25 +226,8 @@
                         </select>
                       </div>
                     </div>
-                    <div class="col-md-8">
-                      <div class="form-group">
-                        <label for="input6">Email</label>
-                        <input type="text" class="form-control" id="email" name="email" value="">
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" class="form-control" id="password" name="password" required>
-                      </div>
-                    </div>
-                  </div>
                   <!-- Admin Checkbox  -->
-                  <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-6">
                       <div class="form-group privelege">
                         <label for="privelege">Privelege</label>
                         <select class="form-control" id="privelege" name="privelege" onchange="setCampusCollageDrop()">
@@ -265,7 +249,7 @@
           </div>
           </div>
         </div>
-        </div>
+      </div>
         <!-- End of Main Content -->
         <!-- Footer -->
         <footer class="sticky-footer bg-white">

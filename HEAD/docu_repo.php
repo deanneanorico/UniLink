@@ -75,23 +75,15 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+          <a class="nav-link" href="status.php">
             <i class="bi bi-speedometer"></i>
             <span>Status</span>
           </a>
-          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-              <a class="collapse-item" href="stat_exploratory.php">For Exploratory</a>
-              <a class="collapse-item" href="stat_mou_partner.php">Review MOU by Partner</a>
-              <a class="collapse-item" href="stat_mou_legal.php">Review MOU Legal</a>
-              <a class="collapse-item" href="stat_signing.php">For Signing</a>
-            </div>
-          </div>
         </li>
-         <li class="nav-item active">
+        <li class="nav-item active">
           <a class="nav-link" href="docu_repo.php">
-            <i class="bi bi-megaphone"></i>
-            <span>Document Repository</span>
+            <i class="bi bi-archive"></i>
+            <span>Archive</span>
           </a>
         </li>
         <!-- Divider -->
@@ -156,7 +148,6 @@
                       $row = $result->fetch_assoc();
                   ?>
                   <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?=$row['first_name']." ".$row['last_name']?></span>
-                  <span class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
                   <img class="img-profile rounded-circle" src="imgs/BSU.png">
                 </a>
                 <!-- Dropdown - User Information -->
