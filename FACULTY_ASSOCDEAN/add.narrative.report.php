@@ -7,7 +7,6 @@
       $activityName = $_POST['activityName'];
       $sponsor = $_POST['sponsor'];
       $total_roles = $_POST['total_roles'] + 1;
-      $participants = $_POST['participants'];
       $start_date = $_POST['start_date'];
       $end_date = $_POST['end_date'];
       $objectives = $_POST['objectives'];
@@ -23,14 +22,14 @@
         $i++;
       }
 
-      $sql = "INSERT INTO `narrative_report`(`id`, `activityform_id`, `activity_name`, `sponsor`, `participants`, `start_date`, `end_date`, `objectives`, `overview`) VALUES (?,?,?,?,?,?,?,?,?)";
+      $sql = "INSERT INTO `narrative_report`(`id`, `activityform_id`, `activity_name`, `sponsor`, `start_date`, `end_date`, `objectives`, `overview`) VALUES (?,?,?,?,?,?,?,?)";
       $stmt = mysqli_stmt_init($conn);
       if(!mysqli_stmt_prepare($stmt, $sql)) {
         header("location: ./report.php?invalid=1"); // invalid = 1 may error sa sql statement
         exit();
       }
 
-      mysqli_stmt_bind_param($stmt, "sssssssss", $id[0], $activityform_id, $activityName, $sponsor, $participants, $start_date, $end_date, $objectives, $overview);
+      mysqli_stmt_bind_param($stmt, "ssssssss", $id[0], $activityform_id, $activityName, $sponsor, $start_date, $end_date, $objectives, $overview);
       mysqli_stmt_execute($stmt);
       mysqli_stmt_close($stmt);
 

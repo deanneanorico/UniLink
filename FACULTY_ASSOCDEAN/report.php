@@ -2,6 +2,12 @@
   session_start();
   include "../db.php";
 
+  $activityID = $_GET['id'];
+
+  $sql = "SELECT * FROM activityform WHERE id = '$activityID'";
+  $result = $conn->query($sql);
+  $activityRow = $result->fetch_assoc();
+
   if(!isset($_SESSION['id'])) {
     header("location: ../");
     exit();
@@ -53,7 +59,7 @@
         height: 100%;
         /* Make sure the progress bar fills the container height */
       }
-
+ 
       .ck-editor__editable {
         min-height: 200px;
       }
@@ -176,7 +182,7 @@
                   <div id="step1">
                     <div class="form-group">
                       <label for="activityName">Activity Title</label>
-                      <input type="text" class="form-control outline" id="activityName" name="activityName" />
+                      <input type="text" class="form-control outline" id="activityName" name="activityName" value="<?=$activityRow['activity_title']?>">
                     </div>
                     <div class="form-group">
                       <label for="objectives">Sponsor</label>
@@ -189,7 +195,7 @@
                   <div id="step2" style="display: none;">
                     <div class="justify-content-between">
                       <div class="input-group contacts-search mb-4" style="display: flex; justify-content: space-between;">
-                        <label>Roles</label>
+                        <label>Participants</label>
                         <button style="margin-right: 30px;" type="button" onclick="addRoles()" class="btn btn-primary shadow btn-circle btn-sm">
                           <i class="fas fa-plus"></i>
                         </button>
@@ -229,162 +235,115 @@
                           </div>
                         </div>
                       </div>
-                      <div id="role1">
-                        <table class="table header-border table-responsive-sm">
-                          <div class="d-flex justify-content-between align-items-center flex-wrap">
-                            <div class="col-md-11">
-                              <input type="text" value="1" name="role_row[]" style="display: none">
-                              <input class="form-control" id="role_description_1" type="text" value="Project Leader/s" name="role_name[]" readonly>
-                            </div>
-                            <div class="md-1" style="padding-right: 30px;">
-                              <button type="button" name="addRole" onclick="removeRole(1)" class="btn btn-danger shadow btn-circle btn-sm">
-                                <i class="fas fa-trash"></i>
-                              </button>
-                            </div>
-                          </div>
-                          <thead>
-                            <tr>
-                              <th class="col-md-5" style="text-align: left;">Name</th>
-                              <th class="col-md-6" style="text-align: left;">Designation</th>
-                              <th class="col-md-2" style="padding-left: 0px;">
-                                <button type="button" name="addRole" class="btn btn-primary shadow btn-circle btn-sm" data-toggle="modal" data-target="#modal1" onclick="setSelectRole(1)">
-                                  <i class="fas fa-user-plus"></i>
-                                </button>
-                                <button style="margin-left:1px;background: white;" type="button" name="addRole" class="btn btn-primary btn-circle btn-sm" onclick="addCustomMember(1)">
-                                  <i class="fas fa-plus" style="color: #1dbf1d"></i>
-                                </button>
-                              </th>
-                            </tr>
-                          </thead>
-                          <tbody id="member1"></tbody>
-                        </table>
-                        <table class="table">
-                          <thead>
-                            <tr>
-                              <th class="col-md-11" style="text-align: left;">Responsibility</th>
-                              <th class="col-md-1" style="padding-left: 0px;">
-                                <button type="button" name="addRole" class="btn btn-primary shadow btn-circle btn-sm" data-toggle="modal" data-target="#responsibilty_modal1" onclick="openModal(1)">
-                                  <i class="fas fa-plus"></i>
-                                </button>
-                                <div class="modal fade" id="responsibilty_modal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                  <div class="modal-dialog modal-lg" role="document">
-                                    <div class="modal-content">
-                                      <div class="modal-header">
-                                        <h5 class="modal-title" style="font-size:20px">Add Project Leader/s Responsibility</h5>
-                                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                          <span aria-hidden="true">×</span>
-                                        </button>
-                                      </div>
-                                      <div class="modal-body">
-                                        <div class="card-body">
-                                          <div class="table-responsive">
-                                            <table id="example6" class="table header-border table-responsive-sm">
-                                              <thead>
-                                                <tr>
-                                                  <th class="col-md-5" style="text-align: left;">Role</th>
-                                                  <th class="col-md-6" style="text-align: left;">Resposibility</th>
-                                                  <th class="col-md-2" style="text-align: right;">Action</th>
-                                                </tr>
-                                              </thead>
-                                              <tbody id="responsibility_list_1">
-                                                <!-- List Responsibility of Leader -->
-                                              </tbody>
-                                            </table>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
+                      <?php
+                        $sql = "SELECT * FROM `activity_representatives` WHERE `activityform_id` = '$activityID'";
+                        $activity_representatives_result = $conn->query($sql);
+                        $total_roles = 1;
+                        $memRow = 1;
+                        $responbilityRow = 1;
+                        while($activity_representatives_row = $activity_representatives_result->fetch_assoc()) {
+                      ?>
+                          <div id="role<?=$total_roles?>">
+                            <table class="table header-border table-responsive-sm">
+                              <div class="d-flex justify-content-between align-items-center flex-wrap">
+                                <div class="col-md-11">
+                                  <input type="text" value="<?=$total_roles?>" name="role_row[]" style="display: none">
+                                  <input class="form-control" id="role_description_<?=$total_roles?>" type="text" value="<?=$activity_representatives_row['role']?>" name="role_name[]">
                                 </div>
-                                <button style="margin-left:1px;background: white;" type="button" name="addRole" class="btn btn-primary btn-circle btn-sm" onclick="addCustomResponsibility(1)">
-                                  <i class="fas fa-plus" style="color: #1dbf1d"></i>
-                                </button>
-                              </th>
-                            </tr>
-                          </thead>
-                          <tbody id="added_responsibility_list_1">
-                            <!-- Added Responsibility of Leader -->
-                          </tbody>
-                        </table>
-                      </div>
-                      <div id="role2">
-                        <table class="table header-border table-responsive-sm">
-                          <div class="d-flex justify-content-between align-items-center flex-wrap">
-                            <div class="col-md-11">
-                              <input type="text" value="2" name="role_row[]" style="display: none">
-                              <input class="form-control" type="text" id="role_description_2" value="Project Member/s" name="role_name[]" readonly>
-                            </div>
-                            <div class="md-1" style="padding-right: 30px;">
-                              <button type="button" name="addRole" onclick="removeRole(2)" class="btn btn-danger shadow btn-circle btn-sm">
-                                <i class="fas fa-trash"></i>
-                              </button>
-                            </div>
-                          </div>
-                          <thead>
-                            <tr>
-                              <th class="col-md-5" style="text-align: left;">Name</th>
-                              <th class="col-md-6" style="text-align: left;">Designation</th>
-                              <th class="col-md-2" style="padding-left: 0px;">
-                                <button type="button" name="addRole" class="btn btn-primary shadow btn-circle btn-sm" data-toggle="modal" data-target="#modal1" onclick="setSelectRole(2)">
-                                  <i class="fas fa-user-plus"></i>
-                                </button>
-                                <button style="margin-left:1px;background: white;" type="button" name="addRole" class="btn btn-primary shadow btn-circle btn-sm" onclick="addCustomMember(2)">
-                                  <i class="fas fa-plus" style="color: #1dbf1d"></i>
-                                </button>
-                              </th>
-                            </tr>
-                          </thead>
-                          <tbody id="member2"></tbody>
-                        </table>
-                        <table class="table">
-                          <thead>
-                            <tr>
-                              <th class="col-md-11" style="text-align: left;">Responsibility</th>
-                              <th class="col-md-1" style="padding-left: 0px;">
-                                <button type="button" name="addRole" class="btn btn-primary shadow btn-circle btn-sm" data-toggle="modal" onclick="openModal(2)" data-target="#responsibility_modal_2">
-                                  <i class="fas fa-plus"></i>
-                                </button>
-                                <div class="modal fade" id="responsibility_modal_2" tabindex="-1" role="dialog" aria-hidden="true">
-                                  <div class="modal-dialog modal-lg">
-                                    <div class="modal-content">
-                                      <div class="modal-header">
-                                        <h5 class="modal-title" style="font-size:23px">Add Project Member/s Responsibility</h5>
-                                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                          <span aria-hidden="true">×</span>
-                                        </button>
-                                      </div>
-                                      <div class="modal-body" style="padding: 0.875rem">
-                                        <div class="card-body">
-                                          <div class="table-responsive">
-                                            <table class="table header-border table-responsive-sm">
-                                              <thead>
-                                                <tr>
-                                                  <th class="col-md-4" style="text-align: left;">Role</th>
-                                                  <th class="col-md-7" style="text-align: left;">Resposibility</th>
-                                                  <th class="col-md-2" style="text-align: right;">Action</th>
-                                                </tr>
-                                              </thead>
-                                              <tbody id="responsibility_list_2">
-                                                <!-- List Responsibility of Leader -->
-                                              </tbody>
-                                            </table>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
+                                <div class="md-1" style="padding-right: 30px;">
+                                  <button type="button" name="addRole" onclick="removeRole(<?=$total_roles?>)" class="btn btn-danger shadow btn-circle btn-sm">
+                                    <i class="fas fa-trash"></i>
+                                  </button>
                                 </div>
-                                <button style="margin-left:1px;background: white;" type="button" name="addRole" class="btn btn-primary shadow btn-circle btn-sm" onclick="addCustomResponsibility(2)">
-                                  <i class="fas fa-plus" style="color: #1dbf1d"></i>
-                                </button>
-                              </th>
-                            </tr>
-                          </thead>
-                          <tbody id="added_responsibility_list_2">
-                            <!-- Added Responsibility of Leader -->
-                          </tbody>
-                        </table>
-                      </div>
+                              </div>
+                              <thead>
+                                <tr>
+                                  <th class="col-md-5" style="text-align: left;">Name</th>
+                                  <th class="col-md-6" style="text-align: left;">Designation</th>
+                                  <th class="col-md-2" style="padding-left: 0px;">
+                                    <button style="margin-left:1px;background: white;" type="button" name="addRole" class="btn btn-primary btn-circle btn-sm" onclick="addCustomMember(<?=$total_roles?>)">
+                                      <i class="fas fa-plus" style="color: #1dbf1d"></i>
+                                    </button>
+                                  </th>
+                                </tr>
+                              </thead>
+                              <tbody id="member<?=$total_roles?>">
+                                <?php
+                                  $activity_representatives_id = $activity_representatives_row['id'];
+                                  $sql = "SELECT * FROM `representatives` WHERE `activity_representatives_id` = '$activity_representatives_id'";
+                                  $representatives_result = $conn->query($sql);
+                                  while($representatives_row = $representatives_result->fetch_assoc()) {
+                                ?>
+                                    <tr id="memRow<?=$memRow?>">
+                                      <td style="display: none;">
+                                        <input name="roles_position[]" value="<?=$total_roles?>" />
+                                      </td>
+                                      <td style="display: none;">
+                                        <input name="representative_roles_id[]" value="<?php if($representatives_row['representative_roles_id']){echo $representatives_row['representative_roles_id'];}else{echo "null";}?>">
+                                      </td>
+                                      <td>
+                                        <input class="form-control" name="roles_name[]" id="name-<?=$representatives_row['representative_roles_id']?>-<?=$total_roles?>" value="<?=$representatives_row['name']?>" <?php if($representatives_row['representative_roles_id']){echo "readonly";}?>>
+                                      </td>
+                                      <td>
+                                        <input class="form-control" name="roles_description[]" value="<?=$representatives_row['designation']?>" <?php if($representatives_row['representative_roles_id']){echo "readonly";}?>>
+                                      </td>
+                                      <td>
+                                        <button type="button" name="addRole" onclick="removeMember(`<?=$memRow?>`, `<?=$representatives_row['representative_roles_id']?>`, `<?=$total_roles?>`)" class="btn btn-danger shadow btn-circle btn-sm">
+                                          <i class="fas fa-minus"></i>
+                                        </button>
+                                      </td>
+                                    </tr>
+                                <?php
+                                    $memRow++;
+                                  }
+                                ?>
+                              </tbody>
+                            </table>
+                          
+                            <table class="table">
+                              <thead>
+                                <tr>
+                                  <th class="col-md-11" style="text-align: left;">Responsibility</th>
+                                  <th class="col-md-1" style="padding-left: 0px;">
+                                    <button style="margin-left:1px;background: white;" type="button" name="addRole" class="btn btn-primary btn-circle btn-sm" onclick="addCustomResponsibility(<?=$total_roles?>)">
+                                      <i class="fas fa-plus" style="color: #1dbf1d"></i>
+                                    </button>
+                                  </th>
+                                </tr>
+                              </thead>
+                              <tbody id="added_responsibility_list_<?=$total_roles?>">
+                                <?php
+                                  $sql = "SELECT * FROM `activity_representatives_responsibilities` WHERE `activity_representatives_id` = '$activity_representatives_id'";
+                                  $activity_representatives_responsibilities_result = $conn->query($sql);
+                                  while($activity_representatives_responsibilities_row = $activity_representatives_responsibilities_result->fetch_assoc()) {
+                                ?>
+                                    <tr id="responsibility_row_<?=$responbilityRow?>">
+                                      <td style="display: none;">
+                                        <input name="responsibilities_position[]" value="<?=$total_roles?>" />
+                                      </td>
+                                      <td style="display: none;">
+                                        <input name="responsibilities_id[]" value="<?php if($activity_representatives_responsibilities_row['responsibilities_id']){echo $activity_representatives_responsibilities_row['responsibilities_id'];}else{echo "null";}?>">
+                                      </td>
+                                      <td>
+                                        <input class="form-control" name="responsibilities[]" <?php if($activity_representatives_responsibilities_row['responsibilities_id']){echo "readonly";}?> value="<?=$activity_representatives_responsibilities_row['responsibility']?>">
+                                      </td>
+                                      <td>
+                                        <button type="button" class="btn btn-danger shadow btn-circle btn-sm" onclick="removeResponsibility(`<?=$responbilityRow?>`, `<?=$activity_representatives_responsibilities_row['responsibility']?>`, `<?=$total_roles?>`)">
+                                          <i class="fas fa-minus"></i>
+                                        </button>
+                                      </td>
+                                    </tr>
+                                <?php
+                                    $responbilityRow++;
+                                  }
+                                ?>
+                              </tbody>
+                            </table>
+                          </div>
+                      <?php
+                          $total_roles++;
+                        }
+                      ?>
                       <hr>
                       <div id="table_roles"></div>
                       <div id="role_modal"></div>
@@ -400,14 +359,20 @@
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="startDate">Start Date</label>
-                          <input type="date" id="date" name="start_date" class="form-control">
+                          <input type="date" id="date" name="start_date" class="form-control" value="<?=$activityRow['start_date']?>">
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="endDate">End Date</label>
-                          <input type="date" id="date" name="end_date" class="form-control">
+                          <input type="date" id="date" name="end_date" class="form-control" value="<?=$activityRow['end_date']?>">
                         </div>
+                  </div>
+                  <div class="col-md-12">
+                  <div class="form-group">
+                      <label for="objectives">Objectives</label>
+                      <textarea class="form-control" id="editor2" name="objectives" rows="1"><?=$activityRow['objective']?></textarea>
+                    </div>
                       </div>
                     </div>
                     <div class="text-right mt-4">
@@ -417,8 +382,8 @@
                   </div>
                   <div id="step4" style="display: none;">
                     <div class="form-group">
-                      <label for="objectives">Objectives</label>
-                      <textarea class="form-control" id="editor2" name="objectives" rows="1"></textarea>
+                      <label for="overview">Overview of the Activity</label>
+                      <textarea class="form-control" id="editor3" name="overview" rows="6"></textarea>
                     </div>
                     <div class="text-right mt-4">
                       <button type="button" class="btn btn-secondary" id="prevStep4">Previous</button>
@@ -426,26 +391,18 @@
                     </div>
                   </div>
                   <div id="step5" style="display: none;">
-                    <div class="form-group">
-                      <label for="overview">Overview of the Activity</label>
-                      <textarea class="form-control" id="editor3" name="overview" rows="6"></textarea>
-                    </div>
+                  <div class="form-group">
+                      <label for="docu">Documentation</label>
+                      <textarea class="form-control" id="editor4" name="docu" rows="6"></textarea>
                     <div class="text-right mt-4">
-                      <button type="button" class="btn btn-secondary" id="prevStep5">Previous</button>
-                      <button type="button" class="btn btn-primary" id="nextStep5">Next</button>
-                    </div>
-                  </div>
-                  <div id="step6" style="display: none;">
-                    <div class="form-group">
-                      <div class="text-right mt-4">
-                        <button type="button" class="btn btn-secondary" id="prevStep6">Previous</button>
+                        <button type="button" class="btn btn-secondary" id="prevStep5">Previous</button>
                         <input type="submit" name="submit" class="submit btn btn-primary" value="Download PDF">
                       </div>
                     </div>
-                  </div>
+                    </div>
                 </div>
               </div>
-            
+            </div>
               <!-- End of Main Content -->
               <!-- Footer -->
               <footer class="sticky-footer bg-white">
@@ -514,3 +471,138 @@
     }
   }
 </script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const progress = document.querySelector(".progress-bar");
+        const nextStep1Button = document.getElementById("nextStep1");
+        const prevStep2Button = document.getElementById("prevStep2");
+        const nextStep2Button = document.getElementById("nextStep2");
+        const prevStep3Button = document.getElementById("prevStep3");
+        const nextStep3Button = document.getElementById("nextStep3");
+        const prevStep4Button = document.getElementById("prevStep4");
+        const nextStep4Button = document.getElementById("nextStep4");
+        const prevStep5Button = document.getElementById("prevStep5");
+        const submitButton = document.querySelector("input[type='submit']");
+
+        let currentStep = 1;
+        const totalSteps = 6;
+
+        // Function to update the progress bar
+        function updateProgressBar() {
+            const progressPercentage = (currentStep - 1) / (totalSteps - 1) * 100;
+            progress.style.width = `${progressPercentage}%`;
+        }
+
+        // Function to validate required fields
+        function validateStep(stepId) {
+            const step = document.getElementById(stepId);
+            const inputs = step.querySelectorAll("input[required], select[required], textarea[required]");
+
+            for (const input of inputs) {
+                if (!input.value.trim()) {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        // Next button click event handlers
+        nextStep1Button.addEventListener("click", function() {
+            if (validateStep("step1")) {
+                currentStep = 2;
+                updateProgressBar();
+                document.getElementById("step1").style.display = "none";
+                document.getElementById("step2").style.display = "block";
+            } else {
+                alert("Please fill in all required fields.");
+            }
+        });
+        nextStep2Button.addEventListener("click", function() {
+            if (validateStep("step2")) {
+                currentStep = 3;
+                updateProgressBar();
+                document.getElementById("step2").style.display = "none";
+                document.getElementById("step3").style.display = "block";
+            } else {
+                alert("Please fill in all required fields.");
+            }
+        });
+        nextStep3Button.addEventListener("click", function() {
+            if (validateStep("step3")) {
+                currentStep = 4;
+                updateProgressBar();
+                step3.style.display = "none";
+                step4.style.display = "block";
+            } else {
+                alert("Please fill in all required fields.");
+            }
+        });
+        nextStep3Button.addEventListener("click", function() {
+            if (validateStep("step3")) {
+                currentStep = 4;
+                updateProgressBar();
+                step3.style.display = "none";
+                step4.style.display = "block";
+            } else {
+                alert("Please fill in all required fields.");
+            }
+        });
+        nextStep4Button.addEventListener("click", function() {
+            if (validateStep("step4")) {
+                currentStep = 5;
+                updateProgressBar();
+                step4.style.display = "none";
+                step5.style.display = "block";
+            } else {
+                alert("Please fill in all required fields.");
+            }
+        });
+
+
+        // Previous button click event handlers
+        prevStep2Button.addEventListener("click", function() {
+            currentStep = 1;
+            updateProgressBar();
+            document.getElementById("step2").style.display = "none";
+            document.getElementById("step1").style.display = "block";
+        });
+
+        prevStep3Button.addEventListener("click", function() {
+            currentStep = 2;
+            updateProgressBar();
+            document.getElementById("step3").style.display = "none";
+            document.getElementById("step2").style.display = "block";
+        });
+
+        prevStep4Button.addEventListener("click", function() {
+            currentStep = 3;
+            updateProgressBar();
+            document.getElementById("step4").style.display = "none";
+            document.getElementById("step3").style.display = "block";
+        });
+
+        prevStep5Button.addEventListener("click", function() {
+            currentStep = 4;
+            updateProgressBar();
+            document.getElementById("step5").style.display = "none";
+            document.getElementById("step4").style.display = "block";
+        });
+
+        // Prevent form submission on Enter key
+        document.addEventListener("keydown", function(event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+            }
+        });
+
+        // Submit button click event handler
+        submitButton.addEventListener("click", function(event) {
+            if (!validateStep("step5")) {
+                event.preventDefault();
+                alert("Please fill in all required fields.");
+            }
+            // Handle form submission logic here for step 4.
+        });
+    });
+    </script>

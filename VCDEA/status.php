@@ -129,7 +129,6 @@
                       $row = $result->fetch_assoc();
                   ?>
                   <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?=$row['first_name']." ".$row['last_name']?></span>
-                  <span class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
                   <img class="img-profile rounded-circle" src="imgs/BSU.png">
                 </a>
                 <!-- Dropdown - User Information -->

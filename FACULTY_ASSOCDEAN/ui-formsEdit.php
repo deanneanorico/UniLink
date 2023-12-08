@@ -198,7 +198,7 @@
                     </div>
                     <div class="form-group college">
                       <label for="department">College</label>
-                      <input readonly class="form-control" type="text" id="department" name="department" value="<?=$_SESSION['college']?>">
+                      <input readonly class="form-control" type="text" id="department" name="department" value="<?=$_SESSION['collegeName']?>">
                     </div>
                     <div class="form-group">
                       <label for="program">Program</label>

@@ -29,6 +29,12 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <style>
+    .custom-text-black {
+  color: black;
+  font-size: 12;
+}
+</style>
   </head>
   <body id="page-top">
     <!-- Page Wrapper -->
@@ -115,7 +121,14 @@
               <!-- Nav Item - User Information -->
               <li class="nav-item dropdown no-arrow">
                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin</span>
+                <?php
+                      $id = $_SESSION['id'];
+                      include '../db.php';
+                      $sql = "SELECT * FROM `users` WHERE `id` = '$id'";
+                      $result = $conn->query($sql);
+                      $row = $result->fetch_assoc();
+                    ?>
+                  <span class="mr-2 d-none d-lg-inline custom-text-black">Admin | <?=$row['first_name']." ".$row['last_name']?></span>                
                   <img class="img-profile rounded-circle" src="imgs/undraw_profile.svg">
                 </a>
                 <!-- Dropdown - User Information -->

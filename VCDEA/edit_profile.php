@@ -121,15 +121,14 @@
               <li class="nav-item dropdown no-arrow">
                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <?php
-                      $id = $_SESSION['id'];
                       include '../db.php';
+                      $id = $_SESSION['id'];
 
                       $sql = "SELECT * FROM `users` WHERE `id` = '$id'";
                       $result = $conn->query($sql);
                       $row = $result->fetch_assoc();
                   ?>
                   <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?=$row['first_name']." ".$row['last_name']?></span>
-                  <span class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
                   <img class="img-profile rounded-circle" src="imgs/BSU.png">
                 </a>
                 <!-- Dropdown - User Information -->
@@ -180,29 +179,28 @@
               </div>
           <div class="card-body">
                   <div class="row">
-                    <input type="hidden" class="form-control" id="first" name="id" value="<?=$id?>">
                     <div class="col-md-3">
                       <div class="form-group">
                         <label for="input1">Title</label>
-                        <input type="text" class="form-control" id="title" name="title" value="">          
+                        <input type="text" class="form-control" id="title" name="title" value="<?=$row['title']?>">          
                         </div>
                        </div>
                     <div class="col-md-3">
                       <div class="form-group">
                         <label for="input2">First Name</label>
-                        <input type="text" class="form-control" id="first" name="first" value="">
+                        <input type="text" class="form-control" id="first" name="first" value="<?=$row['first_name']?>">
                       </div>
                     </div>
                     <div class="col-md-3">
                       <div class="form-group">
                         <label for="input3">Middle Initial</label>
-                        <input type="text" class="form-control" id="middle" name="middle" value="">
+                        <input type="text" class="form-control" id="middle" name="middle" value="<?=$row['mid_name']?>">
                       </div>
                     </div>
                     <div class="col-md-3">
                       <div class="form-group">
                         <label for="input4">Last Name</label>
-                        <input type="text" class="form-control" id="last" name="last" value="">
+                        <input type="text" class="form-control" id="last" name="last" value="<?=$row['last_name']?>">
                       </div>
                     </div>
                   </div>
@@ -211,24 +209,12 @@
                       <div class="form-group sex">
                         <label for="sex">Sex</label>
                         <select class="form-control" id="sex" name="sex">
-                          <option value="Male"> </option>
-                          <option value="Female"></option>
+                          <option value="Male" <?php if($row['sex'] == 'Male'){echo "selected";}?>>Male</option>
+                          <option value="Female" <?php if($row['sex'] == 'Female'){echo "selected";}?>>Female</option>
                         </select>
                       </div>
                     </div>
                   <!-- Admin Checkbox  -->
-                    <div class="col-md-6">
-                      <div class="form-group privelege">
-                        <label for="privelege">Privelege</label>
-                        <select class="form-control" id="privelege" name="privelege" onchange="setCampusCollageDrop()">
-                          <!-- <option value="Admin" <?php if($user_data['privelege'] == "Admin"){echo "selected";}?>>Admin</option>
-                          <option value="Associate Dean" <?php if($user_data['privelege'] == "Associate Dean"){echo "selected";}?>>Associate Dean</option>
-                          <option value="Dean" <?php if($user_data['privelege'] == "Dean"){echo "selected";}?>>Dean</option>
-                          <option value="Head" <?php if($user_data['privelege'] == "Head"){echo "selected";}?>>Head</option>
-                          <option value="VCDEA" <?php if($user_data['privelege'] == "VCDEA"){echo "selected";}?>>VCDEA</option> -->
-                        </select>
-                      </div>
-                    </div>
                   </div>
             <button class="btn btn-primary float-right bi bi-floppy ml-2">
           Update

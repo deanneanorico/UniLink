@@ -2,6 +2,12 @@
   session_start();
   include '../db.php';
 
+  $userID = $_SESSION['id'];
+
+  $sql = "SELECT * FROM users WHERE id = $userID";
+  $result = $conn->query($sql);
+  $userRow = $result->fetch_assoc();
+
   if(!isset($_SESSION['id'])) {
     header("location: ../");
     exit();
@@ -43,14 +49,12 @@
         </a>
         <!-- Divider -->
             <hr class="sidebar-divider my-0">
-
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
                 <a class="nav-link" href="index.php">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
-
             <li class="nav-item">
                 <a class="nav-link" href="ui-formsPreview.php">
                     <i class="fas fa-fw fa-calendar"></i>
@@ -124,16 +128,7 @@
                 <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                               <?php
-                                      $id = $_SESSION['id'];
-                                      include '../db.php';
-
-
-                                      $sql = "SELECT * FROM `users` WHERE `id` = '$id'";
-                                      $result = $conn->query($sql);
-                                      $row = $result->fetch_assoc();
-                                  ?>
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?=$row['first_name']." ".$row['last_name']?></span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?=$userRow['first_name']." ".$userRow['last_name']?></span>
                                 <img class="img-profile rounded-circle"
                                     src="imgs/undraw_profile.svg">
                             </a>
@@ -156,6 +151,7 @@
           <!-- End of Topbar -->
           <!-- Begin Page Content -->
           <div class="container-fluid">
+            <form action="edit.profile.php" method="post" enctype="multipart/form-data">
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
                 <li class="breadcrumb-item">
@@ -174,8 +170,8 @@
               Profile Picture
             </div>
             <div class="card-body text-center">
-              <img id="profileImage" src="imgs/BSU.png" class="card-img-top mx-auto" style="max-width: 200px;" alt="Profile Image">
-              <input type="file" id="fileInput" style="display: none;" accept="image/*">
+              <img id="profileImage" src="imgs/<?php if($userRow['profile_pic'] == '') {echo "BSU.png";} else {echo $userRow['profile_pic'];}?>" class="card-img-top mx-auto" style="max-width: 200px;" alt="Profile Image">
+              <input type="file" name="image" id="fileInput" style="display: none;" accept="image/*">
               <label for="fileInput" class="btn btn-primary float-right bi bi-image ml-2">
                 Change
               </label>
@@ -190,29 +186,28 @@
               </div>
           <div class="card-body">
                   <div class="row">
-                    <input type="hidden" class="form-control" id="first" name="id" value="<?=$id?>">
                     <div class="col-md-3">
                       <div class="form-group">
                         <label for="input1">Title</label>
-                        <input type="text" class="form-control" id="title" name="title" value="">          
+                        <input type="text" class="form-control" id="title" name="title" value="<?=$userRow['title']?>">          
                         </div>
                        </div>
                     <div class="col-md-3">
                       <div class="form-group">
                         <label for="input2">First Name</label>
-                        <input type="text" class="form-control" id="first" name="first" value="">
+                        <input type="text" class="form-control" id="first" name="first" value="<?=$userRow['first_name']?>">
                       </div>
                     </div>
                     <div class="col-md-3">
                       <div class="form-group">
                         <label for="input3">Middle Initial</label>
-                        <input type="text" class="form-control" id="middle" name="middle" value="">
+                        <input type="text" class="form-control" id="middle" name="middle" value="<?=$userRow['mid_name']?>">
                       </div>
                     </div>
                     <div class="col-md-3">
                       <div class="form-group">
                         <label for="input4">Last Name</label>
-                        <input type="text" class="form-control" id="last" name="last" value="">
+                        <input type="text" class="form-control" id="last" name="last" value="<?=$userRow['last_name']?>">
                       </div>
                     </div>
                   </div>
@@ -221,29 +216,18 @@
                       <div class="form-group sex">
                         <label for="sex">Sex</label>
                         <select class="form-control" id="sex" name="sex">
-                          <option value="Male"> </option>
-                          <option value="Female"></option>
+                          <option value="Male" <?php if($userRow['sex'] == 'Male'){echo "selected";}?>>Male</option>
+                          <option value="Female" <?php if($userRow['sex'] == 'Female'){echo "selected";}?>>Female</option>
                         </select>
                       </div>
                     </div>
                   <!-- Admin Checkbox  -->
-                    <div class="col-md-6">
-                      <div class="form-group privelege">
-                        <label for="privelege">Privelege</label>
-                        <select class="form-control" id="privelege" name="privelege" onchange="setCampusCollageDrop()">
-                          <!-- <option value="Admin" <?php if($user_data['privelege'] == "Admin"){echo "selected";}?>>Admin</option>
-                          <option value="Associate Dean" <?php if($user_data['privelege'] == "Associate Dean"){echo "selected";}?>>Associate Dean</option>
-                          <option value="Dean" <?php if($user_data['privelege'] == "Dean"){echo "selected";}?>>Dean</option>
-                          <option value="Head" <?php if($user_data['privelege'] == "Head"){echo "selected";}?>>Head</option>
-                          <option value="VCDEA" <?php if($user_data['privelege'] == "VCDEA"){echo "selected";}?>>VCDEA</option> -->
-                        </select>
-                      </div>
-                    </div>
                   </div>
-            <button class="btn btn-primary float-right bi bi-floppy ml-2">
+            <button class="btn btn-primary float-right bi bi-floppy ml-2" type="submit">
           Update
           </button>
           </div>
+            </form>
           </div>
           </div>
           </div>
@@ -295,9 +279,6 @@
     <script src="js/sb-admin-2.min.js"></script>
     <!-- Page level plugins -->
     <script src="vendor/chart.js/Chart.min.js"></script>
-    <!-- Page level custom scripts -->
-    <script src="js/demo/chart-area-demo.js"></script>
-    <script src="js/demo/chart-pie-demo.js"></script>
   </body>
 </html>
 <script>
