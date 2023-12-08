@@ -8,6 +8,12 @@
   $result = $conn->query($sql);
   $activityRow = $result->fetch_assoc();
 
+  $userID = $_SESSION['id'];
+
+  $sql = "SELECT * FROM users WHERE id = $userID";
+  $result = $conn->query($sql);
+  $userRow = $result->fetch_assoc();
+
   if(!isset($_SESSION['id'])) {
     header("location: ../");
     exit();
@@ -46,6 +52,8 @@
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+    <!-- CKEditor -->
+    <script src="..\ckeditor\ckeditor.js"></script>
     <style>
       /* Custom styles for the progress bar */
       .progress {
@@ -138,17 +146,10 @@
               <!-- Nav Item - User Information -->
               <li class="nav-item dropdown no-arrow">
                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <?php
-                      $id = $_SESSION['id'];
-                      include '../db.php';
-
-                      $sql = "SELECT * FROM `users` WHERE `id` = '$id'";
-                      $result = $conn->query($sql);
-                      $row = $result->fetch_assoc();
-                  ?>
-                  <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?=$row['first_name']." ".$row['last_name']?></span>
-                  <img class="img-profile rounded-circle" src="imgs/undraw_profile.svg">
-                </a>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?=$userRow['first_name']." ".$userRow['last_name']?></span>
+                                <img class="img-profile rounded-circle"
+                                    src="imgs/<?php if($userRow['profile_pic'] == '') {echo "BSU.png";} else {echo $userRow['profile_pic'];}?>">
+                            </a>
                 <!-- Dropdown - User Information -->
                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                   <a class="dropdown-item" href="ui-profile.php">
@@ -186,7 +187,7 @@
                     </div>
                     <div class="form-group">
                       <label for="objectives">Sponsor</label>
-                      <textarea class="form-control" id="editor" name="sponsor" rows="6"></textarea>
+                      <textarea class="form-control" id="editor1" name="sponsor" rows="6"></textarea>
                     </div>
                     <div class="text-right mt-4">
                       <button type="button" class="btn btn-primary" id="nextStep1">Next</button>
@@ -485,7 +486,7 @@
         const submitButton = document.querySelector("input[type='submit']");
 
         let currentStep = 1;
-        const totalSteps = 6;
+        const totalSteps = 5 ;
 
         // Function to update the progress bar
         function updateProgressBar() {
@@ -606,3 +607,9 @@
         });
     });
     </script>
+<script>
+CKEDITOR.replace( 'editor1' );
+CKEDITOR.replace( 'editor2' );
+CKEDITOR.replace( 'editor3' );
+CKEDITOR.replace( 'editor4' );
+</script>

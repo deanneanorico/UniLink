@@ -2,6 +2,12 @@
   session_start();
   include "../db.php";
 
+  $userID = $_SESSION['id'];
+
+  $sql = "SELECT * FROM users WHERE id = $userID";
+  $result = $conn->query($sql);
+  $userRow = $result->fetch_assoc();
+  
   if(!isset($_SESSION['id'])) {
     header("location: ../");
     exit();
@@ -39,6 +45,8 @@
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <script src="../ckeditor/ckeditor.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
       /* Custom styles for the progress bar */
       .progress {
@@ -131,16 +139,10 @@
               <!-- Nav Item - User Information -->
               <li class="nav-item dropdown no-arrow">
                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <?php
-                      $id = $_SESSION['id'];
-                      include '../db.php';
-                      $sql = "SELECT * FROM `users` WHERE `id` = '$id'";
-                      $result = $conn->query($sql);
-                      $row = $result->fetch_assoc();
-                    ?>
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?=$row['first_name']." ".$row['last_name']?></span>
-                  <img class="img-profile rounded-circle" src="imgs/undraw_profile.svg">
-                </a>
+                  <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?=$userRow['first_name']." ".$userRow['last_name']?></span>
+                  <img class="img-profile rounded-circle"
+                      src="imgs/<?php if($userRow['profile_pic'] == '') {echo "BSU.png";} else {echo $userRow['profile_pic'];}?>">
+              </a>
                 <!-- Dropdown - User Information -->
                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                   <a class="dropdown-item" href="ui-profile.php">
@@ -154,7 +156,7 @@
           </nav>
           <!-- End of Topbar -->
           <!-- Begin Page Content -->
-          <form method="post" action="forms.php" id="inputForm">
+          <form method="post" action="forms.php" id="updateForm">
           <div class="container-fluid">
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
@@ -354,7 +356,7 @@
                     <div id="table_roles"></div>
                     <div id="role_modal"></div>
                     <div id="responsibility_modal"></div>
-                    
+                
                     <div class="text-right mt-4">
                       <button type="button" class="btn btn-secondary" id="prevStep3">Previous</button>
                       <button type="button" class="btn btn-primary" id="nextStep3">Next</button>
@@ -439,16 +441,14 @@
                     <div class="row" style="display: flex; justify-content: center; margin-top: 20px"></div>
                     <div class="text-right mt-4">
                       <button type="button" class="btn btn-secondary" id="prevStep6">Previous</button>
-                      <input type="submit" name="submit" class="submit btn btn-primary" value="Submit">
+                      <input type="button" name="btnsubmit" onclick="showAlert()" class="submit btn btn-primary" value="Submit">
                     </div>
                   </div>
                     </div>
                     </div>
                     </div>
                 </div>
-
                 <!-- End of Main Content -->
-
                 <!-- Footer -->
                 <footer class="sticky-footer bg-white">
                     <div class="container my-auto">
@@ -458,10 +458,8 @@
                     </div>
                 </footer>
                 <!-- End of Footer -->
-
             </div>
             <!-- End of Content Wrapper -->
-
         <!-- End of Page Wrapper -->
         <!-- Scroll to Top Button-->
         <a class="scroll-to-top rounded" href="#page-top">
@@ -492,6 +490,46 @@
 <script src="footer.js"></script>
 <script src="generate_report.js"></script>
 <script>
+    // Function to show SweetAlert
+    function showAlert() {
+      Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Your work has been saved',
+      showConfirmButton: false,
+      timer: 1500
+      })
+
+      // Swal.fire({
+      //   title: 'Are you sure you want to submit?',
+      //   showDenyButton: true,
+      //   showCancelButton: false,
+      //   confirmButtonText: 'Yes',
+      //   denyButtonText: `No`,
+      // }).then((result) => {
+      //   /* Read more about isConfirmed, isDenied below */
+      //   if (result.isConfirmed) {
+      //     Swal.fire('Added successfully!', '', 'success').then((e)=>{
+      //       document.getElementById('updateForm').submit();
+      //     });
+      //   } else if (result.isDenied) {
+      //     Swal.fire('Changes are not saved', '', 'info')
+      //   }
+      // })
+//       Swal.fire(
+//   'Good job!',
+//   'You clicked the button!',
+//   'success'
+// )
+      // Example: Call the showAlert function on button click
+      $(document).ready(function () {
+          $('#showAlertButton').click(function () {
+              showAlert();
+          });
+      });
+    }
+</script>
+<script>
   setProgram();
 
   function setProgram() {
@@ -515,4 +553,143 @@
       });
     }
   }
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const progress = document.querySelector(".progress-bar");
+        const nextStep1Button = document.getElementById("nextStep1");
+        const prevStep2Button = document.getElementById("prevStep2");
+        const nextStep2Button = document.getElementById("nextStep2");
+        const prevStep3Button = document.getElementById("prevStep3");
+        const nextStep3Button = document.getElementById("nextStep3");
+        const prevStep4Button = document.getElementById("prevStep4");
+        const nextStep4Button = document.getElementById("nextStep4");
+        const prevStep5Button = document.getElementById("prevStep5");
+        const submitButton = document.querySelector("input[type='submit']");
+
+        let currentStep = 1;
+        const totalSteps = 6;
+
+        // Function to update the progress bar
+        function updateProgressBar() {
+            const progressPercentage = (currentStep - 1) / (totalSteps - 1) * 100;
+            progress.style.width = `${progressPercentage}%`;
+        }
+
+        // Function to validate required fields
+        function validateStep(stepId) {
+            const step = document.getElementById(stepId);
+            const inputs = step.querySelectorAll("input[required], select[required], textarea[required]");
+
+            for (const input of inputs) {
+                if (!input.value.trim()) {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        // Next button click event handlers
+        nextStep1Button.addEventListener("click", function() {
+            if (validateStep("step1")) {
+                currentStep = 2;
+                updateProgressBar();
+                document.getElementById("step1").style.display = "none";
+                document.getElementById("step2").style.display = "block";
+            } else {
+                alert("Please fill in all required fields.");
+            }
+        });
+        nextStep2Button.addEventListener("click", function() {
+            if (validateStep("step2")) {
+                currentStep = 3;
+                updateProgressBar();
+                document.getElementById("step2").style.display = "none";
+                document.getElementById("step3").style.display = "block";
+            } else {
+                alert("Please fill in all required fields.");
+            }
+        });
+        nextStep3Button.addEventListener("click", function() {
+            if (validateStep("step3")) {
+                currentStep = 4;
+                updateProgressBar();
+                step3.style.display = "none";
+                step4.style.display = "block";
+            } else {
+                alert("Please fill in all required fields.");
+            }
+        });
+        nextStep3Button.addEventListener("click", function() {
+            if (validateStep("step3")) {
+                currentStep = 4;
+                updateProgressBar();
+                step3.style.display = "none";
+                step4.style.display = "block";
+            } else {
+                alert("Please fill in all required fields.");
+            }
+        });
+        nextStep4Button.addEventListener("click", function() {
+            if (validateStep("step4")) {
+                currentStep = 5;
+                updateProgressBar();
+                step4.style.display = "none";
+                step5.style.display = "block";
+            } else {
+                alert("Please fill in all required fields.");
+            }
+        });
+
+
+        // Previous button click event handlers
+        prevStep2Button.addEventListener("click", function() {
+            currentStep = 1;
+            updateProgressBar();
+            document.getElementById("step2").style.display = "none";
+            document.getElementById("step1").style.display = "block";
+        });
+
+        prevStep3Button.addEventListener("click", function() {
+            currentStep = 2;
+            updateProgressBar();
+            document.getElementById("step3").style.display = "none";
+            document.getElementById("step2").style.display = "block";
+        });
+
+        prevStep4Button.addEventListener("click", function() {
+            currentStep = 3;
+            updateProgressBar();
+            document.getElementById("step4").style.display = "none";
+            document.getElementById("step3").style.display = "block";
+        });
+
+        prevStep5Button.addEventListener("click", function() {
+            currentStep = 4;
+            updateProgressBar();
+            document.getElementById("step5").style.display = "none";
+            document.getElementById("step4").style.display = "block";
+        });
+
+        // Prevent form submission on Enter key
+        document.addEventListener("keydown", function(event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+            }
+        });
+
+        // Submit button click event handler
+        submitButton.addEventListener("click", function(event) {
+            if (!validateStep("step5")) {
+                event.preventDefault();
+                alert("Please fill in all required fields.");
+            }
+            // Handle form submission logic here for step 4.
+        });
+    });
+    </script>
+<script>
+CKEDITOR.replace( 'editor' );
+CKEDITOR.replace( 'editor1' );
 </script>

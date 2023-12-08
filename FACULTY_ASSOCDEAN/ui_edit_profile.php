@@ -28,7 +28,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>UniLink - Admin</title>
+    <title>UniLink - Dean/Associate Dean</title>
     <link rel="shortcut icon" type="image/png" href="../imgs/BSU.png" alt="Logo" />
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -36,6 +36,12 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <!-- SweetAlert CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10">
+    <!-- jQuery (required for SweetAlert) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <!-- SweetAlert JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   </head>
   <body id="page-top">
     <!-- Page Wrapper -->
@@ -130,7 +136,7 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?=$userRow['first_name']." ".$userRow['last_name']?></span>
                                 <img class="img-profile rounded-circle"
-                                    src="imgs/undraw_profile.svg">
+                                    src="imgs/<?php if($userRow['profile_pic'] == '') {echo "BSU.png";} else {echo $userRow['profile_pic'];}?>">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -151,7 +157,7 @@
           <!-- End of Topbar -->
           <!-- Begin Page Content -->
           <div class="container-fluid">
-            <form action="edit.profile.php" method="post" enctype="multipart/form-data">
+            <form action="edit.profile.php" id="updateForm" method="post" enctype="multipart/form-data">
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
                 <li class="breadcrumb-item">
@@ -171,7 +177,7 @@
             </div>
             <div class="card-body text-center">
               <img id="profileImage" src="imgs/<?php if($userRow['profile_pic'] == '') {echo "BSU.png";} else {echo $userRow['profile_pic'];}?>" class="card-img-top mx-auto" style="max-width: 200px;" alt="Profile Image">
-              <input type="file" name="image" id="fileInput" style="display: none;" accept="image/*">
+              <input type="file" name="image" id="fileInput" style="display: none;" accept=".jpg,.jpeg,.png, image/jpg,image/jpeg,image/png">
               <label for="fileInput" class="btn btn-primary float-right bi bi-image ml-2">
                 Change
               </label>
@@ -186,33 +192,13 @@
               </div>
           <div class="card-body">
                   <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-md-6">
                       <div class="form-group">
                         <label for="input1">Title</label>
                         <input type="text" class="form-control" id="title" name="title" value="<?=$userRow['title']?>">          
                         </div>
                        </div>
-                    <div class="col-md-3">
-                      <div class="form-group">
-                        <label for="input2">First Name</label>
-                        <input type="text" class="form-control" id="first" name="first" value="<?=$userRow['first_name']?>">
-                      </div>
-                    </div>
-                    <div class="col-md-3">
-                      <div class="form-group">
-                        <label for="input3">Middle Initial</label>
-                        <input type="text" class="form-control" id="middle" name="middle" value="<?=$userRow['mid_name']?>">
-                      </div>
-                    </div>
-                    <div class="col-md-3">
-                      <div class="form-group">
-                        <label for="input4">Last Name</label>
-                        <input type="text" class="form-control" id="last" name="last" value="<?=$userRow['last_name']?>">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-6">
+                       <div class="col-md-6">
                       <div class="form-group sex">
                         <label for="sex">Sex</label>
                         <select class="form-control" id="sex" name="sex">
@@ -221,11 +207,29 @@
                         </select>
                       </div>
                     </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label for="input2">First Name</label>
+                        <input type="text" class="form-control" id="first" name="first" value="<?=$userRow['first_name']?>">
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label for="input3">Middle Initial</label>
+                        <input type="text" class="form-control" id="middle" name="middle" value="<?=$userRow['mid_name']?>">
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label for="input4">Last Name</label>
+                        <input type="text" class="form-control" id="last" name="last" value="<?=$userRow['last_name']?>">
+                      </div>
+                    </div>
                   <!-- Admin Checkbox  -->
                   </div>
-            <button class="btn btn-primary float-right bi bi-floppy ml-2" type="submit">
-          Update
-          </button>
+          <button id="showAlertButton" onclick="showAlert()" class="btn btn-primary float-right bi bi-floppy ml-2" type="button">Update</button>
           </div>
             </form>
           </div>
@@ -312,4 +316,31 @@
       });
     }
   }
+</script>
+<script>
+    // Function to show SweetAlert
+    function showAlert() {
+      Swal.fire({
+        title: 'Do you want to save the changes?',
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: 'Save',
+        denyButtonText: `Don't save`,
+      }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+          Swal.fire('Updated successfully!', '', 'success').then((e)=>{
+            document.getElementById('updateForm').submit();
+          });
+        } else if (result.isDenied) {
+          Swal.fire('Changes are not saved', '', 'info')
+        }
+      })
+      // Example: Call the showAlert function on button click
+      $(document).ready(function () {
+          $('#showAlertButton').click(function () {
+              showAlert();
+          });
+      });
+    }
 </script>

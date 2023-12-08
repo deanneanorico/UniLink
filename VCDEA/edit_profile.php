@@ -1,6 +1,12 @@
 <?php
   session_start();
 
+$id = $_SESSION['id'];
+  include '../db.php';
+
+  $sql = "SELECT * FROM `users` WHERE `id` = '$id'";
+  $result = $conn->query($sql);
+  $userRow = $result->fetch_assoc();
   if(!isset($_SESSION['id'])) {
     header("location: ../");
     exit();
@@ -119,36 +125,37 @@
               </li>
               <!-- Nav Item - User Information -->
               <li class="nav-item dropdown no-arrow">
-                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <?php
-                      include '../db.php';
-                      $id = $_SESSION['id'];
-
-                      $sql = "SELECT * FROM `users` WHERE `id` = '$id'";
-                      $result = $conn->query($sql);
-                      $row = $result->fetch_assoc();
-                  ?>
-                  <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?=$row['first_name']." ".$row['last_name']?></span>
-                  <img class="img-profile rounded-circle" src="imgs/BSU.png">
-                </a>
-                <!-- Dropdown - User Information -->
-                <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                  <a class="dropdown-item" href="dea_profile.php">
-                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Profile </a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> Logout </a>
-                </div>
-              </li>
+                <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?=$userRow['first_name']." ".$userRow['last_name']?></span>
+                                <img class="img-profile rounded-circle"
+                                    src="imgs/<?php if($userRow['profile_pic'] == '') {echo "BSU.png";} else {echo $userRow['profile_pic'];}?>">
+                            </a>
+                            <!-- Dropdown - User Information -->
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="ui-profile.php">
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Profile
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Logout
+                                </a>
+                            </div>
+                        </li>
             </ul>
           </nav>
           <!-- End of Topbar -->
           <!-- Begin Page Content -->
           <div class="container-fluid">
+            <form action="edit.profile.php" method="post" enctype="multipart/form-data">
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
                 <li class="breadcrumb-item">
-                  <a href="dea_profile.php">Profile</a>
+                  <a href="ea_profile.php">Profile</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">Edit Profile</li>
               </ol>
@@ -163,8 +170,8 @@
               Profile Picture
             </div>
             <div class="card-body text-center">
-              <img id="profileImage" src="imgs/BSU.png" class="card-img-top mx-auto" style="max-width: 200px;" alt="Profile Image">
-              <input type="file" id="fileInput" style="display: none;" accept="image/*">
+              <img id="profileImage" src="imgs/<?php if($userRow['profile_pic'] == '') {echo "BSU.png";} else {echo $userRow['profile_pic'];}?>" class="card-img-top mx-auto" style="max-width: 200px;" alt="Profile Image">
+              <input type="file" name="image" id="fileInput" style="display: none;" accept="image/*">
               <label for="fileInput" class="btn btn-primary float-right bi bi-image ml-2">
                 Change
               </label>
@@ -179,44 +186,44 @@
               </div>
           <div class="card-body">
                   <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-md-6">
                       <div class="form-group">
                         <label for="input1">Title</label>
-                        <input type="text" class="form-control" id="title" name="title" value="<?=$row['title']?>">          
+                        <input type="text" class="form-control" id="title" name="title" value="<?=$userRow['title']?>">          
                         </div>
                        </div>
-                    <div class="col-md-3">
-                      <div class="form-group">
-                        <label for="input2">First Name</label>
-                        <input type="text" class="form-control" id="first" name="first" value="<?=$row['first_name']?>">
-                      </div>
-                    </div>
-                    <div class="col-md-3">
-                      <div class="form-group">
-                        <label for="input3">Middle Initial</label>
-                        <input type="text" class="form-control" id="middle" name="middle" value="<?=$row['mid_name']?>">
-                      </div>
-                    </div>
-                    <div class="col-md-3">
-                      <div class="form-group">
-                        <label for="input4">Last Name</label>
-                        <input type="text" class="form-control" id="last" name="last" value="<?=$row['last_name']?>">
+                       <div class="col-md-6">
+                      <div class="form-group sex">
+                        <label for="sex">Sex</label>
+                        <select class="form-control" id="sex" name="sex">
+                          <option value="Male" <?php if($userRow['sex'] == 'Male'){echo "selected";}?>>Male</option>
+                          <option value="Female" <?php if($userRow['sex'] == 'Female'){echo "selected";}?>>Female</option>
+                        </select>
                       </div>
                     </div>
                   </div>
                   <div class="row">
-                    <div class="col-md-6">
-                      <div class="form-group sex">
-                        <label for="sex">Sex</label>
-                        <select class="form-control" id="sex" name="sex">
-                          <option value="Male" <?php if($row['sex'] == 'Male'){echo "selected";}?>>Male</option>
-                          <option value="Female" <?php if($row['sex'] == 'Female'){echo "selected";}?>>Female</option>
-                        </select>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label for="input2">First Name</label>
+                        <input type="text" class="form-control" id="first" name="first" value="<?=$userRow['first_name']?>">
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label for="input3">Middle Initial</label>
+                        <input type="text" class="form-control" id="middle" name="middle" value="<?=$userRow['mid_name']?>">
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label for="input4">Last Name</label>
+                        <input type="text" class="form-control" id="last" name="last" value="<?=$userRow['last_name']?>">
                       </div>
                     </div>
                   <!-- Admin Checkbox  -->
                   </div>
-            <button class="btn btn-primary float-right bi bi-floppy ml-2">
+            <button class="btn btn-primary float-right bi bi-floppy ml-2" type="submit">
           Update
           </button>
           </div>

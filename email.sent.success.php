@@ -1,0 +1,1 @@
+Email recovery sent on your inbox

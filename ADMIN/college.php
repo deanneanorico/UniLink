@@ -250,7 +250,7 @@
                       $row = $result->fetch_assoc();
                     ?>
               <span class="mr-2 d-none d-lg-inline custom-text-black">Admin | <?=$row['first_name']." ".$row['last_name']?></span>                   
-              <img class="img-profile rounded-circle" src="imgs/undraw_profile.svg">
+              <img class="img-profile rounded-circle" src="imgs/BSU.png">
                 </a>
                 <!-- Dropdown - User Information -->
                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">

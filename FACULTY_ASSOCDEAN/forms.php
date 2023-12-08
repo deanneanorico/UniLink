@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $budget_source = $_POST["budget"];
     $id = array();
 
-    if(isset($_POST['submit'])) {
+    if(isset($_POST['btnsubmit'])) {
       $i = 0;
       while($i < $total_roles) {
           $sql = "SELECT UUID() AS id";

@@ -1,6 +1,12 @@
 <?php
   session_start();
+  $id = $_SESSION['id'];
+  include '../db.php';
 
+  $sql = "SELECT * FROM `users` WHERE `id` = '$id'";
+  $result = $conn->query($sql);
+  $userRow = $result->fetch_assoc();
+                                  
   if(!isset($_SESSION['id'])) {
     header("location: ../");
     exit();
@@ -128,7 +134,7 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
                                 <img class="img-profile rounded-circle"
-                                    src="imgs/undraw_profile.svg">
+                                    src="imgs/<?php if($userRow['profile_pic'] == '') {echo "BSU.png";} else {echo $userRow['profile_pic'];}?>">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -150,20 +156,12 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
                         <div class="card text-center">
-                            <img src="imgs/BSU.png" class="card-img-top mx-auto" style="max-width: 200px;" alt="Profile Image">
+                            <img src="imgs/<?php if($userRow['profile_pic'] == '') {echo "BSU.png";} else {echo $userRow['profile_pic'];}?>" class="card-img-top mx-auto" style="max-width: 200px;" alt="Profile Image">
                             <div class="tab-content mt-3">
                                     <div class="tab-pane fade show active" id="content1">
-                                    <?php
-                                      $id = $_SESSION['id'];
-                                      include '../db.php';
-
-                                      $sql = "SELECT * FROM `users` WHERE `id` = '$id'";
-                                      $result = $conn->query($sql);
-                                      $row = $result->fetch_assoc();
-                                  ?>
-                          <span class="text-black-600 large"><?=$row['title']." ".$row['first_name']." ".$row['last_name']?></span>
+                          <span class="text-black-600 large"><?=$userRow['title']." ".$userRow['first_name']." ".$userRow['last_name']?></span>
                           <div></div>
-                          <span class="text-black-600 large"><?=$row['privelege']?></span>
+                          <span class="text-black-600 large"><?=$userRow['privelege']?></span>
                             </div>
                             <div></div>
                                 <a class="btn btn-primary rounded-fill bi bi-pencil-square" href="ui_edit_profile.php" role="button">

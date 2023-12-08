@@ -3,7 +3,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="js/sb-admin-2.min.js"></script>
-    <script src="ckeditor/build/ckeditor.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap4.min.js"></script>
@@ -550,7 +549,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 </script>
-<script>
+<!-- <script>
 ClassicEditor
     .create(document.querySelector('#editor'))
     .catch(error =>{
@@ -574,7 +573,7 @@ ClassicEditor
     .catch(error =>{
         console.error(error);
     });
-</script>
+</script> -->
 <script>
     $(document).ready(function() {
         $('#myTable_wrapper').DataTable();

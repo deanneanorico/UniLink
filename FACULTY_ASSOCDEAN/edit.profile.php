@@ -21,8 +21,7 @@
 				exit();
 	        }
 		} else {
-			$sql = "UPDATE `users` SET `title`='$title',`first_name`='$firstName',`mid_name`='$middleInitial',`last_name`='$lastName',`sex`='$sex' WHERE id = $userID";
-			if($conn->query($sql)) {
+			$sql = "UPDATE `users` SET `title`='$title',`first_name`='$firstName',`mid_name`='$middleInitial',`last_name`='$lastName',`sex`='$sex' WHERE id = $userID"; 			if($conn->query($sql)) {
 				header('location: ./ui_edit_profile.php');
 				exit();
 			}

@@ -121,7 +121,7 @@
               <!-- Nav Item - User Information -->
               <li class="nav-item dropdown no-arrow">
                 <a class="nav-link dropdown-toggle" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <img class="img-profile rounded-circle" src="imgs/undraw_profile.svg">
+                  <img class="img-profile rounded-circle" src="imgs/BSU.png">
                 </a>
                 <!-- Dropdown - User Information -->
                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -141,7 +141,7 @@
               <div class="row">
                 <div class="col-md-12 text-center">
                     <div class="mb-4">
-                  <img src="imgs/undraw_profile.svg" class="card-img-top mx-auto" style="max-width: 200px;" alt="Profile Image">
+                  <img src="imgs/BSU.png" class="card-img-top mx-auto" style="max-width: 200px;" alt="Profile Image">
                 </div>
                 <div class="col-md-12">
                   <div class="tab-pane fade show active" id="content1">
@@ -159,7 +159,7 @@
                     <div></div>
                     <span class="text-black-600 large"><?=$row['privelege']?></span>          
                     <div></div>
-                    <a class="btn btn-primary rounded-fill" data-toggle="modal" data-target="#editprofile">
+                    <a class="btn btn-primary rounded-fill bi bi-pencil-square" data-toggle="modal" data-target="#editprofile">
                   Edit Profile </a>
                   </div>
                 </div>

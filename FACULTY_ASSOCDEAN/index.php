@@ -1,7 +1,11 @@
 <?php
   session_start();
   include '../db.php';
+  $userID = $_SESSION['id'];
 
+  $sql = "SELECT * FROM users WHERE id = $userID";
+  $result = $conn->query($sql);
+  $userRow = $result->fetch_assoc();
   if(!isset($_SESSION['id'])) {
     header("location: ../");
     exit();
@@ -115,18 +119,10 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                               <?php
-                                      $id = $_SESSION['id'];
-                                      include '../db.php';
-
-
-                                      $sql = "SELECT * FROM `users` WHERE `id` = '$id'";
-                                      $result = $conn->query($sql);
-                                      $row = $result->fetch_assoc();
-                                  ?>
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?=$row['first_name']." ".$row['last_name']?></span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?=$userRow['first_name']." ".$userRow['last_name']?></span>
                                 <img class="img-profile rounded-circle"
-                                    src="imgs/undraw_profile.svg">
+                                    src="imgs/<?php if($userRow['profile_pic'] == '') {echo "BSU.png";} else {echo $userRow['profile_pic'];}?>">
+                            </a>
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
