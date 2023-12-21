@@ -37,19 +37,6 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
-    <style>
-    .folder {
-      width: 115px;
-      height: 110px;
-      background-color: #f8f9fa;
-      border: 1px solid #d1d1d1;
-      text-align: center;
-      padding: 10px;
-      margin: 10px;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-  </style>
 </head>
 <body id="page-top">
     <!-- Page Wrapper -->
@@ -154,28 +141,16 @@
                 </nav>
                 <!-- End of Topbar -->
                 <!-- Begin Page Content -->
-                <div class="container mt-4">
-        <div class="container mt-4">
-          <div class="row">
-            <div class="col-md-1.5">
-              <div class="folder">
-                <a href="docu_local.php">
-                  <img src="../imgs/bsu_folder.png" style="width:90px">  
-                <p>Local</p>
-              </a>
-              </div>
-            </div>
-            <div class="col-md-1.5">
-              <div class="folder">
-                <a href="docu_national.php">
-                  <img src="../imgs/bsu_folder.png" style="width:90px">  
-                <p>International</p>
-              </a>
-              </div>
-            </div>
-          </div>
-        </div>
-        </div>
+                <div class="container-fluid">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h3 class="h3 mb-0 text-gray-800"></h3>
+                        <div class="d-flex">
+                            <a class="btn btn-primary rounded-fill" href="ui-forms.php" role="button">
+                                <i class="fas fa-plus"></i> Add Folder
+                            </a>
+                        </div>
+                    </div>
+                </div>
                 <!-- /.container-fluid -->
             </div>
             <!-- End of Main Content -->

@@ -441,7 +441,7 @@
                     <div class="row" style="display: flex; justify-content: center; margin-top: 20px"></div>
                     <div class="text-right mt-4">
                       <button type="button" class="btn btn-secondary" id="prevStep6">Previous</button>
-                      <input type="button" name="btnsubmit" onclick="showAlert()" class="submit btn btn-primary" value="Submit">
+                      <input type="submit" name="btnsubmit" onclick="showAlert()" class="submit btn btn-primary" value="Submit">
                     </div>
                   </div>
                     </div>
@@ -498,7 +498,7 @@
       title: 'Your work has been saved',
       showConfirmButton: false,
       timer: 1500
-      })
+      });
 
       // Swal.fire({
       //   title: 'Are you sure you want to submit?',

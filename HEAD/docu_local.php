@@ -29,6 +29,12 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <style>
+    .custom-text-black {
+    color: black;
+    font-size: 12;
+    }
+    </style>
   </head>
   <body id="page-top">
     <!-- Page Wrapper -->
@@ -56,15 +62,9 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="announcement.php">
+          <a class="nav-link" href="announcement_table.php">
             <i class="bi bi-megaphone"></i>
             <span>Announcements</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="status.php">
-            <i class="bi bi-speedometer"></i>
-            <span>Status</span>
           </a>
         </li>
         <li class="nav-item active">
@@ -134,8 +134,8 @@
                       $result = $conn->query($sql);
                       $row = $result->fetch_assoc();
                   ?>
-                  <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?=$row['first_name']." ".$row['last_name']?></span>
-                  <img class="img-profile rounded-circle" src="imgs/BSU.png">
+                    <span class="mr-2 d-none d-lg-inline custom-text-black">Head | <?=$row['first_name']." ".$row['last_name']?></span>
+                  <img class="img-profile rounded-circle" src="imgs/<?php if($row['profile_pic'] == '') {echo "#";} else {echo $row['profile_pic'];}?>">
                 </a>
                 <!-- Dropdown - User Information -->
                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -150,6 +150,16 @@
           </nav>
           <!-- End of Topbar -->
           <!-- Begin Page Content -->
+          <div class="container-fluid">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h3 class="h3 mb-0 text-gray-800"></h3>
+                        <div class="d-flex">
+                            <a class="btn btn-primary rounded-fill" href="ui-forms.php" role="button">
+                                <i class="fas fa-plus"></i> Add Folder
+                            </a>
+                        </div>
+                    </div>
+                </div>
         </div>
         <!-- End of Main Content -->
         <!-- Footer -->

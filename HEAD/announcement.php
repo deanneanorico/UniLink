@@ -1,6 +1,12 @@
 <?php
   session_start();
+    $id = $_SESSION['id'];
+    include '../db.php';
 
+    $sql = "SELECT * FROM `users` WHERE `id` = '$id'";
+    $result = $conn->query($sql);
+    $row = $result->fetch_assoc();
+    
   if(!isset($_SESSION['id'])) {
     header("location: ../");
     exit();
@@ -27,8 +33,24 @@
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+      <script>
+      $(document).ready(function() {
+          $('#announcementTable').DataTable();
+      });
+    </script>
+    <style>
+    .custom-text-black {
+    color: black;
+    font-size: 12;
+    }
+    </style>
   </head>
   <body id="page-top">
     <!-- Page Wrapper -->
@@ -40,7 +62,6 @@
           <img src="../imgs/BSU.png" width="50" height="45">
           <div class="sidebar-brand-text mx-3">UniLink</div>
         </a>
-        <!-- Divider -->
         <hr class="sidebar-divider my-0">
         <!-- Nav Item - Dashboard -->
         <li class="nav-item">
@@ -56,15 +77,9 @@
           </a>
         </li>
         <li class="nav-item active">
-          <a class="nav-link" href="announcement.php">
+          <a class="nav-link" href="announcement_table.php">
             <i class="bi bi-megaphone"></i>
             <span>Announcements</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="status.php">
-            <i class="bi bi-speedometer"></i>
-            <span>Status</span>
           </a>
         </li>
         <li class="nav-item">
@@ -126,20 +141,12 @@
               <!-- Nav Item - User Information -->
               <li class="nav-item dropdown no-arrow">
                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <?php
-                      $id = $_SESSION['id'];
-                      include '../db.php';
-
-                      $sql = "SELECT * FROM `users` WHERE `id` = '$id'";
-                      $result = $conn->query($sql);
-                      $row = $result->fetch_assoc();
-                  ?>
-                  <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?=$row['first_name']." ".$row['last_name']?></span>
+                    <span class="mr-2 d-none d-lg-inline custom-text-black">Head | <?=$row['first_name']." ".$row['last_name']?></span>
                   <img class="img-profile rounded-circle" src="imgs/<?php if($row['profile_pic'] == '') {echo "#";} else {echo $row['profile_pic'];}?>">
                 </a>
                 <!-- Dropdown - User Information -->
                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                  <a class="dropdown-item" href="ea_profile.php">
+                  <a class="dropdown-item" href="dea_profile.php">
                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Profile </a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
@@ -150,68 +157,81 @@
           </nav>
           <!-- End of Topbar -->
           <!-- Begin Page Content -->
-         <div class="container-fluid">
-            <div class="d-flex justify-content-between align-items-center mb-4">
-            <h3 class="h3 mb-0 text-gray-800">Announcements</h3>
-            </div>
+<div class="container-fluid">
+   <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <a href="announcement_table.php">Announcement</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">Create Announcement</li>
+              </ol>
+            </nav>
           <!-- Announcement Cards -->
           <div class="container mt-3">
-            <div class="row">
-          <!-- Announcement Cards -->
-          <div class="col-md-6">
-            <div class="card">
-              <div class="card-header">
-                Announcement
+            <form method="post" action="add.announcement.php">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="card">
+                    <div class="card-header">
+                      Announcement
+                    </div>
+                    <div class="card-body">
+                      <label for="content">Subject</label>
+                      <textarea class="form-control" id="content" rows="1" name="subject" required></textarea>
+                      <div></div>
+                      <div class="form-group">
+                        <label for="content">Content</label>
+                        <textarea class="form-control" id="content" rows="6" name="content" required></textarea>
+                      </div>
+                      <label for="Date">Date</label>
+                      <input type="date" id="date" name="date" class="form-control" required>
+                    </div>
+                  </div>
+                </div>
+                <!-- Recipient Card - Right Side -->
+                <div class="col-md-6">
+                  <div class="card">
+                    <div class="card-header">
+                      Recipient
+                    </div>
+                    <div class="card-body">
+                      <!-- "Select All" Checkbox -->
+                      <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="selectAllCheckbox">
+                        <label class="form-check-label" for="selectAllCheckbox">Select All</label>
+                      </div>
+                      <!-- Add your recipient checkboxes here -->
+                      <div class="form-check">
+                    <input type="checkbox" name="college[]" class="form-check-input college-checkbox" id="cicsCheckbox" value="CICS">
+                    <label class="form-check-label" for="cicsCheckbox">College of Informatics and Computing Sciences</label>
+                  </div>
+                  <div class="form-check">
+                    <input type="checkbox" name="college[]" class="form-check-input college-checkbox" id="cabeiCheckbox" value="CABEIHM">
+                        <label class="form-check-label" for="cabeiCheckbox">College of Accountancy, Business, Economics, International Hospitality Management</label>
+                      </div>
+                      <div class="form-check">
+                    <input type="checkbox" name="college[]" class="form-check-input college-checkbox" id="casCheckbox" value="CAS">
+                        <label class="form-check-label" for="casCheckbox">College of Arts and Sciences</label>
+                      </div>
+                      <div class="form-check">
+                        <input type="checkbox" name="college[]" class="form-check-input college-checkbox" id="cteCheckbox" value="CTE">
+                        <label class="form-check-label" for="cteCheckbox">College of Teacher Education</label>
+                      </div>
+                      <div class="form-check">
+                        <input type="checkbox" name="college[]" class="form-check-input college-checkbox" id="conahsCheckbox" value="CONAHS">
+                        <label class="form-check-label" for="conahsCheckbox">College of Nursing and Allied Health Sciences</label>
+                      </div>
+                      <!-- Announce Button -->
+                      <button class="btn btn-primary float-right bi bi-megaphone ml-2" type="submit" onclick="announce()">
+                        Announce
+                      </button>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div class="card-body">
-                <textarea class="form-control mb-2" rows="8" placeholder="Enter your announcement"></textarea>
-              </div>
-            </div>
-          </div>
-          <!-- Recipient Cards -->
-                    <!-- Recipient Cards -->
-          <div class="col-md-6">
-          <div class="card">
-          <div class="card-header">
-          Recipient
-          </div>
-    <div class="card-body">
-      <!-- "Select All" Checkbox -->
-      <div class="form-check">
-        <input type="checkbox" class="form-check-input" id="selectAllCheckbox">
-        <label class="form-check-label" for="selectAllCheckbox">Select All</label>
-      </div>
-        <div class="form-check">
-        <input type="checkbox" class="form-check-input college-checkbox" id="cicsCheckbox" value="CICS">
-        <label class="form-check-label" for="cicsCheckbox">College of Informatics and Computing Sciences</label>
-      </div>
-      <div class="form-check">
-        <input type="checkbox" class="form-check-input college-checkbox" id="cabeiCheckbox" value="CABEIHM">
-            <label class="form-check-label" for="cabeiCheckbox">College of Accountancy, Business, Economics, International Hospitality Management</label>
-          </div>
-          <div class="form-check">
-        <input type="checkbox" class="form-check-input college-checkbox" id="casCheckbox" value="CAS">
-            <label class="form-check-label" for="casCheckbox">College of Arts and Sciences</label>
-          </div>
-          <div class="form-check">
-        <input type="checkbox" class="form-check-input college-checkbox" id="cteCheckbox" value="CTE">
-            <label class="form-check-label" for="cteCheckbox">College of Teacher Education</label>
-          </div>
-          <div class="form-check">
-        <input type="checkbox" class="form-check-input college-checkbox" id="conahsCheckbox" value="CONAHS">
-            <label class="form-check-label" for="conahsCheckbox">College of Nursing and Allied Health Sciences</label>
-          </div>
-                <!-- Announce Button -->
-                <button class="btn btn-primary float-right bi bi-megaphone ml-2" onclick="announce()">
-                  Announce
-                </button>
-              </div>
-            </div>
-          </div>
-          </div>
+            </form>
           </div>
         </div>
-        <!-- End of Main Content -->
       </div>
         <!-- Footer -->
         <footer class="sticky-footer bg-white">
@@ -221,11 +241,8 @@
             </div>
           </div>
         </footer>
-      
         <!-- End of Footer -->
-    
       <!-- End of Content Wrapper -->
-
     <!-- End of Page Wrapper -->
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
@@ -261,7 +278,6 @@
     <!-- Page level custom scripts -->
     <script src="js/demo/chart-area-demo.js"></script>
     <script src="js/demo/chart-pie-demo.js"></script>
-
   </body>
 </html>
 <script>

@@ -29,6 +29,17 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
+     <script>
+      $(document).ready(function() {
+          $('#linkagesTable').DataTable();
+      });
+    </script>
+        <style>
+      .custom-text-black {
+      color: black;
+      font-size: 12;
+    }
+    </style>
   </head>
   <body id="page-top">
     <!-- Page Wrapper -->
@@ -56,15 +67,9 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="announcement.php">
+          <a class="nav-link" href="announcement_table.php">
             <i class="bi bi-megaphone"></i>
             <span>Announcements</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="status.php">
-            <i class="bi bi-speedometer"></i>
-            <span>Status</span>
           </a>
         </li>
         <li class="nav-item">
@@ -134,7 +139,7 @@
                       $result = $conn->query($sql);
                       $row = $result->fetch_assoc();
                   ?>
-                  <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?=$row['first_name']." ".$row['last_name']?></span>
+                    <span class="mr-2 d-none d-lg-inline custom-text-black">Head | <?=$row['first_name']." ".$row['last_name']?></span>
                   <img class="img-profile rounded-circle" src="imgs/<?php if($row['profile_pic'] == '') {echo "#";} else {echo $row['profile_pic'];}?>">
                 </a>
                 </a>
@@ -151,6 +156,33 @@
           </nav>
           <!-- End of Topbar -->
           <!-- Begin Page Content -->
+          <div class="container-fluid">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h3 class="h3 mb-0 text-gray-800">Linkages Proposal</h3>
+                        <div class="d-flex">
+                            <a class="btn btn-primary rounded-fill" href="linkages_form.php" role="button">
+                                <i class="fas fa-plus"></i> Create Proposal
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="table">
+                             <table id="linkagesTable" style="width: 100%;" class="display" data-ordering="true" data-paging="true" data-searching="true">
+                                <thead style='text-align: center;'>
+                                    <tr>
+                                        <th >No.</th>
+                                        <th>Title</th>
+                                        <th>Partner</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                    </div>
+                  </div>
         </div>
         <!-- End of Main Content -->
         <!-- Footer -->

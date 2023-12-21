@@ -1,6 +1,12 @@
 <?php
   session_start();
+    $id = $_SESSION['id'];
+    include '../db.php';
 
+    $sql = "SELECT * FROM `users` WHERE `id` = '$id'";
+    $result = $conn->query($sql);
+    $row = $result->fetch_assoc();
+    
   if(!isset($_SESSION['id'])) {
     header("location: ../");
     exit();
@@ -21,14 +27,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>UniLink - Head</title>
+    <title>UniLink - VCDEA</title>
     <link rel="shortcut icon" type="image/png" href="../imgs/BSU.png" alt="Logo" />
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
+      <script>
+      $(document).ready(function() {
+          $('#announcementTable').DataTable();
+      });
+    </script>
+    <style>
+    .custom-text-black {
+    color: black;
+    font-size: 12;
+    }
+    /*.form-control.announcement {
+    width: 80%; /* Adjust the width as needed */
+    margin: 20px auto; /* Center the container */
+    border: 1px solid #ccc; /* Add a border for better visibility */
+    padding: 10px;
+    box-sizing: border-box;
+}*/
+.announcement-header {
+    text-align: left;
+    margin-bottom: 10px;
+}
+.announcement-content {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.announcement-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+.user-info {
+    display: flex;
+    align-items: center;
+}
+.user-info img {
+    width: 30px; /* Adjust the size of the profile picture */
+    height: 30px;
+    border-radius: 50%; /* Make it circular */
+    margin-right: 10px;
+}
+.date {
+    text-align: right;
+}
+    </style>
   </head>
   <body id="page-top">
     <!-- Page Wrapper -->
@@ -40,7 +92,7 @@
           <img src="../imgs/BSU.png" width="50" height="45">
           <div class="sidebar-brand-text mx-3">UniLink</div>
         </a>
-                <!-- Divider -->
+<!-- Divider -->
         <hr class="sidebar-divider my-0">
         <!-- Nav Item - Dashboard -->
         <li class="nav-item">
@@ -49,19 +101,13 @@
             <span>Dashboard</span>
           </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="linkages.php">
-            <i class="bi bi-bullseye"></i>
-            <span>Linkages Proposal</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="announcement.php">
+        <li class="nav-item active">
+          <a class="nav-link" href="announcement_table.php">
             <i class="bi bi-megaphone"></i>
             <span>Announcements</span>
           </a>
         </li>
-        <li class="nav-item active">
+        <li class="nav-item">
           <a class="nav-link" href="status.php">
             <i class="bi bi-speedometer"></i>
             <span>Status</span>
@@ -73,7 +119,6 @@
             <span>Archive</span>
           </a>
         </li>
-        <!-- Divider -->
         <hr class="sidebar-divider">
         <!-- Sidebar Toggler (Sidebar) -->
         <div class="text-center d-none d-md-inline">
@@ -126,20 +171,12 @@
               <!-- Nav Item - User Information -->
               <li class="nav-item dropdown no-arrow">
                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <?php
-                      $id = $_SESSION['id'];
-                      include '../db.php';
-
-                      $sql = "SELECT * FROM `users` WHERE `id` = '$id'";
-                      $result = $conn->query($sql);
-                      $row = $result->fetch_assoc();
-                  ?>
-                  <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?=$row['first_name']." ".$row['last_name']?></span>
+                    <span class="mr-2 d-none d-lg-inline custom-text-black">VCDEA | <?=$row['first_name']." ".$row['last_name']?></span>
                   <img class="img-profile rounded-circle" src="imgs/<?php if($row['profile_pic'] == '') {echo "#";} else {echo $row['profile_pic'];}?>">
                 </a>
                 <!-- Dropdown - User Information -->
                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                  <a class="dropdown-item" href="ea_profile.php">
+                  <a class="dropdown-item" href="dea_profile.php">
                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Profile </a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
@@ -150,8 +187,103 @@
           </nav>
           <!-- End of Topbar -->
           <!-- Begin Page Content -->
-        </div>
-        <!-- End of Main Content -->
+          <div class="container-fluid">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h3 class="h3 mb-0 text-gray-800">Announcements</h3>
+                        <div class="d-flex">
+                            <a class="btn btn-primary rounded-fill" href="announcement.php" role="button">
+                                <i class="fas fa-plus"></i> Announcement
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card">
+                      <div class="form-control">
+                        <?php
+                                  $sql = "SELECT * FROM announcement";
+                                  $result = $conn->query($sql);
+                                  while($announcementRow = $result->fetch_assoc()) 
+                                ?>
+                          <div class="announcement-header">
+                              <label><?=$announcementRow['subject']?></label>
+                          </div>
+                          <div class="announcement-content">
+                              <p><?=$announcementRow['content']?></p>
+                          </div>
+                          <div class="announcement-footer">
+                              <div class="user-info">
+                      <img class="img-profile rounded-circle" src="imgs/<?php if($row['profile_pic'] == '') {echo "#";} else {echo $row['profile_pic'];}?>">            
+                      <span><?=$row['first_name']." ".$row['last_name']?></span>
+                              </div>
+                              <div class="date">
+                                  <?=$announcementRow['date_added']?>
+                              </div>
+                          </div>
+                      </div>
+
+                            <!-- <div class="table">
+                             <table id="announcementTable" style="width: 100%;" class="display" data-ordering="true" data-paging="true" data-searching="true">
+                                <thead style='text-align: center;'>
+                                    <tr>
+                                        <th >No.</th>
+                                        <th style="width: 22%;">Subject</th>
+                                        <th style="width: 14%">Date Posted</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody style='text-align: center;'>
+                                <?php
+                                  $count = 1;
+                                  $sql = "SELECT * FROM announcement";
+                                  $result = $conn->query($sql);
+                                  while($announcementRow = $result->fetch_assoc()) {
+                                ?>
+                                  <tr>
+                                    <td><?=$count?></td>
+                                    <td><?=$announcementRow['subject']?></td>
+                                    <td><?=$announcementRow['content']?></td>
+                                    <td><button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#announcement<?=$announcementRow['id']?>"><i class="bi bi-arrows-fullscreen"></i></button></td>
+                                  </tr>
+
+                                  <div class="modal fade" id="announcement<?=$announcementRow['id']?>" tabindex="-1" role="dialog">
+                                    <div class="modal-dialog" role="document">
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                          <h5 class="modal-title">Announcement</h5>
+                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                          </button>
+                                        </div>
+                                        <div class="modal-body">
+                                          <div class="row">
+                                            <div class="col">
+                                              <label for="view-subject<?=$announcementRow['id']?>">Subject: </label>
+                                              <input type="text" id="view-subject<?=$announcementRow['id']?>" class="form-control" value="<?=$announcementRow['subject']?>" readonly>
+                                            </div>
+                                          </div>
+
+                                          <div class="row mt-3">
+                                            <div class="col">
+                                              <label for="view-content<?=$announcementRow['id']?>">Content:</label>
+                                              <textarea class="form-control" id="view-content<?=$announcementRow['id']?>" readonly><?=$announcementRow['content']?></textarea>                                             
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                <?php
+                                    $count++;
+                                  }
+                                ?>
+                                </tbody>
+                            </table>
+                        </div> -->
+                    </div>
+                </div>
+      </div>
         <!-- Footer -->
         <footer class="sticky-footer bg-white">
           <div class="container my-auto">
@@ -160,9 +292,7 @@
             </div>
           </div>
         </footer>
-      </div>
         <!-- End of Footer -->
-      </div>
       <!-- End of Content Wrapper -->
     <!-- End of Page Wrapper -->
     <!-- Scroll to Top Button-->
@@ -219,5 +349,32 @@
         college.appendChild(option);
       });
     }
+  }
+</script>
+<script>
+  // JavaScript to handle "Select All" functionality
+  document.getElementById("selectAllCheckbox").addEventListener("change", function () {
+    var checkboxes = document.getElementsByClassName("college-checkbox");
+
+    for (var i = 0; i < checkboxes.length; i++) {
+      checkboxes[i].checked = this.checked;
+    }
+  });
+
+  // Function to handle the Announce button click
+  function announce() {
+    // Get selected colleges and perform the announcement logic
+    var selectedColleges = [];
+
+    var checkboxes = document.getElementsByClassName("college-checkbox");
+    for (var i = 0; i < checkboxes.length; i++) {
+      if (checkboxes[i].checked) {
+        selectedColleges.push(checkboxes[i].value);
+      }
+    }
+
+    // Perform the announcement logic with the selectedColleges array
+    // You can add your announcement code here
+    console.log("Selected Colleges: ", selectedColleges);
   }
 </script>

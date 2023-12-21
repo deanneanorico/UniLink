@@ -29,6 +29,12 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <style>
+    .custom-text-black {
+    color: black;
+    font-size: 12;
+    }
+    </style>
   </head>
   <body id="page-top">
     <!-- Page Wrapper -->
@@ -50,29 +56,21 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="announcement.php">
+          <a class="nav-link" href="announcement_table.php">
             <i class="bi bi-megaphone"></i>
             <span>Announcements</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+          <a class="nav-link" href="status.php">
             <i class="bi bi-speedometer"></i>
             <span>Status</span>
           </a>
-          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-              <a class="collapse-item" href="stat_exploratory.php">For Exploratory</a>
-              <a class="collapse-item" href="stat_mou_partner.php">Review MOU by Partner</a>
-              <a class="collapse-item" href="stat_mou_legal.php">Review MOU Legal</a>
-              <a class="collapse-item" href="stat_signing.php">For Signing</a>
-            </div>
-          </div>
         </li>
         <li class="nav-item active">
           <a class="nav-link" href="docu_repo.php">
-            <i class="bi bi-megaphone"></i>
-            <span>Document Repository</span>
+            <i class="bi bi-archive"></i>
+            <span>Archive</span>
           </a>
         </li>
         <!-- Divider -->
@@ -136,9 +134,8 @@
                       $result = $conn->query($sql);
                       $row = $result->fetch_assoc();
                   ?>
-                  <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?=$row['first_name']." ".$row['last_name']?></span>
-                  <span class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
-                  <img class="img-profile rounded-circle" src="imgs/BSU.png">
+                    <span class="mr-2 d-none d-lg-inline custom-text-black">VCDEA | <?=$row['first_name']." ".$row['last_name']?></span>
+                  <img class="img-profile rounded-circle" src="imgs/<?php if($row['profile_pic'] == '') {echo "#";} else {echo $row['profile_pic'];}?>">
                 </a>
                 <!-- Dropdown - User Information -->
                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -153,6 +150,16 @@
           </nav>
           <!-- End of Topbar -->
           <!-- Begin Page Content -->
+          <div class="container-fluid">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h3 class="h3 mb-0 text-gray-800"></h3>
+                        <div class="d-flex">
+                            <a class="btn btn-primary rounded-fill" href="ui-forms.php" role="button">
+                                <i class="fas fa-plus"></i> Add Folder
+                            </a>
+                        </div>
+                    </div>
+                </div>
         </div>
         <!-- End of Main Content -->
         <!-- Footer -->

@@ -36,6 +36,38 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
+        <style>
+    .custom-text-black {
+    color: black;
+    font-size: 12;
+    }
+    .announcement-header {
+    text-align: left;
+    margin-bottom: 10px;
+    }
+    .announcement-content {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .announcement-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+    }
+    .user-info {
+        display: flex;
+        align-items: center;
+    }
+    .user-info img {
+        width: 30px; /* Adjust the size of the profile picture */
+        height: 30px;
+        border-radius: 50%; /* Make it circular */
+        margin-right: 10px;
+    }
+    .date {
+        text-align: right;
+    }
+    </style>
 </head>
 <body id="page-top">
     <!-- Page Wrapper -->
@@ -141,16 +173,95 @@
                 <!-- End of Topbar -->
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-                    <!-- Page Heading -->
-                    <!-- Content Row -->
-                    <div class="row">
-                        <!-- Content Column -->
-                        <div class="col-lg-6 mb-4">
-                        </div>
-                        <div class="col-lg-6 mb-4">
-                        </div>
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h3 class="h3 mb-0 text-gray-800">Announcements</h3>
                     </div>
-                </div>
+                    <div class="card">
+                        <div class="form-control">
+                        <?php
+                                  $sql = "SELECT * FROM announcement";
+                                  $result = $conn->query($sql);
+                                  while($announcementRow = $result->fetch_assoc()) 
+                                ?>
+                          <div class="announcement-header">
+                              <label><?=$announcementRow['subject']?></label>
+                          </div>
+                          <div class="announcement-content">
+                              <p><?=$announcementRow['content']?></p>
+                          </div>
+                          <div class="announcement-footer">
+                              <div class="user-info">
+                      <img class="img-profile rounded-circle"
+                          src="imgs/<?php if($userRow['profile_pic'] == '') {echo "BSU.png";} else {echo $userRow['profile_pic'];}?>">      
+                      <span><?=$row['first_name']." ".$row['last_name']?></span>
+                              </div>
+                              <div class="date">
+                                  <?=$announcementRow['date_added']?>
+                              </div>
+                          </div>
+                      </div>
+                            <!-- <div class="table">
+                             <table id="announcementTable" style="width: 100%;" class="display" data-ordering="true" data-paging="true" data-searching="true">
+                                <thead style='text-align: center;'>
+                                    <tr>
+                                        <th>Subject</th>
+                                        <th>Date Posted</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="load-table" style='text-align: center;'>
+                                <?php
+                                $college = $_SESSION['college'];
+                                $sql = "SELECT a.id, subject, DATE(date_added) AS date FROM announcement AS a INNER JOIN announcement_recipents AS ar ON a.id = ar.announcement_id WHERE college = '$college'";
+                                $result = $conn->query($sql);
+                                while($announcementRow = $result->fetch_assoc()) {
+                                ?>
+                                    <tr>
+                                        <td><?=$count?></td>
+                                        <td><?=$announcementRow['subject']?></td>
+                                        <td><?=$announcementRow['content']?></td>
+                                        <td><button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#announcement<?=$announcementRow['id']?>"><i class="bi bi-arrows-fullscreen"></i></button></td>
+                                    </tr>
+
+                                      <div class="modal fade" id="announcement<?=$announcementRow['id']?>" tabindex="-1" role="dialog">
+                                        <div class="modal-dialog" role="document">
+                                          <div class="modal-content">
+                                            <div class="modal-header">
+                                              <h5 class="modal-title">Announcement</h5>
+                                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                              </button>
+                                            </div>
+                                            <div class="modal-body">
+                                              <div class="row">
+                                                <div class="col">
+                                                  <label for="view-subject<?=$announcementRow['id']?>">Subject: </label>
+                                                  <input type="text" id="view-subject<?=$announcementRow['id']?>" class="form-control" value="<?=$announcementRow['subject']?>" readonly>
+                                                </div>
+                                              </div>
+
+                                              <div class="row mt-3">
+                                                <div class="col">
+                                                  <label for="view-content<?=$announcementRow['id']?>">Content:</label>
+                                                  <textarea class="form-control" id="view-content<?=$announcementRow['id']?>" readonly><?=$announcementRow['content']?></textarea>                                             
+                                                </div>
+                                              </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                <?php   
+                                }
+                                ?>
+                                </tbody>
+                            </table>
+                        </div> -->
+                    </div>
+                    </div>
+                <!-- </div> -->
                 <!-- /.container-fluid -->
             </div>
             <!-- End of Main Content -->
