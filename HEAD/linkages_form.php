@@ -62,7 +62,7 @@
           <img src="../imgs/BSU.png" width="50" height="45">
           <div class="sidebar-brand-text mx-3">UniLink</div>
         </a>
-                <!-- Divider -->
+        <!-- Divider -->
         <hr class="sidebar-divider my-0">
         <!-- Nav Item - Dashboard -->
         <li class="nav-item">
@@ -107,17 +107,6 @@
             <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
               <i class="fa fa-bars"></i>
             </button>
-            <!-- Topbar Search -->
-            <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-              <div class="input-group">
-                <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-                <div class="input-group-append">
-                  <button class="btn btn-primary" type="button">
-                    <i class="fas fa-search fa-sm"></i>
-                  </button>
-                </div>
-              </div>
-            </form>
             <!-- Topbar Navbar -->
             <ul class="navbar-nav ml-auto">
               <!-- Nav Item - Search Dropdown (Visible Only XS) -->
@@ -151,7 +140,7 @@
                       $row = $result->fetch_assoc();
                   ?>
                     <span class="mr-2 d-none d-lg-inline custom-text-black">Head | <?=$row['first_name']." ".$row['last_name']?></span>
-                  <img class="img-profile rounded-circle" src="imgs/<?php if($row['profile_pic'] == '') {echo "#";} else {echo $row['profile_pic'];}?>">
+                  <img class="img-profile rounded-circle" src="../imgs/<?php if($row['profile_pic'] == '') {echo "#";} else {echo $row['profile_pic'];}?>">
                 </a>
                 <!-- Dropdown - User Information -->
                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -181,11 +170,11 @@
             </div>
             <div class="d-flex justify-content-between align-items-center mb-2"></div>
             <div class="card">
-              <div class="card-body">
-              <div id="step1">
+            <div class="card-body">
+            <div id="step1">
             <div class="form-group">
               <label for="partnerTitle">Partnership and/or Linkage Title</label>
-              <input type="text" class="form-control outline" id="partnerTitle" name="partnerTitle" required />
+              <input type="text" class="form-control outline" id="partnerTitle" name="partnerTitle">
             </div>
             <div class="form-group">
               <label>Partnership and/or Linkage Category</label>
@@ -228,11 +217,30 @@
           <div class="justify-content-between">
           <div class="input-group contacts-search mb-4" style="display: flex; justify-content: space-between;">
             <label>Officials/Department/Personnel/Stakeholders Involved</label>
-            <button style="margin-right: 30px;" type="button" onclick="addRoles()" class="btn btn-primary shadow btn-circle btn-sm">
+           <!--  <button style="margin-right: 30px;" type="button" onclick="addRoles()" class="btn btn-primary shadow btn-circle btn-sm">
               <i class="fas fa-plus"></i>
-            </button>
+            </button> -->
           </div>
-          <input type="hidden" name="total_roles" id="total_roles" value="2" style="" readonly>
+          <div id="involve">
+                        <table class="table header-border table-responsive-sm">
+                          <div class="d-flex justify-content-between align-items-center flex-wrap">
+                          </div>
+                          <thead>
+                            <tr>
+                              <th class="col-md-5" style="text-align: left;">Personnel/Stakeholders</th>
+                              <th class="col-md-6" style="text-align: left;">Officials/Department</th>
+                              <th class="col-md-2" style="padding-left: 0px;">
+                                <button id="add-button-1" style="margin-left:1px;background: white;" type="button" name="addRole" class="btn btn-primary btn-circle btn-sm">
+                                  <i class="fas fa-plus" style="color: #1dbf1d"></i>
+                                </button>
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody id="area-1">
+                            <!-- INPUT FIELDS -->
+                          </tbody>
+                        </table>
+                      </div>
         </div>
         <!-- dalawa, names tapos campus -->
         <div class="form-group">
@@ -241,6 +249,198 @@
               <textarea class="form-control" id="editor4" name="acd" rows="3"></textarea>
             </div>
           </div>
+          <div class="text-right mt-4">
+          <button type="button" class="btn btn-secondary" id="prevStep2">Previous</button>
+          <button type="button" class="btn btn-primary" id="nextStep2">Next</button>
+        </div>
+            </div>
+            <div id="step3" style="display: none;">
+              <div class="input-group contacts-search mb-4" style="display: flex; justify-content: space-between;">
+            <label>Resources Needed</label>
+            <button style="margin-right: 30px;" type="button" id="add-button-2" class="btn btn-primary shadow btn-circle btn-sm">
+              <i class="fas fa-plus"></i>
+            </button>
+          </div>
+          <div id="involve">
+            <table class="table header-border table-responsive-sm">
+              <div class="d-flex justify-content-between align-items-center flex-wrap">
+                <th class="col-md-11">
+                  <input class="form-control" id="role_description_1" type="text" value="Activities" name="role_name[]" readonly>
+                </th>
+                <th class="md-1" style="padding-right: 30px;">
+                  <button type="button" name="addRole" class="btn btn-danger shadow btn-circle btn-sm">
+                    <i class="fas fa-trash"></i>
+                  </button>
+                </th>
+              </div>
+              <tbody id="area-2">
+                <!-- INPUT FIELDS -->
+              </tbody>
+            </table>
+          </div>
+          <div class="input-group contacts-search mb-4" style="display: flex; justify-content: space-between;">
+            <label>Implementation Plan</label>
+            <button style="margin-right: 30px;" type="button" id="add-button-3" class="btn btn-primary shadow btn-circle btn-sm">
+              <i class="fas fa-plus"></i>
+            </button>
+          </div>
+          <div id="area-3">
+            <table class="table header-border table-responsive-sm">
+              <thead>
+                <tr>
+                  <th class="col-md-11" style="text-align: left;">Year</th>
+                  <th class="col-md-1" style="padding-left: 0px;">
+                    <button style="margin-left:1px;background: white;" type="button" name="addRole" class="btn btn-primary btn-circle btn-sm" onclick="addCustomResponsibility(1)">
+                      <i class="fas fa-plus" style="color: #1dbf1d"></i>
+                    </button>
+                  </th>
+                </tr>
+              </thead>
+              <tbody id="member1"></tbody>
+            </table>
+           
+            <table class="table">
+              <thead>
+                <tr>
+                  <th class="col-md-11" style="text-align: left;">Activities</th>
+                  <th class="col-md-1" style="padding-left: 0px;">
+                    <button style="margin-left:1px;background: white;" type="button" name="addRole" class="btn btn-primary btn-circle btn-sm" onclick="addCustomResponsibility(1)">
+                      <i class="fas fa-plus" style="color: #1dbf1d"></i>
+                    </button>
+                  </th>
+                </tr>
+              </thead>
+              <tbody id="added_responsibility_list_1">
+                <!-- Added Responsibility of Leader -->
+              </tbody>
+            </table>
+          </div
+          >
+          <div class="text-right mt-4">
+          <button type="button" class="btn btn-secondary" id="prevStep3">Previous</button>
+          <button type="button" class="btn btn-primary" id="nextStep3">Next</button>
+        </div>
+            </div>
+            <div id="step4" style="display: none;">
+              <div class="form-group">
+            <label for="risk">Risk Management</label>
+            <div>
+              <textarea class="form-control" id="editor5" name="risk" rows="3"></textarea>
+            </div>
+          </div>
+         <div class="form-group">
+            <label for="mom">Monitoring and Evaluation Mechanics/Plan</label>
+            <div>
+              <textarea class="form-control" id="editor6" name="mom" rows="4"></textarea>
+            </div>
+          </div>
+          <div class="text-right mt-4">
+          <button type="button" class="btn btn-secondary" id="prevStep4">Previous</button>
+          <button type="button" class="btn btn-primary" id="nextStep4">Next</button>
+        </div>
+            </div>
+            <div id="step5" style="display: none;">
+              <div class="input-group contacts-search mb-4" style="display: flex; justify-content: space-between;">
+            <label>Communication Plan</label>
+            <!-- <button style="margin-right: 30px;" type="button" onclick="addRoles()" class="btn btn-primary shadow btn-circle btn-sm">
+              <i class="fas fa-plus"></i>
+            </button> -->
+          </div>
+          <div id="role1">
+                        <table class="table header-border table-responsive-sm">
+                          <div class="d-flex justify-content-between align-items-center flex-wrap">
+                            <div class="md-1" style="padding-right: 30px;">
+                            </div>
+                          </div>
+                          <thead>
+                            <tr>
+                              <th class="col-md-11" style="text-align: left;">Program / Activity / Projects</th>
+                              <th class="col-md-1" style="padding-left: 0px;">
+                                <button style="margin-left:1px;background: white;" type="button" name="addRole" class="btn btn-primary btn-circle btn-sm" onclick="addCustomResponsibility(1)">
+                                  <i class="fas fa-plus" style="color: #1dbf1d"></i>
+                                </button>
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody id="member1"></tbody>
+                        </table>
+                       
+                        <table class="table">
+                          <thead>
+                            <tr>
+                              <th class="col-md-11" style="text-align: left;">Strategy/Medium</th>
+                              <th class="col-md-1" style="padding-left: 0px;">
+                                <button style="margin-left:1px;background: white;" type="button" name="addRole" class="btn btn-primary btn-circle btn-sm" onclick="addCustomResponsibility(1)">
+                                  <i class="fas fa-plus" style="color: #1dbf1d"></i>
+                                </button>
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody id="added_responsibility_list_1">
+                            <!-- Added Responsibility of Leader -->
+                          </tbody>
+                        </table>
+                        <table class="table header-border table-responsive-sm">
+                          <div class="d-flex justify-content-between align-items-center flex-wrap">
+                            <div class="md-1" style="padding-right: 30px;">
+                            </div>
+                          </div>
+                          <thead>
+                            <tr>
+                              <th class="col-md-11" style="text-align: left;">Target Audience</th>
+                              <th class="col-md-1" style="padding-left: 0px;">
+                                <button style="margin-left:1px;background: white;" type="button" name="addRole" class="btn btn-primary btn-circle btn-sm" onclick="addCustomResponsibility(1)">
+                                  <i class="fas fa-plus" style="color: #1dbf1d"></i>
+                                </button>
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody id="member1"></tbody>
+                        </table>
+                        <table class="table header-border table-responsive-sm">
+                          <div class="d-flex justify-content-between align-items-center flex-wrap">
+                            <div class="md-1" style="padding-right: 30px;">
+                            </div>
+                          </div>
+                          <thead>
+                            <tr>
+                              <th class="col-md-11" style="text-align: left;">Timing/Frequency</th>
+                              <th class="col-md-1" style="padding-left: 0px;">
+                                <button style="margin-left:1px;background: white;" type="button" name="addRole" class="btn btn-primary btn-circle btn-sm" onclick="addCustomResponsibility(1)">
+                                  <i class="fas fa-plus" style="color: #1dbf1d"></i>
+                                </button>
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody id="member1"></tbody>
+                        </table>
+                        <table class="table header-border table-responsive-sm">
+                          <div class="d-flex justify-content-between align-items-center flex-wrap">
+                            <div class="md-1" style="padding-right: 30px;">
+                            </div>
+                          </div>
+                          <thead>
+                            <tr>
+                              <th class="col-md-11" style="text-align: left;">Outcomes</th>
+                              <th class="col-md-1" style="padding-left: 0px;">
+                                <button style="margin-left:1px;background: white;" type="button" name="addRole" class="btn btn-primary btn-circle btn-sm" onclick="addCustomResponsibility(1)">
+                                  <i class="fas fa-plus" style="color: #1dbf1d"></i>
+                                </button>
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody id="member1"></tbody>
+                        </table>
+                      </div>
+          <!-- Program / Activity / Projects -->
+          <!-- Strategy/Medium -->
+          <!-- Target Audience -->
+          <!-- Timing/Frequency -->
+          <!-- Outcomes -->
+          <div class="text-right mt-4">
+          <button type="button" class="btn btn-secondary" id="prevStep5">Previous</button>
+          <input type="submit" name="btnsubmit" onclick="showAlert()" class="submit btn btn-primary" value="Submit">
+        </div>
             </div>
         <!-- done here -->
           </div>
@@ -293,6 +493,7 @@
     <!-- Page level custom scripts -->
     <script src="js/demo/chart-area-demo.js"></script>
     <script src="js/demo/chart-pie-demo.js"></script>
+    <script src="js/linkages_form.js"></script>
   </body>
 <script>
     document.addEventListener("DOMContentLoaded", function() {
@@ -308,7 +509,7 @@
         const submitButton = document.querySelector("input[type='submit']");
 
         let currentStep = 1;
-        const totalSteps = 6;
+        const totalSteps = 5;
 
         // Function to update the progress bar
         function updateProgressBar() {

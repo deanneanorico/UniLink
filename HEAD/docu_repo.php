@@ -34,7 +34,6 @@
       width: 115px;
       height: 110px;
       background-color: #f8f9fa;
-      border: 1px solid #d1d1d1;
       text-align: center;
       padding: 10px;
       margin: 10px;
@@ -57,7 +56,7 @@
           <img src="../imgs/BSU.png" width="50" height="45">
           <div class="sidebar-brand-text mx-3">UniLink</div>
         </a>
-                <!-- Divider -->
+        <!-- Divider -->
         <hr class="sidebar-divider my-0">
         <!-- Nav Item - Dashboard -->
         <li class="nav-item">
@@ -102,17 +101,6 @@
             <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
               <i class="fa fa-bars"></i>
             </button>
-            <!-- Topbar Search -->
-            <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-              <div class="input-group">
-                <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-                <div class="input-group-append">
-                  <button class="btn btn-primary" type="button">
-                    <i class="fas fa-search fa-sm"></i>
-                  </button>
-                </div>
-              </div>
-            </form>
             <!-- Topbar Navbar -->
             <ul class="navbar-nav ml-auto">
               <!-- Nav Item - Search Dropdown (Visible Only XS) -->
@@ -146,7 +134,7 @@
                       $row = $result->fetch_assoc();
                   ?>
                     <span class="mr-2 d-none d-lg-inline custom-text-black">Head | <?=$row['first_name']." ".$row['last_name']?></span>
-                  <img class="img-profile rounded-circle" src="imgs/<?php if($row['profile_pic'] == '') {echo "#";} else {echo $row['profile_pic'];}?>">
+                  <img class="img-profile rounded-circle" src="../imgs/<?php if($row['profile_pic'] == '') {echo "#";} else {echo $row['profile_pic'];}?>">
                 </a>
                 <!-- Dropdown - User Information -->
                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -162,27 +150,25 @@
           <!-- End of Topbar -->
           <!-- Begin Page Content -->
         <div class="container mt-4">
-        <div class="container mt-4">
-          <div class="row">
-            <div class="col-md-1.5">
-              <div class="folder">
-                <a href="docu_local.php">
-                  <img src="../imgs/bsu_folder.png" style="width:90px">  
+        <div class="row">
+          <div class="col-md-2">
+            <div class="folder text-center d-flex align-items-center flex-column">
+              <a href="docu_local.php">
+                <img src="../imgs/bsu_folder.png" style="width:130px">
                 <p>Local</p>
               </a>
-              </div>
             </div>
-            <div class="col-md-1.5">
-              <div class="folder">
-                <a href="docu_national.php">
-                  <img src="../imgs/bsu_folder.png" style="width:90px">  
+          </div>
+          <div class="col-md-2">
+            <div class="folder text-center d-flex align-items-center flex-column">
+              <a href="docu_national.php">
+                <img src="../imgs/bsu_folder.png" style="width:130px">
                 <p>International</p>
               </a>
-              </div>
             </div>
           </div>
         </div>
-        </div>
+      </div>
         <!-- End of Main Content -->
       </div>
         <!-- Footer -->

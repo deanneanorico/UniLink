@@ -1,4 +1,4 @@
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -7,70 +7,6 @@
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap4.min.js"></script>
-    
-    <script>
-    $(document).ready(function() {
-        var programOptions = {
-            "CE": [
-                "Bachelor of Science in Computer Engineering"
-            ],
-            "CIT": [
-                "Bachelor of Science in Industrial Technology"
-            ],
-            "CICS": [
-                "Bachelor of Science in Computer Science",
-                "Bachelor of Science in Information Technology"
-            ],
-            "CAS": [
-                "Bachelor of Arts in Communication",
-                "Bachelor of Science in Criminology",
-                "Bachelor of Science in Psychology",
-                "Bachelor of Science in Fisheries and Aquatic Sciences"
-            ],
-            "CABEIHM": [
-                "Bachelor of Science in Accountancy",
-                "Bachelor of Science in Management Accounting",
-                "Bachelor of Science in Entrepreneurship",
-                "Bachelor of Science in Business Administration major in Marketing Management",
-                "Bachelor of Science in Business Administration major in Human Resource Management",
-                "Bachelor of Science in Business Administration major in Financial Management",
-                "Bachelor of Science in Business Administration major in Operations Management",
-                "Bachelor of Science in Tourism Management",
-                "Bachelor of Science in Hospitality Management"
-            ],
-            "CTE": [
-                "Bachelor of Secondary Education major in English",
-                "Bachelor of Secondary Education major in Mathematics",
-                "Bachelor of Secondary Education major in Sciences",
-                "Bachelor of Secondary Education major in Filipino",
-                "Bachelor of Secondary Education major in Social Studies",
-                "Bachelor of Elementary Education",
-                "Bachelor of Physical Education",
-                "Bachelor of Early Childhood Education"
-            ],
-            "CONAHS": [
-                "Bachelor of Science in Nursing",
-                "Bachelor of Science in Nutrition and Dietetics"
-            ],
-            "LS": [
-                "Laboratory School",
-            ]
-        };
-
-        $('#department').on('change', function() {
-            var selectedCollege = $(this).val();
-            var programSelect = $('#program');
-            programSelect.empty();
-
-            if (selectedCollege in programOptions) {
-                programOptions[selectedCollege].forEach(function(option) {
-                    programSelect.append($('<option>').text(option).attr('value', option));
-                });
-            }
-        });
-    });
-    </script>
-
     <script>
     document.addEventListener("DOMContentLoaded", function() {
         const addRoleButton = document.getElementById("addRoleButton");

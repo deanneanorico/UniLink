@@ -1,12 +1,16 @@
 <?php
   session_start();
   $id = $_SESSION['id'];
+  $_SESSION['folder_category'] = "local";
+  if(isset($_GET['id'])) {
+    $_SESSION['folder_id'] = $_GET['id'];
+  }
   include '../db.php';
 
   $sql = "SELECT * FROM `users` WHERE `id` = '$id'";
   $result = $conn->query($sql);
   $userRow = $result->fetch_assoc();
-  
+
   if(!isset($_SESSION['id'])) {
     header("location: ../");
     exit();
@@ -27,7 +31,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>UniLink - Faculty/Associate Dean</title>
+    <title>UniLink - Dean/Associate Dean</title>
     <link rel="shortcut icon" type="image/png" href="../imgs/BSU.png" alt="Logo" />
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -37,6 +41,7 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body id="page-top">
     <!-- Page Wrapper -->
@@ -121,7 +126,7 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?=$userRow['first_name']." ".$userRow['last_name']?></span>
                           <img class="img-profile rounded-circle"
-                              src="imgs/<?php if($userRow['profile_pic'] == '') {echo "BSU.png";} else {echo $userRow['profile_pic'];}?>">
+                              src="../imgs/<?php if($userRow['profile_pic'] == '') {echo "BSU.png";} else {echo $userRow['profile_pic'];}?>">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -143,13 +148,86 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
                     <div class="d-flex justify-content-between align-items-center mb-4">
+                        <div class="d-flex">
+                            <!-- Back button with icon and label -->
+                            <a href="#" class="btn btn" style="color:black;" onclick="goBack()">
+                                <i class="bi bi-arrow-left"></i> Back
+                            </a>
+                        </div>
                         <h3 class="h3 mb-0 text-gray-800"></h3>
                         <div class="d-flex">
-                            <a class="btn btn-primary rounded-fill" href="ui-forms.php" role="button">
-                                <i class="fas fa-plus"></i> Add Folder
+                            <a class="btn btn-primary rounded-fill" data-toggle="modal" data-target="#createfolder">
+                                <i class="fas fa-plus"></i> Create Folder
                             </a>
                         </div>
                     </div>
+                </div>
+
+                <script>
+                    // JavaScript function to go back to the previous page
+                    function goBack() {
+                        window.history.back();
+                    }
+                </script>
+                <div class="modal fade" id="createfolder" tabindex="-1" role="dialog" aria-labelledby="addmodallabel" aria-hidden="true">
+                <!-- Modal content goes here -->
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="addmodallabel">Create Folder</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <!-- Form Fields -->
+                    <form action="<?php if(isset($_GET['id'])) {echo "nested.create.folder.php";} else {echo "create.folder.php";}?>" method="post">
+                      <!-- Replace "insert_campus.php" with the actual path to your server-side script -->
+                      <div class="modal-body">
+                        <div class="form-group">
+                          <label for="campus_name">Name</label>
+                          <input type="text" name="createfolder" class="form-control" placeholder="" required>
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                          <button type="submit" value="upload" class="btn btn-primary" name="create_folder">Add</button>
+                        </div>
+                    </form>
+                    <!-- Form ends -->
+                  </div>
+                </div>
+              </div>
+              <?php
+                if(isset($_GET['id'])) {
+                    $folderID = $_GET['id'];
+                    $sql = "SELECT * FROM create_folder WHERE category = 'local' AND create_folder_id = $folderID ORDER BY id DESC";
+                } else {
+                    $sql = "SELECT * FROM create_folder WHERE category = 'local' AND create_folder_id IS NULL ORDER BY id DESC";
+                }
+                $result = mysqli_query($conn, $sql);
+
+                if (mysqli_num_rows($result) > 0) {
+                    echo '<div class="folder-container" style="display: flex; flex-wrap: wrap;">'; // Start a flex container
+                    while ($row = mysqli_fetch_assoc($result)) {
+                ?>
+                <div class="col-md-2">
+                    <div class="folder text-center d-flex align-items-center flex-column" oncontextmenu="showContextMenu(event, <?php echo $row['id']; ?>)">
+                        <a href="docu_local.php?id=<?=$row['id']?>">
+                            <img src="../imgs/bsu_folder.png" style="width:130px">  
+                        </a>
+                        <div class="card-footer" style="width: 90px; max-height: 50px; overflow: hidden; padding: 03px 08px 45px 05px; text-align: center; font-size: 14;"><?php echo $row["createfolder"] ?></div>
+                    </div>
+                </div>
+
+                <?php
+                    }
+                    echo '</div>'; // End the flex container
+                }
+                ?>
+                <div id="context-menu" class="context-menu" style="width: 75px; padding-left: 1px; border-radius: 1.25rem;">
+                    <ul>
+                        <li onclick="deleteFolder(<?php echo $row['id']; ?>)">Delete</li>
+                    </ul>
                 </div>
                 <!-- /.container-fluid -->
             </div>
@@ -202,5 +280,65 @@
     <!-- Page level custom scripts -->
     <script src="js/demo/chart-area-demo.js"></script>
     <script src="js/demo/chart-pie-demo.js"></script>
+
+    <script>
+    function showContextMenu(event, folderId) {
+        event.preventDefault(); // Prevent the default right-click context menu
+
+        const contextMenu = document.getElementById('context-menu');
+        contextMenu.style.display = 'block';
+        contextMenu.style.left = event.clientX + 'px';
+        contextMenu.style.top = event.clientY + 'px';
+
+        document.addEventListener('click', hideContextMenu);
+        
+        // Pass the folderId to the deleteFolder function
+        contextMenu.querySelector('li').setAttribute('onclick', 'deleteFolder(' + folderId + ')');
+    }
+
+    function hideContextMenu() {
+        const contextMenu = document.getElementById('context-menu');
+        contextMenu.style.display = 'none';
+        document.removeEventListener('click', hideContextMenu);
+    }
+
+    function deleteFolder(folderId) {
+        Swal.fire({
+          title: 'Are you sure to delete?',
+          text: 'Once deleted, you will not be able to recover this data!',
+          icon: 'warning',
+          confirmButtonText: 'Delete',
+          showDenyButton: true,
+          denyButtonText: 'Cancel'
+        }).then((result) => {
+            if(result.isConfirmed) {
+                console.log("confirmed");
+                var deleteFolder = new XMLHttpRequest();
+                deleteFolder.open("POST", "delete.folder.php");
+                deleteFolder.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                deleteFolder.send("id="+folderId);
+                deleteFolder.onload = function() {
+                Swal.fire({
+                  title: "Success!",
+                  text: "Folder Deleted Successfully!",
+                  icon: "success",
+                  confirmButtonText: "OK",
+                  dangerMode: true,
+                })
+                .then((r) => {
+                    location.reload(true);
+                })
+                }
+            }
+        });
+        // For demonstration purposes, let's log the folderId to the console
+        console.log('Deleting folder with ID: ' + folderId);
+
+        // Hide the context menu after deletion
+        hideContextMenu();
+    }
+
+</script>
+
 </body>
 </html>

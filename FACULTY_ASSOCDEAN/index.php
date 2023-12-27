@@ -26,7 +26,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>UniLink - Faculty/Associate Dean</title>
+    <title>UniLink - Dean/Associate Dean</title>
     <link rel="shortcut icon" type="image/png" href="../imgs/BSU.png" alt="Logo" />
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -121,7 +121,7 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?=$userRow['first_name']." ".$userRow['last_name']?></span>
                                 <img class="img-profile rounded-circle"
-                                    src="imgs/<?php if($userRow['profile_pic'] == '') {echo "BSU.png";} else {echo $userRow['profile_pic'];}?>">
+                                    src="../imgs/<?php if($userRow['profile_pic'] == '') {echo "BSU.png";} else {echo $userRow['profile_pic'];}?>">
                             </a>
                             </a>
                             <!-- Dropdown - User Information -->

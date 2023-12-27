@@ -26,7 +26,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>UniLink - Faculty/Associate Dean</title>
+    <title>UniLink - Dean/Associate Dean</title>
     <link rel="shortcut icon" type="image/png" href="../imgs/BSU.png" alt="Logo" />
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -152,7 +152,7 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?=$userRow['first_name']." ".$userRow['last_name']?></span>
                       <img class="img-profile rounded-circle"
-                          src="imgs/<?php if($userRow['profile_pic'] == '') {echo "BSU.png";} else {echo $userRow['profile_pic'];}?>">
+                          src="../imgs/<?php if($userRow['profile_pic'] == '') {echo "BSU.png";} else {echo $userRow['profile_pic'];}?>">
                         </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -174,91 +174,19 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
                     <div class="d-flex justify-content-between align-items-center mb-4">
-                        <h3 class="h3 mb-0 text-gray-800">Announcements</h3>
-                    </div>
-                    <div class="card">
-                        <div class="form-control">
-                        <?php
-                                  $sql = "SELECT * FROM announcement";
-                                  $result = $conn->query($sql);
-                                  while($announcementRow = $result->fetch_assoc()) 
-                                ?>
-                          <div class="announcement-header">
-                              <label><?=$announcementRow['subject']?></label>
-                          </div>
-                          <div class="announcement-content">
-                              <p><?=$announcementRow['content']?></p>
-                          </div>
-                          <div class="announcement-footer">
-                              <div class="user-info">
-                      <img class="img-profile rounded-circle"
-                          src="imgs/<?php if($userRow['profile_pic'] == '') {echo "BSU.png";} else {echo $userRow['profile_pic'];}?>">      
-                      <span><?=$row['first_name']." ".$row['last_name']?></span>
-                              </div>
-                              <div class="date">
-                                  <?=$announcementRow['date_added']?>
-                              </div>
-                          </div>
+                    <h3 class="h3 mb-0 text-gray-800">Announcements</h3>
+                    <form class="d-none d-sm-inline-block form-inline ml-auto mr-md-3 my-2 my-md-0 mw-100 navbar-search">
+                      <div class="input-group">
+                        <input type="text" id="search-input" class="form-control bg-light border-1 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                        <div class="input-group-append">
+                          <button class="btn btn-primary" id="search-button" type="button">
+                            <i class="fas fa-search fa-sm"></i>
+                          </button>
+                        </div>
                       </div>
-                            <!-- <div class="table">
-                             <table id="announcementTable" style="width: 100%;" class="display" data-ordering="true" data-paging="true" data-searching="true">
-                                <thead style='text-align: center;'>
-                                    <tr>
-                                        <th>Subject</th>
-                                        <th>Date Posted</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="load-table" style='text-align: center;'>
-                                <?php
-                                $college = $_SESSION['college'];
-                                $sql = "SELECT a.id, subject, DATE(date_added) AS date FROM announcement AS a INNER JOIN announcement_recipents AS ar ON a.id = ar.announcement_id WHERE college = '$college'";
-                                $result = $conn->query($sql);
-                                while($announcementRow = $result->fetch_assoc()) {
-                                ?>
-                                    <tr>
-                                        <td><?=$count?></td>
-                                        <td><?=$announcementRow['subject']?></td>
-                                        <td><?=$announcementRow['content']?></td>
-                                        <td><button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#announcement<?=$announcementRow['id']?>"><i class="bi bi-arrows-fullscreen"></i></button></td>
-                                    </tr>
-
-                                      <div class="modal fade" id="announcement<?=$announcementRow['id']?>" tabindex="-1" role="dialog">
-                                        <div class="modal-dialog" role="document">
-                                          <div class="modal-content">
-                                            <div class="modal-header">
-                                              <h5 class="modal-title">Announcement</h5>
-                                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                              </button>
-                                            </div>
-                                            <div class="modal-body">
-                                              <div class="row">
-                                                <div class="col">
-                                                  <label for="view-subject<?=$announcementRow['id']?>">Subject: </label>
-                                                  <input type="text" id="view-subject<?=$announcementRow['id']?>" class="form-control" value="<?=$announcementRow['subject']?>" readonly>
-                                                </div>
-                                              </div>
-
-                                              <div class="row mt-3">
-                                                <div class="col">
-                                                  <label for="view-content<?=$announcementRow['id']?>">Content:</label>
-                                                  <textarea class="form-control" id="view-content<?=$announcementRow['id']?>" readonly><?=$announcementRow['content']?></textarea>                                             
-                                                </div>
-                                              </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                            </div>
-                                          </div>
-                                        </div>
-                                      </div>
-                                <?php   
-                                }
-                                ?>
-                                </tbody>
-                            </table>
-                        </div> -->
+                    </form>
+                    </div>
+                    <div id="announcement-column">
                     </div>
                     </div>
                 <!-- </div> -->
@@ -313,5 +241,49 @@
     <!-- Page level custom scripts -->
     <script src="js/demo/chart-area-demo.js"></script>
     <script src="js/demo/chart-pie-demo.js"></script>
+    <script>
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var loadAnnouncement = new XMLHttpRequest();
+    loadAnnouncement.open("GET", "load.announcements.php");
+    loadAnnouncement.send();
+    loadAnnouncement.onload = function() {
+      document.getElementById("announcement-column").innerHTML = this.responseText;
+    }
+  });
+
+  document.getElementById("search-button").addEventListener("click", function() {
+    var searchQuery = document.getElementById("search-input").value;
+
+    console.log(searchQuery);
+
+    var loadAnnouncement = new XMLHttpRequest();
+    loadAnnouncement.open("POST", "search.announcements.php");
+    loadAnnouncement.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    loadAnnouncement.send("query="+searchQuery);
+    loadAnnouncement.onload = function() {
+      document.getElementById("announcement-column").innerHTML = this.responseText;
+    }
+  });
+
+ s
+
+  // Function to handle the Announce button click
+  function announce() {
+    // Get selected colleges and perform the announcement logic
+    var selectedColleges = [];
+
+    var checkboxes = document.getElementsByClassName("college-checkbox");
+    for (var i = 0; i < checkboxes.length; i++) {
+      if (checkboxes[i].checked) {
+        selectedColleges.push(checkboxes[i].value);
+      }
+    }
+
+    // Perform the announcement logic with the selectedColleges array
+    // You can add your announcement code here
+    console.log("Selected Colleges: ", selectedColleges);
+  }
+</script>
 </body>
 </html>

@@ -19,6 +19,21 @@
     header("location: ../head");
     exit();
   }
+
+
+  if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['create_folder'])) {
+        $createfolder = $_POST['createfolder'];
+            $sql = "INSERT INTO create_folder (createfolder) VALUES ('$createfolder')";
+            if (mysqli_query($conn, $sql)) {
+                // Certificate added successfully
+                header('Location: docu_repo.php'); // Redirect to a success page or wherever you want
+                exit();
+            }    
+    } 
+    
+}
+
 ?>
 <html lang="en">
 <head>
@@ -27,7 +42,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>UniLink - Faculty/Associate Dean</title>
+    <title>UniLink - Dean/Associate Dean</title>
     <link rel="shortcut icon" type="image/png" href="../imgs/BSU.png" alt="Logo" />
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -37,19 +52,6 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
-    <style>
-    .folder {
-      width: 115px;
-      height: 110px;
-      background-color: #f8f9fa;
-      border: 1px solid #d1d1d1;
-      text-align: center;
-      padding: 10px;
-      margin: 10px;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-  </style>
 </head>
 <body id="page-top">
     <!-- Page Wrapper -->
@@ -134,7 +136,7 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?=$userRow['first_name']." ".$userRow['last_name']?></span>
                           <img class="img-profile rounded-circle"
-                              src="imgs/<?php if($userRow['profile_pic'] == '') {echo "BSU.png";} else {echo $userRow['profile_pic'];}?>">
+                              src="../imgs/<?php if($userRow['profile_pic'] == '') {echo "BSU.png";} else {echo $userRow['profile_pic'];}?>">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -155,27 +157,25 @@
                 <!-- End of Topbar -->
                 <!-- Begin Page Content -->
                 <div class="container mt-4">
-        <div class="container mt-4">
-          <div class="row">
-            <div class="col-md-1.5">
-              <div class="folder">
-                <a href="docu_local.php">
-                  <img src="../imgs/bsu_folder.png" style="width:90px">  
-                <p>Local</p>
-              </a>
-              </div>
-            </div>
-            <div class="col-md-1.5">
-              <div class="folder">
-                <a href="docu_national.php">
-                  <img src="../imgs/bsu_folder.png" style="width:90px">  
-                <p>International</p>
-              </a>
-              </div>
-            </div>
-          </div>
-        </div>
-        </div>
+                  <div class="row">
+                    <div class="col-md-2">
+                    <div class="folder text-center d-flex align-items-center flex-column">
+                        <a href="docu_local.php">
+                          <img src="../imgs/bsu_folder.png" style="width:130px">  
+                        <p>Local</p>
+                      </a>
+                      </div>
+                    </div>
+                    <div class="col-md-2">
+                    <div class="folder text-center d-flex align-items-center flex-column">
+                        <a href="docu_national.php">
+                          <img src="../imgs/bsu_folder.png" style="width:130px">  
+                        <p>International</p>
+                      </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
                 <!-- /.container-fluid -->
             </div>
             <!-- End of Main Content -->

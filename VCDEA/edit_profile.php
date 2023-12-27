@@ -97,17 +97,6 @@ $id = $_SESSION['id'];
             <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
               <i class="fa fa-bars"></i>
             </button>
-            <!-- Topbar Search -->
-            <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-              <div class="input-group">
-                <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-                <div class="input-group-append">
-                  <button class="btn btn-primary" type="button">
-                    <i class="fas fa-search fa-sm"></i>
-                  </button>
-                </div>
-              </div>
-            </form>
             <!-- Topbar Navbar -->
             <ul class="navbar-nav ml-auto">
               <!-- Nav Item - Search Dropdown (Visible Only XS) -->
@@ -136,7 +125,7 @@ $id = $_SESSION['id'];
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline custom-text-black">VCDEA | <?=$userRow['first_name']." ".$userRow['last_name']?></span>
                                 <img class="img-profile rounded-circle"
-                                    src="imgs/<?php if($userRow['profile_pic'] == '') {echo "BSU.png";} else {echo $userRow['profile_pic'];}?>">
+                                    src="../imgs/<?php if($userRow['profile_pic'] == '') {echo "BSU.png";} else {echo $userRow['profile_pic'];}?>">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -176,7 +165,7 @@ $id = $_SESSION['id'];
               Profile Picture
             </div>
             <div class="card-body text-center">
-              <img id="profileImage" src="imgs/<?php if($userRow['profile_pic'] == '') {echo "BSU.png";} else {echo $userRow['profile_pic'];}?>" class="card-img-top mx-auto" style="max-width: 200px;" alt="Profile Image">
+              <img id="profileImage" src="../imgs/<?php if($userRow['profile_pic'] == '') {echo "BSU.png";} else {echo $userRow['profile_pic'];}?>" class="card-img-top mx-auto" style="max-width: 200px;" alt="Profile Image">
               <input type="file" name="image" id="fileInput" style="display: none;" accept="image/*">
               <label for="fileInput" class="btn btn-primary float-right bi bi-image ml-2">
                 Change

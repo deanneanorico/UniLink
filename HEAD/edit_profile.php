@@ -137,7 +137,7 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline custom-text-black">Head | <?=$userRow['first_name']." ".$userRow['last_name']?></span>
                                 <img class="img-profile rounded-circle"
-                                    src="imgs/<?php if($userRow['profile_pic'] == '') {echo "BSU.png";} else {echo $userRow['profile_pic'];}?>">
+                                    src="../imgs/<?php if($userRow['profile_pic'] == '') {echo "BSU.png";} else {echo $userRow['profile_pic'];}?>">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -177,7 +177,7 @@
               Profile Picture
             </div>
             <div class="card-body text-center">
-              <img id="profileImage" src="imgs/<?php if($userRow['profile_pic'] == '') {echo "BSU.png";} else {echo $userRow['profile_pic'];}?>" class="card-img-top mx-auto" style="max-width: 200px;" alt="Profile Image">
+              <img id="profileImage" src="../imgs/<?php if($userRow['profile_pic'] == '') {echo "BSU.png";} else {echo $userRow['profile_pic'];}?>" class="card-img-top mx-auto" style="max-width: 200px;" alt="Profile Image">
               <input type="file" name="image" id="fileInput" style="display: none;" accept="image/*">
               <label for="fileInput" class="btn btn-primary float-right bi bi-image ml-2">
                 Change

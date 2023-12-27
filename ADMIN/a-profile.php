@@ -13,6 +13,13 @@
     header("location: ../head");
     exit();
   }
+
+  $id = $_SESSION['id'];
+  include '../db.php';
+
+  $sql = "SELECT * FROM `users` WHERE `id` = '$id'";
+  $result = $conn->query($sql);
+  $row = $result->fetch_assoc();
 ?>
 <html lang="en">
   <head>
@@ -121,7 +128,7 @@
               <!-- Nav Item - User Information -->
               <li class="nav-item dropdown no-arrow">
                 <a class="nav-link dropdown-toggle" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <img class="img-profile rounded-circle" src="imgs/BSU.png">
+                  <img class="img-profile rounded-circle" src="../imgs/<?php if($row['profile_pic'] == '') {echo "BSU.png";} else {echo $row['profile_pic'];}?>">
                 </a>
                 <!-- Dropdown - User Information -->
                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -141,19 +148,11 @@
               <div class="row">
                 <div class="col-md-12 text-center">
                     <div class="mb-4">
-                  <img src="imgs/BSU.png" class="card-img-top mx-auto" style="max-width: 200px;" alt="Profile Image">
+                  <img src="../imgs/<?php if($row['profile_pic'] == '') {echo "BSU.png";} else {echo $row['profile_pic'];}?>" class="card-img-top mx-auto" style="max-width: 200px;" alt="Profile Image">
                 </div>
                 <div class="col-md-12">
                   <div class="tab-pane fade show active" id="content1">
                     <p></p>
-                    <?php
-                      $id = $_SESSION['id'];
-                      include '../db.php';
-
-                      $sql = "SELECT * FROM `users` WHERE `id` = '$id'";
-                      $result = $conn->query($sql);
-                      $row = $result->fetch_assoc();
-                    ?>
                     <!-- Display user information here -->
                     <span class="text-black-600 large"><?=$row['title']." ".$row['first_name']." ".$row['last_name']?></span>
                     <div></div>
@@ -179,12 +178,12 @@
                         <span aria-hidden="true">&times;</span>
                       </button>
                     </div>
-                    <form action="#" method="post" enctype="multipart/form-data">
+                    <form action="edit.profile.php" method="post" enctype="multipart/form-data">
                     <!-- Replace "insert_campus.php" with the actual path to your server-side script -->
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="image">Upload Picture</label>
-                            <input type="file" name="image" class="form-control-file" accept="image/*">
+                            <input type="file" name="image" class="form-control-file" accept="image/*" required>
                         </div>
                         <!-- Display the uploaded image -->
                         <div class="form-group">

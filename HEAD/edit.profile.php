@@ -11,7 +11,7 @@
     $sex = $_POST['sex'];
 
     if(!empty($_FILES['image']['name'])) {
-      $targetDir = "./imgs/";
+      $targetDir = "../imgs/";
           $targetFile = $targetDir . basename($_FILES["image"]["name"]);
           $fileName = basename($_FILES["image"]["name"]);
           move_uploaded_file($_FILES["image"]["tmp_name"], $targetFile);

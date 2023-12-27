@@ -1,4 +1,4 @@
-<?php
+ <?php
   session_start();
     $id = $_SESSION['id'];
     include '../db.php';
@@ -37,6 +37,7 @@
     <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
       <script>
       $(document).ready(function() {
           $('#announcementTable').DataTable();
@@ -80,6 +81,9 @@
 .date {
     text-align: right;
 }
+      .dropdown-toggle::after {
+        display: none;
+      }
     </style>
   </head>
   <body id="page-top">
@@ -136,17 +140,6 @@
             <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
               <i class="fa fa-bars"></i>
             </button>
-            <!-- Topbar Search -->
-            <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-              <div class="input-group">
-                <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-                <div class="input-group-append">
-                  <button class="btn btn-primary" type="button">
-                    <i class="fas fa-search fa-sm"></i>
-                  </button>
-                </div>
-              </div>
-            </form>
             <!-- Topbar Navbar -->
             <ul class="navbar-nav ml-auto">
               <!-- Nav Item - Search Dropdown (Visible Only XS) -->
@@ -172,7 +165,7 @@
               <li class="nav-item dropdown no-arrow">
                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <span class="mr-2 d-none d-lg-inline custom-text-black">VCDEA | <?=$row['first_name']." ".$row['last_name']?></span>
-                  <img class="img-profile rounded-circle" src="imgs/<?php if($row['profile_pic'] == '') {echo "#";} else {echo $row['profile_pic'];}?>">
+                  <img class="img-profile rounded-circle" src="../imgs/<?php if($row['profile_pic'] == '') {echo "#";} else {echo $row['profile_pic'];}?>">
                 </a>
                 <!-- Dropdown - User Information -->
                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -190,97 +183,24 @@
           <div class="container-fluid">
                     <div class="d-flex justify-content-between align-items-center mb-4">
                         <h3 class="h3 mb-0 text-gray-800">Announcements</h3>
+                        <form class="d-none d-sm-inline-block form-inline ml-auto mr-md-3 my-2 my-md-0 mw-100 navbar-search">
+              <div class="input-group">
+                <input type="text" id="search-input" class="form-control bg-light border-1 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                  <button class="btn btn-primary" id="search-button" type="button">
+                    <i class="fas fa-search fa-sm"></i>
+                  </button>
+                </div>
+              </div>
+            </form>
                         <div class="d-flex">
                             <a class="btn btn-primary rounded-fill" href="announcement.php" role="button">
                                 <i class="fas fa-plus"></i> Announcement
                             </a>
                         </div>
                     </div>
-                    <div class="card">
-                      <div class="form-control">
-                        <?php
-                                  $sql = "SELECT * FROM announcement";
-                                  $result = $conn->query($sql);
-                                  while($announcementRow = $result->fetch_assoc()) 
-                                ?>
-                          <div class="announcement-header">
-                              <label><?=$announcementRow['subject']?></label>
-                          </div>
-                          <div class="announcement-content">
-                              <p><?=$announcementRow['content']?></p>
-                          </div>
-                          <div class="announcement-footer">
-                              <div class="user-info">
-                      <img class="img-profile rounded-circle" src="imgs/<?php if($row['profile_pic'] == '') {echo "#";} else {echo $row['profile_pic'];}?>">            
-                      <span><?=$row['first_name']." ".$row['last_name']?></span>
-                              </div>
-                              <div class="date">
-                                  <?=$announcementRow['date_added']?>
-                              </div>
-                          </div>
-                      </div>
-
-                            <!-- <div class="table">
-                             <table id="announcementTable" style="width: 100%;" class="display" data-ordering="true" data-paging="true" data-searching="true">
-                                <thead style='text-align: center;'>
-                                    <tr>
-                                        <th >No.</th>
-                                        <th style="width: 22%;">Subject</th>
-                                        <th style="width: 14%">Date Posted</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody style='text-align: center;'>
-                                <?php
-                                  $count = 1;
-                                  $sql = "SELECT * FROM announcement";
-                                  $result = $conn->query($sql);
-                                  while($announcementRow = $result->fetch_assoc()) {
-                                ?>
-                                  <tr>
-                                    <td><?=$count?></td>
-                                    <td><?=$announcementRow['subject']?></td>
-                                    <td><?=$announcementRow['content']?></td>
-                                    <td><button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#announcement<?=$announcementRow['id']?>"><i class="bi bi-arrows-fullscreen"></i></button></td>
-                                  </tr>
-
-                                  <div class="modal fade" id="announcement<?=$announcementRow['id']?>" tabindex="-1" role="dialog">
-                                    <div class="modal-dialog" role="document">
-                                      <div class="modal-content">
-                                        <div class="modal-header">
-                                          <h5 class="modal-title">Announcement</h5>
-                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                          </button>
-                                        </div>
-                                        <div class="modal-body">
-                                          <div class="row">
-                                            <div class="col">
-                                              <label for="view-subject<?=$announcementRow['id']?>">Subject: </label>
-                                              <input type="text" id="view-subject<?=$announcementRow['id']?>" class="form-control" value="<?=$announcementRow['subject']?>" readonly>
-                                            </div>
-                                          </div>
-
-                                          <div class="row mt-3">
-                                            <div class="col">
-                                              <label for="view-content<?=$announcementRow['id']?>">Content:</label>
-                                              <textarea class="form-control" id="view-content<?=$announcementRow['id']?>" readonly><?=$announcementRow['content']?></textarea>                                             
-                                            </div>
-                                          </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                <?php
-                                    $count++;
-                                  }
-                                ?>
-                                </tbody>
-                            </table>
-                        </div> -->
+                    <div id="announcement-column">
+                      
                     </div>
                 </div>
       </div>
@@ -360,6 +280,95 @@
       checkboxes[i].checked = this.checked;
     }
   });
+
+  function deleteValidate(e) {
+    Swal.fire({
+      title: 'Confirm Delete?',
+      text: 'Do you want to delete this announcement?',
+      icon: 'warning',
+      confirmButtonText: 'Confirm',
+      showDenyButton: true,
+      denyButtonText: 'Cancel'
+    }).then((result) => {
+      if(result.isConfirmed) {
+        var deleteAnnouncement = new XMLHttpRequest();
+        deleteAnnouncement.open("POST", "delete.announcement.php");
+        deleteAnnouncement.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        deleteAnnouncement.send("id="+e);
+        deleteAnnouncement.onload = function() {
+          location.reload();
+        }
+      } else if(result.isDenied) {
+
+      }
+    });
+  }
+
+  // Function to handle the Announce button click
+  function announce() {
+    // Get selected colleges and perform the announcement logic
+    var selectedColleges = [];
+
+    var checkboxes = document.getElementsByClassName("college-checkbox");
+    for (var i = 0; i < checkboxes.length; i++) {
+      if (checkboxes[i].checked) {
+        selectedColleges.push(checkboxes[i].value);
+      }
+    }
+
+    // Perform the announcement logic with the selectedColleges array
+    // You can add your announcement code here
+    console.log("Selected Colleges: ", selectedColleges);
+  }
+</script>
+
+<script>
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var loadAnnouncement = new XMLHttpRequest();
+    loadAnnouncement.open("GET", "load.announcements.php");
+    loadAnnouncement.send();
+    loadAnnouncement.onload = function() {
+      document.getElementById("announcement-column").innerHTML = this.responseText;
+    }
+  });
+
+  document.getElementById("search-button").addEventListener("click", function() {
+    var searchQuery = document.getElementById("search-input").value;
+
+    console.log(searchQuery);
+
+    var loadAnnouncement = new XMLHttpRequest();
+    loadAnnouncement.open("POST", "search.announcements.php");
+    loadAnnouncement.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    loadAnnouncement.send("query="+searchQuery);
+    loadAnnouncement.onload = function() {
+      document.getElementById("announcement-column").innerHTML = this.responseText;
+    }
+  });
+
+  function deleteValidate(e) {
+    Swal.fire({
+      title: 'Confirm Delete?',
+      text: 'Do you want to delete this announcement?',
+      icon: 'warning',
+      confirmButtonText: 'Confirm',
+      showDenyButton: true,
+      denyButtonText: 'Cancel'
+    }).then((result) => {
+      if(result.isConfirmed) {
+        var deleteAnnouncement = new XMLHttpRequest();
+        deleteAnnouncement.open("POST", "delete.announcement.php");
+        deleteAnnouncement.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        deleteAnnouncement.send("id="+e);
+        deleteAnnouncement.onload = function() {
+          location.reload();
+        }
+      } else if(result.isDenied) {
+
+      }
+    });
+  }
 
   // Function to handle the Announce button click
   function announce() {
