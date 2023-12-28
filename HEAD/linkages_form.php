@@ -155,7 +155,7 @@
           </nav>
           <!-- End of Topbar -->
           <!-- Begin Page Content -->
-          <form method="post" action="forms.php" id="updateForm">
+          <form method="post" action="add.linkages.php" id="updateForm">
           <div class="container-fluid">
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
@@ -174,33 +174,33 @@
             <div id="step1">
             <div class="form-group">
               <label for="partnerTitle">Partnership and/or Linkage Title</label>
-              <input type="text" class="form-control outline" id="partnerTitle" name="partnerTitle">
+              <input type="text" class="form-control outline" id="partnerTitle" name="partnerTitle" required>
             </div>
             <div class="form-group">
               <label>Partnership and/or Linkage Category</label>
               <div class="form-check form-inline">
               <label class="radio-inline mr-4" for="local-radio">
-              <input type="radio" name="partnerType" id="local-radio" value="Local" onchange="localRadio()">Local </label>
+              <input type="radio" name="partnerType" id="local-radio" value="Local" onchange="localRadio()" required>Local </label>
             <label class="radio-inline" for="international-radio">
-              <input type="radio" name="partnerType" id="international-radio" value="International" onchange="internationalRadio()">International </label>
+              <input type="radio" name="partnerType" id="international-radio" value="International" onchange="internationalRadio()" required>International </label>
               </div>
             </div>
             <div class="form-group">
             <label for="overview">Overview/Objectives of the Partnership and/or Linkage</label>
             <div>
-              <textarea class="form-control" id="editor" name="overview" rows="8"></textarea>
+              <textarea class="form-control" id="editor" name="overview" rows="8" required></textarea>
             </div>
           </div>
           <div class="form-group">
             <label for="fit">Strategic Fit</label>
             <div>
-              <textarea class="form-control" id="editor1" name="fit" rows="6"></textarea>
+              <textarea class="form-control" id="editor1" name="fit" rows="6" required></textarea>
             </div>
           </div>
           <div class="form-group">
             <label for="outcome">Intended Outcome</label>
             <div>
-              <textarea class="form-control" id="editor2" name="outcome" rows="3"></textarea>
+              <textarea class="form-control" id="editor2" name="intendedOutcome" rows="3" required></textarea>
             </div>
           </div>
           <div class="text-right mt-4">
@@ -211,7 +211,7 @@
               <div class="form-group">
             <label for="scope">Scope of the Partnership and/or Linkage</label>
             <div>
-              <textarea class="form-control" id="editor3" name="scope" rows="8"></textarea>
+              <textarea class="form-control" id="editor3" name="scope" rows="8" required></textarea>
             </div>
           </div>
           <div class="justify-content-between">
@@ -246,7 +246,7 @@
         <div class="form-group">
             <label for="acd">Arrangement and Correlative Duties</label>
             <div>
-              <textarea class="form-control" id="editor4" name="acd" rows="3"></textarea>
+              <textarea class="form-control" id="editor4" name="acd" rows="3" required></textarea>
             </div>
           </div>
           <div class="text-right mt-4">
@@ -285,18 +285,22 @@
             </button>
           </div>
           <div id="area-3">
+            <input id="year-total-1" type="hidden" name="year-total[]" value="0">
+            <input id="activity-total-1" type="hidden" name="activity-total[]" value="0">
             <table class="table header-border table-responsive-sm">
               <thead>
                 <tr>
                   <th class="col-md-11" style="text-align: left;">Year</th>
                   <th class="col-md-1" style="padding-left: 0px;">
-                    <button style="margin-left:1px;background: white;" type="button" name="addRole" class="btn btn-primary btn-circle btn-sm" onclick="addCustomResponsibility(1)">
+                    <button style="margin-left:1px;background: white;" type="button" name="addRole" class="btn btn-primary btn-circle btn-sm" onclick="addYear(1)">
                       <i class="fas fa-plus" style="color: #1dbf1d"></i>
                     </button>
                   </th>
                 </tr>
               </thead>
-              <tbody id="member1"></tbody>
+              <tbody id="year-1">
+                
+              </tbody>
             </table>
            
             <table class="table">
@@ -304,14 +308,14 @@
                 <tr>
                   <th class="col-md-11" style="text-align: left;">Activities</th>
                   <th class="col-md-1" style="padding-left: 0px;">
-                    <button style="margin-left:1px;background: white;" type="button" name="addRole" class="btn btn-primary btn-circle btn-sm" onclick="addCustomResponsibility(1)">
+                    <button style="margin-left:1px;background: white;" type="button" name="addRole" class="btn btn-primary btn-circle btn-sm" onclick="addActivity(1)">
                       <i class="fas fa-plus" style="color: #1dbf1d"></i>
                     </button>
                   </th>
                 </tr>
               </thead>
-              <tbody id="added_responsibility_list_1">
-                <!-- Added Responsibility of Leader -->
+              <tbody id="activity-1">
+
               </tbody>
             </table>
           </div
@@ -325,13 +329,13 @@
               <div class="form-group">
             <label for="risk">Risk Management</label>
             <div>
-              <textarea class="form-control" id="editor5" name="risk" rows="3"></textarea>
+              <textarea class="form-control" id="editor5" name="risk" rows="3" required></textarea>
             </div>
           </div>
          <div class="form-group">
             <label for="mom">Monitoring and Evaluation Mechanics/Plan</label>
             <div>
-              <textarea class="form-control" id="editor6" name="mom" rows="4"></textarea>
+              <textarea class="form-control" id="editor6" name="mom" rows="4" required></textarea>
             </div>
           </div>
           <div class="text-right mt-4">
@@ -356,13 +360,15 @@
                             <tr>
                               <th class="col-md-11" style="text-align: left;">Program / Activity / Projects</th>
                               <th class="col-md-1" style="padding-left: 0px;">
-                                <button style="margin-left:1px;background: white;" type="button" name="addRole" class="btn btn-primary btn-circle btn-sm" onclick="addCustomResponsibility(1)">
+                                <button id="program-activity-projects" style="margin-left:1px;background: white;" type="button" name="addRole" class="btn btn-primary btn-circle btn-sm">
                                   <i class="fas fa-plus" style="color: #1dbf1d"></i>
                                 </button>
                               </th>
                             </tr>
                           </thead>
-                          <tbody id="member1"></tbody>
+                          <tbody id="program-activity-projects-body">
+                            
+                          </tbody>
                         </table>
                        
                         <table class="table">
@@ -370,13 +376,13 @@
                             <tr>
                               <th class="col-md-11" style="text-align: left;">Strategy/Medium</th>
                               <th class="col-md-1" style="padding-left: 0px;">
-                                <button style="margin-left:1px;background: white;" type="button" name="addRole" class="btn btn-primary btn-circle btn-sm" onclick="addCustomResponsibility(1)">
+                                <button id="strategy-medium" style="margin-left:1px;background: white;" type="button" name="addRole" class="btn btn-primary btn-circle btn-sm">
                                   <i class="fas fa-plus" style="color: #1dbf1d"></i>
                                 </button>
                               </th>
                             </tr>
                           </thead>
-                          <tbody id="added_responsibility_list_1">
+                          <tbody id="strategy-medium-body">
                             <!-- Added Responsibility of Leader -->
                           </tbody>
                         </table>
@@ -389,13 +395,15 @@
                             <tr>
                               <th class="col-md-11" style="text-align: left;">Target Audience</th>
                               <th class="col-md-1" style="padding-left: 0px;">
-                                <button style="margin-left:1px;background: white;" type="button" name="addRole" class="btn btn-primary btn-circle btn-sm" onclick="addCustomResponsibility(1)">
+                                <button id="target-audience" style="margin-left:1px;background: white;" type="button" name="addRole" class="btn btn-primary btn-circle btn-sm">
                                   <i class="fas fa-plus" style="color: #1dbf1d"></i>
                                 </button>
                               </th>
                             </tr>
                           </thead>
-                          <tbody id="member1"></tbody>
+                          <tbody id="target-audience-body">
+                            
+                          </tbody>
                         </table>
                         <table class="table header-border table-responsive-sm">
                           <div class="d-flex justify-content-between align-items-center flex-wrap">
@@ -406,13 +414,15 @@
                             <tr>
                               <th class="col-md-11" style="text-align: left;">Timing/Frequency</th>
                               <th class="col-md-1" style="padding-left: 0px;">
-                                <button style="margin-left:1px;background: white;" type="button" name="addRole" class="btn btn-primary btn-circle btn-sm" onclick="addCustomResponsibility(1)">
+                                <button id="timing-frequency" style="margin-left:1px;background: white;" type="button" name="addRole" class="btn btn-primary btn-circle btn-sm">
                                   <i class="fas fa-plus" style="color: #1dbf1d"></i>
                                 </button>
                               </th>
                             </tr>
                           </thead>
-                          <tbody id="member1"></tbody>
+                          <tbody id="timing-frequency-body">
+                            
+                          </tbody>
                         </table>
                         <table class="table header-border table-responsive-sm">
                           <div class="d-flex justify-content-between align-items-center flex-wrap">
@@ -423,13 +433,15 @@
                             <tr>
                               <th class="col-md-11" style="text-align: left;">Outcomes</th>
                               <th class="col-md-1" style="padding-left: 0px;">
-                                <button style="margin-left:1px;background: white;" type="button" name="addRole" class="btn btn-primary btn-circle btn-sm" onclick="addCustomResponsibility(1)">
+                                <button id="outcomes" style="margin-left:1px;background: white;" type="button" name="addRole" class="btn btn-primary btn-circle btn-sm">
                                   <i class="fas fa-plus" style="color: #1dbf1d"></i>
                                 </button>
                               </th>
                             </tr>
                           </thead>
-                          <tbody id="member1"></tbody>
+                          <tbody id="outcomes-body">
+                            
+                          </tbody>
                         </table>
                       </div>
           <!-- Program / Activity / Projects -->
@@ -440,6 +452,7 @@
           <div class="text-right mt-4">
           <button type="button" class="btn btn-secondary" id="prevStep5">Previous</button>
           <input type="submit" name="btnsubmit" onclick="showAlert()" class="submit btn btn-primary" value="Submit">
+          </form>
         </div>
             </div>
         <!-- done here -->

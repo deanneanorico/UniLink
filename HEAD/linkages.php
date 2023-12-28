@@ -167,6 +167,25 @@
                                         <th>Action</th>
                                     </tr>
                                 </thead>
+                                <tbody>
+                                  <?php
+                                    $sql = "SELECT * FROM linkages";
+                                    $result = $conn->query($sql);
+                                    $i = 1;
+                                    while($linkagesRow = $result->fetch_assoc()) {
+                                  ?>
+                                  <tr>
+                                    <td class="text-center"><?=$i?></td>
+                                    <td class="text-center"><?=$linkagesRow['title']?></td>
+                                    <td class="text-center"><?=$linkagesRow['category']?></td>
+                                    <td class="text-center"></td>
+                                    <td></td>
+                                  </tr>
+                                  <?php
+                                      $i++;
+                                    }
+                                  ?>
+                                </tbody>
                             </table>
                         </div>
                     </div>
