@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 08, 2023 at 03:15 PM
+-- Generation Time: Dec 30, 2023 at 05:51 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -48,6 +48,7 @@ CREATE TABLE `activityform` (
 
 INSERT INTO `activityform` (`id`, `activity_title`, `campus`, `college`, `program`, `partner_type`, `partner`, `start_date`, `end_date`, `rationale`, `objective`, `budget`) VALUES
 ('0151ff6e-9363-11ee-b3c9-f80dac465db8', 'Intramurals', 'ARASOF-Nasugbu', 'College of Accountancy, Business, Economics, International Hospitality Management', 'Bachelor of Science in Accountancy', 'Local', 'Amara en Terrazas', '2023-12-05', '2023-12-30', '', '', 'Fund Partner Agency'),
+('0f1d333c-95dc-11ee-8722-f80dac465db8', 'dfsf', 'ARASOF-Nasugbu', 'College of Accountancy, Business, Economics, International Hospitality Management', 'Bachelor of Science in Accountancy', 'International', 'El Cocinero', '2023-12-08', '2023-12-20', '<ol><li>dsfs</li></ol>', '<ol><li>dsxfdsffdsf &nbsp;&nbsp;</li></ol>', ''),
 ('105ede4c-6d23-11ee-b322-f80dac465db8', 'Community Health Education Program', 'ARASOF-Nasugbu', 'College of Nursing and Allied Health Sciences', 'Bachelor of Science in Nursing', 'International', 'Hospitality Institute of America-Philippines Inc.', '2023-10-18', '2023-10-31', '<p>The Community Health Education Program is designed to address the critical need for health education and promotion at the community level. Many communities, especially underserved or at-risk populations, lack access to vital health information and resources. This program aims to bridge that gap by empowering individuals and communities to make informed decisions about their health and well-being. By providing education and support, the program can contribute to reducing health disparities, improving overall community health, and preventing or managing various health conditions.</p>', '<p><strong>Increase Health Literacy:</strong> The primary objective is to improve the health literacy of the community members. This includes their ability to understand, interpret, and use health information to make informed decisions. <strong>Raise Awareness:</strong> Create awareness about specific health issues or topics that are prevalent in the community, such as diabetes, cardiovascular health, or mental health.</p>', ''),
 ('11c2cb25-87c7-11ee-bb2f-f80dac465db8', 'test', 'ARASOF-Nasugbu', 'College of Informatics and Computing Sciences', 'Bachelor of Science in Information Technology', 'Local', 'Canyon Cove', '2023-11-21', '2023-11-21', '<p>.</p>', '', ''),
 ('18210bc6-6d21-11ee-b322-f80dac465db8', 'Micro-teaching Session', 'ARASOF-Nasugbu', 'College of Teacher Education', 'Bachelor of Elementary Education', 'Local', 'Municipality of Lian', '2023-10-19', '2023-12-01', '', '', 'Fund of University'),
@@ -63,8 +64,10 @@ INSERT INTO `activityform` (`id`, `activity_title`, `campus`, `college`, `progra
 ('66bc6b42-8df9-11ee-99cb-f80dac465db8', 'Intramurals', 'ARASOF-Nasugbu', 'College of Accountancy, Business, Economics, International Hospitality Management', 'Bachelor of Science in Accountancy', 'International', 'Hung Voung University', '2023-11-26', '2023-11-30', '', '', ''),
 ('69017def-9363-11ee-b3c9-f80dac465db8', 'Tree Planting', 'ARASOF-Nasugbu', 'College of Accountancy, Business, Economics, International Hospitality Management', 'Bachelor of Science in Accountancy', 'International', 'Crosswinds Resort Suites', '2023-12-01', '2023-12-04', '', '', 'Fund of University'),
 ('789f329a-6d22-11ee-b322-f80dac465db8', 'Community Policing Effectiveness Assessment', 'ARASOF-Nasugbu', 'College of Arts and Sciences', 'Bachelor of Science in Criminology', 'Local', 'Philippine Army', '2023-10-17', '2023-10-31', '<p>Crime is a significant concern for both communities and law enforcement agencies. By evaluating the impact of community policing on crime rates, the project addresses a critical issue in criminology. It also assesses community satisfaction and trust, which are crucial for long-term crime reduction and public safety.</p>', '<p>To identify potential correlations or factors that contribute to the effectiveness of community policing, such as the extent of community engagement, the number of community policing programs, and the allocation of officers to specific neighborhoods.</p>', ''),
+('7da20315-9668-11ee-83fd-f80dac465db8', 'deannne', 'ARASOF-Nasugbu', 'College of Accountancy, Business, Economics, International Hospitality Management', 'Bachelor of Science in Accountancy', 'International', 'Crosswinds Resort Suites', '2023-12-30', '2023-12-30', '', '', ''),
 ('85952ef2-8d47-11ee-97e4-f80dac465db8', 'Graduation Party-Speaker', 'ARASOF-Nasugbu', 'College of Accountancy, Business, Economics, International Hospitality Management', 'Bachelor of Science in Accountancy', '', NULL, '2023-11-28', '2023-11-28', '', '', ''),
 ('a089a774-8df9-11ee-99cb-f80dac465db8', 'Intramurals', 'ARASOF-Nasugbu', 'College of Accountancy, Business, Economics, International Hospitality Management', 'Bachelor of Science in Accountancy', 'International', 'Hung Voung University', '2023-11-26', '2023-11-30', '', '', ''),
+('ad8a9dd1-964c-11ee-8722-f80dac465db8', 'Testing', 'ARASOF-Nasugbu', 'College of Accountancy, Business, Economics, International Hospitality Management', 'Bachelor of Science in Accountancy', 'Local', 'Amara en Terrazas', '2023-09-23', '2023-09-23', '', '', ''),
 ('cb177da3-6d23-11ee-b322-f80dac465db8', 'Simulation-Based Interprofessional Training', 'ARASOF-Nasugbu', 'College of Nursing and Allied Health Sciences', 'Bachelor of Science in Nursing', 'International', 'Hospitality Institute of America-Philippines Inc.', '2023-10-01', '2023-10-17', '<p><strong>Patient Safety:</strong> Effective interprofessional teamwork and communication are critical to preventing medical errors and improving patient safety. <strong>Complex Healthcare Environments:</strong> Modern healthcare settings are complex, with various professionals working together to deliver care. Effective collaboration is necessary to navigate this complexity.</p>', '<p><strong>Skill Development:</strong> Provide healthcare professionals with opportunities to practice and develop essential interprofessional skills, including communication, teamwork, and leadership. <strong>Scenario-Based Training:</strong> Design realistic patient scenarios where healthcare teams must work together to diagnose, treat, and manage the patient\'s condition. These scenarios should mimic real clinical situations.</p>', 'Fund Partner Agency');
 
 -- --------------------------------------------------------
@@ -86,8 +89,8 @@ CREATE TABLE `activity_representatives` (
 INSERT INTO `activity_representatives` (`id`, `activityform_id`, `role`) VALUES
 ('0152066f-9363-11ee-b3c9-f80dac465db8', '0151ff6e-9363-11ee-b3c9-f80dac465db8', 'Project Leader/s'),
 ('01520ed9-9363-11ee-b3c9-f80dac465db8', '0151ff6e-9363-11ee-b3c9-f80dac465db8', 'Project Member/s'),
-('09acd9d9-9362-11ee-b3c9-f80dac465db8', 'a089a774-8df9-11ee-99cb-f80dac465db8', 'Project Leader/s'),
-('09acf3a4-9362-11ee-b3c9-f80dac465db8', 'a089a774-8df9-11ee-99cb-f80dac465db8', 'Project Member/s'),
+('0f1d3cd1-95dc-11ee-8722-f80dac465db8', '0f1d333c-95dc-11ee-8722-f80dac465db8', 'Project Leader/s'),
+('0f1d42bb-95dc-11ee-8722-f80dac465db8', '0f1d333c-95dc-11ee-8722-f80dac465db8', 'Project Member/s'),
 ('105ee5fe-6d23-11ee-b322-f80dac465db8', '105ede4c-6d23-11ee-b322-f80dac465db8', 'Project Leader/s'),
 ('105eea2c-6d23-11ee-b322-f80dac465db8', '105ede4c-6d23-11ee-b322-f80dac465db8', 'Project Member/s'),
 ('1821194e-6d21-11ee-b322-f80dac465db8', '18210bc6-6d21-11ee-b322-f80dac465db8', 'Project Leader/s'),
@@ -104,16 +107,22 @@ INSERT INTO `activity_representatives` (`id`, `activityform_id`, `role`) VALUES
 ('6200caf9-9361-11ee-b3c9-f80dac465db8', '1b6f8d0f-6be9-11ee-b322-f80dac465db8', 'Project Member/s'),
 ('69018996-9363-11ee-b3c9-f80dac465db8', '69017def-9363-11ee-b3c9-f80dac465db8', 'Project Leader/s'),
 ('6901a03d-9363-11ee-b3c9-f80dac465db8', '69017def-9363-11ee-b3c9-f80dac465db8', 'Project Member/s'),
+('6b44f5e8-95db-11ee-8722-f80dac465db8', 'a089a774-8df9-11ee-99cb-f80dac465db8', 'Project Leader/s'),
+('6b44fdf9-95db-11ee-8722-f80dac465db8', 'a089a774-8df9-11ee-99cb-f80dac465db8', 'Project Member/s'),
 ('77132c5e-937d-11ee-8c8d-f80dac465db8', '3a68b59d-6d1d-11ee-b322-f80dac465db8', 'Project Leader/s'),
 ('771335bc-937d-11ee-8c8d-f80dac465db8', '3a68b59d-6d1d-11ee-b322-f80dac465db8', 'Project Member/s'),
 ('789f3d46-6d22-11ee-b322-f80dac465db8', '789f329a-6d22-11ee-b322-f80dac465db8', 'Project Leader/s'),
 ('789f42d5-6d22-11ee-b322-f80dac465db8', '789f329a-6d22-11ee-b322-f80dac465db8', 'Project Member/s'),
+('7da20e0e-9668-11ee-83fd-f80dac465db8', '7da20315-9668-11ee-83fd-f80dac465db8', 'Project Leader/s'),
+('7da21d45-9668-11ee-83fd-f80dac465db8', '7da20315-9668-11ee-83fd-f80dac465db8', 'Project Member/s'),
 ('7dbfc147-87c5-11ee-bb2f-f80dac465db8', '2d05cb7e-87b5-11ee-bb2f-f80dac465db8', 'Project Leader/s'),
 ('7dbfcbf0-87c5-11ee-bb2f-f80dac465db8', '2d05cb7e-87b5-11ee-bb2f-f80dac465db8', 'Project Member/s'),
 ('85954139-8d47-11ee-97e4-f80dac465db8', '85952ef2-8d47-11ee-97e4-f80dac465db8', 'Project Leader/s'),
 ('85954fed-8d47-11ee-97e4-f80dac465db8', '85952ef2-8d47-11ee-97e4-f80dac465db8', 'Project Member/s'),
 ('8d400ea2-8df9-11ee-99cb-f80dac465db8', '66bc6b42-8df9-11ee-99cb-f80dac465db8', 'Project Leader/s'),
 ('8d401937-8df9-11ee-99cb-f80dac465db8', '66bc6b42-8df9-11ee-99cb-f80dac465db8', 'Project Member/s'),
+('ad8ab2a9-964c-11ee-8722-f80dac465db8', 'ad8a9dd1-964c-11ee-8722-f80dac465db8', 'Project Leader/s'),
+('ad8ac443-964c-11ee-8722-f80dac465db8', 'ad8a9dd1-964c-11ee-8722-f80dac465db8', 'Project Member/s'),
 ('b2af841b-937d-11ee-8c8d-f80dac465db8', '11c2cb25-87c7-11ee-bb2f-f80dac465db8', 'Project Leader/s'),
 ('b2af8dea-937d-11ee-8c8d-f80dac465db8', '11c2cb25-87c7-11ee-bb2f-f80dac465db8', 'Project Member/s'),
 ('cb178cfc-6d23-11ee-b322-f80dac465db8', 'cb177da3-6d23-11ee-b322-f80dac465db8', 'Project Leader/s'),
@@ -163,6 +172,66 @@ INSERT INTO `activity_representatives_responsibilities` (`id`, `activity_represe
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `announcement`
+--
+
+CREATE TABLE `announcement` (
+  `id` int(11) NOT NULL,
+  `added_by` int(11) NOT NULL,
+  `subject` varchar(1000) NOT NULL,
+  `content` longtext NOT NULL,
+  `date_added` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `announcement`
+--
+
+INSERT INTO `announcement` (`id`, `added_by`, `subject`, `content`, `date_added`) VALUES
+(5, 45, 'Testing', 'Content Testing', '2023-12-21 00:00:00'),
+(16, 45, 'Meeting', 'on Thursday', '2023-12-22 00:00:00'),
+(18, 48, 'Exploratory meeting', 'meet with us', '2024-01-01 00:00:00'),
+(19, 48, 'dsfsf', 'drwerwe', '2023-12-30 00:00:00'),
+(20, 48, 'Pang CICS lang Subject', 'Pang CICS lang Content', '2023-12-29 00:00:00'),
+(21, 48, 'pang CAS', 'status', '2023-12-30 00:00:00'),
+(22, 45, 'for all', 'later on', '2024-01-03 00:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `announcement_recipents`
+--
+
+CREATE TABLE `announcement_recipents` (
+  `id` int(11) NOT NULL,
+  `announcement_id` int(11) NOT NULL,
+  `college` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `announcement_recipents`
+--
+
+INSERT INTO `announcement_recipents` (`id`, `announcement_id`, `college`) VALUES
+(6, 5, 'CTE'),
+(17, 16, 'CICS'),
+(18, 16, 'CABEIHM'),
+(19, 16, 'CAS'),
+(20, 16, 'CTE'),
+(21, 16, 'CONAHS'),
+(23, 18, 'CTE'),
+(24, 19, 'CICS'),
+(25, 20, 'CICS'),
+(26, 21, 'CAS'),
+(27, 22, 'CICS'),
+(28, 22, 'CABEIHM'),
+(29, 22, 'CAS'),
+(30, 22, 'CTE'),
+(31, 22, 'CONAHS');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `budget`
 --
 
@@ -181,6 +250,7 @@ CREATE TABLE `budget` (
 
 INSERT INTO `budget` (`id`, `activityform_id`, `item_description`, `quantity`, `unit_cost`, `total`) VALUES
 ('01566044-9363-11ee-b3c9-f80dac465db8', '0151ff6e-9363-11ee-b3c9-f80dac465db8', 'Water', 25, 35, 875),
+('0f1f5b0f-95dc-11ee-8722-f80dac465db8', '0f1d333c-95dc-11ee-8722-f80dac465db8', 'sd', 45, 45, 2025),
 ('1825bb6d-6d21-11ee-b322-f80dac465db8', '18210bc6-6d21-11ee-b322-f80dac465db8', 'sandwich ', 25, 30, 750),
 ('2fb0c53e-8d48-11ee-97e4-f80dac465db8', '2fab14d4-8d48-11ee-97e4-f80dac465db8', 'sandwich ', 78, 78, 6084),
 ('4eaaa676-8df5-11ee-99cb-f80dac465db8', '4e9fccce-8df5-11ee-99cb-f80dac465db8', 'Water', 300, 25, 7500),
@@ -189,7 +259,9 @@ INSERT INTO `budget` (`id`, `activityform_id`, `item_description`, `quantity`, `
 ('69048960-9363-11ee-b3c9-f80dac465db8', '69017def-9363-11ee-b3c9-f80dac465db8', 'Pizza', 5, 120, 600),
 ('77227c08-937d-11ee-8c8d-f80dac465db8', '3a68b59d-6d1d-11ee-b322-f80dac465db8', 'Water', 250, 20, 5000),
 ('772308a5-937d-11ee-8c8d-f80dac465db8', '3a68b59d-6d1d-11ee-b322-f80dac465db8', 'Sandwich', 250, 25, 6250),
+('7da72c90-9668-11ee-83fd-f80dac465db8', '7da20315-9668-11ee-83fd-f80dac465db8', 'dss', 56, 56, 3136),
 ('8599b619-8d47-11ee-97e4-f80dac465db8', '85952ef2-8d47-11ee-97e4-f80dac465db8', 'sandwich ', 67, 78, 5226),
+('ad933da6-964c-11ee-8722-f80dac465db8', 'ad8a9dd1-964c-11ee-8722-f80dac465db8', 'Water', 1, 1, 1),
 ('b2b4bf11-937d-11ee-8c8d-f80dac465db8', '11c2cb25-87c7-11ee-bb2f-f80dac465db8', 'item 1', 1, 2, 2),
 ('cb1c7297-6d23-11ee-b322-f80dac465db8', 'cb177da3-6d23-11ee-b322-f80dac465db8', 'Water', 30, 30, 900),
 ('cb1cf26d-6d23-11ee-b322-f80dac465db8', 'cb177da3-6d23-11ee-b322-f80dac465db8', 'Lunch', 30, 60, 1800),
@@ -243,6 +315,294 @@ INSERT INTO `college` (`collegeID`, `name`, `college_abbrev`, `campusID`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `create_folder`
+--
+
+CREATE TABLE `create_folder` (
+  `id` int(11) NOT NULL,
+  `create_folder_id` int(11) DEFAULT NULL,
+  `category` varchar(20) NOT NULL,
+  `createfolder` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `create_folder`
+--
+
+INSERT INTO `create_folder` (`id`, `create_folder_id`, `category`, `createfolder`) VALUES
+(18, NULL, 'foreign', 'IT '),
+(19, NULL, 'local', 'Municipality of Lian'),
+(26, 19, 'local', 'Narrative Report Lian'),
+(29, 18, 'foreign', 'Narrative Report IT'),
+(36, NULL, 'foreign', 'Philnits'),
+(39, 36, 'foreign', 'Narrative PhilNits');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `file`
+--
+
+CREATE TABLE `file` (
+  `id` int(11) NOT NULL,
+  `create_folder_id` int(11) NOT NULL,
+  `name` varchar(1000) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `linkages`
+--
+
+CREATE TABLE `linkages` (
+  `id` int(11) NOT NULL,
+  `added_by` int(11) NOT NULL,
+  `title` varchar(1000) NOT NULL,
+  `category` varchar(20) NOT NULL,
+  `overview` longtext NOT NULL,
+  `strategic_fit` longtext NOT NULL,
+  `intended_outcome` longtext NOT NULL,
+  `scope` longtext NOT NULL,
+  `arrangement` longtext NOT NULL,
+  `risk_management` longtext NOT NULL,
+  `monitoring` longtext NOT NULL,
+  `date_added` date NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `linkages`
+--
+
+INSERT INTO `linkages` (`id`, `added_by`, `title`, `category`, `overview`, `strategic_fit`, `intended_outcome`, `scope`, `arrangement`, `risk_management`, `monitoring`, `date_added`) VALUES
+(8, 48, 'Linkages Title', 'Local', 'Linkages Overview', 'Linkages Strategy', 'Linkages Outcome', 'Linkages Scope', 'Linkages Arrangements', 'Linkages Risk', 'Linkages Monitoring', '2023-12-29'),
+(9, 48, '.', 'International', '.', ',', '.', '.', '.', 'e', 'r', '2023-12-29');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `linkages_activity`
+--
+
+CREATE TABLE `linkages_activity` (
+  `id` int(11) NOT NULL,
+  `linkages_implementation_plan_id` int(11) NOT NULL,
+  `activity` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `linkages_activity`
+--
+
+INSERT INTO `linkages_activity` (`id`, `linkages_implementation_plan_id`, `activity`) VALUES
+(8, 5, 'Plan 1 Act'),
+(9, 5, 'Plan 1 Act'),
+(10, 6, 'Plan 2 Act'),
+(11, 6, 'Plan 2 Act'),
+(12, 7, 'Plan 3  Ac'),
+(13, 7, 'Plan 3  Ac'),
+(14, 7, 'Plan 3  Ac'),
+(15, 8, '.'),
+(16, 8, '.'),
+(17, 9, '.');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `linkages_audience`
+--
+
+CREATE TABLE `linkages_audience` (
+  `id` int(11) NOT NULL,
+  `linkages_id` int(11) NOT NULL,
+  `audience` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `linkages_audience`
+--
+
+INSERT INTO `linkages_audience` (`id`, `linkages_id`, `audience`) VALUES
+(4, 8, 'Audience 1'),
+(5, 9, ';');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `linkages_implementation_plan`
+--
+
+CREATE TABLE `linkages_implementation_plan` (
+  `id` int(11) NOT NULL,
+  `linkages_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `linkages_implementation_plan`
+--
+
+INSERT INTO `linkages_implementation_plan` (`id`, `linkages_id`) VALUES
+(5, 8),
+(6, 8),
+(7, 8),
+(8, 9),
+(9, 9);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `linkages_outcome`
+--
+
+CREATE TABLE `linkages_outcome` (
+  `id` int(11) NOT NULL,
+  `linkages_id` int(11) NOT NULL,
+  `outcome` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `linkages_outcome`
+--
+
+INSERT INTO `linkages_outcome` (`id`, `linkages_id`, `outcome`) VALUES
+(4, 8, 'Outcomes 1'),
+(5, 9, ';');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `linkages_pap`
+--
+
+CREATE TABLE `linkages_pap` (
+  `id` int(11) NOT NULL,
+  `linkages_id` int(11) NOT NULL,
+  `project` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `linkages_pap`
+--
+
+INSERT INTO `linkages_pap` (`id`, `linkages_id`, `project`) VALUES
+(4, 8, 'PAP 1'),
+(5, 9, 'r');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `linkages_personnel_and_officials`
+--
+
+CREATE TABLE `linkages_personnel_and_officials` (
+  `id` int(11) NOT NULL,
+  `linkages_id` int(11) NOT NULL,
+  `personnels` varchar(200) NOT NULL,
+  `officials` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `linkages_personnel_and_officials`
+--
+
+INSERT INTO `linkages_personnel_and_officials` (`id`, `linkages_id`, `personnels`, `officials`) VALUES
+(16, 8, 'Personnel 1', 'Officials 1'),
+(17, 8, 'Personnel 2', 'Officials 2'),
+(18, 8, 'Personnel 3', 'Officials 3'),
+(19, 9, 'j', 'j');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `linkages_resources`
+--
+
+CREATE TABLE `linkages_resources` (
+  `id` int(11) NOT NULL,
+  `linkages_id` int(11) NOT NULL,
+  `resources` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `linkages_resources`
+--
+
+INSERT INTO `linkages_resources` (`id`, `linkages_id`, `resources`) VALUES
+(13, 8, 'Resources 1'),
+(14, 8, 'Resources 2'),
+(15, 8, 'Resources 3'),
+(16, 9, '.');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `linkages_sm`
+--
+
+CREATE TABLE `linkages_sm` (
+  `id` int(11) NOT NULL,
+  `linkages_id` int(11) NOT NULL,
+  `strategy` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `linkages_sm`
+--
+
+INSERT INTO `linkages_sm` (`id`, `linkages_id`, `strategy`) VALUES
+(4, 8, 'Strategy 1'),
+(5, 9, '/');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `linkages_timing`
+--
+
+CREATE TABLE `linkages_timing` (
+  `id` int(11) NOT NULL,
+  `linkages_id` int(11) NOT NULL,
+  `timing` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `linkages_timing`
+--
+
+INSERT INTO `linkages_timing` (`id`, `linkages_id`, `timing`) VALUES
+(4, 8, 'Timing 1'),
+(5, 9, ';');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `linkages_year`
+--
+
+CREATE TABLE `linkages_year` (
+  `id` int(11) NOT NULL,
+  `linkages_implementation_plan_id` int(11) NOT NULL,
+  `year` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `linkages_year`
+--
+
+INSERT INTO `linkages_year` (`id`, `linkages_implementation_plan_id`, `year`) VALUES
+(6159, 5, 'Plan 1 Yea'),
+(6160, 5, 'Plan 1 Yea'),
+(6161, 6, 'Plan 2 Yea'),
+(6162, 7, 'Plan 3 Yea'),
+(6163, 7, 'Plan 3 Yea'),
+(6164, 7, 'Plan 3 Yea'),
+(6165, 8, ','),
+(6166, 8, '.'),
+(6167, 9, '.');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `narrative_report`
 --
 
@@ -263,8 +623,12 @@ CREATE TABLE `narrative_report` (
 
 INSERT INTO `narrative_report` (`id`, `activityform_id`, `activity_name`, `sponsor`, `start_date`, `end_date`, `objectives`, `overview`) VALUES
 ('081f9720-9335-11ee-a838-f80dac465db8', '11c2cb25-87c7-11ee-bb2f-f80dac465db8', 'Intramurals', '<p>.</p>', '2023-12-06', '2023-12-06', '<p>.</p>', '<p>.</p>'),
+('3bfb4e8f-a63d-11ee-a34f-f80dac465db8', '0f1d333c-95dc-11ee-8722-f80dac465db8', 'dfsf', '<ul>\r\n	<li>irikrkirikrir</li>\r\n	<li>erwre</li>\r\n</ul>\r\n', '2023-12-08', '2023-12-20', '<ol>\r\n	<li>dsxfdsffdsf &nbsp;&nbsp;</li>\r\n</ol>\r\n\r\n<ul>\r\n	<li>erwerwer</li>\r\n</ul>\r\n', '<p>3434</p>\r\n'),
+('60aea6bd-95e0-11ee-8722-f80dac465db8', '1b6f8d0f-6be9-11ee-b322-f80dac465db8', 'Seminar of Waste Disposal', '', '2023-10-01', '2023-10-07', '<p>Lorem ipsum dolor sit amet. Ab dignissimos fuga eos asperiores doloribus qui impedit nihil aut deleniti natus ad soluta autem ea incidunt quod eum officia amet. Vel ratione totam ut velit voluptas hic aliquid dolores in quasi omnis cum similique maxime rem minima iste aut blanditiis expedita?</p>\r\n\r\n<p>Non architecto quas aut provident odio qui quia modi. Quo accusantium error et repellendus aliquam est praesentium voluptas aut totam obcaecati ab galisum perferendis ea incidunt eligendi est nemo quibusdam? Non assumenda quam At galisum sapiente sed nostrum numquam. Et labore accusamus et fugit maiores aut delectus accusamus ea esse quis in minus omnis est quam dolor.</p>\r\n\r\n<p>Et quisquam totam a eligendi assumenda ut aliquam quibusdam sed enim similique. Quo earum nemo quo quae omnis aut facere atque ut consectetur ullam et architecto rerum eum perferendis voluptas. Sit porro magnam non rerum nihil id voluptas atque.</p>\r\n', ''),
 ('74ae40bc-9512-11ee-be1c-f80dac465db8', '1b6f8d0f-6be9-11ee-b322-f80dac465db8', 'Seminar of Waste Disposal', '', '2023-10-01', '2023-10-07', '<p>Lorem ipsum dolor sit amet. Ab dignissimos fuga eos asperiores doloribus qui impedit nihil aut deleniti natus ad soluta autem ea incidunt quod eum officia amet. Vel ratione totam ut velit voluptas hic aliquid dolores in quasi omnis cum similique maxime rem minima iste aut blanditiis expedita?</p><p>Non architecto quas aut provident odio qui quia modi. Quo accusantium error et repellendus aliquam est praesentium voluptas aut totam obcaecati ab galisum perferendis ea incidunt eligendi est nemo quibusdam? Non assumenda quam At galisum sapiente sed nostrum numquam. Et labore accusamus et fugit maiores aut delectus accusamus ea esse quis in minus omnis est quam dolor.</p><p>Et quisquam totam a eligendi assumenda ut aliquam quibusdam sed enim similique. Quo earum nemo quo quae omnis aut facere atque ut consectetur ullam et architecto rerum eum perferendis voluptas. Sit porro magnam non rerum nihil id voluptas atque.</p>', ''),
-('b75b8d41-9515-11ee-be1c-f80dac465db8', '1b6f8d0f-6be9-11ee-b322-f80dac465db8', 'Seminar of Waste Disposal', '', '2023-10-01', '2023-10-07', '<p>Lorem ipsum dolor sit amet. Ab dignissimos fuga eos asperiores doloribus qui impedit nihil aut deleniti natus ad soluta autem ea incidunt quod eum officia amet. Vel ratione totam ut velit voluptas hic aliquid dolores in quasi omnis cum similique maxime rem minima iste aut blanditiis expedita?</p><p>Non architecto quas aut provident odio qui quia modi. Quo accusantium error et repellendus aliquam est praesentium voluptas aut totam obcaecati ab galisum perferendis ea incidunt eligendi est nemo quibusdam? Non assumenda quam At galisum sapiente sed nostrum numquam. Et labore accusamus et fugit maiores aut delectus accusamus ea esse quis in minus omnis est quam dolor.</p><p>Et quisquam totam a eligendi assumenda ut aliquam quibusdam sed enim similique. Quo earum nemo quo quae omnis aut facere atque ut consectetur ullam et architecto rerum eum perferendis voluptas. Sit porro magnam non rerum nihil id voluptas atque.</p>', '');
+('95c72a05-a63d-11ee-a34f-f80dac465db8', '0f1d333c-95dc-11ee-8722-f80dac465db8', 'dfsf', '<ul>\r\n	<li>irikrkirikrir</li>\r\n	<li>erwreded</li>\r\n</ul>\r\n', '2023-12-08', '2023-12-20', '<ol>\r\n	<li>dsxfdsffdsf &nbsp;&nbsp;</li>\r\n	<li>wedewdesd</li>\r\n	<li>edes</li>\r\n</ol>\r\n', '<p>3434</p>\r\n'),
+('b75b8d41-9515-11ee-be1c-f80dac465db8', '1b6f8d0f-6be9-11ee-b322-f80dac465db8', 'Seminar of Waste Disposal', '', '2023-10-01', '2023-10-07', '<p>Lorem ipsum dolor sit amet. Ab dignissimos fuga eos asperiores doloribus qui impedit nihil aut deleniti natus ad soluta autem ea incidunt quod eum officia amet. Vel ratione totam ut velit voluptas hic aliquid dolores in quasi omnis cum similique maxime rem minima iste aut blanditiis expedita?</p><p>Non architecto quas aut provident odio qui quia modi. Quo accusantium error et repellendus aliquam est praesentium voluptas aut totam obcaecati ab galisum perferendis ea incidunt eligendi est nemo quibusdam? Non assumenda quam At galisum sapiente sed nostrum numquam. Et labore accusamus et fugit maiores aut delectus accusamus ea esse quis in minus omnis est quam dolor.</p><p>Et quisquam totam a eligendi assumenda ut aliquam quibusdam sed enim similique. Quo earum nemo quo quae omnis aut facere atque ut consectetur ullam et architecto rerum eum perferendis voluptas. Sit porro magnam non rerum nihil id voluptas atque.</p>', ''),
+('f3a64ca4-95e2-11ee-8722-f80dac465db8', '1b6f8d0f-6be9-11ee-b322-f80dac465db8', 'Seminar of Waste Disposal', '', '2023-10-01', '2023-10-07', '<p>Lorem ipsum dolor sit amet. Ab dignissimos fuga eos asperiores doloribus qui impedit nihil aut deleniti natus ad soluta autem ea incidunt quod eum officia amet. Vel ratione totam ut velit voluptas hic aliquid dolores in quasi omnis cum similique maxime rem minima iste aut blanditiis expedita?</p>\r\n\r\n<p>Non architecto quas aut provident odio qui quia modi. Quo accusantium error et repellendus aliquam est praesentium voluptas aut totam obcaecati ab galisum perferendis ea incidunt eligendi est nemo quibusdam? Non assumenda quam At galisum sapiente sed nostrum numquam. Et labore accusamus et fugit maiores aut delectus accusamus ea esse quis in minus omnis est quam dolor.</p>\r\n\r\n<p>Et quisquam totam a eligendi assumenda ut aliquam quibusdam sed enim similique. Quo earum nemo quo quae omnis aut facere atque ut consectetur ullam et architecto rerum eum perferendis voluptas. Sit porro magnam non rerum nihil id voluptas atque.</p>\r\n', '');
 
 -- --------------------------------------------------------
 
@@ -285,10 +649,18 @@ CREATE TABLE `narrative_report_representative` (
 INSERT INTO `narrative_report_representative` (`id`, `narrative_report_id`, `role`) VALUES
 ('081fdc1b-9335-11ee-a838-f80dac465db8', '081f9720-9335-11ee-a838-f80dac465db8', 'Project Leader/s'),
 ('081fed5c-9335-11ee-a838-f80dac465db8', '081f9720-9335-11ee-a838-f80dac465db8', 'Project Member/s'),
+('3bfb6d39-a63d-11ee-a34f-f80dac465db8', '3bfb4e8f-a63d-11ee-a34f-f80dac465db8', 'Project Leader/s'),
+('3bfb7c30-a63d-11ee-a34f-f80dac465db8', '3bfb4e8f-a63d-11ee-a34f-f80dac465db8', 'Project Member/s'),
+('60aeb5a1-95e0-11ee-8722-f80dac465db8', '60aea6bd-95e0-11ee-8722-f80dac465db8', 'Project Leader/s'),
+('60aec05b-95e0-11ee-8722-f80dac465db8', '60aea6bd-95e0-11ee-8722-f80dac465db8', 'Project Member/s'),
 ('74ae4d2e-9512-11ee-be1c-f80dac465db8', '74ae40bc-9512-11ee-be1c-f80dac465db8', 'Project Leader/s'),
 ('74ae5734-9512-11ee-be1c-f80dac465db8', '74ae40bc-9512-11ee-be1c-f80dac465db8', 'Project Member/s'),
+('95c73352-a63d-11ee-a34f-f80dac465db8', '95c72a05-a63d-11ee-a34f-f80dac465db8', 'Project Leader/s'),
+('95c73b9f-a63d-11ee-a34f-f80dac465db8', '95c72a05-a63d-11ee-a34f-f80dac465db8', 'Project Member/s'),
 ('b75b99ad-9515-11ee-be1c-f80dac465db8', 'b75b8d41-9515-11ee-be1c-f80dac465db8', 'Project Leader/s'),
-('b75ba282-9515-11ee-be1c-f80dac465db8', 'b75b8d41-9515-11ee-be1c-f80dac465db8', 'Project Member/s');
+('b75ba282-9515-11ee-be1c-f80dac465db8', 'b75b8d41-9515-11ee-be1c-f80dac465db8', 'Project Member/s'),
+('f3a65e63-95e2-11ee-8722-f80dac465db8', 'f3a64ca4-95e2-11ee-8722-f80dac465db8', 'Project Leader/s'),
+('f3a66576-95e2-11ee-8722-f80dac465db8', 'f3a64ca4-95e2-11ee-8722-f80dac465db8', 'Project Member/s');
 
 -- --------------------------------------------------------
 
@@ -310,10 +682,14 @@ CREATE TABLE `narrative_report_representative_list` (
 
 INSERT INTO `narrative_report_representative_list` (`id`, `narrative_report_representative_id`, `representative_roles_id`, `name`, `designation`) VALUES
 ('08325219-9335-11ee-a838-f80dac465db8', '081fdc1b-9335-11ee-a838-f80dac465db8', '5633de9a-5318-11ee-aea5-0a0027000002', 'Dr. Tirso A. Ronquillo', 'University President'),
+('60b7ff92-95e0-11ee-8722-f80dac465db8', '60aeb5a1-95e0-11ee-8722-f80dac465db8', '56347d5f-5318-11ee-aea5-0a0027000002', 'Dr. Expedito V. Acorda', 'Chancellor'),
+('60b89db2-95e0-11ee-8722-f80dac465db8', '60aeb5a1-95e0-11ee-8722-f80dac465db8', '56347d89-5318-11ee-aea5-0a0027000002', 'Dr. Rosalinda M. Comia', 'Campus Director'),
 ('74b15d63-9512-11ee-be1c-f80dac465db8', '74ae4d2e-9512-11ee-be1c-f80dac465db8', '56347d5f-5318-11ee-aea5-0a0027000002', 'Dr. Expedito V. Acorda', 'Chancellor'),
 ('74b2513a-9512-11ee-be1c-f80dac465db8', '74ae4d2e-9512-11ee-be1c-f80dac465db8', '56347d89-5318-11ee-aea5-0a0027000002', 'Dr. Rosalinda M. Comia', 'Campus Director'),
 ('b75fc24a-9515-11ee-be1c-f80dac465db8', 'b75b99ad-9515-11ee-be1c-f80dac465db8', '56347d5f-5318-11ee-aea5-0a0027000002', 'Dr. Expedito V. Acorda', 'Chancellor'),
-('b760b48b-9515-11ee-be1c-f80dac465db8', 'b75b99ad-9515-11ee-be1c-f80dac465db8', '56347d89-5318-11ee-aea5-0a0027000002', 'Dr. Rosalinda M. Comia', 'Campus Director');
+('b760b48b-9515-11ee-be1c-f80dac465db8', 'b75b99ad-9515-11ee-be1c-f80dac465db8', '56347d89-5318-11ee-aea5-0a0027000002', 'Dr. Rosalinda M. Comia', 'Campus Director'),
+('f3ac5d1d-95e2-11ee-8722-f80dac465db8', 'f3a65e63-95e2-11ee-8722-f80dac465db8', '56347d5f-5318-11ee-aea5-0a0027000002', 'Dr. Expedito V. Acorda', 'Chancellor'),
+('f3acdda7-95e2-11ee-8722-f80dac465db8', 'f3a65e63-95e2-11ee-8722-f80dac465db8', '56347d89-5318-11ee-aea5-0a0027000002', 'Dr. Rosalinda M. Comia', 'Campus Director');
 
 -- --------------------------------------------------------
 
@@ -335,10 +711,14 @@ CREATE TABLE `narrative_report_responsibilities_list` (
 INSERT INTO `narrative_report_responsibilities_list` (`id`, `narrative_report_representative_id`, `responsibilities_id`, `responsibility`) VALUES
 ('082e1cea-9335-11ee-a838-f80dac465db8', '081fdc1b-9335-11ee-a838-f80dac465db8', 'cbc44b18-5318-11ee-aea5-0a0027000002', 'Identify the projects overall goal, outcome and objectives'),
 ('0836cd5d-9335-11ee-a838-f80dac465db8', '081fed5c-9335-11ee-a838-f80dac465db8', 'cbc44ded-5318-11ee-aea5-0a0027000002', 'Monitor the flow of the training'),
+('60b56262-95e0-11ee-8722-f80dac465db8', '60aeb5a1-95e0-11ee-8722-f80dac465db8', 'cbc44ded-5318-11ee-aea5-0a0027000002', 'Monitor the flow of the training'),
+('60b7b5fc-95e0-11ee-8722-f80dac465db8', '60aeb5a1-95e0-11ee-8722-f80dac465db8', 'cbc44e89-5318-11ee-aea5-0a0027000002', 'Prepare project/activity proposal'),
 ('74b00ee3-9512-11ee-be1c-f80dac465db8', '74ae4d2e-9512-11ee-be1c-f80dac465db8', 'cbc44ded-5318-11ee-aea5-0a0027000002', 'Monitor the flow of the training'),
 ('74b0ef84-9512-11ee-be1c-f80dac465db8', '74ae4d2e-9512-11ee-be1c-f80dac465db8', 'cbc44e89-5318-11ee-aea5-0a0027000002', 'Prepare project/activity proposal'),
 ('b75e4a22-9515-11ee-be1c-f80dac465db8', 'b75b99ad-9515-11ee-be1c-f80dac465db8', 'cbc44ded-5318-11ee-aea5-0a0027000002', 'Monitor the flow of the training'),
-('b75f4aec-9515-11ee-be1c-f80dac465db8', 'b75b99ad-9515-11ee-be1c-f80dac465db8', 'cbc44e89-5318-11ee-aea5-0a0027000002', 'Prepare project/activity proposal');
+('b75f4aec-9515-11ee-be1c-f80dac465db8', 'b75b99ad-9515-11ee-be1c-f80dac465db8', 'cbc44e89-5318-11ee-aea5-0a0027000002', 'Prepare project/activity proposal'),
+('f3ab8c8f-95e2-11ee-8722-f80dac465db8', 'f3a65e63-95e2-11ee-8722-f80dac465db8', 'cbc44ded-5318-11ee-aea5-0a0027000002', 'Monitor the flow of the training'),
+('f3abf911-95e2-11ee-8722-f80dac465db8', 'f3a65e63-95e2-11ee-8722-f80dac465db8', 'cbc44e89-5318-11ee-aea5-0a0027000002', 'Prepare project/activity proposal');
 
 -- --------------------------------------------------------
 
@@ -552,18 +932,14 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `title`, `first_name`, `mid_name`, `last_name`, `sex`, `email`, `campus`, `college_abbrev`, `pass`, `privelege`, `profile_pic`) VALUES
-(32, 'Ms.', 'Ma. Deanne Grace', 'G.', 'Anorico', 'Female', '20-78556@g.batstate-u.edu.ph', 'none', 'none', '$2y$10$pNu90rT1iA1.tmAi54d3i.LNrLhvWNENtpeJrd2nX6FNur7Y/8z3.', 'Admin', NULL),
-(33, 'Dr.', 'Lorrisa Joana', 'E.', 'Buenas', 'Female', 'lorissa.joana@g.batstate-u.edu.ph', 'ARASOF-Nasugbu', 'CICS', '$2y$10$4gsxfgsbzomMKdUEFY8wQ.XpXUlyfjwJ5Zz7pqW7tLZJSbC6f6bRu', 'Dean', NULL),
-(34, 'Assoc. Prof.', 'Mayette', 'A.', 'Cananea', 'Female', 'mayette.cananea@g.batstate-u.edu.ph', 'ARASOF-Nasugbu', 'CABEIHM', '$2y$10$BZcOfTZ2Fa.BfNgZrKskqO1Indb8zBcDbz.Q4e8JHoI8af4DoUHBG', 'Dean', 'webcam-toy-photo84.jpg'),
-(36, 'Mr. ', 'Marvin', 'C.', 'Hernandez', 'Male', 'marvin.hernandez@g.batstate-u.edu.ph', 'ARASOF-Nasugbu', 'CABEIHM', '$2y$10$BQrdeJ7Fnj8RO.mIdXSC8OS3rHqN09ZoMESearAQnzhd04miogLGG', 'Associate Dean', NULL),
-(37, 'Dr. ', 'Anania', 'B.', 'Aquino', 'Female', 'anania.aquino@g.batstate-u.edu.ph', 'ARASOF-Nasugbu', 'CTE', '$2y$10$8NTpJ6mQs1NT6nBrmAtUaebWBK7fXJ2cNShApoAsgQVyp43kzBZb.', 'Dean', NULL),
-(38, 'Asst. Prof.', 'Gliceria ', 'R. ', 'Quizon', 'Female', 'gliceria.quizon@g.batstate-u.edu.ph', 'ARASOF-Nasugbu', 'CTE', '$2y$10$CNVYpA6cDCGtSoxiJjaF9uNqA8DGsEWAGn9IAyURnf5x68ODurwTK', 'Associate Dean', NULL),
-(39, 'Dr.', 'Maria Luisa', 'A.', 'Valdez', 'Female', 'luisa.valdez@g.batstate-u.edu.ph', 'ARASOF-Nasugbu', 'CAS', '$2y$10$Hb/58zrQ8QKvaolbxXBBCeqqCWhxRx2skdrNfTvPT/JSdmpieAg5e', 'Dean', NULL),
-(40, 'Mr.', 'Jonas', 'C.', 'Villaveza', 'Male', 'jonas.villaveza@g.batstate-u.edu.ph', 'ARASOF-Nasugbu', 'CAS', '$2y$10$GlDchuGQH.5pXpDVbnor2uIaK2wImMYFXHIdBhtsklHo7IOzk3azW', 'Associate Dean', NULL),
-(41, 'Asst. Prof.', 'Renalyn', 'D.', 'Malabanan', 'Female', 'rena.malabanan@g.batstate-u.edu.ph', 'ARASOF-Nasugbu', 'CONAHS', '$2y$10$WCQdVGUEY4MwNNpTkOD8NuQ6Dt7TiN0Qx4FMJlvqnvdufRdwxqsKC', 'Dean', NULL),
-(44, 'Mr.', 'Carl Joriz Mickeal', 'S.', 'Marasigan', 'Male', 'carl.marasigan@g.batstate-u.edu.ph', 'none', 'none', '$2y$10$FM5Yn0/C2LU61qeH65neNOzxrojA/woLDOknjWdTJzLxDcXrgpHu.', 'Head', 'Batangas_State_Logo.png'),
 (45, 'Assoc. Prof.', 'Lorenjane', 'E.', 'Balan', 'Female', 'loren.jane@g.batstate-u.edu.ph', 'none', 'none', '$2y$10$5.eyTiUB2C0ZQFumu.1d0.AC6UD/Hs3uJdDyfDqEiaeAUwhvP9vEu', 'VCDEA', 'user-head.png'),
-(46, 'Ms.', 'Erlyn', 'S.', 'Andrin', 'Female', '20-78362@g.batstate-u.edu.ph', 'ARASOF-Nasugbu', 'CAS', '$2y$10$MjhD5xBWYWtDC7kuf4e1/.O9EaFwvgYIO4MfIlC2xaG.o3scjZkSm', 'Associate Dean', NULL);
+(47, 'Ms.', 'Lorenjane', 'E.', 'Balan', 'Female', 'admin@g.batstate-u.edu.ph', 'none', 'none', '$2y$10$SPq2rT1ZTtln2UB.chW0v.ebLEH31wXr6yE1YGfdq5ApzNldE6ZVm', 'Admin', 'user-admin.png'),
+(48, 'Ms.', 'Meg', '', 'Perea', 'Female', 'meg.perea@g.batstate-u.edu.ph', 'none', 'none', '$2y$10$Jg0aNw9fn0gqGQMLPpv.Xebkq3q6wk2GIsrliD.ElkcSBhLGuKuvO', 'Head', 'undraw_profile.svg'),
+(49, 'Dr.', 'Lorissa Joana ', 'E.', 'Buenas', 'Female', 'cics.nasugbu@g.batstate-u.edu.ph', 'ARASOF-Nasugbu', 'CICS', '$2y$10$85f.xN2gviSJOF48PdSlHeNVW6U7Kg.0./kWd4weon/rITvq5QQ3C', 'Dean', NULL),
+(50, 'Asst. Prof.', 'Renalyn', 'D.', 'Malabanan', 'Female', 'conahs.nasugbu@g.batstate-u.edu.ph', 'ARASOF-Nasugbu', 'CONAHS', '$2y$10$KJ9kjM7aZv2hRAVMuOwJuue3Eg6P2pfKhz9Fkk/Uya2tDnaiXQpym', 'Dean', NULL),
+(51, 'Dr.', 'Maria Luisa', 'A.', 'Valdez', 'Female', 'cas.nasugbu@g.batstate-u.edu.ph', 'ARASOF-Nasugbu', 'CAS', '$2y$10$tIvqd0A6b10WzC0hfJvT3.4AU6qDGKpsuGd7PFSwoQ96VRFfcHbNO', 'Dean', 'BSU-Campus.jpg'),
+(52, 'Dr.', 'Anania', 'B.', 'Aquino', 'Female', 'cte.nasugbu@g.batstate-u.edu.ph', 'ARASOF-Nasugbu', 'CTE', '$2y$10$qdAn0N5ufrgN.tk49JCJdOddGdIi44y9xbiR2nP4x5cEeXDeIp1Ua', 'Dean', NULL),
+(53, 'Dr.', 'Gloria', 'A. ', 'Rearte', 'Female', 'cabeihm.nasugbu@g.batstate-u.edu.ph', 'ARASOF-Nasugbu', 'CABEIHM', '$2y$10$1sfKTFCufGMjP5XmqWO/1uV3EeAaD2Bv9/g4h6MDIhal1UyIfHJNm', 'Dean', NULL);
 
 --
 -- Indexes for dumped tables
@@ -591,6 +967,20 @@ ALTER TABLE `activity_representatives_responsibilities`
   ADD KEY `responsibilities_id` (`responsibilities_id`);
 
 --
+-- Indexes for table `announcement`
+--
+ALTER TABLE `announcement`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `added_by` (`added_by`);
+
+--
+-- Indexes for table `announcement_recipents`
+--
+ALTER TABLE `announcement_recipents`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `announcement_id` (`announcement_id`);
+
+--
 -- Indexes for table `budget`
 --
 ALTER TABLE `budget`
@@ -609,6 +999,97 @@ ALTER TABLE `campus`
 ALTER TABLE `college`
   ADD PRIMARY KEY (`collegeID`),
   ADD KEY `campusID` (`campusID`);
+
+--
+-- Indexes for table `create_folder`
+--
+ALTER TABLE `create_folder`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `create_folder_id` (`create_folder_id`);
+
+--
+-- Indexes for table `file`
+--
+ALTER TABLE `file`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `create_folder_id` (`create_folder_id`);
+
+--
+-- Indexes for table `linkages`
+--
+ALTER TABLE `linkages`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `added_by` (`added_by`);
+
+--
+-- Indexes for table `linkages_activity`
+--
+ALTER TABLE `linkages_activity`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `linkages_implementation_plan_id` (`linkages_implementation_plan_id`);
+
+--
+-- Indexes for table `linkages_audience`
+--
+ALTER TABLE `linkages_audience`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `linkages_id` (`linkages_id`);
+
+--
+-- Indexes for table `linkages_implementation_plan`
+--
+ALTER TABLE `linkages_implementation_plan`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `linkages_id` (`linkages_id`);
+
+--
+-- Indexes for table `linkages_outcome`
+--
+ALTER TABLE `linkages_outcome`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `linkages_id` (`linkages_id`);
+
+--
+-- Indexes for table `linkages_pap`
+--
+ALTER TABLE `linkages_pap`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `linkages_id` (`linkages_id`);
+
+--
+-- Indexes for table `linkages_personnel_and_officials`
+--
+ALTER TABLE `linkages_personnel_and_officials`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `linkages` (`linkages_id`);
+
+--
+-- Indexes for table `linkages_resources`
+--
+ALTER TABLE `linkages_resources`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `linkages_id` (`linkages_id`);
+
+--
+-- Indexes for table `linkages_sm`
+--
+ALTER TABLE `linkages_sm`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `linkages_id` (`linkages_id`);
+
+--
+-- Indexes for table `linkages_timing`
+--
+ALTER TABLE `linkages_timing`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `linkages_id` (`linkages_id`);
+
+--
+-- Indexes for table `linkages_year`
+--
+ALTER TABLE `linkages_year`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `linkages_implementation_plan_id` (`linkages_implementation_plan_id`);
 
 --
 -- Indexes for table `narrative_report`
@@ -686,6 +1167,18 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `announcement`
+--
+ALTER TABLE `announcement`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+
+--
+-- AUTO_INCREMENT for table `announcement_recipents`
+--
+ALTER TABLE `announcement_recipents`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+
+--
 -- AUTO_INCREMENT for table `campus`
 --
 ALTER TABLE `campus`
@@ -696,6 +1189,84 @@ ALTER TABLE `campus`
 --
 ALTER TABLE `college`
   MODIFY `collegeID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
+
+--
+-- AUTO_INCREMENT for table `create_folder`
+--
+ALTER TABLE `create_folder`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+
+--
+-- AUTO_INCREMENT for table `file`
+--
+ALTER TABLE `file`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `linkages`
+--
+ALTER TABLE `linkages`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `linkages_activity`
+--
+ALTER TABLE `linkages_activity`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
+-- AUTO_INCREMENT for table `linkages_audience`
+--
+ALTER TABLE `linkages_audience`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `linkages_implementation_plan`
+--
+ALTER TABLE `linkages_implementation_plan`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `linkages_outcome`
+--
+ALTER TABLE `linkages_outcome`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `linkages_pap`
+--
+ALTER TABLE `linkages_pap`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `linkages_personnel_and_officials`
+--
+ALTER TABLE `linkages_personnel_and_officials`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
+--
+-- AUTO_INCREMENT for table `linkages_resources`
+--
+ALTER TABLE `linkages_resources`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT for table `linkages_sm`
+--
+ALTER TABLE `linkages_sm`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `linkages_timing`
+--
+ALTER TABLE `linkages_timing`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `linkages_year`
+--
+ALTER TABLE `linkages_year`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6168;
 
 --
 -- AUTO_INCREMENT for table `partners`
@@ -713,7 +1284,7 @@ ALTER TABLE `program`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- Constraints for dumped tables
@@ -733,6 +1304,18 @@ ALTER TABLE `activity_representatives_responsibilities`
   ADD CONSTRAINT `activity_representatives_responsibilities_ibfk_2` FOREIGN KEY (`responsibilities_id`) REFERENCES `responsibilities` (`id`);
 
 --
+-- Constraints for table `announcement`
+--
+ALTER TABLE `announcement`
+  ADD CONSTRAINT `announcement_ibfk_1` FOREIGN KEY (`added_by`) REFERENCES `users` (`id`);
+
+--
+-- Constraints for table `announcement_recipents`
+--
+ALTER TABLE `announcement_recipents`
+  ADD CONSTRAINT `announcement_recipents_ibfk_1` FOREIGN KEY (`announcement_id`) REFERENCES `announcement` (`id`);
+
+--
 -- Constraints for table `budget`
 --
 ALTER TABLE `budget`
@@ -743,6 +1326,84 @@ ALTER TABLE `budget`
 --
 ALTER TABLE `college`
   ADD CONSTRAINT `college_ibfk_1` FOREIGN KEY (`campusID`) REFERENCES `campus` (`id`);
+
+--
+-- Constraints for table `create_folder`
+--
+ALTER TABLE `create_folder`
+  ADD CONSTRAINT `create_folder_ibfk_1` FOREIGN KEY (`create_folder_id`) REFERENCES `create_folder` (`id`);
+
+--
+-- Constraints for table `file`
+--
+ALTER TABLE `file`
+  ADD CONSTRAINT `file_ibfk_1` FOREIGN KEY (`create_folder_id`) REFERENCES `create_folder` (`id`);
+
+--
+-- Constraints for table `linkages`
+--
+ALTER TABLE `linkages`
+  ADD CONSTRAINT `linkages_ibfk_1` FOREIGN KEY (`added_by`) REFERENCES `users` (`id`);
+
+--
+-- Constraints for table `linkages_activity`
+--
+ALTER TABLE `linkages_activity`
+  ADD CONSTRAINT `linkages_activity_ibfk_1` FOREIGN KEY (`linkages_implementation_plan_id`) REFERENCES `linkages_implementation_plan` (`id`);
+
+--
+-- Constraints for table `linkages_audience`
+--
+ALTER TABLE `linkages_audience`
+  ADD CONSTRAINT `linkages_audience_ibfk_1` FOREIGN KEY (`linkages_id`) REFERENCES `linkages` (`id`);
+
+--
+-- Constraints for table `linkages_implementation_plan`
+--
+ALTER TABLE `linkages_implementation_plan`
+  ADD CONSTRAINT `linkages_implementation_plan_ibfk_1` FOREIGN KEY (`linkages_id`) REFERENCES `linkages` (`id`);
+
+--
+-- Constraints for table `linkages_outcome`
+--
+ALTER TABLE `linkages_outcome`
+  ADD CONSTRAINT `linkages_outcome_ibfk_1` FOREIGN KEY (`linkages_id`) REFERENCES `linkages` (`id`);
+
+--
+-- Constraints for table `linkages_pap`
+--
+ALTER TABLE `linkages_pap`
+  ADD CONSTRAINT `linkages_pap_ibfk_1` FOREIGN KEY (`linkages_id`) REFERENCES `linkages` (`id`);
+
+--
+-- Constraints for table `linkages_personnel_and_officials`
+--
+ALTER TABLE `linkages_personnel_and_officials`
+  ADD CONSTRAINT `linkages_personnel_and_officials_ibfk_1` FOREIGN KEY (`linkages_id`) REFERENCES `linkages` (`id`);
+
+--
+-- Constraints for table `linkages_resources`
+--
+ALTER TABLE `linkages_resources`
+  ADD CONSTRAINT `linkages_resources_ibfk_1` FOREIGN KEY (`linkages_id`) REFERENCES `linkages` (`id`);
+
+--
+-- Constraints for table `linkages_sm`
+--
+ALTER TABLE `linkages_sm`
+  ADD CONSTRAINT `linkages_sm_ibfk_1` FOREIGN KEY (`linkages_id`) REFERENCES `linkages` (`id`);
+
+--
+-- Constraints for table `linkages_timing`
+--
+ALTER TABLE `linkages_timing`
+  ADD CONSTRAINT `linkages_timing_ibfk_1` FOREIGN KEY (`linkages_id`) REFERENCES `linkages` (`id`);
+
+--
+-- Constraints for table `linkages_year`
+--
+ALTER TABLE `linkages_year`
+  ADD CONSTRAINT `linkages_year_ibfk_1` FOREIGN KEY (`linkages_implementation_plan_id`) REFERENCES `linkages_implementation_plan` (`id`);
 
 --
 -- Constraints for table `narrative_report`

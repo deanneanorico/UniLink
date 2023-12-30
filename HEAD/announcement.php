@@ -141,8 +141,8 @@
           </nav>
           <!-- End of Topbar -->
           <!-- Begin Page Content -->
-<div class="container-fluid">
-   <nav aria-label="breadcrumb">
+          <div class="container-fluid">
+            <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
                 <li class="breadcrumb-item">
                   <a href="announcement_table.php">Announcement</a>
@@ -152,71 +152,71 @@
             </nav>
           <!-- Announcement Cards -->
           <div class="container mt-3">
-            <form method="post" action="add.announcement.php">
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="card">
-                    <div class="card-header">
-                      Announcement
-                    </div>
-                    <div class="card-body">
-                      <label for="content">Subject</label>
-                      <textarea class="form-control" id="content" rows="1" name="subject" required></textarea>
-                      <div></div>
-                      <div class="form-group">
-                        <label for="content">Content</label>
-                        <textarea class="form-control" id="content" rows="6" name="content" required></textarea>
-                      </div>
-                      <label for="Date">Date</label>
-                      <input type="date" id="date" name="date" class="form-control" required>
-                    </div>
-                  </div>
+        <!-- Announcement Card - Left Side -->
+        <form method="post" action="add.announcement.php">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="card">
+                <div class="card-header">
+                  Announcement
                 </div>
-                <!-- Recipient Card - Right Side -->
-                <div class="col-md-6">
-                  <div class="card">
-                    <div class="card-header">
-                      Recipient
-                    </div>
-                    <div class="card-body">
-                      <!-- "Select All" Checkbox -->
-                      <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="selectAllCheckbox">
-                        <label class="form-check-label" for="selectAllCheckbox">Select All</label>
-                      </div>
-                      <!-- Add your recipient checkboxes here -->
-                      <div class="form-check">
-                    <input type="checkbox" name="college[]" class="form-check-input college-checkbox" id="cicsCheckbox" value="CICS">
-                    <label class="form-check-label" for="cicsCheckbox">College of Informatics and Computing Sciences</label>
+                <div class="card-body">
+                  <label for="content">Subject</label>
+                  <textarea class="form-control" id="content" rows="1" name="subject" required></textarea>
+                  <div></div>
+                  <div class="form-group">
+                    <label for="content">Content</label>
+                    <textarea class="form-control" id="content" rows="6" name="content" required></textarea>
                   </div>
-                  <div class="form-check">
-                    <input type="checkbox" name="college[]" class="form-check-input college-checkbox" id="cabeiCheckbox" value="CABEIHM">
-                        <label class="form-check-label" for="cabeiCheckbox">College of Accountancy, Business, Economics, International Hospitality Management</label>
-                      </div>
-                      <div class="form-check">
-                    <input type="checkbox" name="college[]" class="form-check-input college-checkbox" id="casCheckbox" value="CAS">
-                        <label class="form-check-label" for="casCheckbox">College of Arts and Sciences</label>
-                      </div>
-                      <div class="form-check">
-                        <input type="checkbox" name="college[]" class="form-check-input college-checkbox" id="cteCheckbox" value="CTE">
-                        <label class="form-check-label" for="cteCheckbox">College of Teacher Education</label>
-                      </div>
-                      <div class="form-check">
-                        <input type="checkbox" name="college[]" class="form-check-input college-checkbox" id="conahsCheckbox" value="CONAHS">
-                        <label class="form-check-label" for="conahsCheckbox">College of Nursing and Allied Health Sciences</label>
-                      </div>
-                      <!-- Announce Button -->
-                      <button class="btn btn-primary float-right bi bi-megaphone ml-2" type="submit" onclick="announce()">
-                        Announce
-                      </button>
-                    </div>
-                  </div>
+                  <label for="Date">Date</label>
+                  <input type="date" id="date" name="date" class="form-control" required>
                 </div>
               </div>
-            </form>
+            </div>
+            <!-- Recipient Card - Right Side -->
+            <div class="col-md-6">
+              <div class="card">
+                <div class="card-header">
+                  Recipient
+                </div>
+                <div class="card-body">
+                  <!-- "Select All" Checkbox -->
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="selectAllCheckbox">
+                    <label class="form-check-label" for="selectAllCheckbox">Select All</label>
+                  </div>
+                  <!-- Add your recipient checkboxes here -->
+                  <div class="form-check">
+                <input type="checkbox" name="college[]" class="form-check-input college-checkbox" id="cicsCheckbox" value="CICS">
+                <label class="form-check-label" for="cicsCheckbox">College of Informatics and Computing Sciences</label>
+              </div>
+              <div class="form-check">
+                <input type="checkbox" name="college[]" class="form-check-input college-checkbox" id="cabeiCheckbox" value="CABEIHM">
+                    <label class="form-check-label" for="cabeiCheckbox">College of Accountancy, Business, Economics, International Hospitality Management</label>
+                  </div>
+                  <div class="form-check">
+                <input type="checkbox" name="college[]" class="form-check-input college-checkbox" id="casCheckbox" value="CAS">
+                    <label class="form-check-label" for="casCheckbox">College of Arts and Sciences</label>
+                  </div>
+                  <div class="form-check">
+                    <input type="checkbox" name="college[]" class="form-check-input college-checkbox" id="cteCheckbox" value="CTE">
+                    <label class="form-check-label" for="cteCheckbox">College of Teacher Education</label>
+                  </div>
+                  <div class="form-check">
+                    <input type="checkbox" name="college[]" class="form-check-input college-checkbox" id="conahsCheckbox" value="CONAHS">
+                    <label class="form-check-label" for="conahsCheckbox">College of Nursing and Allied Health Sciences</label>
+                  </div>
+                  <!-- Announce Button -->
+                  <button class="btn btn-primary float-right bi bi-megaphone ml-2" type="submit" onclick="announce()">
+                    Announce
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
+        </form>
+              </div>
+            </div>
         <!-- Footer -->
         <footer class="sticky-footer bg-white">
           <div class="container my-auto">

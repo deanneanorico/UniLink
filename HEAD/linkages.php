@@ -29,16 +29,22 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap4.min.js"></script>
      <script>
       $(document).ready(function() {
-          $('#linkagesTable').DataTable();
+         new DataTable('#linkagesTable', {
+            responsive: true
+        });
       });
     </script>
-        <style>
+    <style>
       .custom-text-black {
-      color: black;
-      font-size: 12;
-    }
+        color: black;
+        font-size: 12;
+      }
     </style>
   </head>
   <body id="page-top">
@@ -167,25 +173,38 @@
                                         <th>Action</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                  <?php
+                               <tbody>
+                                <?php
                                     $sql = "SELECT * FROM linkages";
                                     $result = $conn->query($sql);
                                     $i = 1;
-                                    while($linkagesRow = $result->fetch_assoc()) {
-                                  ?>
-                                  <tr>
+                                    while ($linkagesRow = $result->fetch_assoc()) {
+                                ?>
+                                <tr>
                                     <td class="text-center"><?=$i?></td>
                                     <td class="text-center"><?=$linkagesRow['title']?></td>
                                     <td class="text-center"><?=$linkagesRow['category']?></td>
                                     <td class="text-center"></td>
-                                    <td></td>
-                                  </tr>
-                                  <?php
-                                      $i++;
+                                    <!-- Update the Action column -->
+                                    <td style='text-align: center;'>
+                                        <span class='bi bi-file-earmark-pdf-fill text-info'></span>
+                                        <div class="dropdown">
+                                            <span class='bi bi-three-dots' data-toggle="dropdown"></span>
+                                            <div class="dropdown-menu">
+                                                <a class="dropdown-item" href="#" onclick="updateStatus(<?=$linkagesRow['id']?>, 'for_exploratory')">For Exploratory</a>
+                                                <a class="dropdown-item" href="#" onclick="updateStatus(<?=$linkagesRow['id']?>, 'review_by_partner')">Review by Partner</a>
+                                                <a class="dropdown-item" href="#" onclick="updateStatus(<?=$linkagesRow['id']?>, 'review_by_legal')">Review by Legal</a>
+                                                <a class="dropdown-item" href="#" onclick="updateStatus(<?=$linkagesRow['id']?>, 'for_signing')">For Signing</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <?php
+                                    $i++;
                                     }
-                                  ?>
-                                </tbody>
+                                ?>
+                            </tbody>
+
                             </table>
                         </div>
                     </div>
@@ -261,4 +280,22 @@
       });
     }
   }
+</script>
+<script>
+    function updateStatus(linkageId, newStatus) {
+        // You can use AJAX to send the data to the server and update the database
+        $.ajax({
+            type: "POST",
+            url: "update_status.php", // Replace with your server-side script
+            data: { id: linkageId, status: newStatus },
+            success: function(response) {
+                // Handle success, you can update the UI or perform other actions
+                alert("Status updated successfully!");
+            },
+            error: function(error) {
+                // Handle error
+                console.error("Error updating status:", error);
+            }
+        });
+    }
 </script>

@@ -35,6 +35,18 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <!-- datatables -->
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap4.min.js"></script>
+    <script>
+    $(document).ready(function() {
+       new DataTable('#linkagesTable', {
+          responsive: true
+      });
+    });
+    </script>
     <style>
     .custom-text-black {
     color: black;
@@ -137,6 +149,50 @@
           </nav>
           <!-- End of Topbar -->
           <!-- Begin Page Content -->
+          <div class="container-fluid">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h3 class="h3 mb-0 text-gray-800">Linkages Proposal Status</h3>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="table">
+                             <table id="linkagesTable" style="width: 100%;" class="display" data-ordering="true" data-paging="true" data-searching="true">
+                                <thead style='text-align: center;'>
+                                    <tr>
+                                        <th >No.</th>
+                                        <th>Title</th>
+                                        <th>Partner</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                  <?php
+                                    $sql = "SELECT * FROM linkages";
+                                    $result = $conn->query($sql);
+                                    $i = 1;
+                                    while($linkagesRow = $result->fetch_assoc()) {
+                                  ?>
+                                  <tr>
+                                    <td class="text-center"><?=$i?></td>
+                                    <td class="text-center"><?=$linkagesRow['title']?></td>
+                                    <td class="text-center"><?=$linkagesRow['category']?></td>
+                                    <td class="text-center"></td>
+                                    <td style='text-align: center;' href='# '>
+                                    <span class='bi bi-file-earmark-pdf-fill text-info'></span>
+                                  </td>
+                                  <!-- <td class="bi bi-three-dots-vertical"></td> -->
+                                  </tr>
+                                  <?php
+                                      $i++;
+                                    }
+                                  ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    </div>
+                  </div>
         </div>
         <!-- End of Main Content -->
         <!-- Footer -->

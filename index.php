@@ -25,7 +25,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Unilink - Login</title>
-    <link rel="shortcut icon" type="image/png" href="../imgs/BSU.png" alt="Logo" />
+    <link rel="shortcut icon" type="image/png" href="imgs/BSU.png" alt="Logo" />
     <!-- Custom fonts for this template-->
     <link href="admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
@@ -48,12 +48,12 @@
 <body class="bg-gradient-primary" style="background-image: url('imgs/BSU-Campus.jpg'); background-size: 100% 115%;">
     <div class="container-fluid">
         <div class="row justify-content-center align-items-center" style="min-height: 100vh;">
-            <div class="col-sm-12 col-md-9 col-lg-7 ">
+            <div class="col-sm-12 col-md-9 col-lg-7">
                 <div class="card o-hidden border-0 shadow-sm" style="border-radius: 5;">
                     <div class="card-body p-2">
                         <div class="row">
                             <div class="col-lg-6 d-none d-lg-block"
-                                style="background-image: url('imgs/UNIversity LINkage.png'); background-repeat: no-repeat;"></div>
+                                style="background-image: url('imgs/UNIversity LINkage2.png'); background-repeat: no-repeat;"></div>
                             <div class="col-lg-6">
                                 <div class="p-5">
                             <div class="text-center">

@@ -1,7 +1,10 @@
 <?php
     include 'db.php';
+    session_start();
 
-    $sql = "SELECT a.*, u.first_name, u.mid_name, u.last_name, u.profile_pic, DATE(a.date_added) AS date FROM announcement AS a INNER JOIN users AS u ON a.added_by = u.id ORDER BY a.id DESC";
+    $college = $_SESSION['college'];
+
+    $sql = "SELECT a.*, u.first_name, u.mid_name, u.last_name, u.profile_pic, DATE(a.date_added) AS date FROM announcement AS a INNER JOIN users AS u ON a.added_by = u.id INNER JOIN announcement_recipents AS ar ON a.id = ar.announcement_id WHERE ar.college = '$college' ORDER BY a.id DESC";
     $result = $conn->query($sql);
     while($announcementRow = $result->fetch_assoc()) {
 ?>

@@ -141,11 +141,51 @@
           <!-- Begin Page Content -->
           <div class="container-fluid">
                     <div class="d-flex justify-content-between align-items-center mb-4">
+                      <div class="d-flex">
+                            <!-- Back button with icon and label -->
+                            <a href="#" class="btn btn" style="color:black;" onclick="goBack()">
+                                <i class="bi bi-arrow-left"></i> Back
+                            </a>
+                        </div>
                         <h3 class="h3 mb-0 text-gray-800"></h3>
                         <div class="d-flex">
                         </div>
                     </div>
                 </div>
+                <script>
+                    // JavaScript function to go back to the previous page
+                    function goBack() {
+                        window.history.back();
+                    }
+                </script>
+          <?php
+          if(isset($_GET['id'])) {
+              $folderID = $_GET['id'];
+              $sql = "SELECT * FROM create_folder WHERE category = 'local' AND create_folder_id = $folderID ORDER BY id DESC";
+          } else {
+              $sql = "SELECT * FROM create_folder WHERE category = 'local' AND create_folder_id IS NULL ORDER BY id DESC";
+          }
+          $result = mysqli_query($conn, $sql);
+
+          if (mysqli_num_rows($result) > 0) {
+              echo '<div class="folder-container" style="display: flex; flex-wrap: wrap;">'; // Start a flex container
+              while ($row = mysqli_fetch_assoc($result)) {
+          ?>
+          <div class="col-md-2">
+              <div class="folder text-center d-flex align-items-center flex-column" oncontextmenu="showContextMenu(event, <?php echo $row['id']; ?>)">
+                  <a href="docu_local.php?id=<?=$row['id']?>">
+                      <img src="../imgs/bsu_folder.png" style="width:130px">  
+                  </a>
+                  <div class="card-footer" style="width: 90px; max-height: 50px; overflow: hidden; padding: 03px 08px 45px 05px; text-align: center; font-size: 14;"><?php echo $row["createfolder"] ?></div>
+              </div>
+          </div>
+
+          <?php
+              }
+              echo '</div>'; // End the flex container
+          }
+          ?>
+          
         </div>
         <!-- End of Main Content -->
         <!-- Footer -->

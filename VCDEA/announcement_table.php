@@ -195,7 +195,7 @@
             </form>
                         <div class="d-flex">
                             <a class="btn btn-primary rounded-fill" href="announcement.php" role="button">
-                                <i class="fas fa-plus"></i> Announcement
+                                <i class="bi bi-megaphone"></i> Announcement
                             </a>
                         </div>
                     </div>

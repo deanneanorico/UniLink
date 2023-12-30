@@ -29,6 +29,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <script src="..\ckeditor\ckeditor.js"></script>
     <style>
     .custom-text-black {
     color: black;
@@ -215,7 +216,7 @@
             </div>
           </div>
           <div class="justify-content-between">
-          <div class="input-group contacts-search mb-4" style="display: flex; justify-content: space-between;">
+          <div class="input-group contacts-search mb-2" style="display: flex; justify-content: space-between;">
             <label>Officials/Department/Personnel/Stakeholders Involved</label>
            <!--  <button style="margin-right: 30px;" type="button" onclick="addRoles()" class="btn btn-primary shadow btn-circle btn-sm">
               <i class="fas fa-plus"></i>
@@ -227,9 +228,9 @@
                           </div>
                           <thead>
                             <tr>
-                              <th class="col-md-5" style="text-align: left;">Personnel/Stakeholders</th>
-                              <th class="col-md-6" style="text-align: left;">Officials/Department</th>
-                              <th class="col-md-2" style="padding-left: 0px;">
+                              <th class="col-md-5" style="text-align: left; font-size: 15px;">Personnel/Stakeholders</th>
+                              <th class="col-md-6" style="text-align: left; font-size: 15px;">Officials/Department</th>
+                              <th class="col-md-2" style="padding-left: 0px; font-size: 15px;">
                                 <button id="add-button-1" style="margin-left:1px;background: white;" type="button" name="addRole" class="btn btn-primary btn-circle btn-sm">
                                   <i class="fas fa-plus" style="color: #1dbf1d"></i>
                                 </button>
@@ -255,7 +256,7 @@
         </div>
             </div>
             <div id="step3" style="display: none;">
-              <div class="input-group contacts-search mb-4" style="display: flex; justify-content: space-between;">
+              <div class="input-group contacts-search mb-2" style="display: flex; justify-content: space-between;">
             <label>Resources Needed</label>
             <button style="margin-right: 30px;" type="button" id="add-button-2" class="btn btn-primary shadow btn-circle btn-sm">
               <i class="fas fa-plus"></i>
@@ -267,59 +268,61 @@
                 <th class="col-md-11">
                   <input class="form-control" id="role_description_1" type="text" value="Activities" name="role_name[]" readonly>
                 </th>
-                <th class="md-1" style="padding-right: 30px;">
-                  <button type="button" name="addRole" class="btn btn-danger shadow btn-circle btn-sm">
-                    <i class="fas fa-trash"></i>
-                  </button>
-                </th>
+              
               </div>
               <tbody id="area-2">
                 <!-- INPUT FIELDS -->
               </tbody>
             </table>
           </div>
-          <div class="input-group contacts-search mb-4" style="display: flex; justify-content: space-between;">
+          <div class="input-group contacts-search mb-2" style="display: flex; justify-content: space-between;">
             <label>Implementation Plan</label>
-            <button style="margin-right: 30px;" type="button" id="add-button-3" class="btn btn-primary shadow btn-circle btn-sm">
-              <i class="fas fa-plus"></i>
-            </button>
+            <div>
+              <button style="margin-right: 5px;" type="button" class="btn btn-danger shadow btn-circle btn-sm" onclick="removeItem3()">
+                <i class="fas fa-minus"></i>
+              </button>
+              <button style="margin-right: 30px;" type="button" id="add-button-3" class="btn btn-primary shadow btn-circle btn-sm">
+                <i class="fas fa-plus"></i>
+              </button>
+            </div>
           </div>
           <div id="area-3">
-            <input id="year-total-1" type="hidden" name="year-total[]" value="0">
-            <input id="activity-total-1" type="hidden" name="activity-total[]" value="0">
-            <table class="table header-border table-responsive-sm">
-              <thead>
-                <tr>
-                  <th class="col-md-11" style="text-align: left;">Year</th>
-                  <th class="col-md-1" style="padding-left: 0px;">
-                    <button style="margin-left:1px;background: white;" type="button" name="addRole" class="btn btn-primary btn-circle btn-sm" onclick="addYear(1)">
-                      <i class="fas fa-plus" style="color: #1dbf1d"></i>
-                    </button>
-                  </th>
-                </tr>
-              </thead>
-              <tbody id="year-1">
-                
-              </tbody>
-            </table>
-           
-            <table class="table">
-              <thead>
-                <tr>
-                  <th class="col-md-11" style="text-align: left;">Activities</th>
-                  <th class="col-md-1" style="padding-left: 0px;">
-                    <button style="margin-left:1px;background: white;" type="button" name="addRole" class="btn btn-primary btn-circle btn-sm" onclick="addActivity(1)">
-                      <i class="fas fa-plus" style="color: #1dbf1d"></i>
-                    </button>
-                  </th>
-                </tr>
-              </thead>
-              <tbody id="activity-1">
+            <div id="item-3-1">
+              <input id="year-total-1" type="hidden" name="year-total[]" value="0">
+              <input id="activity-total-1" type="hidden" name="activity-total[]" value="0">
+              <table class="table header-border table-responsive-sm">
+                <thead>
+                  <tr>
+                    <th class="col-md-11" style="text-align: left; font-size: 15px;">Year</th>
+                    <th class="col-md-1" style="padding-left: 0px;">
+                      <button style="margin-left:1px;background: white;" type="button" name="addRole" class="btn btn-primary btn-circle btn-sm" onclick="addYear(1)">
+                        <i class="fas fa-plus" style="color: #1dbf1d"></i>
+                      </button>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody id="year-1">
+                  
+                </tbody>
+              </table>
+             
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th class="col-md-11" style="text-align: left; font-size: 15px;">Activities</th>
+                    <th class="col-md-1" style="padding-left: 0px;">
+                      <button style="margin-left:1px;background: white;" type="button" name="addRole" class="btn btn-primary btn-circle btn-sm" onclick="addActivity(1)">
+                        <i class="fas fa-plus" style="color: #1dbf1d"></i>
+                      </button>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody id="activity-1">
 
-              </tbody>
-            </table>
-          </div
-          >
+                </tbody>
+              </table>
+            </div>
+          </div>
           <div class="text-right mt-4">
           <button type="button" class="btn btn-secondary" id="prevStep3">Previous</button>
           <button type="button" class="btn btn-primary" id="nextStep3">Next</button>
@@ -344,7 +347,7 @@
         </div>
             </div>
             <div id="step5" style="display: none;">
-              <div class="input-group contacts-search mb-4" style="display: flex; justify-content: space-between;">
+              <div class="input-group contacts-search mb-2" style="display: flex; justify-content: space-between;">
             <label>Communication Plan</label>
             <!-- <button style="margin-right: 30px;" type="button" onclick="addRoles()" class="btn btn-primary shadow btn-circle btn-sm">
               <i class="fas fa-plus"></i>
@@ -358,7 +361,7 @@
                           </div>
                           <thead>
                             <tr>
-                              <th class="col-md-11" style="text-align: left;">Program / Activity / Projects</th>
+                              <th class="col-md-11" style="text-align: left; font-size: 15px;">Program / Activity / Projects</th>
                               <th class="col-md-1" style="padding-left: 0px;">
                                 <button id="program-activity-projects" style="margin-left:1px;background: white;" type="button" name="addRole" class="btn btn-primary btn-circle btn-sm">
                                   <i class="fas fa-plus" style="color: #1dbf1d"></i>
@@ -374,7 +377,7 @@
                         <table class="table">
                           <thead>
                             <tr>
-                              <th class="col-md-11" style="text-align: left;">Strategy/Medium</th>
+                              <th class="col-md-11" style="text-align: left; font-size: 15px;">Strategy/Medium</th>
                               <th class="col-md-1" style="padding-left: 0px;">
                                 <button id="strategy-medium" style="margin-left:1px;background: white;" type="button" name="addRole" class="btn btn-primary btn-circle btn-sm">
                                   <i class="fas fa-plus" style="color: #1dbf1d"></i>
@@ -393,7 +396,7 @@
                           </div>
                           <thead>
                             <tr>
-                              <th class="col-md-11" style="text-align: left;">Target Audience</th>
+                              <th class="col-md-11" style="text-align: left; font-size: 15px;">Target Audience</th>
                               <th class="col-md-1" style="padding-left: 0px;">
                                 <button id="target-audience" style="margin-left:1px;background: white;" type="button" name="addRole" class="btn btn-primary btn-circle btn-sm">
                                   <i class="fas fa-plus" style="color: #1dbf1d"></i>
@@ -412,7 +415,7 @@
                           </div>
                           <thead>
                             <tr>
-                              <th class="col-md-11" style="text-align: left;">Timing/Frequency</th>
+                              <th class="col-md-11" style="text-align: left; font-size: 15px;">Timing/Frequency</th>
                               <th class="col-md-1" style="padding-left: 0px;">
                                 <button id="timing-frequency" style="margin-left:1px;background: white;" type="button" name="addRole" class="btn btn-primary btn-circle btn-sm">
                                   <i class="fas fa-plus" style="color: #1dbf1d"></i>
@@ -431,7 +434,7 @@
                           </div>
                           <thead>
                             <tr>
-                              <th class="col-md-11" style="text-align: left;">Outcomes</th>
+                              <th class="col-md-11" style="text-align: left; font-size: 15px;">Outcomes</th>
                               <th class="col-md-1" style="padding-left: 0px;">
                                 <button id="outcomes" style="margin-left:1px;background: white;" type="button" name="addRole" class="btn btn-primary btn-circle btn-sm">
                                   <i class="fas fa-plus" style="color: #1dbf1d"></i>
@@ -507,6 +510,15 @@
     <script src="js/demo/chart-area-demo.js"></script>
     <script src="js/demo/chart-pie-demo.js"></script>
     <script src="js/linkages_form.js"></script>
+    <script>
+  CKEDITOR.replace( 'editor' );
+  CKEDITOR.replace( 'editor1' );
+  CKEDITOR.replace( 'editor2' );
+  CKEDITOR.replace( 'editor3' );
+  CKEDITOR.replace( 'editor4' );
+  CKEDITOR.replace( 'editor5' );
+  CKEDITOR.replace( 'editor6' );
+  </script>
   </body>
 <script>
     document.addEventListener("DOMContentLoaded", function() {

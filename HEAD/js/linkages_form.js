@@ -1,4 +1,13 @@
 var item1 = 1;
+var item2 = 1;
+var item3 = 1;
+var item4 = 1;
+var item5 = 1;
+var item6 = 1;
+var item7 = 1;
+var item8 = 1;
+var item9 = 1;
+var item10 = 1;
 var implementation = 1;
 
 document.getElementById("add-button-1").addEventListener("click", function() {
@@ -9,6 +18,8 @@ document.getElementById("add-button-1").addEventListener("click", function() {
 	var tableData3 = document.createElement("td");
 	var input1 = document.createElement("input");
 	var input2 = document.createElement("input");
+	var button1 = document.createElement("button");
+	var buttonIcon1 = document.createElement("i");
 
 	input1.setAttribute("class", "form-control");
 	input2.setAttribute("class", "form-control");
@@ -22,15 +33,32 @@ document.getElementById("add-button-1").addEventListener("click", function() {
 	input1.setAttribute("required", "");
 	input2.setAttribute("required", "");
 
+	button1.setAttribute("type", "button");
+	button1.setAttribute("class", "btn btn-danger shadow btn-circle btn-sm");
+	button1.setAttribute("onclick", `removeItem1(${item1})`);
+
+	buttonIcon1.setAttribute("class", "fas fa-trash");
+
+	button1.appendChild(buttonIcon1);
+
 	tableData1.appendChild(input1);
 	tableData2.appendChild(input2);
+	tableData3.appendChild(button1);
 
 	tableRow.appendChild(tableData1);
 	tableRow.appendChild(tableData2);
 	tableRow.appendChild(tableData3);
 
+	tableRow.setAttribute("id", `item-1-${item1}`);
+
+	item1++;
+
 	area.appendChild(tableRow);
 });
+
+function removeItem1(e) {
+	document.getElementById(`item-1-${e}`).remove();
+}
 
 document.getElementById("add-button-2").addEventListener("click", function() {
 	var area = document.getElementById("area-2");
@@ -38,22 +66,42 @@ document.getElementById("add-button-2").addEventListener("click", function() {
 	var tableData1 = document.createElement("td");
 	var tableData2 = document.createElement("td");
 	var input1 = document.createElement("input");
+	var button1 = document.createElement("button");
+	var buttonIcon1 = document.createElement("i");
 
 	input1.setAttribute("class", "form-control");
 	input1.setAttribute("type", "text");
 	input1.setAttribute("name", "resources[]");
 	input1.setAttribute("required", "");
 
+	button1.setAttribute("type", "button");
+	button1.setAttribute("class", "btn btn-danger shadow btn-circle btn-sm");
+	button1.setAttribute("onclick", `removeItem2(${item1})`);
+
+	buttonIcon1.setAttribute("class", "fas fa-trash");
+
+	button1.appendChild(buttonIcon1);
+
 	tableData1.appendChild(input1);
+	tableData2.appendChild(button1);
 
 	tableRow.appendChild(tableData1);
 	tableRow.appendChild(tableData2);
 
+	tableRow.setAttribute("id", `item-2-${item1}`);
+
+	item1++;
+
 	area.appendChild(tableRow);
 });
 
+function removeItem2(e) {
+	document.getElementById(`item-2-${e}`).remove();
+}
+
 document.getElementById("add-button-3").addEventListener("click", function() {
 	var area = document.getElementById("area-3");
+	var div = document.createElement("div");
 	var input1 = document.createElement("input");
 	var input2 = document.createElement("input");
 	var table1 = document.createElement("table");
@@ -153,11 +201,22 @@ document.getElementById("add-button-3").addEventListener("click", function() {
 	input1.setAttribute("name", "year-total[]");
 	input2.setAttribute("name", "activity-total[]");
 
-	area.appendChild(input1);
-	area.appendChild(input2);
-	area.appendChild(table1);
-	area.appendChild(table2);
+	div.appendChild(input1);
+	div.appendChild(input2);
+	div.appendChild(table1);
+	div.appendChild(table2);
+
+	item3++;
+
+	div.setAttribute("id", `item-3-${item3}`);
+
+	area.appendChild(div);
 });
+
+function removeItem3() {
+	document.getElementById(`item-3-${item3}`).remove();
+	item3--;
+}
 
 function addYear(e) {
 	document.getElementById(`year-total-${e}`).value = parseInt(document.getElementById(`year-total-${e}`).value) + 1;
@@ -167,18 +226,38 @@ function addYear(e) {
 	var tableData1 = document.createElement("td");
 	var tableData2 = document.createElement("td");
 	var input1 = document.createElement("input");
+	var button1 = document.createElement("button");
+	var buttonIcon1 = document.createElement("i");
 
 	input1.setAttribute("class", "form-control");
 	input1.setAttribute("type", "text");
 	input1.setAttribute("name", "year[]");
 	input1.setAttribute("required", "");
 
+	button1.setAttribute("type", "button");
+	button1.setAttribute("class", "btn btn-danger shadow btn-circle btn-sm");
+	button1.setAttribute("onclick", `removeItem4(${item4}, ${e})`);
+
+	buttonIcon1.setAttribute("class", "fas fa-trash");
+
+	button1.appendChild(buttonIcon1);
+
 	tableData1.appendChild(input1);
+	tableData2.appendChild(button1);
 
 	row.appendChild(tableData1);
 	row.appendChild(tableData2);
 
+	row.setAttribute("id", `item-4-${item4}`);
+
+	item4++;
+
 	body.appendChild(row);
+}
+
+function removeItem4(e, r) {
+	document.getElementById(`year-total-${r}`).value = parseInt(document.getElementById(`year-total-${r}`).value) - 1;
+	document.getElementById(`item-4-${e}`).remove();
 }
 
 function addActivity(e) {
@@ -189,18 +268,38 @@ function addActivity(e) {
 	var tableData1 = document.createElement("td");
 	var tableData2 = document.createElement("td");
 	var input1 = document.createElement("input");
+	var button1 = document.createElement("button");
+	var buttonIcon1 = document.createElement("i");
 
 	input1.setAttribute("class", "form-control");
 	input1.setAttribute("type", "text");
 	input1.setAttribute("name", "activity[]");
 	input1.setAttribute("required", "");
 
+	button1.setAttribute("type", "button");
+	button1.setAttribute("class", "btn btn-danger shadow btn-circle btn-sm");
+	button1.setAttribute("onclick", `removeItem5(${item5}, ${e})`);
+
+	buttonIcon1.setAttribute("class", "fas fa-trash");
+
+	button1.appendChild(buttonIcon1);
+
 	tableData1.appendChild(input1);
+	tableData2.appendChild(button1);
 
 	row.appendChild(tableData1);
 	row.appendChild(tableData2);
 
+	row.setAttribute("id", `item-5-${item5}`);
+
+	item5++;
+
 	body.appendChild(row);
+}
+
+function removeItem5(e, r) {
+	document.getElementById(`activity-total-${r}`).value = parseInt(document.getElementById(`activity-total-${r}`).value) - 1;
+	document.getElementById(`item-5-${e}`).remove();
 }
 
 document.getElementById("program-activity-projects").addEventListener("click", function() {
@@ -209,19 +308,38 @@ document.getElementById("program-activity-projects").addEventListener("click", f
 	var tableData1 = document.createElement("td");
 	var tableData2 = document.createElement("td");
 	var input1 = document.createElement("input");
+	var button1 = document.createElement("button");
+	var buttonIcon1 = document.createElement("i");
 
 	input1.setAttribute("class", "form-control");
 	input1.setAttribute("type", "text");
 	input1.setAttribute("name", "program-activity-projects[]");
 	input1.setAttribute("required", "");
 
+	button1.setAttribute("type", "button");
+	button1.setAttribute("class", "btn btn-danger shadow btn-circle btn-sm");
+	button1.setAttribute("onclick", `removeItem6(${item6})`);
+
+	buttonIcon1.setAttribute("class", "fas fa-trash");
+
+	button1.appendChild(buttonIcon1);
+
 	tableData1.appendChild(input1);
+	tableData2.appendChild(button1);
 
 	row.appendChild(tableData1);
 	row.appendChild(tableData2);
 
+	row.setAttribute("id", `item-6-${item6}`);
+
+	item6++;
+
 	body.appendChild(row);
 });
+
+function removeItem6(e) {
+	document.getElementById(`item-6-${e}`).remove();
+}
 
 document.getElementById("strategy-medium").addEventListener("click", function() {
 	var body = document.getElementById("strategy-medium-body");
@@ -229,19 +347,38 @@ document.getElementById("strategy-medium").addEventListener("click", function() 
 	var tableData1 = document.createElement("td");
 	var tableData2 = document.createElement("td");
 	var input1 = document.createElement("input");
+	var button1 = document.createElement("button");
+	var buttonIcon1 = document.createElement("i");
 
 	input1.setAttribute("class", "form-control");
 	input1.setAttribute("type", "text");
 	input1.setAttribute("name", "strategy-medium[]");
 	input1.setAttribute("required", "");
 
+	button1.setAttribute("type", "button");
+	button1.setAttribute("class", "btn btn-danger shadow btn-circle btn-sm");
+	button1.setAttribute("onclick", `removeItem7(${item7})`);
+
+	buttonIcon1.setAttribute("class", "fas fa-trash");
+
+	button1.appendChild(buttonIcon1);
+
 	tableData1.appendChild(input1);
+	tableData2.appendChild(button1);
 
 	row.appendChild(tableData1);
 	row.appendChild(tableData2);
 
+	row.setAttribute("id", `item-7-${item7}`);
+
+	item7++;
+
 	body.appendChild(row);
 });
+
+function removeItem7(e) {
+	document.getElementById(`item-7-${e}`).remove();
+}
 
 document.getElementById("target-audience").addEventListener("click", function() {
 	var body = document.getElementById("target-audience-body");
@@ -249,19 +386,38 @@ document.getElementById("target-audience").addEventListener("click", function() 
 	var tableData1 = document.createElement("td");
 	var tableData2 = document.createElement("td");
 	var input1 = document.createElement("input");
+	var button1 = document.createElement("button");
+	var buttonIcon1 = document.createElement("i");
 
 	input1.setAttribute("class", "form-control");
 	input1.setAttribute("type", "text");
 	input1.setAttribute("name", "target-audience[]");
 	input1.setAttribute("required", "");
 
+	button1.setAttribute("type", "button");
+	button1.setAttribute("class", "btn btn-danger shadow btn-circle btn-sm");
+	button1.setAttribute("onclick", `removeItem8(${item8})`);
+
+	buttonIcon1.setAttribute("class", "fas fa-trash");
+
+	button1.appendChild(buttonIcon1);
+
 	tableData1.appendChild(input1);
+	tableData2.appendChild(button1);
 
 	row.appendChild(tableData1);
 	row.appendChild(tableData2);
 
+	row.setAttribute("id", `item-8-${item8}`);
+
+	item8++;
+
 	body.appendChild(row);
 });
+
+function removeItem8(e) {
+	document.getElementById(`item-8-${e}`).remove();
+}
 
 document.getElementById("timing-frequency").addEventListener("click", function() {
 	var body = document.getElementById("timing-frequency-body");
@@ -269,19 +425,39 @@ document.getElementById("timing-frequency").addEventListener("click", function()
 	var tableData1 = document.createElement("td");
 	var tableData2 = document.createElement("td");
 	var input1 = document.createElement("input");
+	var button1 = document.createElement("button");
+	var buttonIcon1 = document.createElement("i");
 
 	input1.setAttribute("class", "form-control");
 	input1.setAttribute("type", "text");
 	input1.setAttribute("name", "timing-frequency[]");
 	input1.setAttribute("required", "");
 
+	button1.setAttribute("type", "button");
+	button1.setAttribute("class", "btn btn-danger shadow btn-circle btn-sm");
+	button1.setAttribute("onclick", `removeItem9(${item9})`);
+
+	buttonIcon1.setAttribute("class", "fas fa-trash");
+
+	button1.appendChild(buttonIcon1);
+
 	tableData1.appendChild(input1);
+	tableData2.appendChild(button1);
 
 	row.appendChild(tableData1);
 	row.appendChild(tableData2);
 
+	row.setAttribute("id", `item-9-${item9}`);
+
+	item9++;
+
 	body.appendChild(row);
 });
+
+function removeItem9(e) {
+	document.getElementById(`item-9-${e}`).remove();
+}
+
 
 document.getElementById("outcomes").addEventListener("click", function() {
 	var body = document.getElementById("outcomes-body");
@@ -289,16 +465,35 @@ document.getElementById("outcomes").addEventListener("click", function() {
 	var tableData1 = document.createElement("td");
 	var tableData2 = document.createElement("td");
 	var input1 = document.createElement("input");
+	var button1 = document.createElement("button");
+	var buttonIcon1 = document.createElement("i");
 
 	input1.setAttribute("class", "form-control");
 	input1.setAttribute("type", "text");
 	input1.setAttribute("name", "outcomes[]");
 	input1.setAttribute("required", "");
 
+	button1.setAttribute("type", "button");
+	button1.setAttribute("class", "btn btn-danger shadow btn-circle btn-sm");
+	button1.setAttribute("onclick", `removeItem10(${item10})`);
+
+	buttonIcon1.setAttribute("class", "fas fa-trash");
+
+	button1.appendChild(buttonIcon1);
+
 	tableData1.appendChild(input1);
+	tableData2.appendChild(button1);
 
 	row.appendChild(tableData1);
 	row.appendChild(tableData2);
 
+	row.setAttribute("id", `item-10-${item10}`);
+
+	item10++;
+
 	body.appendChild(row);
 });
+
+function removeItem10(e) {
+	document.getElementById(`item-10-${e}`).remove();
+}

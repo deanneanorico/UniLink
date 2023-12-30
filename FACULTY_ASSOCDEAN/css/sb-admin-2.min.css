@@ -1728,10 +1728,10 @@
     width: 100%;
     height: calc(1.5em + 0.75rem + 2px);
     padding: 0.375rem 0.75rem;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     font-weight: 400;
     line-height: 1.5;
-    color: #6e707e;
+    color: #000000;
     background-color: #fff;
     background-clip: padding-box;
     border: 1px solid #d1d3e2;
@@ -2236,8 +2236,8 @@
   }
   .btn-primary {
     color: #fff;
-    background-color: #008000;
-    border-color: #008000;
+    background-color: #32CD32;
+    border-color: #32CD32;
   }
   .btn-primary:hover {
     color: #fff;
@@ -9943,12 +9943,12 @@
   }
   form.user .form-control-user {
     font-size: 0.8rem;
-    border-radius: 10rem;
+    border-radius: 1rem;
     padding: 1.5rem 1rem;
   }
   form.user .btn-user {
     font-size: 0.8rem;
-    border-radius: 10rem;
+    border-radius: 1rem;
     padding: 0.75rem 1rem;
   }
   .btn-google {
@@ -10333,27 +10333,22 @@
   .progress_img {
     transition: 0.5s ease-in-out;
   }
-  .folder {
-      width: 115px;
-      height: 130px;
-      text-align: center;
-      padding: 10px;
-      margin: 10px;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    .context-menu {
-    display: none;
-    position: absolute;
-    background-color: #fff;
-    border: 0px solid #ccc;
-    z-index: 1000;
+
+.context-menu {
+display: none;
+position: absolute;
+background-color: #fff;
+border: 1px solid #ccc;
+box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+z-index: 1000;
 }
+
 .context-menu ul {
     list-style: none;
     padding: 0;
     margin: 0;
 }
+
 .context-menu li {
     padding: 8px 12px;
     cursor: pointer;
@@ -10361,7 +10356,5 @@
 
 .context-menu li:hover {
     background-color: #f0f0f0;
-    border-radius: 1.5rem;
-
 }
   
