@@ -78,10 +78,18 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="status.php">
-            <i class="bi bi-speedometer"></i>
-            <span>Status</span>
-          </a>
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                    aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="bi bi-speedometer"></i>
+                    <span>Status</span>
+                </a>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="activities.php">Activity</a>
+                        <a class="collapse-item" href="linkages.php">Linkages</a>
+                        <a class="collapse-item" href="list_partner.php">Partner List</a>
+                    </div>
+                </div>
         </li>
         <li class="nav-item active">
           <a class="nav-link" href="docu_repo.php">

@@ -66,9 +66,22 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="linkages.php">
-            <i class="bi bi-bullseye"></i>
-            <span>Linkages Proposal</span>
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                    aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="bi bi-bullseye"></i>
+                    <span>Linkages</span>
+                </a>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="linkages.php">Proposal</a>
+                        <a class="collapse-item" href="list_partner.php">List</a>
+                    </div>
+                </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="activities.php">
+            <i class="bi bi-activity"></i>
+            <span>Activities</span>
           </a>
         </li>
         <li class="nav-item active">

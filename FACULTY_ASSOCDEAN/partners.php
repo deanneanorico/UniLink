@@ -6,7 +6,6 @@
   $sql = "SELECT * FROM `users` WHERE `id` = '$id'";
   $result = $conn->query($sql);
   $userRow = $result->fetch_assoc();
-                                  
   if(!isset($_SESSION['id'])) {
     header("location: ../");
     exit();
@@ -37,17 +36,38 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
-    <style>
-    .card {
-        padding: 20px; /* Adjust the value as needed */
+        <style>
+    .custom-text-black {
+    color: black;
+    font-size: 12;
     }
-    .tab-content {
-        padding: 10px; /* Adjust the value as needed */
+    .announcement-header {
+    text-align: left;
+    margin-bottom: 10px;
     }
-    .btn {
-        margin-top: 10px; /* Adjust the value as needed */
+    .announcement-content {
+        text-align: center;
+        margin-bottom: 20px;
     }
-</style>
+    .announcement-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+    }
+    .user-info {
+        display: flex;
+        align-items: center;
+    }
+    .user-info img {
+        width: 30px; /* Adjust the size of the profile picture */
+        height: 30px;
+        border-radius: 50%; /* Make it circular */
+        margin-right: 10px;
+    }
+    .date {
+        text-align: right;
+    }
+    </style>
 </head>
 <body id="page-top">
     <!-- Page Wrapper -->
@@ -76,20 +96,18 @@
                 <a class="nav-link" href="ui-announcement.php">
                     <i class="fas fa-fw fa-bullhorn"></i>
                     <span>Announcements</span></a>
+                </li>
+            <li class="nav-item">
+              <a class="nav-link" href="docu_repo.php">
+                <i class="bi bi-archive"></i>
+                <span>Archive</span>
+              </a>
             </li>
-        <li class="nav-item">
-          <a class="nav-link" href="docu_repo.php">
-            <i class="bi bi-archive"></i>
-            <span>Archive</span>
-          </a>
-        </li> 
-        <li class="nav-item">
+            <li class="nav-item active">
             <a class="nav-link" href="partners.php">
                 <i class="bi bi-card-list"></i>
                 <span>Linkages</span></a>
         </li>
-            <!-- Heading -->
-            <!-- Nav Item - Pages Collapse Menu -->
             <!-- Divider -->
             <hr class="sidebar-divider">
             <!-- Sidebar Toggler (Sidebar) -->
@@ -137,10 +155,10 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
-                                <img class="img-profile rounded-circle"
-                                    src="imgs/<?php if($userRow['profile_pic'] == '') {echo "BSU.png";} else {echo $userRow['profile_pic'];}?>">
-                            </a>
+                  <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?=$userRow['first_name']." ".$userRow['last_name']?></span>
+                      <img class="img-profile rounded-circle"
+                          src="../imgs/<?php if($userRow['profile_pic'] == '') {echo "BSU.png";} else {echo $userRow['profile_pic'];}?>">
+                        </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
@@ -160,23 +178,43 @@
                 <!-- End of Topbar -->
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-                        <div class="card text-center">
-                            <img src="imgs/<?php if($userRow['profile_pic'] == '') {echo "BSU.png";} else {echo $userRow['profile_pic'];}?>" class="card-img-top mx-auto" style="max-width: 200px;" alt="Profile Image">
-                            <div class="tab-content mt-3">
-                                    <div class="tab-pane fade show active" id="content1">
-                          <span class="text-black-600 large"><?=$userRow['title']." ".$userRow['first_name']." ".$userRow['last_name']?></span>
-                          <div></div>
-                          <span class="text-black-600 large"><?=$userRow['privelege']?></span>
-                            </div>
-                            <div></div>
-                                <a class="btn btn-primary rounded-fill bi bi-pencil-square" href="ui_edit_profile.php" role="button">
-                                Edit Profile
-                            </a>
-                            </div>
-                        </div>
-                        </div>
-                    </div>
+  <div class="d-flex justify-content-end align-items-center mb-4">
+    <!-- Filter button with icon and label -->
+    <div class="modal fade" id="filterModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <!-- <h5 class="modal-title" id="exampleModalLabel">Filter Options</h5> -->
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="selectOption">Filter by:</label>
+              <select id="selectOption" class="form-control">
+                <option value="option1">Option 1</option>
+                <option value="option2">Option 2</option>
+                <option value="option3">Option 3</option>
+              </select>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+            <button class="btn btn-primary" onclick="applyFilter()">Filter</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Button to trigger the modal -->
+    <button class="btn btn-primary rounded-fill" data-toggle="modal" data-target="#filterModal">
+      <i class="fas fa-filter"></i> Filter
+    </button>
+  </div>
+</div>
                 <!-- /.container-fluid -->
+            </div>
             <!-- End of Main Content -->
             <!-- Footer -->
             <footer class="sticky-footer bg-white">
@@ -226,5 +264,12 @@
     <!-- Page level custom scripts -->
     <script src="js/demo/chart-area-demo.js"></script>
     <script src="js/demo/chart-pie-demo.js"></script>
+        <script>
+  function applyFilter() {
+    const selectedOption = document.getElementById('selectOption').value;
+    // alert(`Filter Applied: ${selectedOption}`);
+    // Add your logic to perform filtering or other actions here
+  }
+</script>
 </body>
 </html>

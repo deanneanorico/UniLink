@@ -72,6 +72,11 @@
             <span>Archive</span>
           </a>
         </li>  
+        <li class="nav-item">
+            <a class="nav-link" href="partners.php">
+                <i class="bi bi-card-list"></i>
+                <span>Linkages</span></a>
+        </li>
             <!-- Divider -->
             <hr class="sidebar-divider">
             <!-- Sidebar Toggler (Sidebar) -->
@@ -145,9 +150,36 @@
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-                        <a class="btn btn-primary rounded-fill mr-2" href="#" role="button" data-toggle="modal" data-target="#filterModal">
-                                <i class="fas fa-filter"></i> Filter
-                            </a>
+                        <div class="modal fade" id="filterModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <!-- <h5 class="modal-title" id="exampleModalLabel">Filter Options</h5> -->
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">×</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="form-group">
+                      <label for="selectOption">Filter by:</label>
+                      <select id="selectOption" class="form-control">
+                        <option value="option1">Option 1</option>
+                        <option value="option2">Option 2</option>
+                        <option value="option3">Option 3</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <button class="btn btn-primary" onclick="applyFilter()">Filter</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Button to trigger the modal -->
+            <button class="btn btn-primary rounded-fill mr-2" data-toggle="modal" data-target="#filterModal">
+             <i class="fas fa-filter"></i> Filter
+            </button>
                         </div>
                     <!-- Content Row -->
                     <div class="row">

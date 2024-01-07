@@ -44,6 +44,7 @@
     <!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css"> -->
     <!-- <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script> -->
     <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+<script src="https://cdn.ckeditor.com/ckeditor5/40.2.0/classic/ckeditor.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         $(document).ready(function() {
@@ -52,6 +53,12 @@
     </script>
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <style type="text/css">
+        .ck-editor__editable_inline
+        {
+            height: 300px;
+        }
+    </style>
 </head>
 <body id="page-top">
     <!-- Page Wrapper -->
@@ -155,91 +162,15 @@
                 </nav>
                 <!-- End of Topbar -->
                 <div class="container-fluid">
-                    <div class="d-flex justify-content-between align-items-center mb-4">
-                        <h3 class="h3 mb-0 text-gray-800">Activity Management</h3>
-                        <div class="d-flex">
-                            <a class="btn btn-primary rounded-fill" href="ui-forms.php" role="button">
-                                <i class="fas fa-plus"></i> Create Activity
-                            </a>
-                        </div>
+                    <form>
+                        <div>
+                        <textarea id="editor" name="description" rows="8"></textarea>
                     </div>
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="table">
-                             <table id="activityTable" style="width: 100%;" class="display" data-ordering="true" data-paging="true" data-searching="true">
-                                <thead style='text-align: center;'>
-                                    <tr>
-                                        <th >No.</th>
-                                        <th style="width: 20%">Activity Title</th>
-                                        <!-- <th>Partner</th> -->
-                                        <th style="width: 22%;">Partner Name</th>
-                                        <th style="width: 14%">Duration</th>
-                                        <th>Status</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="load-table">
-                                    <?php
-                                    $college = $_SESSION['collegeName'];
-                                    $sql = "SELECT * FROM `activityform` WHERE `college` = '$college'";
-                                    $result = $conn->query($sql);
 
-                                    if ($result->num_rows > 0) {
-                                        // Output data of each row
-                                        $i = 1;
-                                        while ($row = $result->fetch_assoc()) {
-                                            // Calculate the status based on conditions
-                                            $status = '';
-                                            $start_date = strtotime($row['start_date']);
-                                            $end_date = strtotime($row['end_date']);
-                                            $today = strtotime(date('Y-m-d'));
-
-                                            if ($start_date > $today) {
-                                                $status = 'For Implementation';
-                                                $textColor = '#d7d0d0'; // Set text color for 'For Implementation'
-                                            } elseif ($start_date <= $today && $end_date > $today) {
-                                                $status = 'Ongoing';
-                                                $textColor = 'orange'; // Set text color for 'Ongoing'
-                                            } elseif ($end_date <= $today) {
-                                                $status = 'Implemented';
-                                                $textColor = '#228B22'; // Set text color for 'Implemented'
-                                            }
-                                            echo "<tr>";
-                                            echo "<td style='text-align: center;'>" . $i . "</td>";
-                                            echo "<td style='text-align: center;'>" . $row["activity_title"] . "</td>";
-                                            echo "<td style='text-align: center;'>" . $row["partner"] . "</td>";
-                                            echo "<td style='text-align: center;'>" . date("M. d, Y", $start_date) . " - " . date("M. d, Y", $end_date) . " </td>";
-                                            echo '<td style="text-align: center;"><div style="background-color: '.$textColor.'; color: #000000; padding: 5px; border-radius: 45px;">' . $status . '</div></td>';
-                                            if($status == "Implemented") {
-                                                echo "
-                                                    <td style='text-align: center;'>
-                                                        <a href='ui-formsEdit.php?id=" . $row["id"] . "'>
-                                                            <span class='fas fa-edit text-secondary' title='Edit'></span>
-                                                        </a>
-                                                        <a href='pdf.php?id=". $row["id"]."' target='_blank' class='fas fa-file-download text-info' title='Activity Proposal'></a>
-                                                        <a href='report.php?id=" . $row['id'] . "' class='fas fa-clipboard text-success' title='Narrative Report'></a>
-                                                    </td>
-                                                ";
-                                            } else {
-                                                echo "<td style='text-align: center;'>
-                                                    <a href='ui-formsEdit.php?id=" . $row["id"] . "'>
-                                                        <span class='fas fa-edit text-secondary'></span>
-                                                    </a>
-                                                    <a onclick='confirmDelete(`".$row['id']."`)'><span class='fas fa-trash text-danger'></span></a>
-                                                    <a href='pdf.php?id=". $row["id"]."' target='_blank' class='fas fa-file-download text-info'></a>
-                                                </td>";
-                                            }
-                                            echo "</tr>";
-                                            $i++;
-                                        }
-                                    } else {
-                                        echo "No data found";
-                                    }
-                                    ?>
-                                </tbody>
-                            </table>
-                        </div>
+                    <div>
+                        <input type="submit" value="Add data">
                     </div>
+                    </form>
                     </div>
                 </div>
             </div>
@@ -295,40 +226,17 @@
     include 'footer.php';
 ?>
     </body>
-    <script type="text/javascript">
-            </script>
-
 <script>
-
-  function confirmDelete(e) {
-    Swal.fire({
-      title: 'Are you sure?',
-      text: 'You will not be able to recover this data!',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#d33',
-      cancelButtonColor: '#3085d6',
-      confirmButtonText: 'Yes, delete it!'
-    }).then((result) => {
-      if (result.isConfirmed) {
-        // Handle the delete action here
-        // You may want to make an AJAX request to delete the data on the server
-        deleteActivity = new XMLHttpRequest();
-        deleteActivity.open("GET", "delete.activity.php?id=" + e);
-        deleteActivity.send();
-        deleteActivity.onload = function () {
-            Swal.fire(
-              'Deleted!',
-              'Your data has been deleted.',
-              'success'
-            ).then((l)=>{
-                location.reload(true);
-            });
-        }
-
-        
-      }
-    });
-  }
+    ClassicEditor
+        .create( document.querySelector( '#editor' ),
+        {
+            ckfinder:
+            {
+                uploadUrl: "{{route('ckeditor.upload',['_token'=>csrf_token()])}}",
+            }
+        } )
+        .catch( error => {
+            console.error( error );
+        } );
 </script>
 </html>

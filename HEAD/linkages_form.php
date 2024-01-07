@@ -79,6 +79,12 @@
           </a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" href="activities.php">
+            <i class="bi bi-activity"></i>
+            <span>Activities</span>
+          </a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="announcement_table.php">
             <i class="bi bi-megaphone"></i>
             <span>Announcements</span>

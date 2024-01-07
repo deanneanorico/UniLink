@@ -77,6 +77,11 @@
               <span>Archive</span>
             </a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="partners.php">
+                <i class="bi bi-card-list"></i>
+                <span>Linkages</span></a>
+        </li>
             <!-- Heading -->
             <!-- Nav Item - Pages Collapse Menu -->
             <!-- Divider -->

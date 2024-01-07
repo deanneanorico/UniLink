@@ -46,7 +46,7 @@
           <img src="../imgs/BSU.png" width="50" height="45">
           <div class="sidebar-brand-text mx-3">UniLink</div>
         </a>
-                <!-- Divider -->
+        <!-- Divider -->
         <hr class="sidebar-divider my-0">
         <!-- Nav Item - Dashboard -->
         <li class="nav-item">
@@ -56,9 +56,22 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="linkages.php">
-            <i class="bi bi-bullseye"></i>
-            <span>Linkages Proposal</span>
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                    aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="bi bi-bullseye"></i>
+                    <span>Linkages</span>
+                </a>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="linkages.php">Proposal</a>
+                        <a class="collapse-item" href="list_partner.php">List</a>
+                    </div>
+                </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="activities.php">
+            <i class="bi bi-activity"></i>
+            <span>Activities</span>
           </a>
         </li>
         <li class="nav-item">
@@ -141,15 +154,41 @@
           <!-- Begin Page Content -->
           <div class="container-fluid">
                     <div class="d-flex justify-content-between align-items-center mb-4">
-                      <div class="d-flex">
-                            <!-- Back button with icon and label -->
-                            <a href="#" class="btn btn" style="color:black;" onclick="goBack()">
-                                <i class="bi bi-arrow-left"></i> Back
-                            </a>
-                        </div>
-                        <h3 class="h3 mb-0 text-gray-800"></h3>
-                        <div class="d-flex">
-                        </div>
+                    <!-- Back button with icon and label -->
+                    <a href="#" class="btn btn" style="color:black;" onclick="goBack()">
+                        <i class="bi bi-arrow-left"></i> Back
+                    </a>
+                    <!-- Filter button with icon and label -->
+                    <div class="modal fade" id="filterModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <!-- <h5 class="modal-title" id="exampleModalLabel">Filter Options</h5> -->
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">×</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="form-group">
+                      <label for="selectOption">Filter by:</label>
+                      <select id="selectOption" class="form-control">
+                        <option value="option1">Option 1</option>
+                        <option value="option2">Option 2</option>
+                        <option value="option3">Option 3</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <button class="btn btn-primary" onclick="applyFilter()">Filter</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Button to trigger the modal -->
+            <button class="btn btn-primary rounded-fill mr-2" data-toggle="modal" data-target="#filterModal">
+             <i class="fas fa-filter"></i> Filter
+            </button>
                     </div>
                 </div>
                 <script>
@@ -187,6 +226,7 @@
           ?>
           
         </div>
+
         <!-- End of Main Content -->
         <!-- Footer -->
         <footer class="sticky-footer bg-white">
@@ -255,5 +295,12 @@
         college.appendChild(option);
       });
     }
+  }
+</script>
+    <script>
+  function applyFilter() {
+    const selectedOption = document.getElementById('selectOption').value;
+    // alert(`Filter Applied: ${selectedOption}`);
+    // Add your logic to perform filtering or other actions here
   }
 </script>

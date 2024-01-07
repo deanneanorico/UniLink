@@ -110,6 +110,11 @@
             <span>Archive</span>
           </a>
         </li> 
+        <li class="nav-item">
+            <a class="nav-link" href="partners.php">
+                <i class="bi bi-card-list"></i>
+                <span>Linkages</span></a>
+        </li>
         <hr class="sidebar-divider">
         <!-- Sidebar Toggler (Sidebar) -->
         <div class="text-center d-none d-md-inline">

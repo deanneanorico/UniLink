@@ -1,6 +1,12 @@
 <?php
   session_start();
+    $id = $_SESSION['id'];
+    include '../db.php';
 
+    $sql = "SELECT * FROM `users` WHERE `id` = '$id'";
+    $result = $conn->query($sql);
+    $row = $result->fetch_assoc();
+    
   if(!isset($_SESSION['id'])) {
     header("location: ../");
     exit();
@@ -21,7 +27,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>UniLink - Head</title>
+    <title>UniLink - VCDEA</title>
     <link rel="shortcut icon" type="image/png" href="../imgs/BSU.png" alt="Logo" />
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -29,23 +35,22 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap4.min.js"></script>
-     <script>
-      $(document).ready(function() {
-         new DataTable('#linkagesTable', {
-            responsive: true
-        });
-      });
-    </script>
-    <style>
-      .custom-text-black {
-        color: black;
-        font-size: 12;
-      }
-    </style>
+      <style>
+    .folder {
+      width: 115px;
+      height: 110px;
+      background-color: #f8f9fa;
+      text-align: center;
+      padding: 10px;
+      margin: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .custom-text-black {
+    color: black;
+    font-size: 12;
+    }
+  </style>
   </head>
   <body id="page-top">
     <!-- Page Wrapper -->
@@ -57,7 +62,7 @@
           <img src="../imgs/BSU.png" width="50" height="45">
           <div class="sidebar-brand-text mx-3">UniLink</div>
         </a>
-        <!-- Divider -->
+                <!-- Divider -->
         <hr class="sidebar-divider my-0">
         <!-- Nav Item - Dashboard -->
         <li class="nav-item">
@@ -66,30 +71,25 @@
             <span>Dashboard</span>
           </a>
         </li>
-        <li class="nav-item active">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="bi bi-bullseye"></i>
-                    <span>Linkages</span>
-                </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="linkages.php">Proposal</a>
-                        <a class="collapse-item" href="list_partner.php">List</a>
-                    </div>
-                </div>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="activities.php">
-            <i class="bi bi-activity"></i>
-            <span>Activities</span>
-          </a>
-        </li>
         <li class="nav-item">
           <a class="nav-link" href="announcement_table.php">
             <i class="bi bi-megaphone"></i>
             <span>Announcements</span>
           </a>
+        </li>
+        <li class="nav-item active">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                    aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="bi bi-speedometer"></i>
+                    <span>Status</span>
+                </a>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="activities.php">Activity</a>
+                        <a class="collapse-item" href="linkages.php">Linkages</a>
+                        <a class="collapse-item" href="list_partner.php">Partner List</a>
+                    </div>
+                </div>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="docu_repo.php">
@@ -139,21 +139,12 @@
               <!-- Nav Item - User Information -->
               <li class="nav-item dropdown no-arrow">
                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <?php
-                      $id = $_SESSION['id'];
-                      include '../db.php';
-
-                      $sql = "SELECT * FROM `users` WHERE `id` = '$id'";
-                      $result = $conn->query($sql);
-                      $row = $result->fetch_assoc();
-                  ?>
-                    <span class="mr-2 d-none d-lg-inline custom-text-black">Head | <?=$row['first_name']." ".$row['last_name']?></span>
+                    <span class="mr-2 d-none d-lg-inline custom-text-black">VCDEA | <?=$row['first_name']." ".$row['last_name']?></span>
                   <img class="img-profile rounded-circle" src="../imgs/<?php if($row['profile_pic'] == '') {echo "#";} else {echo $row['profile_pic'];}?>">
-                </a>
                 </a>
                 <!-- Dropdown - User Information -->
                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                  <a class="dropdown-item" href="ea_profile.php">
+                  <a class="dropdown-item" href="dea_profile.php">
                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Profile </a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
@@ -164,67 +155,11 @@
           </nav>
           <!-- End of Topbar -->
           <!-- Begin Page Content -->
-          <div class="container-fluid">
-                    <div class="d-flex justify-content-between align-items-center mb-4">
-                        <h3 class="h3 mb-0 text-gray-800">Linkages Proposal</h3>
-                        <div class="d-flex">
-                            <a class="btn btn-primary rounded-fill" href="linkages_form.php" role="button">
-                                <i class="fas fa-plus"></i> Create Proposal
-                            </a>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="table">
-                             <table id="linkagesTable" style="width: 100%;" class="display" data-ordering="true" data-paging="true" data-searching="true">
-                                <thead style='text-align: center;'>
-                                    <tr>
-                                        <th >No.</th>
-                                        <th>Title</th>
-                                        <th>Partner</th>
-                                        <th>Status</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                               <tbody>
-                                <?php
-                                    $sql = "SELECT * FROM linkages";
-                                    $result = $conn->query($sql);
-                                    $i = 1;
-                                    while ($linkagesRow = $result->fetch_assoc()) {
-                                ?>
-                                <tr>
-                                    <td class="text-center"><?=$i?></td>
-                                    <td class="text-center"><?=$linkagesRow['title']?></td>
-                                    <td class="text-center"><?=$linkagesRow['category']?></td>
-                                    <td class="text-center"></td>
-                                    <!-- Update the Action column -->
-                                    <td style='text-align: center;'>
-                                        <span class='bi bi-file-earmark-pdf-fill text-info'></span>
-                                        <div class="dropdown">
-                                            <span class='bi bi-three-dots' data-toggle="dropdown"></span>
-                                            <div class="dropdown-menu">
-                                                <a class="dropdown-item" href="#" onclick="updateStatus(<?=$linkagesRow['id']?>, 'for_exploratory')">For Exploratory</a>
-                                                <a class="dropdown-item" href="#" onclick="updateStatus(<?=$linkagesRow['id']?>, 'review_by_partner')">Review by Partner</a>
-                                                <a class="dropdown-item" href="#" onclick="updateStatus(<?=$linkagesRow['id']?>, 'review_by_legal')">Review by Legal</a>
-                                                <a class="dropdown-item" href="#" onclick="updateStatus(<?=$linkagesRow['id']?>, 'for_signing')">For Signing</a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <?php
-                                    $i++;
-                                    }
-                                ?>
-                            </tbody>
-
-                            </table>
-                        </div>
-                    </div>
-                    </div>
-                  </div>
-        </div>
+         <div class="container mt-4">
+        
+      </div>
         <!-- End of Main Content -->
+      </div>
         <!-- Footer -->
         <footer class="sticky-footer bg-white">
           <div class="container my-auto">
@@ -233,10 +168,11 @@
             </div>
           </div>
         </footer>
-      </div>
+      
         <!-- End of Footer -->
-      </div>
+    
       <!-- End of Content Wrapper -->
+
     <!-- End of Page Wrapper -->
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
@@ -260,7 +196,13 @@
         </div>
       </div>
     </div>
-    <!-- Bootstrap core JavaScript-->
+    <!-- Font Awesome Icons (you can include this library if not already included) -->
+    <!-- <script src="https://kit.fontawesome.com/your-font-awesome-kit-code.js" crossorigin="anonymous"></script>
+    Bootstrap JS and Popper.js -->
+<!--     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
+    <!-- Bootstrap core JavaScript--> -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- Core plugin JavaScript-->
@@ -293,22 +235,4 @@
       });
     }
   }
-</script>
-<script>
-    function updateStatus(linkageId, newStatus) {
-        // You can use AJAX to send the data to the server and update the database
-        $.ajax({
-            type: "POST",
-            url: "update_status.php", // Replace with your server-side script
-            data: { id: linkageId, status: newStatus },
-            success: function(response) {
-                // Handle success, you can update the UI or perform other actions
-                alert("Status updated successfully!");
-            },
-            error: function(error) {
-                // Handle error
-                console.error("Error updating status:", error);
-            }
-        });
-    }
 </script>

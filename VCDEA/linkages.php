@@ -58,7 +58,7 @@
           <div class="sidebar-brand-text mx-3">UniLink</div>
         </a>
         <!-- Divider -->
-        <hr class="sidebar-divider my-0">
+       <hr class="sidebar-divider my-0">
         <!-- Nav Item - Dashboard -->
         <li class="nav-item">
           <a class="nav-link" href="index.php">
@@ -66,30 +66,25 @@
             <span>Dashboard</span>
           </a>
         </li>
-        <li class="nav-item active">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="bi bi-bullseye"></i>
-                    <span>Linkages</span>
-                </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="linkages.php">Proposal</a>
-                        <a class="collapse-item" href="list_partner.php">List</a>
-                    </div>
-                </div>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="activities.php">
-            <i class="bi bi-activity"></i>
-            <span>Activities</span>
-          </a>
-        </li>
         <li class="nav-item">
           <a class="nav-link" href="announcement_table.php">
             <i class="bi bi-megaphone"></i>
             <span>Announcements</span>
           </a>
+        </li>
+        <li class="nav-item active">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                    aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="bi bi-speedometer"></i>
+                    <span>Status</span>
+                </a>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="activities.php">Activity</a>
+                        <a class="collapse-item" href="linkages.php">Linkages</a>
+                        <a class="collapse-item" href="list_partner.php">Partner List</a>
+                    </div>
+                </div>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="docu_repo.php">
@@ -147,13 +142,13 @@
                       $result = $conn->query($sql);
                       $row = $result->fetch_assoc();
                   ?>
-                    <span class="mr-2 d-none d-lg-inline custom-text-black">Head | <?=$row['first_name']." ".$row['last_name']?></span>
+                    <span class="mr-2 d-none d-lg-inline custom-text-black">VCDEA | <?=$row['first_name']." ".$row['last_name']?></span>
                   <img class="img-profile rounded-circle" src="../imgs/<?php if($row['profile_pic'] == '') {echo "#";} else {echo $row['profile_pic'];}?>">
                 </a>
                 </a>
                 <!-- Dropdown - User Information -->
                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                  <a class="dropdown-item" href="ea_profile.php">
+                  <a class="dropdown-item" href="dea_profile.php">
                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Profile </a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
@@ -166,12 +161,7 @@
           <!-- Begin Page Content -->
           <div class="container-fluid">
                     <div class="d-flex justify-content-between align-items-center mb-4">
-                        <h3 class="h3 mb-0 text-gray-800">Linkages Proposal</h3>
-                        <div class="d-flex">
-                            <a class="btn btn-primary rounded-fill" href="linkages_form.php" role="button">
-                                <i class="fas fa-plus"></i> Create Proposal
-                            </a>
-                        </div>
+                        <h3 class="h3 mb-0 text-gray-800">Linkages</h3>
                     </div>
                     <div class="card">
                         <div class="card-body">

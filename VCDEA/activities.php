@@ -21,13 +21,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>UniLink - Head</title>
+    <title>UniLink - VCDEA</title>
     <link rel="shortcut icon" type="image/png" href="../imgs/BSU.png" alt="Logo" />
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
-    <!-- Custom styles for this template-->
+ <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
@@ -35,7 +35,7 @@
     <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap4.min.js"></script>
      <script>
       $(document).ready(function() {
-         new DataTable('#linkagesTable', {
+         new DataTable('#activitiesTable', {
             responsive: true
         });
       });
@@ -66,30 +66,25 @@
             <span>Dashboard</span>
           </a>
         </li>
-        <li class="nav-item active">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="bi bi-bullseye"></i>
-                    <span>Linkages</span>
-                </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="linkages.php">Proposal</a>
-                        <a class="collapse-item" href="list_partner.php">List</a>
-                    </div>
-                </div>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="activities.php">
-            <i class="bi bi-activity"></i>
-            <span>Activities</span>
-          </a>
-        </li>
         <li class="nav-item">
           <a class="nav-link" href="announcement_table.php">
             <i class="bi bi-megaphone"></i>
             <span>Announcements</span>
           </a>
+        </li>
+        <li class="nav-item active">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                    aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="bi bi-speedometer"></i>
+                    <span>Status</span>
+                </a>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="activities.php">Activity</a>
+                        <a class="collapse-item" href="linkages.php">Linkages</a>
+                        <a class="collapse-item" href="list_partner.php">Partner List</a>
+                    </div>
+                </div>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="docu_repo.php">
@@ -147,7 +142,7 @@
                       $result = $conn->query($sql);
                       $row = $result->fetch_assoc();
                   ?>
-                    <span class="mr-2 d-none d-lg-inline custom-text-black">Head | <?=$row['first_name']." ".$row['last_name']?></span>
+                    <span class="mr-2 d-none d-lg-inline custom-text-black">VCDEA | <?=$row['first_name']." ".$row['last_name']?></span>
                   <img class="img-profile rounded-circle" src="../imgs/<?php if($row['profile_pic'] == '') {echo "#";} else {echo $row['profile_pic'];}?>">
                 </a>
                 </a>
@@ -166,58 +161,65 @@
           <!-- Begin Page Content -->
           <div class="container-fluid">
                     <div class="d-flex justify-content-between align-items-center mb-4">
-                        <h3 class="h3 mb-0 text-gray-800">Linkages Proposal</h3>
-                        <div class="d-flex">
-                            <a class="btn btn-primary rounded-fill" href="linkages_form.php" role="button">
-                                <i class="fas fa-plus"></i> Create Proposal
-                            </a>
+                        <h3 class="h3 mb-0 text-gray-800">Activities</h3>
+                        <div class="d-flex"> 
                         </div>
                     </div>
                     <div class="card">
                         <div class="card-body">
                             <div class="table">
-                             <table id="linkagesTable" style="width: 100%;" class="display" data-ordering="true" data-paging="true" data-searching="true">
+                             <table id="activitiesTable" style="width: 100%;" class="display" data-ordering="true" data-paging="true" data-searching="true">
                                 <thead style='text-align: center;'>
                                     <tr>
                                         <th >No.</th>
-                                        <th>Title</th>
-                                        <th>Partner</th>
+                                        <th style="width: 20%">Activity Title</th>
+                                        <!-- <th>Partner</th> -->
+                                        <th style="width: 22%;">Partner Name</th>
+                                        <th style="width: 22%;">College</th>
                                         <th>Status</th>
-                                        <th>Action</th>
                                     </tr>
                                 </thead>
-                               <tbody>
-                                <?php
-                                    $sql = "SELECT * FROM linkages";
+                                <tbody id="load-table">
+                                    <?php
+                                    $sql = "SELECT * FROM `activityform`";
+                                    // $sql = "SELECT `college_abrev` FROM `college` WHERE `college` = 'college_abrev'";
                                     $result = $conn->query($sql);
-                                    $i = 1;
-                                    while ($linkagesRow = $result->fetch_assoc()) {
-                                ?>
-                                <tr>
-                                    <td class="text-center"><?=$i?></td>
-                                    <td class="text-center"><?=$linkagesRow['title']?></td>
-                                    <td class="text-center"><?=$linkagesRow['category']?></td>
-                                    <td class="text-center"></td>
-                                    <!-- Update the Action column -->
-                                    <td style='text-align: center;'>
-                                        <span class='bi bi-file-earmark-pdf-fill text-info'></span>
-                                        <div class="dropdown">
-                                            <span class='bi bi-three-dots' data-toggle="dropdown"></span>
-                                            <div class="dropdown-menu">
-                                                <a class="dropdown-item" href="#" onclick="updateStatus(<?=$linkagesRow['id']?>, 'for_exploratory')">For Exploratory</a>
-                                                <a class="dropdown-item" href="#" onclick="updateStatus(<?=$linkagesRow['id']?>, 'review_by_partner')">Review by Partner</a>
-                                                <a class="dropdown-item" href="#" onclick="updateStatus(<?=$linkagesRow['id']?>, 'review_by_legal')">Review by Legal</a>
-                                                <a class="dropdown-item" href="#" onclick="updateStatus(<?=$linkagesRow['id']?>, 'for_signing')">For Signing</a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <?php
-                                    $i++;
-                                    }
-                                ?>
-                            </tbody>
 
+                                    if ($result->num_rows > 0) {
+                                        // Output data of each row
+                                        $i = 1;
+                                        while ($row = $result->fetch_assoc()) {
+                                            // Calculate the status based on conditions
+                                            $status = '';
+                                            $start_date = strtotime($row['start_date']);
+                                            $end_date = strtotime($row['end_date']);
+                                            $today = strtotime(date('Y-m-d'));
+
+                                            if ($start_date > $today) {
+                                                $status = 'For Implementation';
+                                                $textColor = '#d7d0d0'; // Set text color for 'For Implementation'
+                                            } elseif ($start_date <= $today && $end_date > $today) {
+                                                $status = 'Ongoing';
+                                                $textColor = 'orange'; // Set text color for 'Ongoing'
+                                            } elseif ($end_date <= $today) {
+                                                $status = 'Implemented';
+                                                $textColor = '#228B22'; // Set text color for 'Implemented'
+                                            }
+                                            echo "<tr>";
+                                            echo "<td style='text-align: center;'>" . $i . "</td>";
+                                            echo "<td style='text-align: center;'>" . $row["activity_title"] . "</td>";
+                                            echo "<td style='text-align: center;'>" . $row["partner"] . "</td>"; 
+                                            echo "<td style='text-align: center;'>" . $row["college"] . "</td>"; 
+                                            echo '<td style="text-align: center;"><div style="background-color: '.$textColor.'; color: #000000; padding: 5px; border-radius: 45px;">' . $status . '</div></td>';
+                                             
+                                            echo "</tr>";
+                                            $i++;
+                                        }
+                                    } else {
+                                        echo "No data found";
+                                    }
+                                    ?>
+                                </tbody>
                             </table>
                         </div>
                     </div>
@@ -260,55 +262,19 @@
         </div>
       </div>
     </div>
-    <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
-    <!-- Page level plugins -->
-    <script src="vendor/chart.js/Chart.min.js"></script>
-    <!-- Page level custom scripts -->
-    <script src="js/demo/chart-area-demo.js"></script>
-    <script src="js/demo/chart-pie-demo.js"></script>
+        <!-- Bootstrap core JavaScript-->
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <!-- Core plugin JavaScript-->
+        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+        <!-- Custom scripts for all pages-->
+        <script src="js/sb-admin-2.min.js"></script>
+        <!-- Page level plugins -->
+        <script src="vendor/chart.js/Chart.min.js"></script>
+        <!-- Page level custom scripts -->
+        <script src="js/demo/chart-area-demo.js"></script>
+        <script src="js/demo/chart-pie-demo.js"></script>
   </body>
 </html>
-<script>
-  function setDepartment() {
-    var campus = document.getElementById("campus").value;
 
-    var getCollege = new XMLHttpRequest();
-    getCollege.open("GET", "getcampus.php?college=" + campus);
-    getCollege.send();
-    getCollege.onload = function() {
-      var college = document.getElementById("department");
-      college.innerHTML = "";
-      var college_array = JSON.parse(this.responseText);
-      college_array.forEach(function(element) {
-        var option = document.createElement("option");
-        option.value = element;
-        option.innerHTML = element;
-        college.appendChild(option);
-      });
-    }
-  }
-</script>
-<script>
-    function updateStatus(linkageId, newStatus) {
-        // You can use AJAX to send the data to the server and update the database
-        $.ajax({
-            type: "POST",
-            url: "update_status.php", // Replace with your server-side script
-            data: { id: linkageId, status: newStatus },
-            success: function(response) {
-                // Handle success, you can update the UI or perform other actions
-                alert("Status updated successfully!");
-            },
-            error: function(error) {
-                // Handle error
-                console.error("Error updating status:", error);
-            }
-        });
-    }
-</script>
+
