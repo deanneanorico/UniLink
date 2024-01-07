@@ -165,90 +165,78 @@
         <div class="container-fluid">
                     <div class="d-flex justify-content-between align-items-center mb-4">
                         <h3 class="h3 mb-0 text-gray-800">Partner List</h3>
-                        <div class="d-flex">
-                            <a class="btn btn-primary rounded-fill" href="ui-forms.php" role="button">
-                                <i class="fas fa-plus"></i> Partner
-                            </a>
-                        </div>
+                       <div class="d-flex">
+                      <a class="btn btn-primary rounded-fill" data-toggle="modal" data-target="#addpartner">
+                        <i class="fas fa-plus"></i> Partner</a>
+                    </div>
                     </div>
                     <div class="card">
                         <div class="card-body">
-                            <div class="table">
-                             <table id="activityTable" style="width: 100%;" class="display" data-ordering="true" data-paging="true" data-searching="true">
-                                <thead style='text-align: center;'>
-                                    <tr>
-                                        <th >No.</th>
-                                        <th style="width: 20%">Partner Name</th>
-                                        <!-- <th>Partner</th> -->
-                                        <th style="width: 22%;">Category</th>
-                                        <th style="width: 14%">College</th>
-                                        <th>Status</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="load-table">
-                                    <?php
-                                    $college = $_SESSION['collegeName'];
-                                    $sql = "SELECT * FROM `activityform` WHERE `college` = '$college'";
-                                    $result = $conn->query($sql);
-
-                                    if ($result->num_rows > 0) {
-                                        // Output data of each row
-                                        $i = 1;
-                                        while ($row = $result->fetch_assoc()) {
-                                            // Calculate the status based on conditions
-                                            $status = '';
-                                            $start_date = strtotime($row['start_date']);
-                                            $end_date = strtotime($row['end_date']);
-                                            $today = strtotime(date('Y-m-d'));
-
-                                            if ($start_date > $today) {
-                                                $status = 'For Implementation';
-                                                $textColor = '#d7d0d0'; // Set text color for 'For Implementation'
-                                            } elseif ($start_date <= $today && $end_date > $today) {
-                                                $status = 'Ongoing';
-                                                $textColor = 'orange'; // Set text color for 'Ongoing'
-                                            } elseif ($end_date <= $today) {
-                                                $status = 'Implemented';
-                                                $textColor = '#228B22'; // Set text color for 'Implemented'
-                                            }
-                                            echo "<tr>";
-                                            echo "<td style='text-align: center;'>" . $i . "</td>";
-                                            echo "<td style='text-align: center;'>" . $row["activity_title"] . "</td>";
-                                            echo "<td style='text-align: center;'>" . $row["partner"] . "</td>";
-                                            echo "<td style='text-align: center;'>" . date("M. d, Y", $start_date) . " - " . date("M. d, Y", $end_date) . " </td>";
-                                            echo '<td style="text-align: center;"><div style="background-color: '.$textColor.'; color: #000000; padding: 5px; border-radius: 45px;">' . $status . '</div></td>';
-                                            if($status == "Implemented") {
-                                                echo "
-                                                    <td style='text-align: center;'>
-                                                        <a href='ui-formsEdit.php?id=" . $row["id"] . "'>
-                                                            <span class='fas fa-edit text-secondary' title='Edit'></span>
-                                                        </a>
-                                                        <a href='pdf.php?id=". $row["id"]."' target='_blank' class='fas fa-file-download text-info' title='Activity Proposal'></a>
-                                                        <a href='report.php?id=" . $row['id'] . "' class='fas fa-clipboard text-success' title='Narrative Report'></a>
-                                                    </td>
-                                                ";
-                                            } else {
-                                                echo "<td style='text-align: center;'>
-                                                    <a href='ui-formsEdit.php?id=" . $row["id"] . "'>
-                                                        <span class='fas fa-edit text-secondary'></span>
-                                                    </a>
-                                                    <a onclick='confirmDelete(`".$row['id']."`)'><span class='fas fa-trash text-danger'></span></a>
-                                                    <a href='pdf.php?id=". $row["id"]."' target='_blank' class='fas fa-file-download text-info'></a>
-                                                </td>";
-                                            }
-                                            echo "</tr>";
-                                            $i++;
-                                        }
-                                    } else {
-                                        echo "No data found";
-                                    }
-                                    ?>
-                                </tbody>
-                            </table>
-                        </div>
+                            
                     </div>
                     </div>
+                    <div class="modal fade" id="addpartner" tabindex="-1" role="dialog" aria-labelledby="addmodallabel" aria-hidden="true">
+                <!-- Modal content goes here -->
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="addmodallabel">Partner</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <!-- Form Fields -->
+                    <form action="#" method="post">
+                    <!-- Replace "insert_campus.php" with the actual path to your server-side script -->
+                    <div class="modal-body">
+                      <div class="form-group">
+                        <label for="partner">Partner Name</label>
+                        <input type="text" name="partner" class="form-control" placeholder="" required>
+                      </div>
+                      <div class="form-group">
+                        <label for="category">Category</label>
+                        <select class="form-control" name="category" required>
+                          <option value="local">Local</option>
+                          <option value="international">International</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label for="college">College</label>
+                        <select class="form-control" name="college">
+                          <?php
+                            $sql = "SELECT * FROM `college`";
+                            $result = $conn->query($sql);
+                            while($row = $result->fetch_assoc()){
+                          ?>
+                              <option value="<?=$row['collegeID']?>"><?=$row['name']?></option>
+                          <?php    
+                            }
+                          ?>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label for="status">Status</label>
+                        <select class="form-control" name="status" required>
+                          <option value="Successful Partner">Successful Partner</option>
+                          <option value="For Evaluation">For Evaluation</option>
+                          <option value="For Review Legal">For Review Legal</option>
+                          <option value="For Review Partner">For Review Partner</option>
+                          <option value="For Signing MOU/MOA">For Signing MOU/MOA</option>
+                          <option value="For Notary Signing">For Notary Signing</option>
+                          <option value="Inactive">Inactive</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button type="submit" class="btn btn-primary" name="addcollege">Add</button>
+                    </div>
+                  </form>
+
+                    <!-- Form ends -->
+                  </div>
+                </div>
+              </div>
                 </div>
         <!-- End of Main Content -->
       </div>

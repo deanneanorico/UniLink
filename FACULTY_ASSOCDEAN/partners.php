@@ -184,20 +184,31 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <!-- <h5 class="modal-title" id="exampleModalLabel">Filter Options</h5> -->
+            <h5 class="modal-title" id="exampleModalLabel">Filter Options</h5>
             <button class="close" type="button" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">×</span>
             </button>
           </div>
           <div class="modal-body">
             <div class="form-group">
-              <label for="selectOption">Filter by:</label>
-              <select id="selectOption" class="form-control">
-                <option value="option1">Option 1</option>
-                <option value="option2">Option 2</option>
-                <option value="option3">Option 3</option>
-              </select>
-            </div>
+                        <label for="category">Category</label>
+                        <select class="form-control" name="category" required>
+                          <option value="local">Local</option>
+                          <option value="international">International</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label for="status">Status</label>
+                        <select class="form-control" name="status" required>
+                          <option value="Successful Partner">Successful Partner</option>
+                          <option value="For Evaluation">For Evaluation</option>
+                          <option value="For Review Legal">For Review Legal</option>
+                          <option value="For Review Partner">For Review Partner</option>
+                          <option value="For Signing MOU/MOA">For Signing MOU/MOA</option>
+                          <option value="For Notary Signing">For Notary Signing</option>
+                          <option value="Inactive">Inactive</option>
+                        </select>
+                  </div>
           </div>
           <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>

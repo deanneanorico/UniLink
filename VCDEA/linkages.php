@@ -21,7 +21,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>UniLink - Head</title>
+    <title>UniLink - VCDEA</title>
     <link rel="shortcut icon" type="image/png" href="../imgs/BSU.png" alt="Logo" />
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -162,6 +162,44 @@
           <div class="container-fluid">
                     <div class="d-flex justify-content-between align-items-center mb-4">
                         <h3 class="h3 mb-0 text-gray-800">Linkages</h3>
+                        <!-- Filter button with icon and label -->
+                    <div class="modal fade" id="filterModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Filter by:</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">×</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+            <div class="form-group">
+                          <label for="college">College</label>
+                          <select class="form-control" name="college">
+                            <?php
+                              $sql = "SELECT * FROM `college`";
+                              $result = $conn->query($sql);
+                              while($row = $result->fetch_assoc()){
+                            ?>
+                                <option value="<?=$row['collegeID']?>"><?=$row['name']?></option>
+                            <?php    
+                              }
+                            ?>
+                          </select>
+                        </div>
+
+                  </div>
+                  <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <button class="btn btn-primary" onclick="applyFilter()">Filter</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Button to trigger the modal -->
+            <button class="btn btn-primary rounded-fill mr-2" data-toggle="modal" data-target="#filterModal">
+             <i class="fas fa-filter"></i> Filter
+            </button>
                     </div>
                     <div class="card">
                         <div class="card-body">

@@ -199,8 +199,8 @@
                                     <td class="text-center"><?=$linkagesRow['category']?></td>
                                     <td class="text-center"></td>
                                     <!-- Update the Action column -->
-                                    <td style='text-align: center;'>
-                                        <span class='bi bi-file-earmark-pdf-fill text-info'></span>
+                                    <td style='text-align: center; display: flex; justify-content: center;'>
+                                        <a class='bi bi-file-earmark-pdf-fill text-info' href="linkages.pdf.php?id=<?=$linkagesRow['id']?>"></a>
                                         <div class="dropdown">
                                             <span class='bi bi-three-dots' data-toggle="dropdown"></span>
                                             <div class="dropdown-menu">

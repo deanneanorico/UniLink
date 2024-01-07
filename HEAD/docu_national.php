@@ -163,20 +163,27 @@
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <!-- <h5 class="modal-title" id="exampleModalLabel">Filter Options</h5> -->
+                    <h5 class="modal-title" id="exampleModalLabel">Filter by:</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">×</span>
                     </button>
                   </div>
                   <div class="modal-body">
-                    <div class="form-group">
-                      <label for="selectOption">Filter by:</label>
-                      <select id="selectOption" class="form-control">
-                        <option value="option1">Option 1</option>
-                        <option value="option2">Option 2</option>
-                        <option value="option3">Option 3</option>
-                      </select>
-                    </div>
+            <div class="form-group">
+                          <label for="college">College</label>
+                          <select class="form-control" name="college">
+                            <?php
+                              $sql = "SELECT * FROM `college`";
+                              $result = $conn->query($sql);
+                              while($row = $result->fetch_assoc()){
+                            ?>
+                                <option value="<?=$row['collegeID']?>"><?=$row['name']?></option>
+                            <?php    
+                              }
+                            ?>
+                          </select>
+                        </div>
+
                   </div>
                   <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
@@ -215,7 +222,7 @@
                           <a href="docu_national.php?id=<?=$row['id']?>">
                               <img src="../imgs/bsu_folder.png" style="width:130px">  
                           </a>
-                          <div class="card-footer" style="width: 90px; max-height: 50px; overflow: hidden; padding: 03px 08px 45px 05px; text-align: center; font-size: 14;"><?php echo $row["createfolder"] ?></div>
+                          <div class="card-footer" style="width: 90px; max-height: 50px; overflow: hidden; padding: 03px 08px 45px 05px; text-align: center; font-size: 12;"><?php echo $row["createfolder"] ?></div>
                       </div>
                   </div>
           <?php

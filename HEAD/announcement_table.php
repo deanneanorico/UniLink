@@ -99,17 +99,17 @@
           </a>
         </li>
         <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="bi bi-bullseye"></i>
-                    <span>Linkages</span>
-                </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="linkages.php">Proposal</a>
-                        <a class="collapse-item" href="list_partner.php">List</a>
-                    </div>
-                </div>
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+            aria-expanded="true" aria-controls="collapseTwo">
+            <i class="bi bi-bullseye"></i>
+            <span>Linkages</span>
+        </a>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="linkages.php">Proposal</a>
+                <a class="collapse-item" href="list_partner.php">List</a>
+            </div>
+        </div>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="activities.php">
@@ -189,28 +189,68 @@
           <!-- End of Topbar -->
           <!-- Begin Page Content -->
           <div class="container-fluid">
-            <div class="d-flex justify-content-between align-items-center mb-4">
-                <h3 class="h3 mb-0 text-gray-800">Announcements</h3>
-                <form class="d-none d-sm-inline-block form-inline ml-auto mr-md-3 my-2 my-md-0 mw-100 navbar-search">
-              <div class="input-group">
-                <input type="text" id="search-input" class="form-control bg-light border-1 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-                <div class="input-group-append">
-                  <button class="btn btn-primary" id="search-button" type="button">
-                    <i class="fas fa-search fa-sm"></i>
-                  </button>
-                </div>
-              </div>
-            </form>
-                        <div class="d-flex">
-                            <a class="btn btn-primary rounded-fill" href="announcement.php" role="button">
-                                <i class="bi bi-megaphone"></i> Announcement
-                            </a>
-                        </div>
-                    </div>
-                    <div id="announcement-column">
-                      
-                    </div>
-                </div>
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h3 class="h3 mb-0 text-gray-800">Announcements</h3>
+    <form class="d-none d-sm-inline-block form-inline ml-auto mr-md-3 my-2 my-md-0 mw-100 navbar-search">
+      <div class="input-group">
+        <input type="text" id="search-input" class="form-control bg-light border-1 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+        <div class="input-group-append">
+          <button class="btn btn-primary" id="search-button" type="button">
+            <i class="fas fa-search fa-sm"></i>
+          </button>
+        </div>
+      </div>
+    </form>
+    <!-- Filter Button Trigger -->
+    <button class="btn btn-primary rounded-fill mr-2" data-toggle="modal" data-target="#filterModal">
+     <i class="fas fa-filter"></i> Filter
+    </button>
+    <!-- Filter Modal -->
+    <div class="modal fade" id="filterModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Filter by:</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="college">College</label>
+              <select class="form-control" name="college">
+                <?php
+                $sql = "SELECT * FROM `college`";
+                $result = $conn->query($sql);
+                while($row = $result->fetch_assoc()){
+                ?>
+                  <option value="<?=$row['collegeID']?>"><?=$row['name']?></option>
+                <?php    
+                }
+                ?>
+              </select>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+            <button class="btn btn-primary" onclick="applyFilter()">Filter</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Space between buttons -->
+    <div class="ml-2"></div>
+    <!-- Announcement Button -->
+    <div class="d-flex">
+      <a class="btn btn-primary rounded-fill" href="announcement.php" role="button">
+        <i class="fas fa-plus"></i> Announcement
+      </a>
+    </div>
+  </div>
+  <div id="announcement-column">
+    <!-- Content goes here -->
+  </div>
+</div>
       </div>
         <!-- Footer -->
         <footer class="sticky-footer bg-white">
