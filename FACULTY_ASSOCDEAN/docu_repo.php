@@ -30,10 +30,8 @@
                 header('Location: docu_repo.php'); // Redirect to a success page or wherever you want
                 exit();
             }    
-    } 
-    
+    }    
 }
-
 ?>
 <html lang="en">
 <head>
@@ -162,12 +160,13 @@
                 <!-- End of Topbar -->
                 <!-- Begin Page Content -->
                 <div class="container mt-4">
+                <h3 class="h3 mb-4 text-gray-800">Archive</h3>                    
                   <div class="row">
                     <div class="col-md-2">
                     <div class="folder text-center d-flex align-items-center flex-column">
                         <a href="docu_local.php">
                           <img src="../imgs/bsu_folder.png" style="width:130px">  
-                        <p>Local</p>
+                        <p style="font-size: 13px;">Local</p>
                       </a>
                       </div>
                     </div>
@@ -175,7 +174,7 @@
                     <div class="folder text-center d-flex align-items-center flex-column">
                         <a href="docu_national.php">
                           <img src="../imgs/bsu_folder.png" style="width:130px">  
-                        <p>International</p>
+                        <p style="font-size: 13px;">International</p>
                       </a>
                       </div>
                     </div>

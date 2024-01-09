@@ -225,17 +225,17 @@
                                     <td class="text-center"><?=$i?></td>
                                     <td class="text-center"><?=$linkagesRow['title']?></td>
                                     <td class="text-center"><?=$linkagesRow['category']?></td>
-                                    <td class="text-center"></td>
+                                    <td class="text-center"><?=$linkagesRow['status']?></td>
                                     <!-- Update the Action column -->
-                                    <td style='text-align: center;'>
-                                        <span class='bi bi-file-earmark-pdf-fill text-info'></span>
+                                    <td style='text-align: center; display: flex; justify-content: center;'>
+                                        <a class='bi bi-file-earmark-pdf-fill text-info' href="linkages.pdf.php?id=<?=$linkagesRow['id']?>"></a>
                                         <div class="dropdown">
                                             <span class='bi bi-three-dots' data-toggle="dropdown"></span>
                                             <div class="dropdown-menu">
-                                                <a class="dropdown-item" href="#" onclick="updateStatus(<?=$linkagesRow['id']?>, 'for_exploratory')">For Exploratory</a>
-                                                <a class="dropdown-item" href="#" onclick="updateStatus(<?=$linkagesRow['id']?>, 'review_by_partner')">Review by Partner</a>
-                                                <a class="dropdown-item" href="#" onclick="updateStatus(<?=$linkagesRow['id']?>, 'review_by_legal')">Review by Legal</a>
-                                                <a class="dropdown-item" href="#" onclick="updateStatus(<?=$linkagesRow['id']?>, 'for_signing')">For Signing</a>
+                                                <a class="dropdown-item" href="update.linkages.status.php?status=For Exploratory&id=<?=$linkagesRow['id']?>">For Exploratory</a>
+                                                <a class="dropdown-item" href="update.linkages.status.php?status=Review by Partner&id=<?=$linkagesRow['id']?>")>Review by Partner</a>
+                                                <a class="dropdown-item" href="update.linkages.status.php?status=Review by Legal&id=<?=$linkagesRow['id']?>">Review by Legal</a>
+                                                <a class="dropdown-item" href="update.linkages.status.php?status=For Signing&id=<?=$linkagesRow['id']?>">For Signing</a>
                                             </div>
                                         </div>
                                     </td>

@@ -56,17 +56,17 @@
           </a>
         </li>
         <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="bi bi-bullseye"></i>
-                    <span>Linkages</span>
-                </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="linkages.php">Proposal</a>
-                        <a class="collapse-item" href="list_partner.php">List</a>
-                    </div>
-                </div>
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+            aria-expanded="true" aria-controls="collapseTwo">
+            <i class="bi bi-bullseye"></i>
+            <span>Linkages</span>
+        </a>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="linkages.php">Proposal</a>
+                <a class="collapse-item" href="list_partner.php">List</a>
+            </div>
+        </div>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="activities.php">
@@ -136,7 +136,7 @@
                       $result = $conn->query($sql);
                       $row = $result->fetch_assoc();
                   ?>
-                    <span class="mr-2 d-none d-lg-inline custom-text-black">Head | <?=$row['first_name']." ".$row['last_name']?></span>               
+                    <span class="mr-2 d-none d-lg-inline custom-text-black"><?=$row['privelege']." | ".$row['first_name']." ".$row['last_name']?></span>               
                   <img class="img-profile rounded-circle" src="../imgs/<?php if($row['profile_pic'] == '') {echo "#";} else {echo $row['profile_pic'];}?>">
                 </a>
                 <!-- Dropdown - User Information -->
@@ -202,11 +202,11 @@
                   <div class="card-body">
                     <div class="row no-gutters align-items-center">
                       <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">For Exploratory</div>
+                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">For Evaluation</div>
                         <div class="h5 mb-0 font-weight-bold text-gray-800">10</div>
                       </div>
                       <div class="col-auto">
-                        <i class="fas fa-user fa-2x text-gray-300"></i>
+                        <i class="fas fa-search fa-2x text-gray-300"></i>
                       </div>
                     </div>
                   </div>
@@ -218,7 +218,7 @@
                   <div class="card-body">
                     <div class="row no-gutters align-items-center">
                       <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1"> Under Review</div>
+                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1"> Under Review Partner</div>
                         <div class="h5 mb-0 font-weight-bold text-gray-800">5</div>
                       </div>
                       <div class="col-auto">
@@ -234,7 +234,7 @@
                   <div class="card-body">
                     <div class="row no-gutters align-items-center">
                       <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Successful Partner</div>
+                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Under Review Legal</div>
                         <div class="row no-gutters align-items-center">
                           <div class="col-auto">
                             <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">5</div>
@@ -242,7 +242,7 @@
                         </div>
                       </div>
                       <div class="col-auto">
-                        <i class="fas fa-times fa-2x text-gray-300"></i>
+                        <i class="fas fa-check2 fa-2x text-gray-300"></i>
                       </div>
                     </div>
                   </div>
@@ -254,17 +254,76 @@
                   <div class="card-body">
                     <div class="row no-gutters align-items-center">
                       <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1"> Inactive</div>
+                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1"> For Signing MOU/MOA</div>
                         <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
                       </div>
                       <div class="col-auto">
-                        <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                        <i class="fas fa-pen fa-2x text-gray-300"></i>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+
+            <div class="row">
+  <!-- Partners Card Example -->
+  <!-- ... existing cards ... -->
+
+  <!-- New Card Example 1 -->
+  <div class="col-4 mb-4">
+    <div class="card border-left-info shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">For Notary of MOU/MOA</div>
+            <div class="h5 mb-0 font-weight-bold text-gray-800">15</div>
+          </div>
+          <div class="col-auto">
+            <i class="fas fa-info fa-2x text-gray-300"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- New Card Example 2 -->
+  <div class="col-4 mb-4">
+    <div class="card border-left-secondary shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1">Successful Partner</div>
+            <div class="h5 mb-0 font-weight-bold text-gray-800">8</div>
+          </div>
+          <div class="col-auto">
+            <i class="bi bi-people fa-2x text-gray-300"></i>
+            <!-- <i class="fas fa-clipboard-list fa-2x text-gray-300"></i> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- New Card Example 3 -->
+  <div class="col-4 mb-4">
+    <div class="card border-left-dark shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="text-xs font-weight-bold text-dark text-uppercase mb-1">Inactive</div>
+            <div class="h5 mb-0 font-weight-bold text-gray-800">12</div>
+          </div>
+          <div class="col-auto">
+            <i class="fas fa-times fa-2x text-gray-300"></i>
+            <!-- <i class="fas fa-star fa-2x text-gray-300"></i> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
             <!-- Content Row -->
             <div class="row">
               <!-- Area Chart -->

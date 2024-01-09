@@ -150,36 +150,64 @@
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+                        <!-- Filter Modal -->
                         <div class="modal fade" id="filterModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <!-- <h5 class="modal-title" id="exampleModalLabel">Filter Options</h5> -->
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">×</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    <div class="form-group">
-                      <label for="selectOption">Filter by:</label>
-                      <select id="selectOption" class="form-control">
-                        <option value="option1">Option 1</option>
-                        <option value="option2">Option 2</option>
-                        <option value="option3">Option 3</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <button class="btn btn-primary" onclick="applyFilter()">Filter</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- Button to trigger the modal -->
-            <button class="btn btn-primary rounded-fill mr-2" data-toggle="modal" data-target="#filterModal">
-             <i class="fas fa-filter"></i> Filter
-            </button>
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Filter by:</h5>
+                                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">×</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                <div class="form-group">
+                                  <label for="selectOption">Year</label>
+                                  <select id="selectOption" class="form-control">
+                                    <!-- Options will be dynamically added by JavaScript -->
+                                  </select>
+                                </div>
+                              </div>
+                              <div class="modal-footer">
+                                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                                <button class="btn btn-primary" onclick="applyFilter()">Filter</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- Button to trigger the modal -->
+                        <button class="btn btn-primary rounded-fill mr-2" data-toggle="modal" data-target="#filterModal">
+                          <i class="fas fa-filter"></i> Filter
+                        </button>
+
+                        <!-- JavaScript to dynamically populate the filter options with years -->
+                        <script>
+                          document.addEventListener("DOMContentLoaded", function() {
+                            populateFilterOptions();
+                          });
+
+                          function populateFilterOptions() {
+                            // Assuming you want to start from the year 2023
+                            const currentYear = new Date().getFullYear();
+                            const selectOption = document.getElementById("selectOption");
+
+                            // Clear existing options
+                            selectOption.innerHTML = '';
+
+                            // Add options for the next 10 years (adjust the loop limit as needed)
+                            for (let year = 2023; year <= currentYear + 10; year++) {
+                              const option = document.createElement("option");
+                              option.value = `option${year}`;
+                              option.text = `${year}`;
+                              selectOption.appendChild(option);
+                            }
+                          }
+                          function applyFilter() {
+                            // Your filter logic here
+                            // You can access the selected year using document.getElementById("selectOption").value
+                            // and perform filtering based on the selected year
+                          }
+                        </script>
                         </div>
                     <!-- Content Row -->
                     <div class="row">
@@ -190,7 +218,7 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                Active Partner</div>
+                                                Successful Partner</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">3</div>
                                         </div>
                                         <div class="col-auto">

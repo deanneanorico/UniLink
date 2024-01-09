@@ -40,7 +40,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Unilink - Dean/Associate Dean</title>
-    <link rel="shortcut icon" type="image/png" href="../imsg/BSU.png" alt="Logo" />
+    <link rel="shortcut icon" type="image/png" href="../imgs/BSU.png" alt="Logo" />
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
@@ -56,6 +56,8 @@
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <script src="../ckeditor/ckeditor.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
       /* Custom styles for the progress bar */
       .progress {
@@ -64,12 +66,10 @@
         margin-bottom: 10px;
         /* Add some space below the progress bar */
       }
-
       .progress-bar {
         height: 100%;
         /* Make sure the progress bar fills the container height */
       }
-
       .ck-editor__editable {
         min-height: 200px;
       }
@@ -496,7 +496,8 @@
                     <div class="row" style="display: flex; justify-content: center; margin-top: 20px"></div>
                     <div class="text-right mt-4">
                       <button type="button" class="btn btn-secondary" id="prevStep6">Previous</button>
-                      <input type="submit" name="edit" class="submit btn btn-primary" value="Submit">
+                      <!-- <input type="submit" name="edit" class="submit btn btn-primary" value="Submit"> -->
+                      <input type="submit" name="edit" onclick="showAlert()" class="submit btn btn-primary" value="Submit">
                     </div>
                   </div>
               </div>
@@ -540,8 +541,6 @@
         </div>
       </div>
     </div> 
-
-
 <?php
     include 'footer.php';
 ?>
@@ -571,4 +570,48 @@
       });
     }
   }
+</script>
+<script>
+    // Function to show SweetAlert
+    function showAlert() {
+      Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Updated successfully',
+      showConfirmButton: false,
+      timer: 1500
+      });
+
+      // Swal.fire({
+      //   title: 'Are you sure you want to submit?',
+      //   showDenyButton: true,
+      //   showCancelButton: false,
+      //   confirmButtonText: 'Yes',
+      //   denyButtonText: `No`,
+      // }).then((result) => {
+      //   /* Read more about isConfirmed, isDenied below */
+      //   if (result.isConfirmed) {
+      //     Swal.fire('Added successfully!', '', 'success').then((e)=>{
+      //       document.getElementById('updateForm').submit();
+      //     });
+      //   } else if (result.isDenied) {
+      //     Swal.fire('Changes are not saved', '', 'info')
+      //   }
+      // })
+//       Swal.fire(
+//   'Good job!',
+//   'You clicked the button!',
+//   'success'
+// )
+      // Example: Call the showAlert function on button click
+      $(document).ready(function () {
+          $('#showAlertButton').click(function () {
+              showAlert();
+          });
+      });
+    }
+</script>
+<script>
+CKEDITOR.replace( 'editor' );
+CKEDITOR.replace( 'editor1' );
 </script>

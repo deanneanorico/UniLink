@@ -13,6 +13,12 @@
     header("location: ../admin");
     exit();
   }
+
+  if(isset($_POST['collegeFilter'])) {
+    $college = $_POST['college'];
+    header("location: ./activities.php?college=".$college);
+    exit();
+  }
 ?>
 <html lang="en">
   <head>
@@ -172,33 +178,35 @@
                     <div class="modal fade" id="filterModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Filter by:</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">×</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-            <div class="form-group">
-                          <label for="college">College</label>
-                          <select class="form-control" name="college">
-                            <?php
-                              $sql = "SELECT * FROM `college`";
-                              $result = $conn->query($sql);
-                              while($row = $result->fetch_assoc()){
-                            ?>
-                                <option value="<?=$row['collegeID']?>"><?=$row['name']?></option>
-                            <?php    
-                              }
-                            ?>
-                          </select>
-                        </div>
+                  <form action="#" method="POST">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Filter by:</h5>
+                      <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <div class="form-group">
+                            <label for="college">College</label>
+                            <select class="form-control" name="college">
+                              <?php
+                                $sql = "SELECT * FROM `college`";
+                                $result = $conn->query($sql);
+                                while($row = $result->fetch_assoc()){
+                              ?>
+                                  <option value="<?=$row['name']?>"><?=$row['name']?></option>
+                              <?php    
+                                }
+                              ?>
+                            </select>
+                          </div>
 
-                  </div>
-                  <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <button class="btn btn-primary" onclick="applyFilter()">Filter</button>
-                  </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                      <button type="submit" name="collegeFilter" class="btn btn-primary">Filter</button>
+                    </div>
+                  </form>
                 </div>
               </div>
             </div>
@@ -224,8 +232,12 @@
                                 </thead>
                                 <tbody id="load-table">
                                     <?php
-                                    $sql = "SELECT * FROM `activityform`";
-                                    // $sql = "SELECT `college_abrev` FROM `college` WHERE `college` = 'college_abrev'";
+                                    if(isset($_GET['college'])) {
+                                      $college = $_GET['college'];
+                                      $sql = "SELECT * FROM `activityform` WHERE college = '$college'";
+                                    } else {
+                                      $sql = "SELECT * FROM `activityform`";
+                                    } 
                                     $result = $conn->query($sql);
 
                                     if ($result->num_rows > 0) {

@@ -164,16 +164,48 @@
                             <a class="btn btn-primary rounded-fill" data-toggle="modal" data-target="#createfolder">
                                 <i class="fas fa-plus"></i> Create Folder
                             </a>
+                            <?php
+                                if(isset($_GET['id'])) {
+                            ?>
+                            <a class="btn btn-primary rounded-fill" style="margin-left: 10px" data-toggle="modal" data-target="#uploadFile">
+                                <i class="fas fa-upload"></i> Upload
+                            </a>
+                            <?php
+                                }
+                            ?>
                         </div>
                     </div>
                 </div>
 
-                <script>
-                    // JavaScript function to go back to the previous page
-                    function goBack() {
-                        window.history.back();
-                    }
-                </script>
+                <div class="modal fade" id="uploadFile" tabindex="-1" role="dialog" aria-labelledby="addmodallabel" aria-hidden="true">
+                <!-- Modal content goes here -->
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="addmodallabel">Upload File</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <!-- Form Fields -->
+                    <form action="upload.file.php" method="post" enctype="multipart/form-data">
+                      <!-- Replace "insert_campus.php" with the actual path to your server-side script -->
+                      <div class="modal-body">
+                        <div class="form-group">
+                          <label for="campus_name">File</label>
+                          <input type="file" name="file" class="form-control" placeholder="" required>
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                          <button type="submit" value="upload" class="btn btn-primary" name="create_folder">Add</button>
+                        </div>
+                    </form>
+                    <!-- Form ends -->
+                  </div>
+                </div>
+              </div>
+
                 <div class="modal fade" id="createfolder" tabindex="-1" role="dialog" aria-labelledby="addmodallabel" aria-hidden="true">
                 <!-- Modal content goes here -->
                 <div class="modal-dialog">
@@ -195,7 +227,7 @@
                       </div>
                       <div class="modal-footer">
                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                          <button type="submit" value="upload" class="btn btn-primary" name="create_folder">Add</button>
+                          <button type="submit" value="upload" class="btn btn-primary" name="create_folder" onclick="showAlert()">Add</button>
                         </div>
                     </form>
                     <!-- Form ends -->
@@ -205,9 +237,11 @@
               <?php
                 if(isset($_GET['id'])) {
                     $folderID = $_GET['id'];
-                    $sql = "SELECT * FROM create_folder WHERE category = 'local' AND create_folder_id = $folderID ORDER BY id DESC";
+                    $college = $_SESSION['college'];
+                    $sql = "SELECT cf.* FROM create_folder AS cf INNER JOIN users AS u ON cf.created_by = u.id WHERE category = 'local' AND create_folder_id = $folderID AND u.college_abbrev = '$college' ORDER BY id DESC";
                 } else {
-                    $sql = "SELECT * FROM create_folder WHERE category = 'local' AND create_folder_id IS NULL ORDER BY id DESC";
+                    $college = $_SESSION['college'];
+                    $sql = "SELECT cf.* FROM create_folder AS cf INNER JOIN users AS u ON cf.created_by = u.id WHERE category = 'local' AND create_folder_id IS NULL AND u.college_abbrev = '$college' ORDER BY id DESC";
                 }
                 $result = mysqli_query($conn, $sql);
 
@@ -220,7 +254,7 @@
                         <a href="docu_local.php?id=<?=$row['id']?>">
                             <img src="../imgs/bsu_folder.png" style="width:130px">  
                         </a>
-                        <div class="card-footer" style="width: 90px; max-height: 50px; overflow: hidden; padding: 03px 08px 45px 05px; text-align: center; font-size: 14;"><?php echo $row["createfolder"] ?></div>
+                        <div class="card-footer" style="width: 90px; max-height: 50px; overflow: hidden; padding: 03px 08px 45px 05px; text-align: center; font-size: 13;"><?php echo $row["createfolder"] ?></div>
                     </div>
                 </div>
 
@@ -342,8 +376,52 @@
         // Hide the context menu after deletion
         hideContextMenu();
     }
-
 </script>
+<script>
+    // Function to show SweetAlert
+    function showAlert() {
+      Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Added successfully',
+      showConfirmButton: false,
+      timer: 1500
+      });
 
+      // Swal.fire({
+      //   title: 'Are you sure you want to submit?',
+      //   showDenyButton: true,
+      //   showCancelButton: false,
+      //   confirmButtonText: 'Yes',
+      //   denyButtonText: `No`,
+      // }).then((result) => {
+      //   /* Read more about isConfirmed, isDenied below */
+      //   if (result.isConfirmed) {
+      //     Swal.fire('Added successfully!', '', 'success').then((e)=>{
+      //       document.getElementById('updateForm').submit();
+      //     });
+      //   } else if (result.isDenied) {
+      //     Swal.fire('Changes are not saved', '', 'info')
+      //   }
+      // })
+//       Swal.fire(
+//   'Good job!',
+//   'You clicked the button!',
+//   'success'
+// )
+      // Example: Call the showAlert function on button click
+      $(document).ready(function () {
+          $('#showAlertButton').click(function () {
+              showAlert();
+          });
+      });
+    }
+</script>
+<script>
+    // JavaScript function to go back to the previous page
+    function goBack() {
+        window.history.back();
+    }
+</script>
 </body>
 </html>

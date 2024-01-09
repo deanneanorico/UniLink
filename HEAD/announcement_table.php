@@ -218,13 +218,13 @@
           <div class="modal-body">
             <div class="form-group">
               <label for="college">College</label>
-              <select class="form-control" name="college">
+              <select class="form-control" id="collegeSelect" name="college">
                 <?php
                 $sql = "SELECT * FROM `college`";
                 $result = $conn->query($sql);
                 while($row = $result->fetch_assoc()){
                 ?>
-                  <option value="<?=$row['collegeID']?>"><?=$row['name']?></option>
+                  <option value="<?=$row['college_abbrev']?>"><?=$row['name']?></option>
                 <?php    
                 }
                 ?>
@@ -233,7 +233,7 @@
           </div>
           <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-            <button class="btn btn-primary" onclick="applyFilter()">Filter</button>
+            <button class="btn btn-primary" id="collegeFilterBtn">Filter</button>
           </div>
         </div>
       </div>
@@ -383,4 +383,18 @@
     // You can add your announcement code here
     console.log("Selected Colleges: ", selectedColleges);
   }
+</script>
+<script>
+document.getElementById("collegeFilterBtn").addEventListener("click", function() {
+    var college = document.getElementById("collegeSelect").value;
+    console.log(college);
+    var loadAnnouncement = new XMLHttpRequest();
+    loadAnnouncement.open("POST", "filter.announcements.php"); 
+    loadAnnouncement.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    loadAnnouncement.send("college="+college);
+    loadAnnouncement.onload = function() {
+      console.log(this.responseText);
+      document.getElementById("announcement-column").innerHTML = this.responseText;
+    }
+  });
 </script>

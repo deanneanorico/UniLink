@@ -418,13 +418,13 @@
                           <tbody id="table">
                             <tr>
                               <td>
-                                <input type="text" class="form-control outline" id="item" name="item_name[]" placeholder="Item Name" required>
+                                <input type="text" class="form-control outline" id="item" name="item_name[]" placeholder="Item Name">
                               </td>
                               <td>
-                                <input class="quantity form-control" type="number" id="quantity1" onkeyup="quantityfunc(1)" name="quantity[]" placeholder="Quantity" required>
+                                <input class="quantity form-control" type="number" id="quantity1" onkeyup="quantityfunc(1)" name="quantity[]" placeholder="Quantity">
                               </td>
                               <td>
-                                <input class="price form-control" type="number" id="cost1" onkeyup="pricefunc(1)" name="cost[]" placeholder="Cost" required>
+                                <input class="price form-control" type="number" id="cost1" onkeyup="pricefunc(1)" name="cost[]" placeholder="Cost" >
                               </td>
                               <td style="text-align:center">
                                 <span class="subtotal1" id="subtotal1">0.00</span>

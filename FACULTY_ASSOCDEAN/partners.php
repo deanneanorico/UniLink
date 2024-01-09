@@ -30,13 +30,23 @@
     <link rel="shortcut icon" type="image/png" href="../imgs/BSU.png" alt="Logo" />
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+    rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
-        <style>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap4.min.js"></script>
+     <script>
+      $(document).ready(function() {
+         new DataTable('#partnerTable', {
+            responsive: true
+        });
+      });
+    </script>
+    <style>
     .custom-text-black {
     color: black;
     font-size: 12;
@@ -178,51 +188,89 @@
                 <!-- End of Topbar -->
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-  <div class="d-flex justify-content-end align-items-center mb-4">
-    <!-- Filter button with icon and label -->
-    <div class="modal fade" id="filterModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Filter Options</h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">×</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <div class="form-group">
-                        <label for="category">Category</label>
-                        <select class="form-control" name="category" required>
-                          <option value="local">Local</option>
-                          <option value="international">International</option>
-                        </select>
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+            <h3 class="h3 mb-0 text-gray-800">Partner List</h3>
+                        <!-- Filter button with icon and label -->
+                        <div class="modal fade" id="filterModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Filter Options</h5>
+                                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">×</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                <div class="form-group">
+                                            <label for="category">Category</label>
+                                            <select class="form-control" name="category" required>
+                                              <option value="local">Local</option>
+                                              <option value="international">International</option>
+                                            </select>
+                                          </div>
+                                          <div class="form-group">
+                                            <label for="status">Status</label>
+                                            <select class="form-control" name="status" required>
+                                              <option value="Successful Partner">Successful Partner</option>
+                                              <option value="For Evaluation">For Evaluation</option>
+                                              <option value="For Review Legal">For Review Legal</option>
+                                              <option value="For Review Partner">For Review Partner</option>
+                                              <option value="For Signing MOU/MOA">For Signing MOU/MOA</option>
+                                              <option value="For Notary Signing">For Notary Signing</option>
+                                              <option value="Inactive">Inactive</option>
+                                            </select>
+                                      </div>
+                              </div>
+                              <div class="modal-footer">
+                                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                                <button class="btn btn-primary" onclick="applyFilter()">Filter</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- Button to trigger the modal -->
+                        <button class="btn btn-primary rounded-fill" data-toggle="modal" data-target="#filterModal">
+                          <i class="fas fa-filter"></i> Filter
+                        </button>
                       </div>
-                      <div class="form-group">
-                        <label for="status">Status</label>
-                        <select class="form-control" name="status" required>
-                          <option value="Successful Partner">Successful Partner</option>
-                          <option value="For Evaluation">For Evaluation</option>
-                          <option value="For Review Legal">For Review Legal</option>
-                          <option value="For Review Partner">For Review Partner</option>
-                          <option value="For Signing MOU/MOA">For Signing MOU/MOA</option>
-                          <option value="For Notary Signing">For Notary Signing</option>
-                          <option value="Inactive">Inactive</option>
-                        </select>
-                  </div>
-          </div>
-          <div class="modal-footer">
-            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-            <button class="btn btn-primary" onclick="applyFilter()">Filter</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Button to trigger the modal -->
-    <button class="btn btn-primary rounded-fill" data-toggle="modal" data-target="#filterModal">
-      <i class="fas fa-filter"></i> Filter
-    </button>
-  </div>
+                      <div class="card">
+                        <div class="card-body">
+                            <div class="table">
+                             <table id="partnerTable" style="width: 100%;" class="display" data-ordering="true" data-paging="true" data-searching="true">
+                                <thead style='text-align: center;'>
+                                    <tr>
+                                        <th>No.</th>
+                                        <th>Partner Name</th>
+                                        <th>Category</th>
+                                        <th>College</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                  <?php
+                                    $sql = "SELECT p.*, c.name AS college_name FROM partners AS p INNER JOIN college AS c ON p.college_id = c.collegeID";
+                                    $result = $conn->query($sql);
+                                    $count = 1;
+                                    while($row = $result->fetch_assoc()) {
+                                  ?>
+                                    <tr style="center">
+                                      <td><?=$count?></td>
+                                      <td><?=$row['name']?></td>
+                                      <td><?=$row['category']?></td>
+                                      <td><?=$row['college_name']?></td>
+                                      <td><?=$row['status']?></td>
+                                      <th></th>
+                                    </tr>
+                                  <?php
+                                      $count++;
+                                    }
+                                  ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    </div>
 </div>
                 <!-- /.container-fluid -->
             </div>

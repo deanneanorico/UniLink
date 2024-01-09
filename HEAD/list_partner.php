@@ -29,6 +29,17 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap4.min.js"></script>
+     <script>
+      $(document).ready(function() {
+         new DataTable('#partnerTable', {
+            responsive: true
+        });
+      });
+    </script>
       <style>
     .folder {
       width: 115px;
@@ -146,7 +157,7 @@
                       $result = $conn->query($sql);
                       $row = $result->fetch_assoc();
                   ?>
-                    <span class="mr-2 d-none d-lg-inline custom-text-black">Head | <?=$row['first_name']." ".$row['last_name']?></span>
+                    <span class="mr-2 d-none d-lg-inline custom-text-black"><?=$row['privelege']." | ".$row['first_name']." ".$row['last_name']?></span>
                   <img class="img-profile rounded-circle" src="../imgs/<?php if($row['profile_pic'] == '') {echo "#";} else {echo $row['profile_pic'];}?>">
                 </a>
                 <!-- Dropdown - User Information -->
@@ -170,9 +181,42 @@
                         <i class="fas fa-plus"></i> Partner</a>
                     </div>
                     </div>
-                    <div class="card">
+                     <div class="card">
                         <div class="card-body">
-                            
+                            <div class="table">
+                             <table id="partnerTable" style="width: 100%;" class="display" data-ordering="true" data-paging="true" data-searching="true">
+                                <thead style='text-align: center;'>
+                                    <tr>
+                                        <th>No.</th>
+                                        <th>Partner Name</th>
+                                        <th>Category</th>
+                                        <th>College</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                  <?php
+                                    $sql = "SELECT p.*, c.name AS college_name FROM partners AS p INNER JOIN college AS c ON p.college_id = c.collegeID";
+                                    $result = $conn->query($sql);
+                                    $count = 1;
+                                    while($row = $result->fetch_assoc()) {
+                                  ?>
+                                    <tr style="center">
+                                      <td><?=$count?></td>
+                                      <td><?=$row['name']?></td>
+                                      <td><?=$row['category']?></td>
+                                      <td><?=$row['college_name']?></td>
+                                      <td><?=$row['status']?></td>
+                                      <th></th>
+                                    </tr>
+                                  <?php
+                                      $count++;
+                                    }
+                                  ?>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                     </div>
                     <div class="modal fade" id="addpartner" tabindex="-1" role="dialog" aria-labelledby="addmodallabel" aria-hidden="true">
@@ -186,7 +230,7 @@
                       </button>
                     </div>
                     <!-- Form Fields -->
-                    <form action="#" method="post">
+                    <form action="add.partner.php" method="post">
                     <!-- Replace "insert_campus.php" with the actual path to your server-side script -->
                     <div class="modal-body">
                       <div class="form-group">

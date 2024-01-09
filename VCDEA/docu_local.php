@@ -49,7 +49,7 @@
         <!-- Divider -->
         <hr class="sidebar-divider my-0">
         <!-- Nav Item - Dashboard -->
-        <li class="nav-item">
+        <li class="nav-item active">
           <a class="nav-link" href="index.php">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span>
@@ -75,7 +75,7 @@
                     </div>
                 </div>
         </li>
-        <li class="nav-item active">
+        <li class="nav-item">
           <a class="nav-link" href="docu_repo.php">
             <i class="bi bi-archive"></i>
             <span>Archive</span>
@@ -136,7 +136,7 @@
                 </a>
                 <!-- Dropdown - User Information -->
                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                  <a class="dropdown-item" href="dea_profile.php">
+                  <a class="dropdown-item" href="ea_profile.php">
                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Profile </a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
@@ -157,33 +157,35 @@
                     <div class="modal fade" id="filterModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Filter by:</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">×</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-            <div class="form-group">
-                          <label for="college">College</label>
-                          <select class="form-control" name="college">
-                            <?php
-                              $sql = "SELECT * FROM `college`";
-                              $result = $conn->query($sql);
-                              while($row = $result->fetch_assoc()){
-                            ?>
-                                <option value="<?=$row['collegeID']?>"><?=$row['name']?></option>
-                            <?php    
-                              }
-                            ?>
-                          </select>
-                        </div>
-
-                  </div>
-                  <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <button class="btn btn-primary" onclick="applyFilter()">Filter</button>
-                  </div>
+                  <form method="post" action="local.folder.query.php">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Filter by:</h5>
+                      <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <div class="form-group">
+                        <input type="hidden" name="id" value="<?php if(isset($_GET['id'])){ echo $_GET['id']; } else { echo "null"; } ?>">
+                        <label for="college">College</label>
+                        <select class="form-control" name="college">
+                          <?php
+                            $sql = "SELECT DISTINCT college_abbrev FROM `college`";
+                            $result = $conn->query($sql);
+                            while($row = $result->fetch_assoc()){
+                          ?>
+                              <option value="<?=$row['college_abbrev']?>"><?=$row['college_abbrev']?></option>
+                          <?php    
+                            }
+                          ?>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                      <button class="btn btn-primary" type="submit">Filter</button>
+                    </div>
+                  </form>
                 </div>
               </div>
             </div>
@@ -202,9 +204,19 @@
           <?php
           if(isset($_GET['id'])) {
               $folderID = $_GET['id'];
-              $sql = "SELECT * FROM create_folder WHERE category = 'local' AND create_folder_id = $folderID ORDER BY id DESC";
+              if(isset($_GET['college'])) {
+                $college = $_GET['college'];
+                $sql = "SELECT cf.* FROM create_folder AS cf INNER JOIN users AS u ON cf.created_by = u.id WHERE category = 'local' AND create_folder_id = $folderID AND u.college_abbrev = '$college' ORDER BY id DESC";
+              } else {
+                $sql = "SELECT * FROM create_folder WHERE category = 'local' AND create_folder_id = $folderID ORDER BY id DESC";
+              }
           } else {
+            if(isset($_GET['college'])) {
+              $college = $_GET['college'];
+              $sql = "SELECT cf.* FROM create_folder AS cf INNER JOIN users AS u ON cf.created_by = u.id WHERE category = 'local' AND create_folder_id IS NULL AND u.college_abbrev = '$college' ORDER BY id DESC";
+            } else {
               $sql = "SELECT * FROM create_folder WHERE category = 'local' AND create_folder_id IS NULL ORDER BY id DESC";
+            }
           }
           $result = mysqli_query($conn, $sql);
 
@@ -214,10 +226,10 @@
           ?>
           <div class="col-md-2">
               <div class="folder text-center d-flex align-items-center flex-column" oncontextmenu="showContextMenu(event, <?php echo $row['id']; ?>)">
-                  <a href="docu_local.php?id=<?=$row['id']?>">
+                  <a href="docu_local.php?id=<?=$row['id']?><?php if(isset($_GET['college'])){ echo "&college=".$_GET['college']; } ?>">
                       <img src="../imgs/bsu_folder.png" style="width:130px">  
                   </a>
-                  <div class="card-footer" style="width: 90px; max-height: 50px; overflow: hidden; padding: 03px 08px 45px 05px; text-align: center; font-size: 14;"><?php echo $row["createfolder"] ?></div>
+                  <div class="card-footer" style="width: 90px; max-height: 50px; overflow: hidden; padding: 03px 08px 45px 05px; text-align: center; font-size: 12;"><?php echo $row["createfolder"] ?></div>
               </div>
           </div>
 
@@ -226,7 +238,9 @@
               echo '</div>'; // End the flex container
           }
           ?>
+          
         </div>
+
         <!-- End of Main Content -->
         <!-- Footer -->
         <footer class="sticky-footer bg-white">

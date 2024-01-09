@@ -19,17 +19,18 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $college = $_POST['department'];
     $password = $_POST["password"];
     $privelege = $_POST['privelege'];
+    $profilePic = "default-profile.jpg";
 
     // Hash the password
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
     // Insert data into the users table
-    $sql = "INSERT INTO users (title, first_name, mid_name, last_name, sex, email, campus, college_abbrev, pass, privelege)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO users (title, first_name, mid_name, last_name, sex, email, campus, college_abbrev, pass, privelege, profile_pic)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = $mysqli->prepare($sql);
 
     if ($stmt) {
-        $stmt->bind_param("ssssssssss", $title, $first_name, $mid_name, $last_name, $sex, $email, $campus, $college, $hashed_password, $privelege);
+        $stmt->bind_param("sssssssssss", $title, $first_name, $mid_name, $last_name, $sex, $email, $campus, $college, $hashed_password, $privelege, $profilePic);
         if ($stmt->execute()) {
             header("location: ./main_user_management.php?success");
             exit();

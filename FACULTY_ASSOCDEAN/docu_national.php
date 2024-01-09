@@ -188,8 +188,8 @@
                       </div>
                       <div class="modal-footer">
                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                          <button type="submit" value="upload" class="btn btn-primary" name="create_folder">Add</button>
-                        </div>
+                        <button type="submit" value="upload" class="btn btn-primary" name="create_folder" onclick="showAlert()">Add</button>                        
+                    </div>
                     </form>
                     <!-- Form ends -->
                   </div>
@@ -198,9 +198,11 @@
               <?php
                 if(isset($_GET['id'])) {
                     $folderID = $_GET['id'];
-                    $sql = "SELECT * FROM create_folder WHERE category = 'foreign' AND create_folder_id = $folderID ORDER BY id DESC";
+                    $college = $_SESSION['college'];
+                    $sql = "SELECT cf.* FROM create_folder AS cf INNER JOIN users AS u ON cf.created_by = u.id WHERE category = 'foreign' AND create_folder_id = $folderID AND u.college_abbrev = '$college' ORDER BY id DESC";
                 } else {
-                    $sql = "SELECT * FROM create_folder WHERE category = 'foreign' AND create_folder_id IS NULL ORDER BY id DESC";
+                    $college = $_SESSION['college'];
+                    $sql = "SELECT cf.* FROM create_folder AS cf INNER JOIN users AS u ON cf.created_by = u.id WHERE category = 'foreign' AND create_folder_id IS NULL AND u.college_abbrev = '$college' ORDER BY id DESC";
                 }
                 $result = mysqli_query($conn, $sql);
 
@@ -213,7 +215,7 @@
                                 <a href="docu_national.php?id=<?=$row['id']?>">
                                     <img src="../imgs/bsu_folder.png" style="width:130px">  
                                 </a>
-                                <div class="card-footer" style="width: 90px; max-height: 50px; overflow: hidden; padding: 03px 08px 45px 05px; text-align: center; font-size: 14;"><?php echo $row["createfolder"] ?></div>
+                                <div class="card-footer" style="width: 90px; max-height: 50px; overflow: hidden; padding: 03px 08px 45px 05px; text-align: center; font-size: 13;"><?php echo $row["createfolder"] ?></div>
                             </div>
                         </div>
                 <?php
@@ -277,7 +279,7 @@
     <!-- Page level custom scripts -->
     <script src="js/demo/chart-area-demo.js"></script>
     <script src="js/demo/chart-pie-demo.js"></script>
-    
+
     <script>
         function showContextMenu(event, folderId) {
             event.preventDefault(); // Prevent the default right-click context menu
@@ -335,6 +337,46 @@
             hideContextMenu();
         }
     </script>
+    <script>
+    // Function to show SweetAlert
+    function showAlert() {
+      Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Added successfully',
+      showConfirmButton: false,
+      timer: 1500
+      });
+
+      // Swal.fire({
+      //   title: 'Are you sure you want to submit?',
+      //   showDenyButton: true,
+      //   showCancelButton: false,
+      //   confirmButtonText: 'Yes',
+      //   denyButtonText: `No`,
+      // }).then((result) => {
+      //   /* Read more about isConfirmed, isDenied below */
+      //   if (result.isConfirmed) {
+      //     Swal.fire('Added successfully!', '', 'success').then((e)=>{
+      //       document.getElementById('updateForm').submit();
+      //     });
+      //   } else if (result.isDenied) {
+      //     Swal.fire('Changes are not saved', '', 'info')
+      //   }
+      // })
+//       Swal.fire(
+//   'Good job!',
+//   'You clicked the button!',
+//   'success'
+// )
+      // Example: Call the showAlert function on button click
+      $(document).ready(function () {
+          $('#showAlertButton').click(function () {
+              showAlert();
+          });
+      });
+    }
+</script>
     <script>
     // JavaScript function to go back to the previous page
     function goBack() {

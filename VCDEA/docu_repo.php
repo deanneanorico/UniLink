@@ -156,6 +156,7 @@
           <!-- End of Topbar -->
           <!-- Begin Page Content -->
          <div class="container mt-4">
+          <h3 class="h3 mb-0 text-gray-800">Archive</h3>
         <div class="row">
           <div class="col-md-2">
             <div class="folder text-center d-flex align-items-center flex-column">

@@ -6,8 +6,9 @@
         if (isset($_POST['create_folder'])) {
             $createfolder = $_POST['createfolder'];
             $category = $_SESSION['folder_category'];
+            $userID = $_SESSION['id'];
 
-            $sql = "INSERT INTO create_folder (category, createfolder) VALUES ('$category', '$createfolder')";
+            $sql = "INSERT INTO create_folder (category, createfolder, created_by) VALUES ('$category', '$createfolder', $userID)";
             if (mysqli_query($conn, $sql)) {
                 // Certificate added successfully
                 if($category == "local") {
