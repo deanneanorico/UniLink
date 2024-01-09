@@ -1,5 +1,6 @@
 <?php
   session_start();
+  include 'db.php';
 
   if(!isset($_SESSION['id'])) {
     header("location: ../");
@@ -13,6 +14,11 @@
     header("location: ../admin");
     exit();
   }
+
+  $id = $_GET['id'];
+  $sql = "SELECT * FROM linkages WHERE id = $id";
+  $linkagesResult = $conn->query($sql);
+  $linkagesRow = $linkagesResult->fetch_assoc();
 ?>
 <html lang="en">
   <head>
@@ -169,7 +175,8 @@
           </nav>
           <!-- End of Topbar -->
           <!-- Begin Page Content -->
-          <form method="post" action="add.linkages.php" id="updateForm">
+          <form method="post" action="edit.linkages.php" id="updateForm">
+          <input type="hidden" name="id" value="<?=$_GET['id']?>">
           <div class="container-fluid">
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
@@ -188,33 +195,33 @@
             <div id="step1">
             <div class="form-group">
               <label for="partnerTitle">Partnership and/or Linkage Title</label>
-              <input type="text" class="form-control outline" id="partnerTitle" name="partnerTitle" required>
+              <input type="text" class="form-control outline" id="partnerTitle" name="partnerTitle" value="<?=$linkagesRow['title']?>" required>
             </div>
             <div class="form-group">
               <label>Partnership and/or Linkage Category</label>
               <div class="form-check form-inline">
               <label class="radio-inline mr-4" for="local-radio">
-              <input type="radio" name="partnerType" id="local-radio" value="Local" onchange="localRadio()" required>Local </label>
+              <input type="radio" name="partnerType" id="local-radio" value="Local" onchange="localRadio()" <?php if($linkagesRow['category'] == "Local") { echo "checked"; } ?> required>Local </label>
             <label class="radio-inline" for="international-radio">
-              <input type="radio" name="partnerType" id="international-radio" value="International" onchange="internationalRadio()" required>International </label>
+              <input type="radio" name="partnerType" id="international-radio" value="International" onchange="internationalRadio()" <?php if($linkagesRow['category'] == "International") { echo "checked"; } ?> required>International </label>
               </div>
             </div>
             <div class="form-group">
             <label for="overview">Overview/Objectives of the Partnership and/or Linkage</label>
             <div>
-              <textarea class="form-control" id="editor" name="overview" rows="8" required></textarea>
+              <textarea class="form-control" id="editor" name="overview" rows="8" required><?=$linkagesRow['overview']?></textarea>
             </div>
           </div>
           <div class="form-group">
             <label for="fit">Strategic Fit</label>
             <div>
-              <textarea class="form-control" id="editor1" name="fit" rows="6" required></textarea>
+              <textarea class="form-control" id="editor1" name="fit" rows="6" required><?=$linkagesRow['strategic_fit']?></textarea>
             </div>
           </div>
           <div class="form-group">
             <label for="outcome">Intended Outcome</label>
             <div>
-              <textarea class="form-control" id="editor2" name="intendedOutcome" rows="3" required></textarea>
+              <textarea class="form-control" id="editor2" name="intendedOutcome" rows="3" required><?=$linkagesRow['intended_outcome']?></textarea>
             </div>
           </div>
           <div class="text-right mt-4">
@@ -225,7 +232,7 @@
               <div class="form-group">
             <label for="scope">Scope of the Partnership and/or Linkage</label>
             <div>
-              <textarea class="form-control" id="editor3" name="scope" rows="8" required></textarea>
+              <textarea class="form-control" id="editor3" name="scope" rows="8" required><?=$linkagesRow['scope']?></textarea>
             </div>
           </div>
           <div class="justify-content-between">
@@ -260,7 +267,7 @@
         <div class="form-group">
             <label for="acd">Arrangement and Correlative Duties</label>
             <div>
-              <textarea class="form-control" id="editor4" name="acd" rows="3" required></textarea>
+              <textarea class="form-control" id="editor4" name="acd" rows="3" required><?=$linkagesRow['arrangement']?></textarea>
             </div>
           </div>
           <div class="text-right mt-4">
@@ -300,41 +307,7 @@
             </div>
           </div>
           <div id="area-3">
-            <div id="item-3-1">
-              <input id="year-total-1" type="hidden" name="year-total[]" value="0">
-              <input id="activity-total-1" type="hidden" name="activity-total[]" value="0">
-              <table class="table header-border table-responsive-sm">
-                <thead>
-                  <tr>
-                    <th class="col-md-11" style="text-align: left; font-size: 15px;">Year</th>
-                    <th class="col-md-1" style="padding-left: 0px;">
-                      <button style="margin-left:1px;background: white;" type="button" name="addRole" class="btn btn-primary btn-circle btn-sm" onclick="addYear(1)">
-                        <i class="fas fa-plus" style="color: #1dbf1d"></i>
-                      </button>
-                    </th>
-                  </tr>
-                </thead>
-                <tbody id="year-1">
-                  
-                </tbody>
-              </table>
-             
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th class="col-md-11" style="text-align: left; font-size: 15px;">Activities</th>
-                    <th class="col-md-1" style="padding-left: 0px;">
-                      <button style="margin-left:1px;background: white;" type="button" name="addRole" class="btn btn-primary btn-circle btn-sm" onclick="addActivity(1)">
-                        <i class="fas fa-plus" style="color: #1dbf1d"></i>
-                      </button>
-                    </th>
-                  </tr>
-                </thead>
-                <tbody id="activity-1">
 
-                </tbody>
-              </table>
-            </div>
           </div>
           <div class="text-right mt-4">
           <button type="button" class="btn btn-secondary" id="prevStep3">Previous</button>
@@ -345,13 +318,13 @@
               <div class="form-group">
             <label for="risk">Risk Management</label>
             <div>
-              <textarea class="form-control" id="editor5" name="risk" rows="3" required></textarea>
+              <textarea class="form-control" id="editor5" name="risk" rows="3" required><?=$linkagesRow['risk_management']?></textarea>
             </div>
           </div>
          <div class="form-group">
             <label for="mom">Monitoring and Evaluation Mechanics/Plan</label>
             <div>
-              <textarea class="form-control" id="editor6" name="mom" rows="4" required></textarea>
+              <textarea class="form-control" id="editor6" name="mom" rows="4" required><?=$linkagesRow['monitoring']?></textarea>
             </div>
           </div>
           <div class="text-right mt-4">
@@ -522,7 +495,7 @@
     <!-- Page level custom scripts -->
     <script src="js/demo/chart-area-demo.js"></script>
     <script src="js/demo/chart-pie-demo.js"></script>
-    <script src="js/linkages_form.js"></script>
+    <script src="js/edit.linkages.form.js"></script>
     <script>
   CKEDITOR.replace( 'editor' );
   CKEDITOR.replace( 'editor1' );

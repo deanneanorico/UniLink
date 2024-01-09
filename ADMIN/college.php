@@ -289,10 +289,10 @@
                         <td> <?php echo $row["college_abbrev"]; ?> </td>
                         <td>
                           <a class="editCollege" data-toggle="modal" data-target="#editCollegeModal" id="editCollege" onclick="setData(`<?=$row['collegeID']?>`, `<?=$row['campusID']?>`, `<?=$row['name']?>`, `<?=$row['college_abbrev']?>`)">
-                            <i class='fas fa-edit text-success'></i>
+                            <i class='fas fa-edit text-success' title="Edit"></i>
                           </a>
                           <a onclick="confirmDelete(<?=$row['collegeID']?>)" name="delcampus">
-                            <i class="fas fa-trash text-danger"></i>
+                            <i class="fas fa-trash text-danger" title="Delete"></i>
                           </a>
                           <!-- <a href="college.php?id=<?php echo $row['id']; ?>" onClick="return confirm('Are you sure you want to delete?')" name="delcollege">
                             <i class="fas fa-trash text-danger"></i>

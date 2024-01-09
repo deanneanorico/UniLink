@@ -260,10 +260,10 @@
                         <td> <?php echo $row["address"]; ?> </td>
                         <td>
                           <a class="editCampus" data-toggle="modal" data-target="#editCampusModal" id="editCampus" onclick="setData(`<?=$row['id']?>`, `<?=$row['campus_name']?>`, `<?=$row['address']?>`)">
-                            <i class='fas fa-edit text-success'></i>
+                            <i class='fas fa-edit text-success' title="Edit"></i>
                           </a>
                           <a onclick="confirmDelete(<?=$row['id']?>)" name="delcampus">
-                            <i class="fas fa-trash text-danger"></i>
+                            <i class="fas fa-trash text-danger" title="Delete"></i>
                           </a>
                         </td>
                       </tr> 

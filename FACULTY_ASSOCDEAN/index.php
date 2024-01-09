@@ -119,7 +119,7 @@
                                     </div>
                                 </form>
                             </div>
-                        </li>                    
+                        </li>                
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
@@ -219,10 +219,21 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                                 Successful Partner</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">3</div>
+                                                <?php
+                          if(isset($_GET['college'])) {
+                            $college = $_GET['college'];
+                            $sql = "SELECT COUNT(*) AS total FROM partners WHERE status = 'Successful Partner' AND college_id = $college";
+                          } else {
+                            $sql = "SELECT COUNT(*) AS total FROM partners WHERE status = 'Successful Partner'";
+                          }
+                          $result = $conn->query($sql);
+                          $row = $result->fetch_assoc();
+                        ?>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?=$row['total']?></div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-check fa-2x text-gray-300"></i>
+
                                         </div>
                                     </div>
                                 </div>
@@ -234,14 +245,19 @@
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Inactive Partner
-                                            </div>
-                                            <div class="row no-gutters align-items-center">
-                                                <div class="col-auto">
-                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">3</div>
-                                            </div>
-                                            </div>
-                                        </div>
+                  <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Inactive Partner</div>
+                   <?php
+                          if(isset($_GET['college'])) {
+                            $college = $_GET['college'];
+                            $sql = "SELECT COUNT(*) AS total FROM partners WHERE status = 'Inactive' AND college_id = $college";
+                          } else {
+                            $sql = "SELECT COUNT(*) AS total FROM partners WHERE status = 'Inactive'";
+                          }
+                          $result = $conn->query($sql);
+                          $row = $result->fetch_assoc();
+                        ?>
+                  <div class="h5 mb-0 font-weight-bold text-gray-800"><?=$row['total']?></div>
+                </div>
                                         <div class="col-auto">
                                             <i class="fas fa-times fa-2x text-gray-300"></i>
                                         </div>

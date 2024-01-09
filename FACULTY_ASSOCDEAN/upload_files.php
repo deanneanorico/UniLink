@@ -42,6 +42,17 @@
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap4.min.js"></script>
+     <script>
+      $(document).ready(function() {
+         new DataTable('#fileTable', {
+            responsive: true
+        });
+      });
+    </script>
 </head>
 <body id="page-top">
     <!-- Page Wrapper -->
@@ -268,44 +279,20 @@
                         <li onclick="deleteFolder(<?php echo $row['id']; ?>)">Delete</li>
                     </ul>
                 </div>
-                <?php 
-                    if(isset($_GET['id'])) {
-                ?>
                 <div class="card">
-                    <div class="card-body">
-                        <div class="table">
-                         <table id="fileTable" style="width: 100%;" class="display" data-ordering="true" data-paging="true" data-searching="true">
-                            <thead style='text-align: center;'>
-                                <tr>
-                                    <th>File</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody style='text-align: center;'>
-                                <?php
-                                    $folderID = $_GET['id'];
-                                    $sql = "SELECT * FROM uploads WHERE create_folder_id = $folderID";
-                                    $uploadsResult = $conn->query($sql);
-                                    while($uploadsRow = $uploadsResult->fetch_assoc()) {
-                                ?>
-                                <tr>
-                                    <td><?=$uploadsRow['path']?></td>
-                                    <td>
-                                        <a href="../uploads/<?=$uploadsRow['path']?>" target="_blank">View</a>
-                                        <a href="delete.local.file.php?id=<?=$uploadsRow['id']?>">Delete</a>
-                                    </td>
-                                </tr>
-                                <?php
-                                    }
-                                ?>
-                            </tbody>
-                        </table>
+                        <div class="card-body">
+                            <div class="table">
+                             <table id="fileTable" style="width: 100%;" class="display" data-ordering="true" data-paging="true" data-searching="true">
+                                <thead style='text-align: center;'>
+                                    <tr>
+                                        <th>File</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
                     </div>
                 </div>
-                </div>
-                <?php
-                    }
-                ?>
                 <!-- /.container-fluid -->
             </div>
             <!-- End of Main Content -->

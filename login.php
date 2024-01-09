@@ -47,6 +47,7 @@
                 $_SESSION['campus'] = $row['campus'];
                 $_SESSION['college'] = $row['college_abbrev'];
                 $_SESSION['collegeName'] = $row['name'];
+                $_SESSION['collegeID'] = $row['collegeID'];
               }
             }
           } else {

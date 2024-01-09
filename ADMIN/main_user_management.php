@@ -199,10 +199,10 @@
                           <td><?= $row['college_abbrev'] ?></td>
                           <td>
                           <a href="user_edit.php?id=<?=$row['id']?>"class="editUser">
-                            <i class='fas fa-edit text-success'></i>
+                            <i class='fas fa-edit text-success' title="Edit"></i>
                           </a>
                           <a name="deluser" onclick="confirmDelete(`<?=$row['id']?>`)">
-                            <i class="fas fa-trash text-danger"></i>
+                            <i class="fas fa-trash text-danger" title="Delete"></i>
                           </a>
                         </td>
                       </tr>

@@ -249,19 +249,24 @@
                                 </thead>
                                 <tbody>
                                   <?php
-                                    $sql = "SELECT p.*, c.name AS college_name FROM partners AS p INNER JOIN college AS c ON p.college_id = c.collegeID";
+                                    $collegeAbbrev = $_SESSION['college'];
+                                    $sql = "SELECT p.*, c.name AS college_name FROM partners AS p INNER JOIN college AS c ON p.college_id = c.collegeID WHERE c.college_abbrev = '$collegeAbbrev'";
                                     $result = $conn->query($sql);
                                     $count = 1;
                                     while($row = $result->fetch_assoc()) {
                                   ?>
                                     <tr style="center">
-                                      <td><?=$count?></td>
-                                      <td><?=$row['name']?></td>
-                                      <td><?=$row['category']?></td>
-                                      <td><?=$row['college_name']?></td>
-                                      <td><?=$row['status']?></td>
-                                      <th></th>
-                                    </tr>
+                                      <td style='text-align: center;'><?=$count?></td>
+                                      <td style='text-align: center;'><?=$row['name']?></td>
+                                      <td style='text-align: center;'><?=$row['category']?></td>
+                                      <td style='text-align: center;'><?=$row['college_name']?></td>
+                                      <td style='text-align: center;'><?=$row['status']?></td>
+                                      <td style='text-align: center; display: flex; justify-content: center;'>
+                                        <a href='ui-formsPreview.php' title='View Activity'>
+                                            <span class='bi bi-three-dots'></span>
+                                        </a>
+                                    </td>
+                                      </tr>
                                   <?php
                                       $count++;
                                     }

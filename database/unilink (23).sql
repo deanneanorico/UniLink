@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 09, 2024 at 05:28 AM
+-- Generation Time: Jan 09, 2024 at 07:40 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -47,29 +47,27 @@ CREATE TABLE `activityform` (
 --
 
 INSERT INTO `activityform` (`id`, `activity_title`, `campus`, `college`, `program`, `partner_type`, `partner`, `start_date`, `end_date`, `rationale`, `objective`, `budget`) VALUES
-('0151ff6e-9363-11ee-b3c9-f80dac465db8', 'Intramurals', 'ARASOF-Nasugbu', 'College of Accountancy, Business, Economics, International Hospitality Management', 'Bachelor of Science in Accountancy', 'Local', 'Amara en Terrazas', '2023-12-05', '2023-12-30', '', '', 'Fund Partner Agency'),
-('0f1d333c-95dc-11ee-8722-f80dac465db8', 'dfsf', 'ARASOF-Nasugbu', 'College of Accountancy, Business, Economics, International Hospitality Management', 'Bachelor of Science in Accountancy', 'International', 'El Cocinero', '2023-12-08', '2023-12-20', '<ol><li>dsfs</li></ol>', '<ol><li>dsxfdsffdsf &nbsp;&nbsp;</li></ol>', ''),
-('105ede4c-6d23-11ee-b322-f80dac465db8', 'Community Health Education Program', 'ARASOF-Nasugbu', 'College of Nursing and Allied Health Sciences', 'Bachelor of Science in Nursing', 'International', 'Hospitality Institute of America-Philippines Inc.', '2023-10-18', '2023-10-31', '<p>The Community Health Education Program is designed to address the critical need for health education and promotion at the community level. Many communities, especially underserved or at-risk populations, lack access to vital health information and resources. This program aims to bridge that gap by empowering individuals and communities to make informed decisions about their health and well-being. By providing education and support, the program can contribute to reducing health disparities, improving overall community health, and preventing or managing various health conditions.</p>', '<p><strong>Increase Health Literacy:</strong> The primary objective is to improve the health literacy of the community members. This includes their ability to understand, interpret, and use health information to make informed decisions. <strong>Raise Awareness:</strong> Create awareness about specific health issues or topics that are prevalent in the community, such as diabetes, cardiovascular health, or mental health.</p>', ''),
-('11c2cb25-87c7-11ee-bb2f-f80dac465db8', 'Christmas Party', 'ARASOF-Nasugbu', 'College of Informatics and Computing Sciences', 'Bachelor of Science in Information Technology', 'Local', 'Canyon Cove', '2023-11-21', '2023-11-21', '<ul>\r\n	<li>.sdddd</li>\r\n	<li>fdddfff</li>\r\n</ul>\r\n\r\n<ol>\r\n	<li>erewrwe</li>\r\n	<li>erewrwe</li>\r\n</ol>\r\n', '', 'Fund of University'),
-('18210bc6-6d21-11ee-b322-f80dac465db8', 'Micro-teaching Session', 'ARASOF-Nasugbu', 'College of Teacher Education', 'Bachelor of Elementary Education', 'Local', 'Municipality of Lian', '2023-10-19', '2023-12-01', '', '', 'Fund of University'),
-('1b6f8d0f-6be9-11ee-b322-f80dac465db8', 'Seminar of Waste Disposal', 'ARASOF-Nasugbu', 'College of Accountancy, Business, Economics, International Hospitality Management', 'Bachelor of Science in Accountancy', 'Local', 'Chateau Royale', '2023-10-01', '2023-10-07', '<p>Lorem ipsum dolor sit amet. Ab dignissimos fuga eos asperiores doloribus qui impedit nihil aut deleniti natus ad soluta autem ea incidunt quod eum officia amet. Vel ratione totam ut velit voluptas hic aliquid dolores in quasi omnis cum similique maxime rem minima iste aut blanditiis expedita?</p><p>Non architecto quas aut provident odio qui quia modi. Quo accusantium error et repellendus aliquam est praesentium voluptas aut totam obcaecati ab galisum perferendis ea incidunt eligendi est nemo quibusdam? Non assumenda quam At galisum sapiente sed nostrum numquam. Et labore accusamus et fugit maiores aut delectus accusamus ea esse quis in minus omnis est quam dolor.</p><p>Et quisquam totam a eligendi assumenda ut aliquam quibusdam sed enim similique. Quo earum nemo quo quae omnis aut facere atque ut consectetur ullam et architecto rerum eum perferendis voluptas. Sit porro magnam non rerum nihil id voluptas atque.</p>', '<p>Lorem ipsum dolor sit amet. Ab dignissimos fuga eos asperiores doloribus qui impedit nihil aut deleniti natus ad soluta autem ea incidunt quod eum officia amet. Vel ratione totam ut velit voluptas hic aliquid dolores in quasi omnis cum similique maxime rem minima iste aut blanditiis expedita?</p><p>Non architecto quas aut provident odio qui quia modi. Quo accusantium error et repellendus aliquam est praesentium voluptas aut totam obcaecati ab galisum perferendis ea incidunt eligendi est nemo quibusdam? Non assumenda quam At galisum sapiente sed nostrum numquam. Et labore accusamus et fugit maiores aut delectus accusamus ea esse quis in minus omnis est quam dolor.</p><p>Et quisquam totam a eligendi assumenda ut aliquam quibusdam sed enim similique. Quo earum nemo quo quae omnis aut facere atque ut consectetur ullam et architecto rerum eum perferendis voluptas. Sit porro magnam non rerum nihil id voluptas atque.</p>', 'Fund Partner Agency'),
-('28bee6f0-6d21-11ee-b322-f80dac465db8', 'Virtual Field Trip Creation', 'ARASOF-Nasugbu', 'College of Teacher Education', 'Bachelor of Secondary Education', 'Local', 'Municipality of Calatagan', '2023-10-17', '2023-10-19', '', '', 'Fund Partner Agency'),
+('0151ff6e-9363-11ee-b3c9-f80dac465db8', 'OJT', 'ARASOF-Nasugbu', 'College of Accountancy, Business, Economics, International Hospitality Management', 'Bachelor of Science in Accountancy', 'International', 'El Cocinero', '2024-01-01', '2024-01-31', '', '', ''),
+('0f1d333c-95dc-11ee-8722-f80dac465db8', 'Food Teaching', 'ARASOF-Nasugbu', 'College of Accountancy, Business, Economics, International Hospitality Management', 'Bachelor of Science in Accountancy', 'International', 'El Cocinero', '2023-12-08', '2023-12-20', '<ul>\r\n	<li>Lorem ipsum dolor sit amet. Ut quisquam doloremque sit harum dolore ab quis facilis et deserunt minus est optio perferendis! Est quos error et nesciunt totam et exercitationem necessitatibus qui itaque molestiae ea internos sint est voluptas rerum id quia fugit.</li>\r\n	<li>Qui enim exercitationem et numquam velit et nulla dolorum. Qui galisum nulla et voluptatem sunt ut beatae laborum et totam illum in iste nisi ut quae quisquam. 33 sequi voluptas cum sequi unde 33 dolorem placeat sit nesciunt reprehenderit! Est neque dolores vel facilis velit et autem illo At tempore vitae?</li>\r\n</ul>\r\n', '<p>Lorem ipsum dolor sit amet. Ut quisquam doloremque sit harum dolore ab quis facilis et deserunt minus est optio perferendis! Est quos error et nesciunt totam et exercitationem necessitatibus qui itaque molestiae ea internos sint est voluptas rerum id quia fugit.</p>\r\n\r\n<p>Qui enim exercitationem et numquam velit et nulla dolorum. Qui galisum nulla et voluptatem sunt ut beatae laborum et totam illum in iste nisi ut quae quisquam. 33 sequi voluptas cum sequi unde 33 dolorem placeat sit nesciunt reprehenderit! Est neque dolores vel facilis velit et autem illo At tempore vitae?</p>\r\n', 'Fund of University'),
+('105ede4c-6d23-11ee-b322-f80dac465db8', 'Community Health Education Program', 'ARASOF-Nasugbu', 'College of Nursing and Allied Health Sciences', 'Bachelor of Science in Nutrition and Dietetics', 'Local', 'San Lazaro Hospital – Santa Cruz, Manila	', '2024-01-09', '2024-01-16', '<p>The Community Health Education Program is designed to address the critical need for health education and promotion at the community level. Many communities, especially underserved or at-risk populations, lack access to vital health information and resources. This program aims to bridge that gap by empowering individuals and communities to make informed decisions about their health and well-being. By providing education and support, the program can contribute to reducing health disparities, improving overall community health, and preventing or managing various health conditions.</p>\r\n', '<p><strong>Increase Health Literacy:</strong> The primary objective is to improve the health literacy of the community members. This includes their ability to understand, interpret, and use health information to make informed decisions. <strong>Raise Awareness:</strong> Create awareness about specific health issues or topics that are prevalent in the community, such as diabetes, cardiovascular health, or mental health.</p>\r\n', ''),
+('11c2cb25-87c7-11ee-bb2f-f80dac465db8', 'Christmas Party', 'ARASOF-Nasugbu', 'College of Informatics and Computing Sciences', 'Bachelor of Science in Information Technology', 'Local', 'Canyon Cove', '2024-01-10', '2024-01-21', '<ul>\r\n	<li>.sdddd</li>\r\n	<li>fdddfff</li>\r\n</ul>\r\n\r\n<ol>\r\n	<li>erewrwe</li>\r\n	<li>erewrwe</li>\r\n</ol>\r\n', '', 'Fund of University'),
+('18210bc6-6d21-11ee-b322-f80dac465db8', 'Micro-teaching Session', 'ARASOF-Nasugbu', 'College of Teacher Education', 'Bachelor of Elementary Education', 'International', 'Creative Dreams School	', '2023-10-19', '2023-12-01', '', '', 'Fund of University'),
+('1b6f8d0f-6be9-11ee-b322-f80dac465db8', 'Seminar of Waste Disposal', 'ARASOF-Nasugbu', 'College of Accountancy, Business, Economics, International Hospitality Management', 'Bachelor of Science in Hospitality Management', 'Local', 'Boracay Option Tours and Travel Services, Inc.', '2023-10-01', '2023-10-07', '<p>Lorem ipsum dolor sit amet. Ab dignissimos fuga eos asperiores doloribus qui impedit nihil aut deleniti natus ad soluta autem ea incidunt quod eum officia amet. Vel ratione totam ut velit voluptas hic aliquid dolores in quasi omnis cum similique maxime rem minima iste aut blanditiis expedita?</p>\r\n\r\n<p>Non architecto quas aut provident odio qui quia modi. Quo accusantium error et repellendus aliquam est praesentium voluptas aut totam obcaecati ab galisum perferendis ea incidunt eligendi est nemo quibusdam? Non assumenda quam At galisum sapiente sed nostrum numquam. Et labore accusamus et fugit maiores aut delectus accusamus ea esse quis in minus omnis est quam dolor.</p>\r\n\r\n<p>Et quisquam totam a eligendi assumenda ut aliquam quibusdam sed enim similique. Quo earum nemo quo quae omnis aut facere atque ut consectetur ullam et architecto rerum eum perferendis voluptas. Sit porro magnam non rerum nihil id voluptas atque.</p>\r\n', '<p>Lorem ipsum dolor sit amet. Ab dignissimos fuga eos asperiores doloribus qui impedit nihil aut deleniti natus ad soluta autem ea incidunt quod eum officia amet. Vel ratione totam ut velit voluptas hic aliquid dolores in quasi omnis cum similique maxime rem minima iste aut blanditiis expedita?</p>\r\n\r\n<p>Non architecto quas aut provident odio qui quia modi. Quo accusantium error et repellendus aliquam est praesentium voluptas aut totam obcaecati ab galisum perferendis ea incidunt eligendi est nemo quibusdam? Non assumenda quam At galisum sapiente sed nostrum numquam. Et labore accusamus et fugit maiores aut delectus accusamus ea esse quis in minus omnis est quam dolor.</p>\r\n\r\n<p>Et quisquam totam a eligendi assumenda ut aliquam quibusdam sed enim similique. Quo earum nemo quo quae omnis aut facere atque ut consectetur ullam et architecto rerum eum perferendis voluptas. Sit porro magnam non rerum nihil id voluptas atque.</p>\r\n', 'Fund Partner Agency'),
+('28bee6f0-6d21-11ee-b322-f80dac465db8', 'Virtual Field Trip Creation', 'ARASOF-Nasugbu', 'College of Teacher Education', 'Bachelor of Elementary Education', 'Local', 'Calatagan National High School', '2023-10-17', '2023-10-19', '', '', 'Fund Partner Agency'),
 ('2cb31331-6d1f-11ee-b322-f80dac465db8', 'Graduation Party-Speaker', 'ARASOF-Nasugbu', 'College of Informatics and Computing Sciences', 'Bachelor of Science in Information Technology', 'Local', 'Canyon Cove', '2023-10-18', '2023-10-19', '', '', 'Fund of University'),
 ('2d05cb7e-87b5-11ee-bb2f-f80dac465db8', 'Seminar of IT Passport', 'ARASOF-Nasugbu', 'College of Informatics and Computing Sciences', 'Bachelor of Science in Information Technology', 'Local', 'Bausas Surveying Office', '2023-11-20', '2023-11-30', '', '', ''),
-('2fab14d4-8d48-11ee-97e4-f80dac465db8', 'Graduation Party-Speaker', 'ARASOF-Nasugbu', 'College of Accountancy, Business, Economics, International Hospitality Management', 'Bachelor of Science in Accountancy', 'International', 'Global University Network for Innovation', '2023-11-28', '2023-12-02', '<p>.</p>', '<p>.</p>', 'Fund of University'),
-('3534cd39-87b5-11ee-bb2f-f80dac465db8', 'wewe', 'ARASOF-Nasugbu', 'College of Informatics and Computing Sciences', 'Bachelor of Science in Information Technology', '', NULL, '2023-11-20', '2023-11-30', '', '', 'Fund Partner Agency'),
+('2fab14d4-8d48-11ee-97e4-f80dac465db8', 'Graduation Party-Speaker', 'ARASOF-Nasugbu', 'College of Accountancy, Business, Economics, International Hospitality Management', 'Bachelor of Science in Accountancy', 'Local', 'Juan Carlo the Caterer', '2023-11-28', '2023-12-02', '', '<p>.</p>\r\n', 'Fund of University'),
+('3534cd39-87b5-11ee-bb2f-f80dac465db8', 'Intramurals', 'ARASOF-Nasugbu', 'College of Informatics and Computing Sciences', 'Bachelor of Science in Information Technology', 'Local', 'Absolut Distillers, Inc.', '2024-01-09', '2024-01-16', '', '', 'Fund Partner Agency'),
 ('3a68b59d-6d1d-11ee-b322-f80dac465db8', 'Passport Examination', 'ARASOF-Nasugbu', 'College of Informatics and Computing Sciences', 'Bachelor of Science in Information Technology', 'International', 'Philippine National IT Standards Foundation', '2023-10-17', '2023-10-22', '<p><strong>Certification and Credentialing:</strong> Examinations often serve as a basis for certifying individuals in various professions and awarding academic degrees or certifications. Passing exams can be a prerequisite for entering certain careers.</p>', '<p><strong>Assessment of Knowledge and Skills:</strong> One of the primary objectives of an examination project is to assess the knowledge, understanding, and skills of the individuals being examined. This can include subject-specific knowledge, problem-solving abilities, critical thinking, and practical skills.</p>', 'Fund Partner Agency'),
+('46c3d598-af1c-11ee-83f7-f80dac465db8', 'On job training', 'ARASOF-Nasugbu', 'College of Teacher Education', 'Bachelor of Secondary Education', 'Local', 'Lian Senior High School', '2024-01-01', '2024-01-31', '', '', ''),
 ('4e9fccce-8df5-11ee-99cb-f80dac465db8', 'Student\'s Night ', 'ARASOF-Nasugbu', 'College of Informatics and Computing Sciences', 'Bachelor of Science in Information Technology', 'Local', 'Municipality of Lian', '2023-11-28', '2023-11-29', '', '', ''),
-('5cfc62a5-6d23-11ee-b322-f80dac465db8', 'Telehealth Integration Project', 'ARASOF-Nasugbu', 'College of Nursing and Allied Health Sciences', 'Bachelor of Science in Nursing', 'International', 'Hospitality Institute of America-Philippines Inc.', '2023-10-17', '2023-12-18', '<p>The Telehealth Integration Project is driven by the growing importance of telehealth in modern healthcare. Telehealth offers the potential to increase access to care, improve healthcare efficiency, and enhance patient outcomes. With advances in technology and the need for more accessible healthcare, integrating telehealth services into healthcare facilities is critical.</p>', '<p><strong>Telehealth Infrastructure Development:</strong> Create the necessary technological infrastructure within the healthcare facility to support telehealth services, including secure video conferencing and electronic health record integration.</p>', 'Fund Partner Agency'),
-('66bc6b42-8df9-11ee-99cb-f80dac465db8', 'Intramurals', 'ARASOF-Nasugbu', 'College of Accountancy, Business, Economics, International Hospitality Management', 'Bachelor of Science in Accountancy', 'International', 'Hung Voung University', '2023-11-26', '2023-11-30', '', '', ''),
-('69017def-9363-11ee-b3c9-f80dac465db8', 'Tree Planting', 'ARASOF-Nasugbu', 'College of Accountancy, Business, Economics, International Hospitality Management', 'Bachelor of Science in Accountancy', 'International', 'Crosswinds Resort Suites', '2023-12-01', '2023-12-04', '', '', 'Fund of University'),
+('5cfc62a5-6d23-11ee-b322-f80dac465db8', 'Telehealth Integration Project', 'ARASOF-Nasugbu', 'College of Nursing and Allied Health Sciences', 'Bachelor of Science in Nursing', 'Local', 'Batangas Provincial Hospital – Lemery, Batangas	', '2024-02-01', '2024-02-18', '<p>The Telehealth Integration Project is driven by the growing importance of telehealth in modern healthcare. Telehealth offers the potential to increase access to care, improve healthcare efficiency, and enhance patient outcomes. With advances in technology and the need for more accessible healthcare, integrating telehealth services into healthcare facilities is critical.</p>\r\n', '<p><strong>Telehealth Infrastructure Development:</strong> Create the necessary technological infrastructure within the healthcare facility to support telehealth services, including secure video conferencing and electronic health record integration.</p>\r\n', 'Fund of University'),
+('66bc6b42-8df9-11ee-99cb-f80dac465db8', 'Intramurals', 'ARASOF-Nasugbu', 'College of Accountancy, Business, Economics, International Hospitality Management', 'Bachelor of Science in Tourism Management', 'Local', 'BernaBeach Resort', '2023-11-26', '2023-11-30', '', '', ''),
 ('789f329a-6d22-11ee-b322-f80dac465db8', 'Community Policing Effectiveness Assessment', 'ARASOF-Nasugbu', 'College of Arts and Sciences', 'Bachelor of Science in Criminology', 'Local', 'Philippine Army', '2023-10-17', '2023-10-31', '<p>Crime is a significant concern for both communities and law enforcement agencies. By evaluating the impact of community policing on crime rates, the project addresses a critical issue in criminology. It also assesses community satisfaction and trust, which are crucial for long-term crime reduction and public safety.</p>', '<p>To identify potential correlations or factors that contribute to the effectiveness of community policing, such as the extent of community engagement, the number of community policing programs, and the allocation of officers to specific neighborhoods.</p>', ''),
-('7da20315-9668-11ee-83fd-f80dac465db8', 'deannne', 'ARASOF-Nasugbu', 'College of Accountancy, Business, Economics, International Hospitality Management', 'Bachelor of Science in Accountancy', 'International', 'Crosswinds Resort Suites', '2023-12-30', '2023-12-30', '', '', ''),
-('85952ef2-8d47-11ee-97e4-f80dac465db8', 'Graduation Party-Speaker', 'ARASOF-Nasugbu', 'College of Accountancy, Business, Economics, International Hospitality Management', 'Bachelor of Science in Accountancy', '', NULL, '2023-11-28', '2023-11-28', '', '', ''),
-('a089a774-8df9-11ee-99cb-f80dac465db8', 'Intramurals', 'ARASOF-Nasugbu', 'College of Accountancy, Business, Economics, International Hospitality Management', 'Bachelor of Science in Accountancy', 'International', 'Hung Voung University', '2023-11-26', '2023-11-30', '', '', ''),
-('ad8a9dd1-964c-11ee-8722-f80dac465db8', 'Testing', 'ARASOF-Nasugbu', 'College of Accountancy, Business, Economics, International Hospitality Management', 'Bachelor of Science in Accountancy', 'Local', 'Amara en Terrazas', '2023-09-23', '2023-09-23', '', '', ''),
-('cb177da3-6d23-11ee-b322-f80dac465db8', 'Simulation-Based Interprofessional Training', 'ARASOF-Nasugbu', 'College of Nursing and Allied Health Sciences', 'Bachelor of Science in Nursing', 'International', 'Hospitality Institute of America-Philippines Inc.', '2023-10-01', '2023-10-17', '<p><strong>Patient Safety:</strong> Effective interprofessional teamwork and communication are critical to preventing medical errors and improving patient safety. <strong>Complex Healthcare Environments:</strong> Modern healthcare settings are complex, with various professionals working together to deliver care. Effective collaboration is necessary to navigate this complexity.</p>', '<p><strong>Skill Development:</strong> Provide healthcare professionals with opportunities to practice and develop essential interprofessional skills, including communication, teamwork, and leadership. <strong>Scenario-Based Training:</strong> Design realistic patient scenarios where healthcare teams must work together to diagnose, treat, and manage the patient\'s condition. These scenarios should mimic real clinical situations.</p>', 'Fund Partner Agency'),
-('e6fc2b35-ac61-11ee-8eab-f80dac465db8', 'Seminar of Media', 'ARASOF-Nasugbu', 'College of Arts and Sciences', 'Bachelor of Arts in Communication', 'Local', NULL, '2024-01-06', '2024-01-07', '', '', '');
+('ad8a9dd1-964c-11ee-8722-f80dac465db8', 'On Job Training', 'ARASOF-Nasugbu', 'College of Accountancy, Business, Economics, International Hospitality Management', 'Bachelor of Science in Tourism Management', 'International', 'Rajah Travel Corporation', '2024-02-01', '2024-02-29', '', '', ''),
+('beae0e4e-af1c-11ee-83f7-f80dac465db8', 'Guest Speaker', 'ARASOF-Nasugbu', 'College of Teacher Education', 'Bachelor of Physical Education', 'Local', 'Lian Institute', '2024-02-01', '2024-02-29', '', '', ''),
+('cb177da3-6d23-11ee-b322-f80dac465db8', 'Simulation-Based Interprofessional Training', 'ARASOF-Nasugbu', 'College of Nursing and Allied Health Sciences', 'Bachelor of Science in Nursing', 'Local', 'National Center for Mental Health – Mandaluyong, Metro Manila', '2023-10-01', '2023-10-17', '<p><strong>Patient Safety:</strong> Effective interprofessional teamwork and communication are critical to preventing medical errors and improving patient safety. <strong>Complex Healthcare Environments:</strong> Modern healthcare settings are complex, with various professionals working together to deliver care. Effective collaboration is necessary to navigate this complexity.</p>\r\n', '<p><strong>Skill Development:</strong> Provide healthcare professionals with opportunities to practice and develop essential interprofessional skills, including communication, teamwork, and leadership. <strong>Scenario-Based Training:</strong> Design realistic patient scenarios where healthcare teams must work together to diagnose, treat, and manage the patient&#39;s condition. These scenarios should mimic real clinical situations.</p>\r\n', 'Fund Partner Agency'),
+('e6fc2b35-ac61-11ee-8eab-f80dac465db8', 'Seminar of Media', 'ARASOF-Nasugbu', 'College of Arts and Sciences', 'Bachelor of Arts in Communication', 'Local', 'Manila Broadcasting Philippines', '2024-01-09', '2024-01-12', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -88,52 +86,48 @@ CREATE TABLE `activity_representatives` (
 --
 
 INSERT INTO `activity_representatives` (`id`, `activityform_id`, `role`) VALUES
-('0152066f-9363-11ee-b3c9-f80dac465db8', '0151ff6e-9363-11ee-b3c9-f80dac465db8', 'Project Leader/s'),
-('01520ed9-9363-11ee-b3c9-f80dac465db8', '0151ff6e-9363-11ee-b3c9-f80dac465db8', 'Project Member/s'),
-('0c03e782-adeb-11ee-83f7-f80dac465db8', '11c2cb25-87c7-11ee-bb2f-f80dac465db8', 'Project Leader/s'),
-('0c03f322-adeb-11ee-83f7-f80dac465db8', '11c2cb25-87c7-11ee-bb2f-f80dac465db8', 'Project Member/s'),
-('0f1d3cd1-95dc-11ee-8722-f80dac465db8', '0f1d333c-95dc-11ee-8722-f80dac465db8', 'Project Leader/s'),
-('0f1d42bb-95dc-11ee-8722-f80dac465db8', '0f1d333c-95dc-11ee-8722-f80dac465db8', 'Project Member/s'),
-('105ee5fe-6d23-11ee-b322-f80dac465db8', '105ede4c-6d23-11ee-b322-f80dac465db8', 'Project Leader/s'),
-('105eea2c-6d23-11ee-b322-f80dac465db8', '105ede4c-6d23-11ee-b322-f80dac465db8', 'Project Member/s'),
-('1821194e-6d21-11ee-b322-f80dac465db8', '18210bc6-6d21-11ee-b322-f80dac465db8', 'Project Leader/s'),
-('18213365-6d21-11ee-b322-f80dac465db8', '18210bc6-6d21-11ee-b322-f80dac465db8', 'Project Member/s'),
-('2fab294c-8d48-11ee-97e4-f80dac465db8', '2fab14d4-8d48-11ee-97e4-f80dac465db8', 'Project Leader/s'),
-('2fab3c26-8d48-11ee-97e4-f80dac465db8', '2fab14d4-8d48-11ee-97e4-f80dac465db8', 'Project Member/s'),
-('3534db4a-87b5-11ee-bb2f-f80dac465db8', '3534cd39-87b5-11ee-bb2f-f80dac465db8', 'Project Leader/s'),
-('3534e3f7-87b5-11ee-bb2f-f80dac465db8', '3534cd39-87b5-11ee-bb2f-f80dac465db8', 'Project Member/s'),
+('08dc9cf8-af17-11ee-83f7-f80dac465db8', '0f1d333c-95dc-11ee-8722-f80dac465db8', 'Project Leader/s'),
+('08dd2a9d-af17-11ee-83f7-f80dac465db8', '0f1d333c-95dc-11ee-8722-f80dac465db8', 'Project Member/s'),
+('0fc36aec-af18-11ee-83f7-f80dac465db8', '2fab14d4-8d48-11ee-97e4-f80dac465db8', 'Project Leader/s'),
+('0fc375b8-af18-11ee-83f7-f80dac465db8', '2fab14d4-8d48-11ee-97e4-f80dac465db8', 'Project Member/s'),
+('2e119858-af17-11ee-83f7-f80dac465db8', '1b6f8d0f-6be9-11ee-b322-f80dac465db8', 'Project Leader/s'),
+('2e11ad72-af17-11ee-83f7-f80dac465db8', '1b6f8d0f-6be9-11ee-b322-f80dac465db8', 'Project Member/s'),
+('3f80e692-af18-11ee-83f7-f80dac465db8', '66bc6b42-8df9-11ee-99cb-f80dac465db8', 'Project Leader/s'),
+('3f80f3e1-af18-11ee-83f7-f80dac465db8', '66bc6b42-8df9-11ee-99cb-f80dac465db8', 'Project Member/s'),
+('4194cc5c-af1b-11ee-83f7-f80dac465db8', 'e6fc2b35-ac61-11ee-8eab-f80dac465db8', 'Project Leader/s'),
+('4194d5aa-af1b-11ee-83f7-f80dac465db8', 'e6fc2b35-ac61-11ee-8eab-f80dac465db8', 'Project Member/s'),
+('46c3da56-af1c-11ee-83f7-f80dac465db8', '46c3d598-af1c-11ee-83f7-f80dac465db8', 'Project Leader/s'),
+('46c3e01f-af1c-11ee-83f7-f80dac465db8', '46c3d598-af1c-11ee-83f7-f80dac465db8', 'Project Member/s'),
 ('4e9fd290-8df5-11ee-99cb-f80dac465db8', '4e9fccce-8df5-11ee-99cb-f80dac465db8', 'Project Leader/s'),
 ('4e9fd80f-8df5-11ee-99cb-f80dac465db8', '4e9fccce-8df5-11ee-99cb-f80dac465db8', 'Project Member/s'),
-('5cfc6c35-6d23-11ee-b322-f80dac465db8', '5cfc62a5-6d23-11ee-b322-f80dac465db8', 'Project Leader/s'),
-('5cfc7754-6d23-11ee-b322-f80dac465db8', '5cfc62a5-6d23-11ee-b322-f80dac465db8', 'Project Member/s'),
-('6200bc6c-9361-11ee-b3c9-f80dac465db8', '1b6f8d0f-6be9-11ee-b322-f80dac465db8', 'Project Leader/s'),
-('6200caf9-9361-11ee-b3c9-f80dac465db8', '1b6f8d0f-6be9-11ee-b322-f80dac465db8', 'Project Member/s'),
-('69018996-9363-11ee-b3c9-f80dac465db8', '69017def-9363-11ee-b3c9-f80dac465db8', 'Project Leader/s'),
-('6901a03d-9363-11ee-b3c9-f80dac465db8', '69017def-9363-11ee-b3c9-f80dac465db8', 'Project Member/s'),
-('6b44f5e8-95db-11ee-8722-f80dac465db8', 'a089a774-8df9-11ee-99cb-f80dac465db8', 'Project Leader/s'),
-('6b44fdf9-95db-11ee-8722-f80dac465db8', 'a089a774-8df9-11ee-99cb-f80dac465db8', 'Project Member/s'),
+('5a49195b-aed3-11ee-83f7-f80dac465db8', '11c2cb25-87c7-11ee-bb2f-f80dac465db8', 'Project Leader/s'),
+('5a4924d0-aed3-11ee-83f7-f80dac465db8', '11c2cb25-87c7-11ee-bb2f-f80dac465db8', 'Project Member/s'),
 ('77132c5e-937d-11ee-8c8d-f80dac465db8', '3a68b59d-6d1d-11ee-b322-f80dac465db8', 'Project Leader/s'),
 ('771335bc-937d-11ee-8c8d-f80dac465db8', '3a68b59d-6d1d-11ee-b322-f80dac465db8', 'Project Member/s'),
 ('789f3d46-6d22-11ee-b322-f80dac465db8', '789f329a-6d22-11ee-b322-f80dac465db8', 'Project Leader/s'),
 ('789f42d5-6d22-11ee-b322-f80dac465db8', '789f329a-6d22-11ee-b322-f80dac465db8', 'Project Member/s'),
-('7da20e0e-9668-11ee-83fd-f80dac465db8', '7da20315-9668-11ee-83fd-f80dac465db8', 'Project Leader/s'),
-('7da21d45-9668-11ee-83fd-f80dac465db8', '7da20315-9668-11ee-83fd-f80dac465db8', 'Project Member/s'),
-('85954139-8d47-11ee-97e4-f80dac465db8', '85952ef2-8d47-11ee-97e4-f80dac465db8', 'Project Leader/s'),
-('85954fed-8d47-11ee-97e4-f80dac465db8', '85952ef2-8d47-11ee-97e4-f80dac465db8', 'Project Member/s'),
-('8d400ea2-8df9-11ee-99cb-f80dac465db8', '66bc6b42-8df9-11ee-99cb-f80dac465db8', 'Project Leader/s'),
-('8d401937-8df9-11ee-99cb-f80dac465db8', '66bc6b42-8df9-11ee-99cb-f80dac465db8', 'Project Member/s'),
-('ad8ab2a9-964c-11ee-8722-f80dac465db8', 'ad8a9dd1-964c-11ee-8722-f80dac465db8', 'Project Leader/s'),
-('ad8ac443-964c-11ee-8722-f80dac465db8', 'ad8a9dd1-964c-11ee-8722-f80dac465db8', 'Project Member/s'),
-('cb178cfc-6d23-11ee-b322-f80dac465db8', 'cb177da3-6d23-11ee-b322-f80dac465db8', 'Project Leader/s'),
-('cb1796ef-6d23-11ee-b322-f80dac465db8', 'cb177da3-6d23-11ee-b322-f80dac465db8', 'Project Member/s'),
-('de3ba23e-6d7b-11ee-b322-f80dac465db8', '28bee6f0-6d21-11ee-b322-f80dac465db8', 'Project Leader/s'),
-('de3baefc-6d7b-11ee-b322-f80dac465db8', '28bee6f0-6d21-11ee-b322-f80dac465db8', 'Project Member/s'),
+('83b013a9-af1b-11ee-83f7-f80dac465db8', 'cb177da3-6d23-11ee-b322-f80dac465db8', 'Project Leader/s'),
+('83b023ae-af1b-11ee-83f7-f80dac465db8', 'cb177da3-6d23-11ee-b322-f80dac465db8', 'Project Member/s'),
+('975bb027-af18-11ee-83f7-f80dac465db8', '0151ff6e-9363-11ee-b3c9-f80dac465db8', 'Project Leader/s'),
+('975bbb4e-af18-11ee-83f7-f80dac465db8', '0151ff6e-9363-11ee-b3c9-f80dac465db8', 'Project Member/s'),
+('b619fc2d-af19-11ee-83f7-f80dac465db8', 'ad8a9dd1-964c-11ee-8722-f80dac465db8', 'Project Leader/s'),
+('b61a131f-af19-11ee-83f7-f80dac465db8', 'ad8a9dd1-964c-11ee-8722-f80dac465db8', 'Project Member/s'),
+('bd4098f3-aed3-11ee-83f7-f80dac465db8', '3534cd39-87b5-11ee-bb2f-f80dac465db8', 'Project Leader/s'),
+('bd40ab04-aed3-11ee-83f7-f80dac465db8', '3534cd39-87b5-11ee-bb2f-f80dac465db8', 'Project Member/s'),
+('beae1928-af1c-11ee-83f7-f80dac465db8', 'beae0e4e-af1c-11ee-83f7-f80dac465db8', 'Project Leader/s'),
+('beae3209-af1c-11ee-83f7-f80dac465db8', 'beae0e4e-af1c-11ee-83f7-f80dac465db8', 'Project Member/s'),
+('bebf0b3f-af1b-11ee-83f7-f80dac465db8', '5cfc62a5-6d23-11ee-b322-f80dac465db8', 'Project Leader/s'),
+('bebf7ee8-af1b-11ee-83f7-f80dac465db8', '5cfc62a5-6d23-11ee-b322-f80dac465db8', 'Project Member/s'),
+('cf7b4a51-af1c-11ee-83f7-f80dac465db8', '28bee6f0-6d21-11ee-b322-f80dac465db8', 'Project Leader/s'),
+('cf7b552e-af1c-11ee-83f7-f80dac465db8', '28bee6f0-6d21-11ee-b322-f80dac465db8', 'Project Member/s'),
+('e00bb3d0-af1c-11ee-83f7-f80dac465db8', '18210bc6-6d21-11ee-b322-f80dac465db8', 'Project Leader/s'),
+('e00bbd89-af1c-11ee-83f7-f80dac465db8', '18210bc6-6d21-11ee-b322-f80dac465db8', 'Project Member/s'),
 ('e3f56ca0-ade0-11ee-83f7-f80dac465db8', '2d05cb7e-87b5-11ee-bb2f-f80dac465db8', 'Project Leader/s'),
 ('e3f57bbd-ade0-11ee-83f7-f80dac465db8', '2d05cb7e-87b5-11ee-bb2f-f80dac465db8', 'Project Member/s'),
-('e6fc441c-ac61-11ee-8eab-f80dac465db8', 'e6fc2b35-ac61-11ee-8eab-f80dac465db8', 'Project Leader/s'),
-('e6fc5573-ac61-11ee-8eab-f80dac465db8', 'e6fc2b35-ac61-11ee-8eab-f80dac465db8', 'Project Member/s'),
 ('f0e8ac6a-937c-11ee-8c8d-f80dac465db8', '2cb31331-6d1f-11ee-b322-f80dac465db8', 'Project Leader/s'),
-('f0e8b897-937c-11ee-8c8d-f80dac465db8', '2cb31331-6d1f-11ee-b322-f80dac465db8', 'Project Member/s');
+('f0e8b897-937c-11ee-8c8d-f80dac465db8', '2cb31331-6d1f-11ee-b322-f80dac465db8', 'Project Member/s'),
+('fc57c5b7-af1b-11ee-83f7-f80dac465db8', '105ede4c-6d23-11ee-b322-f80dac465db8', 'Project Leader/s'),
+('fc57d48b-af1b-11ee-83f7-f80dac465db8', '105ede4c-6d23-11ee-b322-f80dac465db8', 'Project Member/s');
 
 -- --------------------------------------------------------
 
@@ -153,24 +147,23 @@ CREATE TABLE `activity_representatives_responsibilities` (
 --
 
 INSERT INTO `activity_representatives_responsibilities` (`id`, `activity_representatives_id`, `responsibilities_id`, `responsibility`) VALUES
-('0154cbaa-9363-11ee-b3c9-f80dac465db8', '0152066f-9363-11ee-b3c9-f80dac465db8', NULL, 'Assist the CICS Department'),
-('10620d0a-6d23-11ee-b322-f80dac465db8', '105ee5fe-6d23-11ee-b322-f80dac465db8', 'cbc44ded-5318-11ee-aea5-0a0027000002', 'Monitor the flow of the training'),
-('106343a0-6d23-11ee-b322-f80dac465db8', '105eea2c-6d23-11ee-b322-f80dac465db8', 'cbc44b18-5318-11ee-aea5-0a0027000002', 'Identify the projects overall goal, outcome and objectives'),
-('1823ab0c-6d21-11ee-b322-f80dac465db8', '1821194e-6d21-11ee-b322-f80dac465db8', 'cbc44eca-5318-11ee-aea5-0a0027000002', 'Coordinate with the coorperating agency/resource persons'),
-('1824ce5c-6d21-11ee-b322-f80dac465db8', '18213365-6d21-11ee-b322-f80dac465db8', 'cbc452c7-5318-11ee-aea5-0a0027000002', 'Assist in the morning and evaluation of the extension program'),
+('2e1b6e4b-af17-11ee-83f7-f80dac465db8', '2e119858-af17-11ee-83f7-f80dac465db8', 'cbc44e89-5318-11ee-aea5-0a0027000002', 'Prepare project/activity proposal'),
 ('4ea5d764-8df5-11ee-99cb-f80dac465db8', '4e9fd290-8df5-11ee-99cb-f80dac465db8', NULL, 'Assist the CICS Department'),
 ('4ea8a284-8df5-11ee-99cb-f80dac465db8', '4e9fd80f-8df5-11ee-99cb-f80dac465db8', NULL, 'Helps to assist.'),
-('5cfed98f-6d23-11ee-b322-f80dac465db8', '5cfc6c35-6d23-11ee-b322-f80dac465db8', 'cbc44b18-5318-11ee-aea5-0a0027000002', 'Identify the projects overall goal, outcome and objectives'),
-('5cffe9fc-6d23-11ee-b322-f80dac465db8', '5cfc7754-6d23-11ee-b322-f80dac465db8', 'cbc44eca-5318-11ee-aea5-0a0027000002', 'Coordinate with the coorperating agency/resource persons'),
-('5d00616b-6d23-11ee-b322-f80dac465db8', '5cfc7754-6d23-11ee-b322-f80dac465db8', 'cbc44f0f-5318-11ee-aea5-0a0027000002', 'Assist the project leader in the planning, implementation, monitoring and evaluation of the project'),
-('6206e703-9361-11ee-b3c9-f80dac465db8', '6200bc6c-9361-11ee-b3c9-f80dac465db8', 'cbc44ded-5318-11ee-aea5-0a0027000002', 'Monitor the flow of the training'),
-('620a2bc0-9361-11ee-b3c9-f80dac465db8', '6200bc6c-9361-11ee-b3c9-f80dac465db8', 'cbc44e89-5318-11ee-aea5-0a0027000002', 'Prepare project/activity proposal'),
 ('771fdb07-937d-11ee-8c8d-f80dac465db8', '77132c5e-937d-11ee-8c8d-f80dac465db8', 'cbc44b18-5318-11ee-aea5-0a0027000002', 'Identify the projects overall goal, outcome and objectives'),
 ('77218b21-937d-11ee-8c8d-f80dac465db8', '771335bc-937d-11ee-8c8d-f80dac465db8', 'cbc45151-5318-11ee-aea5-0a0027000002', 'Prepare required reports/documentation'),
 ('78a0e3ed-6d22-11ee-b322-f80dac465db8', '789f3d46-6d22-11ee-b322-f80dac465db8', 'cbc44e89-5318-11ee-aea5-0a0027000002', 'Prepare project/activity proposal'),
 ('78a28e27-6d22-11ee-b322-f80dac465db8', '789f42d5-6d22-11ee-b322-f80dac465db8', 'cbc44eca-5318-11ee-aea5-0a0027000002', 'Coordinate with the coorperating agency/resource persons'),
-('cb19a07d-6d23-11ee-b322-f80dac465db8', 'cb178cfc-6d23-11ee-b322-f80dac465db8', 'cbc44b18-5318-11ee-aea5-0a0027000002', 'Identify the projects overall goal, outcome and objectives'),
-('cb1b6b10-6d23-11ee-b322-f80dac465db8', 'cb1796ef-6d23-11ee-b322-f80dac465db8', 'cbc44b18-5318-11ee-aea5-0a0027000002', 'Identify the projects overall goal, outcome and objectives');
+('83b79d17-af1b-11ee-83f7-f80dac465db8', '83b013a9-af1b-11ee-83f7-f80dac465db8', 'cbc44b18-5318-11ee-aea5-0a0027000002', 'Identify the projects overall goal, outcome and objectives'),
+('83b9c7e5-af1b-11ee-83f7-f80dac465db8', '83b023ae-af1b-11ee-83f7-f80dac465db8', 'cbc44b18-5318-11ee-aea5-0a0027000002', 'Identify the projects overall goal, outcome and objectives'),
+('9760660c-af18-11ee-83f7-f80dac465db8', '975bb027-af18-11ee-83f7-f80dac465db8', NULL, 'Assist the CABEIHM Department'),
+('beca3fa1-af1b-11ee-83f7-f80dac465db8', 'bebf0b3f-af1b-11ee-83f7-f80dac465db8', 'cbc44b18-5318-11ee-aea5-0a0027000002', 'Identify the projects overall goal, outcome and objectives'),
+('becb83a1-af1b-11ee-83f7-f80dac465db8', 'bebf7ee8-af1b-11ee-83f7-f80dac465db8', 'cbc44eca-5318-11ee-aea5-0a0027000002', 'Coordinate with the coorperating agency/resource persons'),
+('becc0db1-af1b-11ee-83f7-f80dac465db8', 'bebf7ee8-af1b-11ee-83f7-f80dac465db8', 'cbc44f0f-5318-11ee-aea5-0a0027000002', 'Assist the project leader in the planning, implementation, monitoring and evaluation of the project'),
+('e011ecfe-af1c-11ee-83f7-f80dac465db8', 'e00bb3d0-af1c-11ee-83f7-f80dac465db8', 'cbc44eca-5318-11ee-aea5-0a0027000002', 'Coordinate with the coorperating agency/resource persons'),
+('e01363ad-af1c-11ee-83f7-f80dac465db8', 'e00bbd89-af1c-11ee-83f7-f80dac465db8', 'cbc452c7-5318-11ee-aea5-0a0027000002', 'Assist in the morning and evaluation of the extension program'),
+('fc5c3419-af1b-11ee-83f7-f80dac465db8', 'fc57c5b7-af1b-11ee-83f7-f80dac465db8', 'cbc44ded-5318-11ee-aea5-0a0027000002', 'Monitor the flow of the training'),
+('fc5da50e-af1b-11ee-83f7-f80dac465db8', 'fc57d48b-af1b-11ee-83f7-f80dac465db8', 'cbc44b18-5318-11ee-aea5-0a0027000002', 'Identify the projects overall goal, outcome and objectives');
 
 -- --------------------------------------------------------
 
@@ -252,24 +245,21 @@ CREATE TABLE `budget` (
 --
 
 INSERT INTO `budget` (`id`, `activityform_id`, `item_description`, `quantity`, `unit_cost`, `total`) VALUES
-('01566044-9363-11ee-b3c9-f80dac465db8', '0151ff6e-9363-11ee-b3c9-f80dac465db8', 'Water', 25, 35, 875),
-('0c11e7b1-adeb-11ee-83f7-f80dac465db8', '11c2cb25-87c7-11ee-bb2f-f80dac465db8', 'item 1', 1, 2, 2),
-('0f1f5b0f-95dc-11ee-8722-f80dac465db8', '0f1d333c-95dc-11ee-8722-f80dac465db8', 'sd', 45, 45, 2025),
-('1825bb6d-6d21-11ee-b322-f80dac465db8', '18210bc6-6d21-11ee-b322-f80dac465db8', 'sandwich ', 25, 30, 750),
-('2fb0c53e-8d48-11ee-97e4-f80dac465db8', '2fab14d4-8d48-11ee-97e4-f80dac465db8', 'sandwich ', 78, 78, 6084),
+('08f1d9f7-af17-11ee-83f7-f80dac465db8', '0f1d333c-95dc-11ee-8722-f80dac465db8', 'Sandwich ', 200, 30, 6000),
+('08f2a0be-af17-11ee-83f7-f80dac465db8', '0f1d333c-95dc-11ee-8722-f80dac465db8', 'Soda', 200, 20, 4000),
+('0fd00b1c-af18-11ee-83f7-f80dac465db8', '2fab14d4-8d48-11ee-97e4-f80dac465db8', 'sandwich ', 78, 78, 6084),
+('2e1dba2c-af17-11ee-83f7-f80dac465db8', '1b6f8d0f-6be9-11ee-b322-f80dac465db8', 'water', 100, 20, 2000),
+('2e1e9881-af17-11ee-83f7-f80dac465db8', '1b6f8d0f-6be9-11ee-b322-f80dac465db8', 'sandwich ', 100, 15, 1500),
+('41985d61-af1b-11ee-83f7-f80dac465db8', 'e6fc2b35-ac61-11ee-8eab-f80dac465db8', 'Water', 34, 25, 850),
 ('4eaaa676-8df5-11ee-99cb-f80dac465db8', '4e9fccce-8df5-11ee-99cb-f80dac465db8', 'Water', 300, 25, 7500),
-('620c8b0e-9361-11ee-b3c9-f80dac465db8', '1b6f8d0f-6be9-11ee-b322-f80dac465db8', 'water', 100, 20, 2000),
-('620d7d60-9361-11ee-b3c9-f80dac465db8', '1b6f8d0f-6be9-11ee-b322-f80dac465db8', 'sandwich ', 100, 15, 1500),
-('69048960-9363-11ee-b3c9-f80dac465db8', '69017def-9363-11ee-b3c9-f80dac465db8', 'Pizza', 5, 120, 600),
+('5a55cb81-aed3-11ee-83f7-f80dac465db8', '11c2cb25-87c7-11ee-bb2f-f80dac465db8', 'item 1', 1, 2, 2),
 ('77227c08-937d-11ee-8c8d-f80dac465db8', '3a68b59d-6d1d-11ee-b322-f80dac465db8', 'Water', 250, 20, 5000),
 ('772308a5-937d-11ee-8c8d-f80dac465db8', '3a68b59d-6d1d-11ee-b322-f80dac465db8', 'Sandwich', 250, 25, 6250),
-('7da72c90-9668-11ee-83fd-f80dac465db8', '7da20315-9668-11ee-83fd-f80dac465db8', 'dss', 56, 56, 3136),
-('8599b619-8d47-11ee-97e4-f80dac465db8', '85952ef2-8d47-11ee-97e4-f80dac465db8', 'sandwich ', 67, 78, 5226),
-('ad933da6-964c-11ee-8722-f80dac465db8', 'ad8a9dd1-964c-11ee-8722-f80dac465db8', 'Water', 1, 1, 1),
-('cb1c7297-6d23-11ee-b322-f80dac465db8', 'cb177da3-6d23-11ee-b322-f80dac465db8', 'Water', 30, 30, 900),
-('cb1cf26d-6d23-11ee-b322-f80dac465db8', 'cb177da3-6d23-11ee-b322-f80dac465db8', 'Lunch', 30, 60, 1800),
-('de45b692-6d7b-11ee-b322-f80dac465db8', '28bee6f0-6d21-11ee-b322-f80dac465db8', 'Item 10', 45, 45, 2025),
-('e71311c1-ac61-11ee-8eab-f80dac465db8', 'e6fc2b35-ac61-11ee-8eab-f80dac465db8', 'Water', 34, 25, 850),
+('83bad57e-af1b-11ee-83f7-f80dac465db8', 'cb177da3-6d23-11ee-b322-f80dac465db8', 'Water', 30, 30, 900),
+('83bb422d-af1b-11ee-83f7-f80dac465db8', 'cb177da3-6d23-11ee-b322-f80dac465db8', 'Lunch', 30, 60, 1800),
+('becd2c0f-af1b-11ee-83f7-f80dac465db8', '5cfc62a5-6d23-11ee-b322-f80dac465db8', 'Tools', 500, 100, 50000),
+('cf7fbe83-af1c-11ee-83f7-f80dac465db8', '28bee6f0-6d21-11ee-b322-f80dac465db8', 'Item 10', 45, 45, 2025),
+('e0141234-af1c-11ee-83f7-f80dac465db8', '18210bc6-6d21-11ee-b322-f80dac465db8', 'sandwich ', 25, 30, 750),
 ('f0f83a10-937c-11ee-8c8d-f80dac465db8', '2cb31331-6d1f-11ee-b322-f80dac465db8', 'sandwich ', 1000, 25, 25000);
 
 -- --------------------------------------------------------
@@ -386,9 +376,10 @@ CREATE TABLE `linkages` (
 --
 
 INSERT INTO `linkages` (`id`, `added_by`, `title`, `category`, `overview`, `strategic_fit`, `intended_outcome`, `scope`, `arrangement`, `risk_management`, `monitoring`, `date_added`, `status`) VALUES
-(8, 48, 'Linkages Title', 'Local', 'Linkages Overview', 'Linkages Strategy', 'Linkages Outcome', 'Linkages Scope', 'Linkages Arrangements', 'Linkages Risk', 'Linkages Monitoring', '2023-12-29', 'Review by Partner'),
-(9, 48, '.', 'International', '.', ',', '.', '.', '.', 'e', 'r', '2023-12-29', 'For Exploratory'),
-(10, 48, '..', 'International', '', '', '', '', '', '', '', '2024-01-08', 'For Signing');
+(8, 48, 'MEMORANDUM OF UNDERSTANDING BETWEEN BATANGAS STATE UNIVERSITY AND PHILNITS FOUNDATION', 'International', '<p>Linkages Overview&nbsp;TEST</p>\r\n', '<p>Linkages Strategy&nbsp;TEST</p>\r\n', '<p>Linkages Outcome&nbsp;TEST</p>\r\n', '<p>Linkages Scope&nbsp;TEST</p>\r\n', '<p>Linkages Arrangements&nbsp;TEST</p>\r\n', '<p>Linkages Risk&nbsp;TEST</p>\r\n', '<p>Linkages Monitoring&nbsp;TEST</p>\r\n', '2023-12-29', 'For Notary'),
+(9, 48, 'EXPLORATORY MEETING BETWEEN BATANGAS STATE UNIVERSITY AND RAJAH TRAVEL CORPORATION', 'International', '<p>Lorem ipsum dolor sit amet. Sed sunt internos eum sunt natus non quam quam hic eius ipsum ut odio iure aut tenetur labore. Eum consectetur atque vel pariatur eius qui repellendus quod est distinctio officiis eos magnam sunt et ipsum animi ut ratione laudantium. Ad alias consequatur sed repellat rerum rem modi eius sit officiis libero et recusandae explicabo ut rerum quasi. Et perferendis facilis ab eius labore in sapiente consequuntur non ullam ullam non suscipit esse.</p>\r\n\r\n<p>Aut asperiores tempore rem esse inventore in velit voluptate et maxime blanditiis ut delectus laudantium. Sit commodi error aut nemo ratione et velit totam eum nesciunt illo ab doloribus nobis in enim voluptates! Non fugiat aliquid non nihil reprehenderit ut consequatur blanditiis sed voluptatibus ipsum quo dolorem voluptas qui placeat assumenda.</p>\r\n\r\n<p>Et aliquid aperiam vel incidunt omnis sit fugiat inventore est delectus doloribus in provident reiciendis qui minima tempora aut magni odio. Et dolorem aliquid eos officiis voluptatibus est possimus tempora aut perferendis eveniet est voluptatem alias est officiis maxime ex itaque dolor?</p>\r\n', '<p>Lorem ipsum dolor sit amet. Sed sunt internos eum sunt natus non quam quam hic eius ipsum ut odio iure aut tenetur labore. Eum consectetur atque vel pariatur eius qui repellendus quod est distinctio officiis eos magnam sunt et ipsum animi ut ratione laudantium. Ad alias consequatur sed repellat rerum rem modi eius sit officiis libero et recusandae explicabo ut rerum quasi. Et perferendis facilis ab eius labore in sapiente consequuntur non ullam ullam non suscipit esse.</p>\r\n\r\n<p>Aut asperiores tempore rem esse inventore in velit voluptate et maxime blanditiis ut delectus laudantium. Sit commodi error aut nemo ratione et velit totam eum nesciunt illo ab doloribus nobis in enim voluptates! Non fugiat aliquid non nihil reprehenderit ut consequatur blanditiis sed voluptatibus ipsum quo dolorem voluptas qui placeat assumenda.</p>\r\n\r\n<p>Et aliquid aperiam vel incidunt omnis sit fugiat inventore est delectus doloribus in provident reiciendis qui minima tempora aut magni odio. Et dolorem aliquid eos officiis voluptatibus est possimus tempora aut perferendis eveniet est voluptatem alias est officiis maxime ex itaque dolor?</p>\r\n', '<p>Lorem ipsum dolor sit amet. Sed sunt internos eum sunt natus non quam quam hic eius ipsum ut odio iure aut tenetur labore. Eum consectetur atque vel pariatur eius qui repellendus quod est distinctio officiis eos magnam sunt et ipsum animi ut ratione laudantium. Ad alias consequatur sed repellat rerum rem modi eius sit officiis libero et recusandae explicabo ut rerum quasi. Et perferendis facilis ab eius labore in sapiente consequuntur non ullam ullam non suscipit esse.</p>\r\n\r\n<p>Aut asperiores tempore rem esse inventore in velit voluptate et maxime blanditiis ut delectus laudantium. Sit commodi error aut nemo ratione et velit totam eum nesciunt illo ab doloribus nobis in enim voluptates! Non fugiat aliquid non nihil reprehenderit ut consequatur blanditiis sed voluptatibus ipsum quo dolorem voluptas qui placeat assumenda.</p>\r\n\r\n<p>Et aliquid aperiam vel incidunt omnis sit fugiat inventore est delectus doloribus in provident reiciendis qui minima tempora aut magni odio. Et dolorem aliquid eos officiis voluptatibus est possimus tempora aut perferendis eveniet est voluptatem alias est officiis maxime ex itaque dolor?</p>\r\n', '<p>.</p>\r\n\r\n<p>Lorem ipsum dolor sit amet. Sed sunt internos eum sunt natus non quam quam hic eius ipsum ut odio iure aut tenetur labore. Eum consectetur atque vel pariatur eius qui repellendus quod est distinctio officiis eos magnam sunt et ipsum animi ut ratione laudantium. Ad alias consequatur sed repellat rerum rem modi eius sit officiis libero et recusandae explicabo ut rerum quasi. Et perferendis facilis ab eius labore in sapiente consequuntur non ullam ullam non suscipit esse.</p>\r\n\r\n<p>Aut asperiores tempore rem esse inventore in velit voluptate et maxime blanditiis ut delectus laudantium. Sit commodi error aut nemo ratione et velit totam eum nesciunt illo ab doloribus nobis in enim voluptates! Non fugiat aliquid non nihil reprehenderit ut consequatur blanditiis sed voluptatibus ipsum quo dolorem voluptas qui placeat assumenda.</p>\r\n\r\n<p>Et aliquid aperiam vel incidunt omnis sit fugiat inventore est delectus doloribus in provident reiciendis qui minima tempora aut magni odio. Et dolorem aliquid eos officiis voluptatibus est possimus tempora aut perferendis eveniet est voluptatem alias est officiis maxime ex itaque dolor?</p>\r\n', '<p>Lorem ipsum dolor sit amet. Sed sunt internos eum sunt natus non quam quam hic eius ipsum ut odio iure aut tenetur labore. Eum consectetur atque vel pariatur eius qui repellendus quod est distinctio officiis eos magnam sunt et ipsum animi ut ratione laudantium. Ad alias consequatur sed repellat rerum rem modi eius sit officiis libero et recusandae explicabo ut rerum quasi. Et perferendis facilis ab eius labore in sapiente consequuntur non ullam ullam non suscipit esse.</p>\r\n\r\n<p>Aut asperiores tempore rem esse inventore in velit voluptate et maxime blanditiis ut delectus laudantium. Sit commodi error aut nemo ratione et velit totam eum nesciunt illo ab doloribus nobis in enim voluptates! Non fugiat aliquid non nihil reprehenderit ut consequatur blanditiis sed voluptatibus ipsum quo dolorem voluptas qui placeat assumenda.</p>\r\n\r\n<p>Et aliquid aperiam vel incidunt omnis sit fugiat inventore est delectus doloribus in provident reiciendis qui minima tempora aut magni odio. Et dolorem aliquid eos officiis voluptatibus est possimus tempora aut perferendis eveniet est voluptatem alias est officiis maxime ex itaque dolor?</p>\r\n', '<p>Lorem ipsum dolor sit amet. Sed sunt internos eum sunt natus non quam quam hic eius ipsum ut odio iure aut tenetur labore. Eum consectetur atque vel pariatur eius qui repellendus quod est distinctio officiis eos magnam sunt et ipsum animi ut ratione laudantium. Ad alias consequatur sed repellat rerum rem modi eius sit officiis libero et recusandae explicabo ut rerum quasi. Et perferendis facilis ab eius labore in sapiente consequuntur non ullam ullam non suscipit esse.</p>\r\n\r\n<p>Aut asperiores tempore rem esse inventore in velit voluptate et maxime blanditiis ut delectus laudantium. Sit commodi error aut nemo ratione et velit totam eum nesciunt illo ab doloribus nobis in enim voluptates! Non fugiat aliquid non nihil reprehenderit ut consequatur blanditiis sed voluptatibus ipsum quo dolorem voluptas qui placeat assumenda.</p>\r\n\r\n<p>Et aliquid aperiam vel incidunt omnis sit fugiat inventore est delectus doloribus in provident reiciendis qui minima tempora aut magni odio. Et dolorem aliquid eos officiis voluptatibus est possimus tempora aut perferendis eveniet est voluptatem alias est officiis maxime ex itaque dolor?</p>\r\n', '<p>Lorem ipsum dolor sit amet. Sed sunt internos eum sunt natus non quam quam hic eius ipsum ut odio iure aut tenetur labore. Eum consectetur atque vel pariatur eius qui repellendus quod est distinctio officiis eos magnam sunt et ipsum animi ut ratione laudantium. Ad alias consequatur sed repellat rerum rem modi eius sit officiis libero et recusandae explicabo ut rerum quasi. Et perferendis facilis ab eius labore in sapiente consequuntur non ullam ullam non suscipit esse.</p>\r\n\r\n<p>Aut asperiores tempore rem esse inventore in velit voluptate et maxime blanditiis ut delectus laudantium. Sit commodi error aut nemo ratione et velit totam eum nesciunt illo ab doloribus nobis in enim voluptates! Non fugiat aliquid non nihil reprehenderit ut consequatur blanditiis sed voluptatibus ipsum quo dolorem voluptas qui placeat assumenda.</p>\r\n\r\n<p>Et aliquid aperiam vel incidunt omnis sit fugiat inventore est delectus doloribus in provident reiciendis qui minima tempora aut magni odio. Et dolorem aliquid eos officiis voluptatibus est possimus tempora aut perferendis eveniet est voluptatem alias est officiis maxime ex itaque dolor?</p>\r\n', '2023-12-29', 'For Exploratory'),
+(10, 48, 'MEMORANDUM OF AGREEMENT BETWEEN BATANGAS STATE UNIVERSITY AND JABEZ MEDICAL CENTER', 'Local', '', '', '', '', '', '', '', '2024-01-08', 'For Signing'),
+(11, 54, 'MEMORANDUM OF UNDERSTANDING BETWEEN BATANGAS STATE UNIVERSITY AND DEPARTMENT OF INFORMATION AND COMMUNICATIONS TECHNOLOGY', 'Local', '', '', '', '', '', '', '', '2024-01-09', 'For Evaluation');
 
 -- --------------------------------------------------------
 
@@ -407,17 +398,16 @@ CREATE TABLE `linkages_activity` (
 --
 
 INSERT INTO `linkages_activity` (`id`, `linkages_implementation_plan_id`, `activity`) VALUES
-(8, 5, 'Plan 1 Act'),
-(9, 5, 'Plan 1 Act'),
-(10, 6, 'Plan 2 Act'),
-(11, 6, 'Plan 2 Act'),
-(12, 7, 'Plan 3  Ac'),
-(13, 7, 'Plan 3  Ac'),
-(14, 7, 'Plan 3  Ac'),
-(15, 8, '.'),
-(16, 8, '.'),
-(17, 9, '.'),
-(18, 10, 'Collaborative Research and Extension Projects');
+(19, 11, 'Collaborative Research and Extension Projects'),
+(20, 11, 'Research Forum'),
+(49, 24, 'Plan 1 Act TEST'),
+(50, 24, 'Plan 1 Act TEST'),
+(51, 25, 'Plan 2 Act TEST'),
+(52, 25, 'Plan 2 Act TEST'),
+(53, 26, 'Plan 3  Ac TEST'),
+(54, 26, 'Plan 3  Ac TEST'),
+(55, 26, 'Plan 3  Ac TEST'),
+(56, 29, 'Collaborative Research and Extension Projects');
 
 -- --------------------------------------------------------
 
@@ -436,9 +426,11 @@ CREATE TABLE `linkages_audience` (
 --
 
 INSERT INTO `linkages_audience` (`id`, `linkages_id`, `audience`) VALUES
-(4, 8, 'Audience 1'),
-(5, 9, ';'),
-(6, 10, 'VCDEA, VCAA, VCRDES, Research, Extension Services, Dean, and Staff');
+(7, 11, 'VCDEA, VCAA, VCRDES, Research, Extension Services, Dean, and Staff'),
+(8, 11, 'VCDEA, VCAA, VCRDES, Research, Extension Services, Dean, and Staff'),
+(13, 8, 'Audience 1 TEST'),
+(15, 10, 'VCDEA, VCAA, VCRDES, Research, Extension Services, Dean, and Staff'),
+(16, 9, 'VCDEA, VCAA, VCRDES, Research, Extension Services, Dean, and Staff');
 
 -- --------------------------------------------------------
 
@@ -456,12 +448,13 @@ CREATE TABLE `linkages_implementation_plan` (
 --
 
 INSERT INTO `linkages_implementation_plan` (`id`, `linkages_id`) VALUES
-(5, 8),
-(6, 8),
-(7, 8),
-(8, 9),
-(9, 9),
-(10, 10);
+(24, 8),
+(25, 8),
+(26, 8),
+(30, 9),
+(31, 9),
+(29, 10),
+(11, 11);
 
 -- --------------------------------------------------------
 
@@ -480,9 +473,12 @@ CREATE TABLE `linkages_outcome` (
 --
 
 INSERT INTO `linkages_outcome` (`id`, `linkages_id`, `outcome`) VALUES
-(4, 8, 'Outcomes 1'),
-(5, 9, ';'),
-(6, 10, 'Signed MOU/MOA');
+(7, 11, 'Signed MOU/MOA'),
+(8, 11, 'Signed Research'),
+(14, 8, 'Outcomes 1 TEST'),
+(15, 8, 'LASD;LFJAS;DKLFNANSD;FKN'),
+(17, 10, 'Signed MOU/MOA'),
+(18, 9, 'Signed MOU/MOA');
 
 -- --------------------------------------------------------
 
@@ -501,9 +497,11 @@ CREATE TABLE `linkages_pap` (
 --
 
 INSERT INTO `linkages_pap` (`id`, `linkages_id`, `project`) VALUES
-(4, 8, 'PAP 1'),
-(5, 9, 'r'),
-(6, 10, 'MOU/MOA');
+(7, 11, 'MOU/MOA'),
+(8, 11, 'Research'),
+(13, 8, 'PAP 1 TEST'),
+(15, 10, 'MOU/MOA'),
+(16, 9, 'MOU/MOA');
 
 -- --------------------------------------------------------
 
@@ -523,11 +521,14 @@ CREATE TABLE `linkages_personnel_and_officials` (
 --
 
 INSERT INTO `linkages_personnel_and_officials` (`id`, `linkages_id`, `personnels`, `officials`) VALUES
-(16, 8, 'Personnel 1', 'Officials 1'),
-(17, 8, 'Personnel 2', 'Officials 2'),
-(18, 8, 'Personnel 3', 'Officials 3'),
-(19, 9, 'j', 'j'),
-(20, 10, 'Collaborative Research and Extension Projects', '1 (2023)');
+(21, 11, 'Personnel 1', 'ARASOF Nasugbu'),
+(22, 11, 'VCDEA and Office', 'ARASOF Nasugbu'),
+(35, 8, 'Personnel 1 TEST', 'Officials 1 TEST'),
+(36, 8, 'Personnel 2 TEST', 'Officials 2 TEST'),
+(37, 8, 'Personnel 3 TEST', 'Officials 3 TEST'),
+(40, 10, 'Collaborative Research and Extension Projects', '1 (2023)'),
+(41, 9, 'Personnel 1', 'Officials 1'),
+(42, 9, 'VCDEA and Office', 'ARASOF Nasugbu');
 
 -- --------------------------------------------------------
 
@@ -546,11 +547,13 @@ CREATE TABLE `linkages_resources` (
 --
 
 INSERT INTO `linkages_resources` (`id`, `linkages_id`, `resources`) VALUES
-(13, 8, 'Resources 1'),
-(14, 8, 'Resources 2'),
-(15, 8, 'Resources 3'),
-(16, 9, '.'),
-(17, 10, 'Collaborative Research and Extension Projects');
+(18, 11, 'Collaborative Research and Extension Projects'),
+(19, 11, 'Research Forum'),
+(32, 8, 'Resources 1'),
+(33, 8, 'Resources 2'),
+(34, 8, 'Resources 3'),
+(36, 10, 'Collaborative Research and Extension Projects'),
+(37, 9, '.');
 
 -- --------------------------------------------------------
 
@@ -569,9 +572,11 @@ CREATE TABLE `linkages_sm` (
 --
 
 INSERT INTO `linkages_sm` (`id`, `linkages_id`, `strategy`) VALUES
-(4, 8, 'Strategy 1'),
-(5, 9, '/'),
-(6, 10, 'Exploratory Meetings');
+(7, 11, 'Exploratory Meetings'),
+(8, 11, 'Exploratory Meetings'),
+(13, 8, 'Strategy 1 TEST'),
+(15, 10, 'Exploratory Meetings'),
+(16, 9, 'Exploratory Meetings');
 
 -- --------------------------------------------------------
 
@@ -590,9 +595,11 @@ CREATE TABLE `linkages_timing` (
 --
 
 INSERT INTO `linkages_timing` (`id`, `linkages_id`, `timing`) VALUES
-(4, 8, 'Timing 1'),
-(5, 9, ';'),
-(6, 10, 'As agreed');
+(7, 11, 'As agreed'),
+(8, 11, 'As agreed'),
+(13, 8, 'Timing 1 TEST'),
+(15, 10, 'As agreed'),
+(16, 9, 'As agreed');
 
 -- --------------------------------------------------------
 
@@ -611,16 +618,17 @@ CREATE TABLE `linkages_year` (
 --
 
 INSERT INTO `linkages_year` (`id`, `linkages_implementation_plan_id`, `year`) VALUES
-(6159, 5, 'Plan 1 Yea'),
-(6160, 5, 'Plan 1 Yea'),
-(6161, 6, 'Plan 2 Yea'),
-(6162, 7, 'Plan 3 Yea'),
-(6163, 7, 'Plan 3 Yea'),
-(6164, 7, 'Plan 3 Yea'),
-(6165, 8, ','),
-(6166, 8, '.'),
-(6167, 9, '.'),
-(6168, 10, '1 (2023)');
+(6169, 11, '2024'),
+(6170, 11, '2024'),
+(6195, 24, '2021'),
+(6196, 24, '2022'),
+(6197, 25, '2023'),
+(6198, 26, '2024'),
+(6199, 26, '2025'),
+(6200, 26, '2026'),
+(6203, 29, '1 (2023)'),
+(6204, 30, '1 (2024)'),
+(6205, 30, '2 (2025)');
 
 -- --------------------------------------------------------
 
@@ -784,8 +792,30 @@ INSERT INTO `partners` (`id`, `category`, `name`, `college_id`, `status`) VALUES
 (18, 'Local', 'Chateau Royale', 68, 'Successful Partner'),
 (19, 'International', 'Crosswinds Resort Suites', 68, 'Successful Partner'),
 (20, 'International', 'El Cocinero', 68, 'Successful Partner'),
-(21, 'local', 'test', 82, 'Successful Partner'),
-(22, 'international', 'qwerty', 82, 'Successful Partner');
+(23, 'local', 'Juan Carlo the Caterer', 68, 'Successful Partner'),
+(24, 'local', 'BernaBeach Resort', 68, 'Successful Partner'),
+(25, 'Local', 'Lago De Oro', 68, 'Successful Partner'),
+(26, 'Local', 'Punta Fuego Village Homeowners Association Inc.', 68, 'Successful Partner'),
+(27, 'Local', 'Splendido Tower 2	', 68, 'Successful Partner'),
+(28, 'International', 'Rajah Travel Corporation', 68, 'Successful Partner'),
+(29, 'Local', 'First Nasugbu Natural Farmers’ Association', 81, 'Successful Partner'),
+(30, 'Local', 'Philippine Air Force', 81, 'Successful Partner'),
+(31, 'Local', 'Manila Broadcasting Philippines', 81, 'Successful Partner'),
+(32, 'Local', 'Municipal Disaster Risk Reduction and Management Office (MDRRMO) - Nasugbu, Batangas', 81, 'Successful Partner'),
+(33, 'International', 'Hung Vuong University, Socialist Republic of Vietnam', 81, 'Successful Partner'),
+(34, 'International', 'Innovative Investors and Financing Co., Inc.', 81, 'Successful Partner'),
+(35, 'International', 'Integrated Professional Counselors Association of the Philippines (IPCAP)	', 81, 'Successful Partner'),
+(36, 'International', 'PhilAm Life	', 82, 'Successful Partner'),
+(37, 'International', 'KEPCO Ilijan Corporation', 82, 'Successful Partner'),
+(38, 'International', 'Orange Apps', 82, 'Successful Partner'),
+(39, 'Local', 'Batangas Provincial Hospital – Lemery, Batangas	', 83, 'Successful Partner'),
+(40, 'Local', 'National Center for Mental Health – Mandaluyong, Metro Manila', 83, 'Successful Partner'),
+(41, 'International', 'Chateau Royale Hotel Resort	', 83, 'Successful Partner'),
+(42, 'Local', 'Lian Institute', 84, 'Successful Partner'),
+(43, 'International', 'Creative Dreams School	', 84, 'Successful Partner'),
+(44, 'Local', 'Calatagan National High School', 84, 'Successful Partner'),
+(45, 'Local', 'Lian Senior High School', 84, 'Successful Partner'),
+(46, 'Local', 'San Lazaro Hospital – Santa Cruz, Manila	', 83, 'Successful Partner');
 
 -- --------------------------------------------------------
 
@@ -816,7 +846,14 @@ INSERT INTO `program` (`id`, `campus_id`, `college_id`, `abbreviation`, `program
 (41, 32, 81, 'BSFAS', 'Bachelor of Science in Fisheries and Aquatic Sciences'),
 (42, 32, 82, 'BSIT', 'Bachelor of Science in Information Technology'),
 (43, 32, 83, 'BSN', 'Bachelor of Science in Nursing'),
-(44, 32, 83, 'BSND', 'Bachelor of Science in Nutrition and Dietetics');
+(44, 32, 83, 'BSND', 'Bachelor of Science in Nutrition and Dietetics'),
+(45, 32, 68, 'BSA', 'Bachelor of Science in Accountancy'),
+(46, 32, 68, 'BSMA', 'Bachelor of Science in Management Accounting'),
+(47, 32, 68, 'BSBA-HRM', 'Bachelor of Science in Business Administration (HRM)'),
+(48, 32, 68, 'BSBA-MM', 'Bachelor of Science in Business Administration (MM)'),
+(49, 32, 68, 'BSBA-FM', 'Bachelor of Science in Business Administration (FM)'),
+(50, 32, 68, 'BSHM', 'Bachelor of Science in Hospitality Management'),
+(51, 32, 68, 'BSTM', 'Bachelor of Science in Tourism Management');
 
 -- --------------------------------------------------------
 
@@ -837,29 +874,29 @@ CREATE TABLE `representatives` (
 --
 
 INSERT INTO `representatives` (`id`, `activity_representatives_id`, `representative_roles_id`, `name`, `designation`) VALUES
-('015572a7-9363-11ee-b3c9-f80dac465db8', '0152066f-9363-11ee-b3c9-f80dac465db8', NULL, 'Noey M. De Jesus', 'Faculty'),
-('10627be1-6d23-11ee-b322-f80dac465db8', '105ee5fe-6d23-11ee-b322-f80dac465db8', '5633de9a-5318-11ee-aea5-0a0027000002', 'Dr. Tirso A. Ronquillo', 'University President'),
-('1063c75e-6d23-11ee-b322-f80dac465db8', '105eea2c-6d23-11ee-b322-f80dac465db8', '56347d89-5318-11ee-aea5-0a0027000002', 'Dr. Rosalinda M. Comia', 'Campus Director'),
-('182472c1-6d21-11ee-b322-f80dac465db8', '1821194e-6d21-11ee-b322-f80dac465db8', '56347d3b-5318-11ee-aea5-0a0027000002', 'Atty. Noel Alberto S. Omandap', 'Vice President for Development and External Affairs'),
-('18253b85-6d21-11ee-b322-f80dac465db8', '18213365-6d21-11ee-b322-f80dac465db8', '563480b5-5318-11ee-aea5-0a0027000002', 'Dr. Eufronia Magundayao', 'Vice Chancellor for Research, Development and Extension Services'),
-('2fae6040-8d48-11ee-97e4-f80dac465db8', '2fab294c-8d48-11ee-97e4-f80dac465db8', NULL, 'Asst. Prof. Renz Mervin A. Salac', 'Capstone Leader'),
-('2faffab9-8d48-11ee-97e4-f80dac465db8', '2fab3c26-8d48-11ee-97e4-f80dac465db8', NULL, 'Deanne', 'Student Org'),
+('0fcee1ef-af18-11ee-83f7-f80dac465db8', '0fc36aec-af18-11ee-83f7-f80dac465db8', NULL, 'Mr. Marvin Hernandez', 'Host'),
+('0fcfa01c-af18-11ee-83f7-f80dac465db8', '0fc375b8-af18-11ee-83f7-f80dac465db8', NULL, 'Deanne Anorico', 'Student Org'),
+('2e1c0e8e-af17-11ee-83f7-f80dac465db8', '2e119858-af17-11ee-83f7-f80dac465db8', '56347d5f-5318-11ee-aea5-0a0027000002', 'Dr. Expedito V. Acorda', 'Chancellor'),
+('2e1d55c5-af17-11ee-83f7-f80dac465db8', '2e119858-af17-11ee-83f7-f80dac465db8', '56347d89-5318-11ee-aea5-0a0027000002', 'Dr. Rosalinda M. Comia', 'Campus Director'),
 ('4ea7e8e5-8df5-11ee-99cb-f80dac465db8', '4e9fd290-8df5-11ee-99cb-f80dac465db8', NULL, 'Noey M. De Jesus', 'Faculty'),
 ('4ea92239-8df5-11ee-99cb-f80dac465db8', '4e9fd80f-8df5-11ee-99cb-f80dac465db8', NULL, 'Djoanna Marie V. Salac', 'Faculty'),
-('5cff604b-6d23-11ee-b322-f80dac465db8', '5cfc6c35-6d23-11ee-b322-f80dac465db8', '5633de9a-5318-11ee-aea5-0a0027000002', 'Dr. Tirso A. Ronquillo', 'University President'),
-('5d00f85d-6d23-11ee-b322-f80dac465db8', '5cfc7754-6d23-11ee-b322-f80dac465db8', '56347ebc-5318-11ee-aea5-0a0027000002', 'Dr. Jessie A. Montalbo', 'Chancellor'),
-('5d01940f-6d23-11ee-b322-f80dac465db8', '5cfc7754-6d23-11ee-b322-f80dac465db8', '56347f43-5318-11ee-aea5-0a0027000002', 'Atty. Alvin R. De Silva', 'Chancellor'),
-('620ac707-9361-11ee-b3c9-f80dac465db8', '6200bc6c-9361-11ee-b3c9-f80dac465db8', '56347d5f-5318-11ee-aea5-0a0027000002', 'Dr. Expedito V. Acorda', 'Chancellor'),
-('620c08b3-9361-11ee-b3c9-f80dac465db8', '6200bc6c-9361-11ee-b3c9-f80dac465db8', '56347d89-5318-11ee-aea5-0a0027000002', 'Dr. Rosalinda M. Comia', 'Campus Director'),
 ('772086d5-937d-11ee-8c8d-f80dac465db8', '77132c5e-937d-11ee-8c8d-f80dac465db8', '5633de9a-5318-11ee-aea5-0a0027000002', 'Dr. Tirso A. Ronquillo', 'University President'),
 ('7721e86c-937d-11ee-8c8d-f80dac465db8', '771335bc-937d-11ee-8c8d-f80dac465db8', '563480f8-5318-11ee-aea5-0a0027000002', 'Assoc. Prof. Maria Theresa A. Hernandez', 'Vice Chancellor for Research, Development and Extension Services'),
 ('78a1bf98-6d22-11ee-b322-f80dac465db8', '789f3d46-6d22-11ee-b322-f80dac465db8', '5633de9a-5318-11ee-aea5-0a0027000002', 'Dr. Tirso A. Ronquillo', 'University President'),
 ('78a2fa8e-6d22-11ee-b322-f80dac465db8', '789f42d5-6d22-11ee-b322-f80dac465db8', '56347ce6-5318-11ee-aea5-0a0027000002', 'Assoc. Prof. Albertson D. Amante', 'Vice for Research Development and Extension Services'),
-('cb1aa244-6d23-11ee-b322-f80dac465db8', 'cb178cfc-6d23-11ee-b322-f80dac465db8', '56347be7-5318-11ee-aea5-0a0027000002', 'Dr. Charmaine Rose I. Trivino', 'Vice President for Academic Affairs'),
-('cb1bd8b6-6d23-11ee-b322-f80dac465db8', 'cb1796ef-6d23-11ee-b322-f80dac465db8', '56347dce-5318-11ee-aea5-0a0027000002', 'Dr. Joy M. Reyes', 'Campus Director'),
+('83b931b8-af1b-11ee-83f7-f80dac465db8', '83b013a9-af1b-11ee-83f7-f80dac465db8', '56347be7-5318-11ee-aea5-0a0027000002', 'Dr. Charmaine Rose I. Trivino', 'Vice President for Academic Affairs'),
+('83ba6ebf-af1b-11ee-83f7-f80dac465db8', '83b023ae-af1b-11ee-83f7-f80dac465db8', '56347dce-5318-11ee-aea5-0a0027000002', 'Dr. Joy M. Reyes', 'Campus Director'),
+('9760bc90-af18-11ee-83f7-f80dac465db8', '975bb027-af18-11ee-83f7-f80dac465db8', NULL, 'Gloria Rearte', 'Faculty'),
+('becac1fc-af1b-11ee-83f7-f80dac465db8', 'bebf0b3f-af1b-11ee-83f7-f80dac465db8', '5633de9a-5318-11ee-aea5-0a0027000002', 'Dr. Tirso A. Ronquillo', 'University President'),
+('beccaf54-af1b-11ee-83f7-f80dac465db8', 'bebf7ee8-af1b-11ee-83f7-f80dac465db8', '56347ebc-5318-11ee-aea5-0a0027000002', 'Dr. Jessie A. Montalbo', 'Chancellor'),
+('beccf0de-af1b-11ee-83f7-f80dac465db8', 'bebf7ee8-af1b-11ee-83f7-f80dac465db8', '56347f43-5318-11ee-aea5-0a0027000002', 'Atty. Alvin R. De Silva', 'Chancellor'),
+('e012d3c3-af1c-11ee-83f7-f80dac465db8', 'e00bb3d0-af1c-11ee-83f7-f80dac465db8', '56347d3b-5318-11ee-aea5-0a0027000002', 'Atty. Noel Alberto S. Omandap', 'Vice President for Development and External Affairs'),
+('e013d4c2-af1c-11ee-83f7-f80dac465db8', 'e00bbd89-af1c-11ee-83f7-f80dac465db8', '563480b5-5318-11ee-aea5-0a0027000002', 'Dr. Eufronia Magundayao', 'Vice Chancellor for Research, Development and Extension Services'),
 ('f0f56436-937c-11ee-8c8d-f80dac465db8', 'f0e8ac6a-937c-11ee-8c8d-f80dac465db8', '56347be7-5318-11ee-aea5-0a0027000002', 'Dr. Charmaine Rose I. Trivino', 'Vice President for Academic Affairs'),
 ('f0f693f8-937c-11ee-8c8d-f80dac465db8', 'f0e8b897-937c-11ee-8c8d-f80dac465db8', '56347ebc-5318-11ee-aea5-0a0027000002', 'Dr. Jessie A. Montalbo', 'Chancellor'),
-('f0f6f9fc-937c-11ee-8c8d-f80dac465db8', 'f0e8b897-937c-11ee-8c8d-f80dac465db8', '56347f03-5318-11ee-aea5-0a0027000002', 'Dr. Romel U. Briones', 'Campus Director');
+('f0f6f9fc-937c-11ee-8c8d-f80dac465db8', 'f0e8b897-937c-11ee-8c8d-f80dac465db8', '56347f03-5318-11ee-aea5-0a0027000002', 'Dr. Romel U. Briones', 'Campus Director'),
+('fc5cba3b-af1b-11ee-83f7-f80dac465db8', 'fc57c5b7-af1b-11ee-83f7-f80dac465db8', '5633de9a-5318-11ee-aea5-0a0027000002', 'Dr. Tirso A. Ronquillo', 'University President'),
+('fc5e05a6-af1b-11ee-83f7-f80dac465db8', 'fc57d48b-af1b-11ee-83f7-f80dac465db8', '56347d89-5318-11ee-aea5-0a0027000002', 'Dr. Rosalinda M. Comia', 'Campus Director');
 
 -- --------------------------------------------------------
 
@@ -956,9 +993,9 @@ CREATE TABLE `uploads` (
 --
 
 INSERT INTO `uploads` (`id`, `create_folder_id`, `path`) VALUES
-(1, 47, '../uploads/stamp.png'),
-(2, 47, '../uploads/stamp.png'),
-(3, 47, '../uploads/\'.png');
+(5, 47, 'Batangas_State_Logo.png'),
+(7, 26, 'cics.pdf'),
+(8, 26, '412544836_1414920392443282_7188525657652304350_n.jpg');
 
 -- --------------------------------------------------------
 
@@ -1257,7 +1294,7 @@ ALTER TABLE `college`
 -- AUTO_INCREMENT for table `create_folder`
 --
 ALTER TABLE `create_folder`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- AUTO_INCREMENT for table `file`
@@ -1269,85 +1306,85 @@ ALTER TABLE `file`
 -- AUTO_INCREMENT for table `linkages`
 --
 ALTER TABLE `linkages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `linkages_activity`
 --
 ALTER TABLE `linkages_activity`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT for table `linkages_audience`
 --
 ALTER TABLE `linkages_audience`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `linkages_implementation_plan`
 --
 ALTER TABLE `linkages_implementation_plan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `linkages_outcome`
 --
 ALTER TABLE `linkages_outcome`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `linkages_pap`
 --
 ALTER TABLE `linkages_pap`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `linkages_personnel_and_officials`
 --
 ALTER TABLE `linkages_personnel_and_officials`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `linkages_resources`
 --
 ALTER TABLE `linkages_resources`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `linkages_sm`
 --
 ALTER TABLE `linkages_sm`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `linkages_timing`
 --
 ALTER TABLE `linkages_timing`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `linkages_year`
 --
 ALTER TABLE `linkages_year`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6169;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6206;
 
 --
 -- AUTO_INCREMENT for table `partners`
 --
 ALTER TABLE `partners`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT for table `program`
 --
 ALTER TABLE `program`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT for table `uploads`
 --
 ALTER TABLE `uploads`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `users`

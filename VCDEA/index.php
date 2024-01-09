@@ -127,6 +127,35 @@
                   </form>
                 </div>
               </li>
+              <!-- Nav Item - Alerts -->
+              <li class="nav-item dropdown no-arrow mx-1">
+                  <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
+                      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <i class="fas fa-bell fa-fw"></i>
+                      <!-- Counter - Alerts -->
+                      <span class="badge badge-danger badge-counter">3+</span>
+                  </a>
+                  <!-- Dropdown - Alerts -->
+                  <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                      aria-labelledby="alertsDropdown">
+                      <h6 class="dropdown-header">
+                          Alerts Center
+                      </h6>
+                      <a class="dropdown-item d-flex align-items-center" href="#">
+                          <div class="mr-3">
+                              <div class="icon-circle bg-primary">
+                                  <i class="fas fa-times text-white"></i>
+                              </div>
+                          </div>
+                          <div>
+                              <div class="small text-gray-500">December 12, 2019</div> <-- kung kelan nag notif -->
+                              <span class="font-weight-bold">"The PhilNITS is inactive after 6 days."</span>
+                          </div>
+                      </a>
+                      <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+                  </div>
+              </li>
+              <div class="topbar-divider d-none d-sm-block"></div>
               <!-- Nav Item - User Information -->
               <li class="nav-item dropdown no-arrow">
                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -150,37 +179,38 @@
             <!-- Page Heading -->
             <div class="d-sm-flex align-items-center justify-content-between mb-4">
               <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-              <!-- Filter button with icon and label -->
-                    <div class="modal fade" id="filterModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal fade" id="filterModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Filter by:</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">×</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-            <div class="form-group">
-                          <label for="college">College</label>
-                          <select class="form-control" name="college">
-                            <?php
-                              $sql = "SELECT * FROM `college`";
-                              $result = $conn->query($sql);
-                              while($row = $result->fetch_assoc()){
-                            ?>
-                                <option value="<?=$row['collegeID']?>"><?=$row['name']?></option>
-                            <?php    
-                              }
-                            ?>
-                          </select>
-                        </div>
+                  <form action="dashboard.filter.college.php" method="POST">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Filter by:</h5>
+                      <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+              <div class="form-group">
+                            <label for="college">College</label>
+                            <select class="form-control" name="college">
+                              <?php
+                                $sql = "SELECT * FROM `college`";
+                                $result = $conn->query($sql);
+                                while($row = $result->fetch_assoc()){
+                              ?>
+                                  <option value="<?=$row['collegeID']?>"><?=$row['name']?></option>
+                              <?php    
+                                }
+                              ?>
+                            </select>
+                          </div>
 
-                  </div>
-                  <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <button class="btn btn-primary" onclick="applyFilter()">Filter</button>
-                  </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                      <button class="btn btn-primary" type="submit">Filter</button>
+                    </div>
+                  </form>
                 </div>
               </div>
             </div>
@@ -197,11 +227,21 @@
                   <div class="card-body">
                     <div class="row no-gutters align-items-center">
                       <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">For Exploratory</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">10</div>
+                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">For Evaluation</div>
+                        <?php
+                          if(isset($_GET['college'])) {
+                            $college = $_GET['college'];
+                            $sql = "SELECT COUNT(*) AS total FROM partners WHERE status = 'For Evaluation' AND college_id = $college";
+                          } else {
+                            $sql = "SELECT COUNT(*) AS total FROM partners WHERE status = 'For Evaluation'";
+                          }
+                          $result = $conn->query($sql);
+                          $row = $result->fetch_assoc();
+                        ?>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800"><?=$row['total']?></div>
                       </div>
                       <div class="col-auto">
-                        <i class="fas fa-user fa-2x text-gray-300"></i>
+                        <i class="fas fa-search fa-2x text-gray-300"></i>
                       </div>
                     </div>
                   </div>
@@ -213,11 +253,21 @@
                   <div class="card-body">
                     <div class="row no-gutters align-items-center">
                       <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1"> Under Review</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">5</div>
+                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1"> Under Review by Partner</div>
+                        <?php
+                          if(isset($_GET['college'])) {
+                            $college = $_GET['college'];
+                            $sql = "SELECT COUNT(*) AS total FROM partners WHERE status = 'For Review Partner' AND college_id = $college";
+                          } else {
+                            $sql = "SELECT COUNT(*) AS total FROM partners WHERE status = 'For Review Partner'";
+                          }
+                          $result = $conn->query($sql);
+                          $row = $result->fetch_assoc();
+                        ?>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800"><?=$row['total']?></div>
                       </div>
                       <div class="col-auto">
-                        <i class="fas fa-check fa-2x text-gray-300"></i>
+                        <i class="bi bi-check fa-3x text-gray-300"></i>
                       </div>
                     </div>
                   </div>
@@ -229,15 +279,25 @@
                   <div class="card-body">
                     <div class="row no-gutters align-items-center">
                       <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Successful Partner</div>
+                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1"> Under Review by Legal</div>
+                        <?php
+                          if(isset($_GET['college'])) {
+                            $college = $_GET['college'];
+                            $sql = "SELECT COUNT(*) AS total FROM partners WHERE status = 'For Review Legal' AND college_id = $college";
+                          } else {
+                            $sql = "SELECT COUNT(*) AS total FROM partners WHERE status = 'For Review Legal'";
+                          }
+                          $result = $conn->query($sql);
+                          $row = $result->fetch_assoc();
+                        ?>
                         <div class="row no-gutters align-items-center">
                           <div class="col-auto">
-                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">5</div>
+                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><?=$row['total']?></div>
                           </div>
                         </div>
                       </div>
                       <div class="col-auto">
-                        <i class="fas fa-times fa-2x text-gray-300"></i>
+                        <i class="bi bi-check-all fa-3x text-gray-300"></i>
                       </div>
                     </div>
                   </div>
@@ -249,17 +309,138 @@
                   <div class="card-body">
                     <div class="row no-gutters align-items-center">
                       <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1"> Inactive</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">For Exploratory</div>
+                        <?php
+                          if(isset($_GET['college'])) {
+                            $college = $_GET['college'];
+                            $sql = "SELECT COUNT(*) AS total FROM partners WHERE status = 'For Exploratory' AND college_id = $college";
+                          } else {
+                            $sql = "SELECT COUNT(*) AS total FROM partners WHERE status = 'For Exploratory'";
+                          }
+                          $result = $conn->query($sql);
+                          $row = $result->fetch_assoc();
+                        ?>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800"><?=$row['total']?></div>
                       </div>
                       <div class="col-auto">
-                        <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                        <i class="bi bi-calendar-event fa-2x text-gray-300"></i>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+        <div class="row">
+        <!-- Partners Card Example -->
+        <!-- ... existing cards ... -->
+        <!-- New Card Example 1 -->
+              <div class="col-xl-3 col-md-6 mb-4">
+          <div class="card border-left-info shadow h-100 py-2">
+            <div class="card-body">
+              <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                  <div class="text-xs font-weight-bold text-info text-uppercase mb-1">For Signing</div>
+                  <?php
+                          if(isset($_GET['college'])) {
+                            $college = $_GET['college'];
+                            $sql = "SELECT COUNT(*) AS total FROM partners WHERE status = 'For Signing MOU/MOA' AND college_id = $college";
+                          } else {
+                            $sql = "SELECT COUNT(*) AS total FROM partners WHERE status = 'For Signing MOU/MOA'";
+                          }
+                          $result = $conn->query($sql);
+                          $row = $result->fetch_assoc();
+                        ?>
+                  <div class="h5 mb-0 font-weight-bold text-gray-800"><?=$row['total']?></div>
+                </div>
+                <div class="col-auto">
+                  <i class="fas fa-pen fa-2x text-gray-300"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- New Card Example 2 -->
+              <div class="col-xl-3 col-md-6 mb-4">
+          <div class="card border-left-secondary shadow h-100 py-2">
+            <div class="card-body">
+              <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                  <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1">For Notary</div>
+                  <?php
+                          if(isset($_GET['college'])) {
+                            $college = $_GET['college'];
+                            $sql = "SELECT COUNT(*) AS total FROM partners WHERE status = 'For Notary MOU/MOA' AND college_id = $college";
+                          } else {
+                            $sql = "SELECT COUNT(*) AS total FROM partners WHERE status = 'For Notary MOU/MOA'";
+                          }
+                          $result = $conn->query($sql);
+                          $row = $result->fetch_assoc();
+                        ?>
+                  <div class="h5 mb-0 font-weight-bold text-gray-800"><?=$row['total']?></div>
+                </div>
+                <div class="col-auto">
+                  <i class="bi bi-bookmark-fill fa-2x text-gray-300"></i>
+                  <!-- <i class="fas fa-clipboard-list fa-2x text-gray-300"></i> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- New Card Example 3 -->
+              <div class="col-xl-3 col-md-6 mb-4">
+          <div class="card border-left-dark shadow h-100 py-2">
+            <div class="card-body">
+              <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                  <div class="text-xs font-weight-bold text-dark text-uppercase mb-1">Successful Partner</div>
+                 <?php
+                          if(isset($_GET['college'])) {
+                            $college = $_GET['college'];
+                            $sql = "SELECT COUNT(*) AS total FROM partners WHERE status = 'Successful Partner' AND college_id = $college";
+                          } else {
+                            $sql = "SELECT COUNT(*) AS total FROM partners WHERE status = 'Successful Partner'";
+                          }
+                          $result = $conn->query($sql);
+                          $row = $result->fetch_assoc();
+                        ?>
+                  <div class="h5 mb-0 font-weight-bold text-gray-800"><?=$row['total']?></div>
+                </div>
+                <div class="col-auto">
+                  <i class="bi bi-people fa-2x text-gray-300"></i>
+                  <!-- <i class="fas fa-star fa-2x text-gray-300"></i> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- New Card Example 3 -->
+              <div class="col-xl-3 col-md-6 mb-4">
+          <div class="card border-left-dark shadow h-100 py-2">
+            <div class="card-body">
+              <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                  <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Inactive Partner</div>
+                   <?php
+                          if(isset($_GET['college'])) {
+                            $college = $_GET['college'];
+                            $sql = "SELECT COUNT(*) AS total FROM partners WHERE status = 'Inactive' AND college_id = $college";
+                          } else {
+                            $sql = "SELECT COUNT(*) AS total FROM partners WHERE status = 'Inactive'";
+                          }
+                          $result = $conn->query($sql);
+                          $row = $result->fetch_assoc();
+                        ?>
+                  <div class="h5 mb-0 font-weight-bold text-gray-800"><?=$row['total']?></div>
+                </div>
+                <div class="col-auto">
+                  <i class="fas fa-times fa-2x text-gray-300"></i>
+                  <!-- <i class="fas fa-star fa-2x text-gray-300"></i> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
             <!-- Content Row -->
             <div class="row">
               <!-- Area Chart -->

@@ -7,6 +7,7 @@
 
 		$dir = "../uploads/";
 		$file = $dir.basename($_FILES["file"]["name"]);
+		$fileName = basename($_FILES["file"]["name"]);
 
 		move_uploaded_file($_FILES["file"]["tmp_name"], $file);
 
@@ -18,7 +19,7 @@
 			exit();
 		}
 
-		mysqli_stmt_bind_param($stmt, "ss", $folderID, $file);
+		mysqli_stmt_bind_param($stmt, "ss", $folderID, $fileName);
 		mysqli_stmt_execute($stmt);
 		mysqli_stmt_close($stmt);
 		header("location: ./docu_local.php?id=".$folderID);

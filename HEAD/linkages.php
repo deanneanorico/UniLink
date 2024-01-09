@@ -33,6 +33,7 @@
     <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
      <script>
       $(document).ready(function() {
          new DataTable('#linkagesTable', {
@@ -187,37 +188,70 @@
                                     </tr>
                                 </thead>
                                <tbody>
-                                <?php
-                                    $sql = "SELECT * FROM linkages";
-                                    $result = $conn->query($sql);
-                                    $i = 1;
-                                    while ($linkagesRow = $result->fetch_assoc()) {
-                                ?>
-                                <tr>
-                                    <td class="text-center"><?=$i?></td>
-                                    <td class="text-center"><?=$linkagesRow['title']?></td>
-                                    <td class="text-center"><?=$linkagesRow['category']?></td>
-                                    <td class="text-center"><?=$linkagesRow['status']?></td>
-                                    <!-- Update the Action column -->
-                                    <td style='text-align: center; display: flex; justify-content: center;'>
-                                        <a class='bi bi-file-earmark-pdf-fill text-info' href="linkages.pdf.php?id=<?=$linkagesRow['id']?>"></a>
-                                        <div class="dropdown">
-                                            <span class='bi bi-three-dots' data-toggle="dropdown"></span>
-                                            <div class="dropdown-menu">
-                                                <a class="dropdown-item" href="update.linkages.status.php?status=For Exploratory&id=<?=$linkagesRow['id']?>">For Exploratory</a>
-                                                <a class="dropdown-item" href="update.linkages.status.php?status=Review by Partner&id=<?=$linkagesRow['id']?>")>Review by Partner</a>
-                                                <a class="dropdown-item" href="update.linkages.status.php?status=Review by Legal&id=<?=$linkagesRow['id']?>">Review by Legal</a>
-                                                <a class="dropdown-item" href="update.linkages.status.php?status=For Signing&id=<?=$linkagesRow['id']?>">For Signing</a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <?php
-                                    $i++;
-                                    }
-                                ?>
-                            </tbody>
+                              <?php
+                                  $sql = "SELECT * FROM linkages";
+                                  $result = $conn->query($sql);
+                                  $i = 1;
+                                  while ($linkagesRow = $result->fetch_assoc()) {
+                              ?>
+                              <tr>
+                                  <td class="text-center"><?=$i?></td>
+                                  <td class="text-center"><?=$linkagesRow['title']?></td>
+                                  <td class="text-center"><?=$linkagesRow['category']?></td>
+                                  <td class="text-center"><?=$linkagesRow['status']?></td>
+                                  <!-- Update the Action column -->
+                                  <td style='text-align: center; display: flex; justify-content: center;'>
+                                      <a href='linkages_edit.php?id=<?=$linkagesRow['id']?>'>
+                                        <span class='fas fa-edit text-primary' title='Edit'></span>
+                                      </a>
+                                      <a onclick='confirmDelete(<?=$linkagesRow['id']?>)'>
+                                      <span class="fas fa-trash text-danger" title="Delete"></span></a>
+                                      <!-- PDF icon -->
+                                      <a class='bi bi-file-earmark-pdf-fill text-info' href="linkages.pdf.php?id=<?=$linkagesRow['id']?>" title='Linkage Proposal'></a>
+                                      <div class="dropdown">
+                                          <span class='bi bi-three-dots' data-toggle="dropdown" title='Status'></span>
+                                          <div class="dropdown-menu">
+                                            <?php
+                                            $textColor = ''; // Default text color
 
+                                            switch ($linkagesRow['status']) {
+                                                case 'For Exploratory':
+                                                    $textColor = '#228B22'; // Green color
+                                                    break;
+                                                case 'Review by Partner':
+                                                    $textColor = '#FFD700'; // Gold/Yellow color
+                                                    break;
+                                                case 'Review by Legal':
+                                                    $textColor = '#0000FF'; // Blue color
+                                                    break;
+                                                case 'For Signing':
+                                                    $textColor = '#FF4500'; // Orange/Red-Orange color
+                                                    break;
+                                                case 'For Notary':
+                                                    $textColor = '#8A2BE2'; // Blue-Violet color
+                                                    break;
+                                                // Add more cases if needed
+                                                default:
+                                                    // Default color if the status doesn't match any case
+                                                    $textColor = '#000000'; // Black color
+                                            }
+                                             // while ($linkagesRow = $result->fetch_assoc()) {
+                                            ?>
+                                              <a class="dropdown-item" href="update.linkages.status.php?status=For Evaluation&id=<?=$linkagesRow['id']?>">For Evaluation</a>
+                                              <a class="dropdown-item" href="update.linkages.status.php?status=Review by Partner&id=<?=$linkagesRow['id']?>")>Review by Partner</a>
+                                              <a class="dropdown-item" href="update.linkages.status.php?status=Review by Legal&id=<?=$linkagesRow['id']?>">Review by Legal</a>
+                                              <a class="dropdown-item" href="update.linkages.status.php?status=For Evaluation&id=<?=$linkagesRow['id']?>">For Exploratory</a>
+                                              <a class="dropdown-item" href="update.linkages.status.php?status=For Signing&id=<?=$linkagesRow['id']?>">For Signing</a>
+                                              <a class="dropdown-item" href="update.linkages.status.php?status=For Notary&id=<?=$linkagesRow['id']?>">For Notary</a>
+                                          </div>
+                                      </div>
+                                  </td>
+                              </tr>
+                              <?php
+                                  $i++;
+                                  }
+                              ?>
+                          </tbody>
                             </table>
                         </div>
                     </div>
@@ -311,4 +345,37 @@
             }
         });
     }
+</script>
+<script>
+
+  function confirmDelete(e) {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You will not be able to recover this data!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Handle the delete action here
+        // You may want to make an AJAX request to delete the data on the server
+        deleteLinkages = new XMLHttpRequest();
+        deleteLinkages.open("GET", "delete.linkages.php?id=" + e);
+        deleteLinkages.send();
+        deleteLinkages.onload = function () {
+            Swal.fire(
+              'Deleted!',
+              'Your data has been deleted.',
+              'success'
+            ).then((l)=>{
+                location.reload(true);
+            });
+        }
+
+        
+      }
+    });
+  }
 </script>

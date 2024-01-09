@@ -203,12 +203,14 @@
                                     while($row = $result->fetch_assoc()) {
                                   ?>
                                     <tr style="center">
-                                      <td><?=$count?></td>
-                                      <td><?=$row['name']?></td>
-                                      <td><?=$row['category']?></td>
-                                      <td><?=$row['college_name']?></td>
-                                      <td><?=$row['status']?></td>
-                                      <th></th>
+                                      <td class="text-center"><?=$count?></td>
+                                      <td class="text-center"><?=$row['name']?></td>
+                                      <td class="text-center"><?=$row['category']?></td>
+                                      <td class="text-center"><?=$row['college_name']?></td>
+                                      <td class="text-center"><?=$row['status']?></td>
+                                      <td style='text-align: center; display: flex; justify-content: center;'>
+                                        <span class='fas fa-edit text-primary' title="Edit"></span>
+                                        <span class='fas fa-trash text-danger' title="Delete"></span>
                                     </tr>
                                   <?php
                                       $count++;
@@ -240,8 +242,8 @@
                       <div class="form-group">
                         <label for="category">Category</label>
                         <select class="form-control" name="category" required>
-                          <option value="local">Local</option>
-                          <option value="international">International</option>
+                          <option value="Local">Local</option>
+                          <option value="International">International</option>
                         </select>
                       </div>
                       <div class="form-group">
@@ -265,8 +267,9 @@
                           <option value="For Evaluation">For Evaluation</option>
                           <option value="For Review Legal">For Review Legal</option>
                           <option value="For Review Partner">For Review Partner</option>
+                          <option value="For Review Partner">For Exploratory</option>
                           <option value="For Signing MOU/MOA">For Signing MOU/MOA</option>
-                          <option value="For Notary Signing">For Notary Signing</option>
+                          <option value="For Notary Signing">For Notary MOU/MOA</option>
                           <option value="Inactive">Inactive</option>
                         </select>
                       </div>

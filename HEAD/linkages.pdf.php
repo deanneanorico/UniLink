@@ -150,9 +150,9 @@ $pdf->Cell(0, 3.5, "", 'LR', 0, 'L');
 
 $pdf->Ln();
 $pdf->SetFont("Times", "B", 12);
-$pdf->Cell(0, 7, strtoupper($linkagesRow["title"]), 'BLR', 0, 'C');
+$pdf->MultiCell(0, 7, strtoupper($linkagesRow["title"]), 'BLR', 'C');
 
-$pdf->Ln();
+$pdf->Ln(0);
 $pdf->SetFont("Times", "B", 11);
 $pdf->Cell(77, 7, "     II.  Partnership and/or Linkage Category:", 1, 0, 'L');
 $x = $pdf->GetX();

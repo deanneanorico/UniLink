@@ -252,10 +252,10 @@
               <td><?= $row['abbreviation'] ?></td>
               <td>
                 <a class="editProgram" data-toggle="modal" data-target="#editProgramModal" id="editProgram" onclick="setData(<?= $row['id'] ?>, '<?= $row['cp_id'] ?>', '<?= $row['cl_id'] ?>', '<?= $row['program'] ?>', '<?= $row['abbreviation'] ?>')">
-                  <i class='fas fa-edit text-success'></i>
+                  <i class='fas fa-edit text-success' title="Edit"></i>
                 </a>
                 <a onclick="confirmDelete(<?=$row['id']?>)" name="delprogram">
-                  <i class="fas fa-trash text-danger"></i>
+                  <i class="fas fa-trash text-danger" title="Delete"></i>
                 </a>
               </td>
             </tr>
