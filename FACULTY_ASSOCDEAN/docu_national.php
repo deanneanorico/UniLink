@@ -42,6 +42,19 @@
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+     <script>
+      $(document).ready(function() {
+         new DataTable('#fileTable', {
+            responsive: true
+        });
+      });
+    </script>
+
 </head>
 <body id="page-top">
     <!-- Page Wrapper -->
@@ -159,6 +172,16 @@
                                 <i class="bi bi-arrow-left"></i> Back
                             </a>
                         </div>
+    <form class="d-none d-sm-inline-block form-inline ml-auto mr-md-3 my-2 my-md-0 mw-100 navbar-search">
+      <div class="input-group">
+        <input type="text" id="search-input" class="form-control bg-light border-1 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+        <div class="input-group-append">
+          <button class="btn btn-primary" id="search-button" type="button">
+            <i class="fas fa-search fa-sm"></i>
+          </button>
+        </div>
+      </div>
+    </form>
                         <h3 class="h3 mb-0 text-gray-800"></h3>
                         <div class="d-flex">
                             <a class="btn btn-primary rounded-fill" data-toggle="modal" data-target="#createfolder">
@@ -222,6 +245,48 @@
                     }
                     echo '</div>'; // End the flex container
                 }
+                ?>
+                 <?php 
+                    if(isset($_GET['id'])) {
+                ?>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="table">
+                         <table id="fileTable" style="width: 100%;" class="display" data-ordering="true" data-paging="true" data-searching="true">
+                            <thead style='text-align: center;'>
+                                <tr>
+                                    <th>File</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody style='text-align: center;'>
+                                <?php
+                                    $folderID = $_GET['id'];
+                                    $sql = "SELECT * FROM uploads WHERE create_folder_id = $folderID";
+                                    $uploadsResult = $conn->query($sql);
+                                    while($uploadsRow = $uploadsResult->fetch_assoc()) {
+                                ?>
+                                <tr>
+                                    <td><?=$uploadsRow['path']?></td>
+                                    <td style='text-align: center;'>
+                                <a href="../uploads/<?=$uploadsRow['path']?>" target="_blank">
+                                    <span class="bi bi-envelope-paper text-secondary" title="View"></span>
+                                </a>
+                                <a href="delete.local.file.php?id=<?=$uploadsRow['id']?>">
+                                    <span class="bi bi-trash text-danger" title="Delete"></span>
+                                </a>
+                                    </td>
+                                </tr>
+                                <?php
+                                    }
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                </div>
+                <?php
+                    }
                 ?>
                 <div id="context-menu" class="context-menu" style="width: 75px; padding-left: 1px; border-radius: 1.25rem;">
                     <ul>

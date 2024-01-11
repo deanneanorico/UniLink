@@ -218,7 +218,7 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                Successful Partner</div>
+                                                Active Partner</div>
                                                 <?php
                           if(isset($_GET['college'])) {
                             $college = $_GET['college'];

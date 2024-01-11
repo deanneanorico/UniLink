@@ -33,6 +33,7 @@
     <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
      <script>
       $(document).ready(function() {
          new DataTable('#partnerTable', {
@@ -209,9 +210,73 @@
                                       <td class="text-center"><?=$row['college_name']?></td>
                                       <td class="text-center"><?=$row['status']?></td>
                                       <td style='text-align: center; display: flex; justify-content: center;'>
-                                        <span class='fas fa-edit text-primary' title="Edit"></span>
-                                        <span class='fas fa-trash text-danger' title="Delete"></span>
+                                        <span class='fas fa-edit text-primary' title="Edit" data-toggle="modal" data-target="#edit-modal-<?=$row['id']?>"></span>
+                                        <span class='fas fa-trash text-danger' title="Delete" onclick='confirmDelete(<?=$row['id']?>)'></span>
                                     </tr>
+
+                                    <div class="modal fade" id="edit-modal-<?=$row['id']?>">
+                                      <div class="modal-dialog">
+                                        <div class="modal-content">
+
+                                          <form action="update.partner.php" method="POST">
+                                            <!-- Modal Header -->
+                                            <div class="modal-header">
+                                              <h4 class="modal-title">Update Partner</h4>
+                                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            </div>
+
+                                            <!-- Modal body -->
+                                            <div class="modal-body">
+                                              <input type="hidden" name="id" value="<?=$row['id']?>">
+                                              <div class="form-group">
+                                                <label for="partner">Partner Name</label>
+                                                <input type="text" name="partner" class="form-control" placeholder="" value="<?=$row['name']?>" required>
+                                              </div>
+                                              <div class="form-group">
+                                                <label for="category">Category</label>
+                                                <select class="form-control" name="category" required>
+                                                  <option value="Local" <?php if($row['category'] == "Local") { echo "selected"; } ?>>Local</option>
+                                                  <option value="International" <?php if($row['category'] == "International") { echo "selected"; } ?>>International</option>
+                                                </select>
+                                              </div>
+                                              <div class="form-group">
+                                                <label for="college">College</label>
+                                                <select class="form-control" name="college">
+                                                  <?php
+                                                    $sql = "SELECT * FROM `college`";
+                                                    $collegeResult = $conn->query($sql);
+                                                    while($collegeRow = $collegeResult->fetch_assoc()){
+                                                  ?>
+                                                      <option value="<?=$collegeRow['collegeID']?>" <?php if($row['college_id'] == $collegeRow['collegeID']) { echo "selected"; } ?>><?=$collegeRow['name']?></option>
+                                                  <?php    
+                                                    }
+                                                  ?>
+                                                </select>
+                                              </div>
+                                              <div class="form-group">
+                                                <label for="status">Status</label>
+                                                <select class="form-control" name="status" required>
+                                                  <option value="Successful Partner" <?php if($row['status'] == "Successful Partner") { echo "selected"; } ?>>Successful Partner</option>
+                                                  <option value="For Evaluation" <?php if($row['status'] == "For Evaluation") { echo "selected"; } ?>>For Evaluation</option>
+                                                  <option value="For Review Legal" <?php if($row['status'] == "For Review Legal") { echo "selected"; } ?>>For Review Legal</option>
+                                                  <option value="For Review Partner" <?php if($row['status'] == "For Review Partner") { echo "selected"; } ?>>For Review Partner</option>
+                                                  <option value="For Review Exploratory" <?php if($row['status'] == "For Review Exploratory") { echo "selected"; } ?>>For Exploratory</option>
+                                                  <option value="For Signing MOU/MOA" <?php if($row['status'] == "For Signing MOU/MOA") { echo "selected"; } ?>>For Signing MOU/MOA</option>
+                                                  <option value="For Notary Signing" <?php if($row['status'] == "For Notary Signing") { echo "selected"; } ?>>For Notary MOU/MOA</option>
+                                                </select>
+                                              </div>
+                                            </div>
+
+                                            <!-- Modal footer -->
+                                            <div class="modal-footer">
+                                              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                              <button type="submit" class="btn btn-primary">Update</button>
+                                            </div>
+                                          </form>
+
+                                        </div>
+                                      </div>
+                                    </div>
                                   <?php
                                       $count++;
                                     }
@@ -270,7 +335,6 @@
                           <option value="For Review Partner">For Exploratory</option>
                           <option value="For Signing MOU/MOA">For Signing MOU/MOA</option>
                           <option value="For Notary Signing">For Notary MOU/MOA</option>
-                          <option value="Inactive">Inactive</option>
                         </select>
                       </div>
                     </div>
@@ -351,5 +415,37 @@
         college.appendChild(option);
       });
     }
+  }
+
+  function confirmDelete(e) {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You will not be able to recover this data!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Handle the delete action here
+        // You may want to make an AJAX request to delete the data on the server
+        deleteLinkages = new XMLHttpRequest();
+        deleteLinkages.open("POST", "delete.partner.php");
+        deleteLinkages.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        deleteLinkages.send("id="+e);
+        deleteLinkages.onload = function () {
+            Swal.fire(
+              'Deleted!',
+              'Your data has been deleted.',
+              'success'
+            ).then((l)=>{
+                location.reload(true);
+            });
+        }
+
+        
+      }
+    });
   }
 </script>

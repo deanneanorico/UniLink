@@ -238,11 +238,12 @@
                                              // while ($linkagesRow = $result->fetch_assoc()) {
                                             ?>
                                               <a class="dropdown-item" href="update.linkages.status.php?status=For Evaluation&id=<?=$linkagesRow['id']?>">For Evaluation</a>
+                                              <a class="dropdown-item" href="update.linkages.status.php?status=For Evaluation&id=<?=$linkagesRow['id']?>">For Exploratory</a>
                                               <a class="dropdown-item" href="update.linkages.status.php?status=Review by Partner&id=<?=$linkagesRow['id']?>")>Review by Partner</a>
                                               <a class="dropdown-item" href="update.linkages.status.php?status=Review by Legal&id=<?=$linkagesRow['id']?>">Review by Legal</a>
-                                              <a class="dropdown-item" href="update.linkages.status.php?status=For Evaluation&id=<?=$linkagesRow['id']?>">For Exploratory</a>
-                                              <a class="dropdown-item" href="update.linkages.status.php?status=For Signing&id=<?=$linkagesRow['id']?>">For Signing</a>
+                                              <a class="dropdown-item" href="update.linkages.status.php?status=For Signing&id=<?=$linkagesRow['id']?>">For Signing MOU/MOA</a>
                                               <a class="dropdown-item" href="update.linkages.status.php?status=For Notary&id=<?=$linkagesRow['id']?>">For Notary</a>
+                                              <a class="dropdown-item" href="update.linkages.status.php?status=Successful Partner&id=<?=$linkagesRow['id']?>">Successful Partner</a>
                                           </div>
                                       </div>
                                   </td>
@@ -362,8 +363,9 @@
         // Handle the delete action here
         // You may want to make an AJAX request to delete the data on the server
         deleteLinkages = new XMLHttpRequest();
-        deleteLinkages.open("GET", "delete.linkages.php?id=" + e);
-        deleteLinkages.send();
+        deleteLinkages.open("POST", "delete.linkages.php");
+        deleteLinkages.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        deleteLinkages.send("id="+e);
         deleteLinkages.onload = function () {
             Swal.fire(
               'Deleted!',

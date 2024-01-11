@@ -126,14 +126,14 @@
                 </div>
               </li>
               <!-- Nav Item - Alerts -->
-              <li class="nav-item dropdown no-arrow mx-1">
+              <!-- <li class="nav-item dropdown no-arrow mx-1">
                   <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <i class="fas fa-bell fa-fw"></i>
-                      <!-- Counter - Alerts -->
+                      
                       <span class="badge badge-danger badge-counter">3+</span>
                   </a>
-                  <!-- Dropdown - Alerts -->
+
                   <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
                       aria-labelledby="alertsDropdown">
                       <h6 class="dropdown-header">
@@ -146,13 +146,13 @@
                               </div>
                           </div>
                           <div>
-                              <div class="small text-gray-500">December 12, 2019</div> <-- kung kelan nag notif -->
+                              <div class="small text-gray-500">December 12, 2019</div>  kung kelan nag notif
                               <span class="font-weight-bold">"The PhilNITS is inactive after 6 days."</span>
                           </div>
                       </a>
                       <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
                   </div>
-              </li>
+              </li> -->
               <div class="topbar-divider d-none d-sm-block"></div>
               <!-- Nav Item - User Information -->
               <li class="nav-item dropdown no-arrow">
@@ -253,6 +253,32 @@
                   </div>
                 </div>
               </div>
+              <!-- Target Card Example -->
+              <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-warning shadow h-100 py-2">
+                  <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                      <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">For Exploratory</div>
+                        <?php
+                          if(isset($_GET['college'])) {
+                            $college = $_GET['college'];
+                            $sql = "SELECT COUNT(*) AS total FROM partners WHERE status = 'For Exploratory' AND college_id = $college";
+                          } else {
+                            $sql = "SELECT COUNT(*) AS total FROM partners WHERE status = 'For Exploratory'";
+                          }
+                          $result = $conn->query($sql);
+                          $row = $result->fetch_assoc();
+                        ?>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800"><?=$row['total']?></div>
+                      </div>
+                      <div class="col-auto">
+                        <i class="bi bi-calendar-event fa-2x text-gray-300"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
               <!-- Active Card Example -->
               <div class="col-xl-3 col-md-6 mb-4">
                 <div class="card border-left-success shadow h-100 py-2">
@@ -304,32 +330,6 @@
                       </div>
                       <div class="col-auto">
                         <i class="bi bi-check-all fa-3x text-gray-300"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- Target Card Example -->
-              <div class="col-xl-3 col-md-6 mb-4">
-                <div class="card border-left-warning shadow h-100 py-2">
-                  <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                      <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">For Exploratory</div>
-                        <?php
-                          if(isset($_GET['college'])) {
-                            $college = $_GET['college'];
-                            $sql = "SELECT COUNT(*) AS total FROM partners WHERE status = 'For Exploratory' AND college_id = $college";
-                          } else {
-                            $sql = "SELECT COUNT(*) AS total FROM partners WHERE status = 'For Exploratory'";
-                          }
-                          $result = $conn->query($sql);
-                          $row = $result->fetch_assoc();
-                        ?>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800"><?=$row['total']?></div>
-                      </div>
-                      <div class="col-auto">
-                        <i class="bi bi-calendar-event fa-2x text-gray-300"></i>
                       </div>
                     </div>
                   </div>
@@ -398,7 +398,7 @@
             <div class="card-body">
               <div class="row no-gutters align-items-center">
                 <div class="col mr-2">
-                  <div class="text-xs font-weight-bold text-dark text-uppercase mb-1">Successful Partner</div>
+                  <div class="text-xs font-weight-bold text-dark text-uppercase mb-1">Active Partner</div>
                  <?php
                           if(isset($_GET['college'])) {
                             $college = $_GET['college'];

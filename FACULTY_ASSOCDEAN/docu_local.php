@@ -38,10 +38,23 @@
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+     <script>
+      $(document).ready(function() {
+         new DataTable('#fileTable', {
+            responsive: true
+        });
+      });
+    </script>
 </head>
 <body id="page-top">
     <!-- Page Wrapper -->
@@ -159,6 +172,16 @@
                                 <i class="bi bi-arrow-left"></i> Back
                             </a>
                         </div>
+    <form class="d-none d-sm-inline-block form-inline ml-auto mr-md-3 my-2 my-md-0 mw-100 navbar-search">
+      <div class="input-group">
+        <input type="text" id="search-input" class="form-control bg-light border-1 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+        <div class="input-group-append">
+          <button class="btn btn-primary" id="search-button" type="button">
+            <i class="fas fa-search fa-sm"></i>
+          </button>
+        </div>
+      </div>
+    </form>
                         <h3 class="h3 mb-0 text-gray-800"></h3>
                         <div class="d-flex">
                             <a class="btn btn-primary rounded-fill" data-toggle="modal" data-target="#createfolder">
@@ -290,9 +313,13 @@
                                 ?>
                                 <tr>
                                     <td><?=$uploadsRow['path']?></td>
-                                    <td>
-                                        <a href="../uploads/<?=$uploadsRow['path']?>" target="_blank">View</a>
-                                        <a href="delete.local.file.php?id=<?=$uploadsRow['id']?>">Delete</a>
+                                    <td style='text-align: center;'>
+                                <a href="../uploads/<?=$uploadsRow['path']?>" target="_blank">
+                                    <span class="bi bi-envelope-paper text-secondary" title="View"></span>
+                                </a>
+                                <a href="delete.local.file.php?id=<?=$uploadsRow['id']?>">
+                                    <span class="bi bi-trash text-danger" title="Delete"></span>
+                                </a>
                                     </td>
                                 </tr>
                                 <?php
@@ -306,6 +333,11 @@
                 <?php
                     }
                 ?>
+                 <div id="context-menu" class="context-menu" style="width: 75px; padding-left: 1px; border-radius: 1.25rem;">
+                    <ul>
+                        <li onclick="deleteFolder(<?php echo $row['id']; ?>)">Delete</li>
+                    </ul>
+                </div>
                 <!-- /.container-fluid -->
             </div>
             <!-- End of Main Content -->

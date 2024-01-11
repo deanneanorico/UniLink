@@ -29,6 +29,18 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+     <script>
+      $(document).ready(function() {
+         new DataTable('#fileTable', {
+            responsive: true
+        });
+      });
+    </script>
     <style>
     .custom-text-black {
     color: black;
@@ -122,33 +134,6 @@
                 </div>
               </li>
               <!-- Nav Item - Alerts -->
-              <li class="nav-item dropdown no-arrow mx-1">
-                  <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
-                      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <i class="fas fa-bell fa-fw"></i>
-                      <!-- Counter - Alerts -->
-                      <span class="badge badge-danger badge-counter">3+</span>
-                  </a>
-                  <!-- Dropdown - Alerts -->
-                  <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                      aria-labelledby="alertsDropdown">
-                      <h6 class="dropdown-header">
-                          Alerts Center
-                      </h6>
-                      <a class="dropdown-item d-flex align-items-center" href="#">
-                          <div class="mr-3">
-                              <div class="icon-circle bg-primary">
-                                  <i class="fas fa-times text-white"></i>
-                              </div>
-                          </div>
-                          <div>
-                              <div class="small text-gray-500">December 12, 2019</div> <-- kung kelan nag notif -->
-                              <span class="font-weight-bold">"The PhilNITS is inactive after 6 days."</span>
-                          </div>
-                      </a>
-                      <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
-                  </div>
-              </li>
               <div class="topbar-divider d-none d-sm-block"></div>
               <!-- Nav Item - User Information -->
               <li class="nav-item dropdown no-arrow">
@@ -183,6 +168,16 @@
                     <a href="#" class="btn btn" style="color:black;" onclick="goBack()">
                         <i class="bi bi-arrow-left"></i> Back
                     </a>
+    <form class="d-none d-sm-inline-block form-inline ml-auto mr-md-3 my-2 my-md-0 mw-100 navbar-search">
+      <div class="input-group">
+        <input type="text" id="search-input" class="form-control bg-light border-1 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+        <div class="input-group-append">
+          <button class="btn btn-primary" id="search-button" type="button">
+            <i class="fas fa-search fa-sm"></i>
+          </button>
+        </div>
+      </div>
+    </form>
                     <!-- Filter button with icon and label -->
                     <div class="modal fade" id="filterModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog" role="document">
@@ -267,6 +262,48 @@
               echo '</div>'; // End the flex container
           }
           ?>
+           <?php 
+                    if(isset($_GET['id'])) {
+                ?>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="table">
+                         <table id="fileTable" style="width: 100%;" class="display" data-ordering="true" data-paging="true" data-searching="true">
+                            <thead style='text-align: center;'>
+                                <tr>
+                                    <th>File</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody style='text-align: center;'>
+                                <?php
+                                    $folderID = $_GET['id'];
+                                    $sql = "SELECT * FROM uploads WHERE create_folder_id = $folderID";
+                                    $uploadsResult = $conn->query($sql);
+                                    while($uploadsRow = $uploadsResult->fetch_assoc()) {
+                                ?>
+                                <tr>
+                                    <td><?=$uploadsRow['path']?></td>
+                                    <td style='text-align: center;'>
+                                <a href="../uploads/<?=$uploadsRow['path']?>" target="_blank">
+                                    <span class="bi bi-envelope-paper text-secondary" title="View"></span>
+                                </a>
+                                <a href="delete.local.file.php?id=<?=$uploadsRow['id']?>">
+                                    <span class="bi bi-trash text-danger" title="Delete"></span>
+                                </a>
+                                    </td>
+                                </tr>
+                                <?php
+                                    }
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                </div>
+                <?php
+                    }
+                ?>
         </div>
         <!-- End of Main Content -->
         <!-- Footer -->

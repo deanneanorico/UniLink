@@ -179,6 +179,9 @@
                                         <th>Action</th>
                                     </tr>
                                 </thead>
+                                <!-- // <a href='ui-formsEdit.php?id=" . $row["id"] . "'>
+                                                        //     <span class='fas fa-edit text-secondary' title='Edit'></span>
+                                                        // </a> -->
                                 <tbody id="load-table">
                                     <?php
                                     $college = $_SESSION['collegeName'];
@@ -214,9 +217,6 @@
                                             if($status == "Implemented") {
                                                 echo "
                                                     <td style='text-align: center;'>
-                                                        <a href='ui-formsEdit.php?id=" . $row["id"] . "'>
-                                                            <span class='fas fa-edit text-secondary' title='Edit'></span>
-                                                        </a>
                                                         <a href='pdf.php?id=". $row["id"]."' target='_blank' class='fas fa-file-download text-info' title='Activity Proposal'></a>
                                                         <a href='report.php?id=" . $row['id'] . "' class='fas fa-clipboard text-success' title='Narrative Report'></a>
                                                     </td>
